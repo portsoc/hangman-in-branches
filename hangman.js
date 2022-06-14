@@ -4,6 +4,7 @@ const words = [
   'The Lord of the Rings', 'The Dark Knight', 'Pulp Fiction',
 ];
 
+//TODO add comments
 function randomNumber(max) {
   return Math.floor(Math.random() * max);
 }

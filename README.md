@@ -1,7 +1,11 @@
 # Hangman In Branches
 
-In this repo, we will build a hangman game in stages.
-Each stage is placed in a different branch.
+## Branch 0
+
+In this branch, we are creating a JS script, `hangman.js`, which holds the game logic.
+We first create an array of words (in our case movie names) called `words`.
+We then create two functions `randomNumber` and `randomWord`.
+Using these functions we can then select a random word from the list.
 
 ## Requirements
 
@@ -13,45 +17,38 @@ Otherwise, on your computers, install [git](https://git-scm.com/book/en/v2/Getti
 
 ## Clone
 
-1. Using `git`:
+- Using `git`:
 
-   ```shell
-   git clone https://github.com/manighahrmani/kitten.git
-   ```
+  ```shell
+  git clone https://github.com/manighahrmani/kitten.git
+  ```
 
-2. Using GitHub CLI tool:
+- Using GitHub CLI tool:
 
-   ```shell
-   gh repo clone manighahrmani/kitten
-   ```
+  ```shell
+  gh repo clone manighahrmani/kitten
+  ```
 
-3. Using the GitHub Desktop app:
+- Using the GitHub Desktop app:
 
-   While viewing the repository in your browser, click the "Code" button and select Open with GitHub Desktop.
+  While viewing the repository in your browser, click the "Code" button and select Open with GitHub Desktop.
 
-## Select the branch
+## Selecting this branch
 
-As we build the game, we will switch between branches.
+- Using `git` in the shell:
 
-The branch for the first stage is `0`.
-To access the code for any other branch, you must switch the current branch.
+  ```shell
+  git checkout 0
+  ```
 
-Follow the instructions below to switch your branch (where x is a number):
-
-1. Using `git` in the shell:
-
-   ```shell
-   git checkout x
-   ```
-
-2. If you are using the GitHub Desktop client, follow this [instruction on how to switch branches on GitHub](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/making-changes-in-a-branch/managing-branches#switching-between-branches)
+- If you are using the GitHub Desktop client, follow this [instruction on how to switch branches on GitHub](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/making-changes-in-a-branch/managing-branches#switching-between-branches)
 
 ## Run
 
 Open the shell and run the following command:
 
-   ```shell
-   node hangman.js
-   ```
+```shell
+node hangman.js
+```
 
 Remember to view the source code in the editor.
