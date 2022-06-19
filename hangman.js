@@ -1,20 +1,24 @@
 const words = [
-  'Jurassic Park', 'Star Wars', 'The Matrix',
-  'The Godfather', 'The Dark Knight', 'The Lord of the Rings',
-  'The Lord of the Rings', 'The Dark Knight', 'Pulp Fiction',
+    'Jurassic Park', 'Star Wars', 'The Matrix',
+    'The Godfather', 'The Dark Knight', 'The Lord of the Rings',
+    'The Lord of the Rings', 'The Dark Knight', 'Pulp Fiction',
 ];
 
-//TODO add comments
-function randomNumber(max) {
-  return Math.floor(Math.random() * max);
+// Takes the size of an array and returns an index from 0 to size-1
+function randomIndex(size) {
+    const index = Math.floor(Math.random() * size);
+    return index;
 }
 
-function randomWord() {
-  return words[randomNumber(words.length)];
+// Takes an array and returns a randomly selected element
+function randomElement(array) {
+    const size = array.length;
+    const element = array[randomIndex(size)];
+    return element;
 }
 
-let word = randomWord();
-console.log(`The first randomly select word is: ${word}`);
+let word = randomElement(words);
+console.log(`The first randomly selected word is: ${word}`);
 
-word = randomWord();
-console.log(`The second randomly select word is: ${word}`);
+word = randomElement(words);
+console.log(`The second randomly selected word is: ${word}`);
