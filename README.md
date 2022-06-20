@@ -94,6 +94,13 @@ To switch to branch *x* (where x is a number):
   ```
   git checkout x
   ```
+  *Make sure to replace x with a branch number* 
+  
+  To view all branches, run:
+  
+  ```
+  git branch
+  ```
 
 ### Using GitHub Desktop client 
 Follow this [instruction on how to switch branches on GitHub](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/making-changes-in-a-branch/managing-branches#switching-between-branches).
@@ -107,7 +114,7 @@ Follow this [instruction on how to switch branches on GitHub](https://docs.githu
 
 1. Navigate to this folder using a shell (Terminal on Linux/Mac or Command Prompt/PowerShell in Windows) or open a new terminal from your editor and run:
 
-    ```shell
+    ```
     node hangman.js
     ```
 <p align="right">(<a href="#top">back to top</a>)</p>
