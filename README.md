@@ -97,7 +97,7 @@ To switch to branch "x" (where x is a number):
   ```
   git checkout x
   ```
-  *Make sure to replace x with a branch* 
+  *Make sure to replace x with a branch number* 
   
   To view all branches, run:
   
