@@ -74,13 +74,13 @@ Instead, follow the instructions below to clone this repository on your machine.
 
 #### Using `git`
 
-  ```shell
+  ```
   git clone https://github.com/manighahrmani/kitten.git
   ```
 
 #### Using GitHub CLI
 
-  ```shell
+  ```
   gh repo clone manighahrmani/kitten
   ```
 
@@ -94,8 +94,15 @@ To switch to branch "x" (where x is a number):
 
 #### Using `git` in the shell
 
-  ```shell
+  ```
   git checkout x
+  ```
+  *Make sure to replace x with a branch* 
+  
+  To view all branches, run:
+  
+  ```
+  git branch
   ```
 
 #### Using GitHub Desktop client 
@@ -110,7 +117,7 @@ Follow this [instruction on how to switch branches on GitHub](https://docs.githu
 
 1. Navigate to this folder using a shell (Terminal on Linux/Mac or Command Prompt/PowerShell in Windows) or open a new terminal from your editor and run:
 
-    ```shell
+    ```
     node hangman.js
     ```
 <p align="right">(<a href="#top">back to top</a>)</p>
