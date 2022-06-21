@@ -1,54 +1,40 @@
-# Hangman In Branches
+# Branch 1: Functions
 
-## Branch 0
+<div id="top"></div>
 
-In this branch, we are creating a JS script, `hangman.js`, which holds the game logic.
-We first create an array of words (in our case movie names) called `words`.
-We then create two functions `randomNumber` and `randomWord`.
-Using these functions we can then select a random word from the list.
+## Objectives
 
-## Requirements
+Instead of manually selecting elements from our `words` array, let's pick them out randomly.
 
-If you are using University computers, get git and optionally GitHub Desktop from AppsAnywhere.
+We first need to select a random index of our array.
+Then we can use that index to select the element from our array.
 
-If you are using Replit, import this repository into a new Node Repl.
+We will be grouping lines of code for each task into functions and then calling our functions to get our results.
 
-Otherwise, on your computers, install [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git), the [GitHub client](https://github.com/cli/cli) or the [GitHub Desktop](https://desktop.github.com) app.
+## Implementation
 
-## Clone
+We start by writing the `randomIndex` function to select a random index of an array given its length.
 
-- Using `git`:
+Next, we will use `randomIndex` within a new function: `randomElement`.
+This function will take an array and return a random element from it.
 
-  ```shell
-  git clone https://github.com/manighahrmani/kitten.git
-  ```
+Lastly, we will test `randomElement` by calling it twice and printing the randomly selected element that it returns.
 
-- Using GitHub CLI tool:
+## Usage
 
-  ```shell
-  gh repo clone manighahrmani/kitten
-  ```
+Navigate to the `hangman` folder in a shell or open a new terminal in your editor and run the following command:
 
-- Using the GitHub Desktop app:
-
-  While viewing the repository in your browser, click the "Code" button and select Open with GitHub Desktop.
-
-## Selecting this branch
-
-- Using `git` in the shell:
-
-  ```shell
-  git checkout 0
-  ```
-
-- If you are using the GitHub Desktop client, follow this [instruction on how to switch branches on GitHub](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/making-changes-in-a-branch/managing-branches#switching-between-branches)
-
-## Run
-
-Open the shell and run the following command:
-
-```shell
+```
 node hangman.js
 ```
 
-Remember to view the source code in the editor.
+This runs the `hangman.js` script which selects two random elements from `words` and prints them in the console.
+
+## Further Exploration
+
+Make sure to run this script multiple times.
+Does the output change each time you run it?
+
+Why is `word` defined using the `let` keyword instead of `const`?
+
+<p align="right">(<a href="#top">back to top</a>)</p>
