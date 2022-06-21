@@ -48,9 +48,9 @@ This repository contains a worked solution to the [2021-2022 coursework for the 
 
 ### On University machines
 
-1. Search for _Git GUI_ and _Node.js_ in AppsAnywhere and launch them.
+1. Search for _Git GUI_ and _Node.js_ in [AppsAnywhere](https://appsanywhere.port.ac.uk) and launch them.
 
-1. Launch an editor from AppsAnywhere (_Visual Studio Code_ or _Atom_).
+1. Launch an editor from AppsAnywhere (e.g., _Visual Studio Code_ or _Atom_).
 
 ### On your computers
 
