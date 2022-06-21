@@ -1,6 +1,8 @@
-# Hangman In Branches
-
 <div id="top"></div>
+
+<!-- BRANCH TITLE -->
+
+# Hangman In Branches
 
 <!-- TABLE OF CONTENTS -->
 <details>
