@@ -1,6 +1,8 @@
-# Branch 1: Functions
-
 <div id="top"></div>
+
+<!-- BRANCH TITLE -->
+
+# Branch 1: Functions
 
 ## Objectives
 
