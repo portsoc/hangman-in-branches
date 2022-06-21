@@ -1,4 +1,4 @@
-# Branch 0: 
+# Branch 0: Storing data in variables
 
 ## Objectives
 
