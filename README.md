@@ -21,6 +21,7 @@
         <li><a href="#cloning-using-git">Cloning using Git</a></li>
         <li><a href="#cloning-using-github-cli">Cloning using GitHub CLI</a></li>
         <li><a href="#cloning-using-github-desktop-client">Cloning using GitHub Desktop</a></li>
+        <li><a href="#cloning-on-visual-studio-code">Cloning on Visual Studio Code</a></li>
       </ul>
     </li>
     <li>
@@ -28,6 +29,7 @@
       <ul>
         <li><a href="#selecting-a-branch-using-git">Selecting a branch using Git</a></li>
         <li><a href="#selecting-a-branch-using-github-desktop">Selecting a branch using GitHub Desktop</a></li>
+        <li><a href="#selecting-a-branch-on-visual-studio-code">Selecting a branch on Visual Studio Code</a></li>
       </ul>
     </li>
     <li><a href="#viewing-the-code">Viewing the code</a></li>
@@ -89,6 +91,10 @@ gh repo clone portsoc/hangman-in-branches
 
 While this repository is open in the browser, click the green _Code_ button and then _Open with GitHub Desktop_.
 
+### Cloning on Visual Studio Code
+
+Follow this [instruction on how to clone a repository in VSCode](https://code.visualstudio.com/docs/editor/versioncontrol#_cloning-a-repository).
+
 <!-- SELECTING A BRANCH -->
 
 ## Selecting a branch
@@ -114,6 +120,10 @@ git branch
 ### Selecting a branch using GitHub Desktop
 
 Follow this [instruction on how to switch branches on GitHub Desktop](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/making-changes-in-a-branch/managing-branches#switching-between-branches).
+
+### Selecting a branch on Visual Studio Code
+
+Follow this [instruction on branches for VSCode](https://code.visualstudio.com/docs/editor/versioncontrol#_branches-and-tags).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
