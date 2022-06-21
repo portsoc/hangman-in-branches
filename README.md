@@ -2,7 +2,7 @@
 
 <!-- BRANCH TITLE -->
 
-# Hangman In Branches
+# Hangman in branches
 
 <!-- TABLE OF CONTENTS -->
 <details>
