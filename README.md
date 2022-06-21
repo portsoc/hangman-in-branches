@@ -1,5 +1,7 @@
 # Branch 0: Storing data in variables
 
+<div id="top"></div>
+
 ## Objectives
 
 Let's begin by storing the words for the game and then test how we can select them.
