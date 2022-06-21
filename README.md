@@ -1,6 +1,18 @@
+<div id="top"></div>
+
+<!-- BRANCH TITLE -->
+
 # Branch 0: Storing data in variables
 
-<div id="top"></div>
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li><a href="#objectives">Objectives</a></li>
+    <li><a href="#implementation">Implementation</a>
+    <li><a href="#usage">Usage</a></li>
+  </ol>
+</details>
 
 ## Objectives
 
