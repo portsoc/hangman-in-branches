@@ -22,6 +22,8 @@ This function will take an array and return a random element from it.
 
 Lastly, we will test `randomElement` by calling it twice and printing the randomly selected element that it returns.
 
+[Visit this compare page](https://github.com/portsoc/hangman-in-branches/compare/0...1?diff=split) to see all the differences between branches 0 (previous branch) and 1 (this branch).
+
 ## Usage
 
 Navigate to the `hangman` folder in a shell or open a new terminal in your editor and run the following command:
