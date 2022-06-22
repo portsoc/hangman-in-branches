@@ -99,9 +99,10 @@ Follow this [instruction on how to clone a repository in VSCode](https://code.vi
 
 ## Selecting a branch
 
-This example is built in stages.
-Each stage is in a branch labeled with numbers.
-To switch to a branch _x_ (where x is a number):
+This project is built in stages and each stage is labelled with a number starting from zero.
+Here is the link to the first branch for example: [https://github.com/manighahrmani/hangman-in-branches/tree/0](https://github.com/manighahrmani/hangman-in-branches/tree/0).
+
+To switch your clone of this repository to a branch _x_ (where x is a number):
 
 ### Selecting a branch using Git
 
