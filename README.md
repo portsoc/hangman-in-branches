@@ -4,6 +4,17 @@
 
 # Branch 1: Functions
 
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li><a href="#objectives">Objectives</a></li>
+    <li><a href="#implementation">Implementation</a>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#further-exploration">Further Exploration</a></li>
+  </ol>
+</details>
+
 ## Objectives
 
 Instead of manually selecting elements from our `words` array, let's pick them out randomly.
