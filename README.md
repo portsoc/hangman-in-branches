@@ -112,7 +112,7 @@ Run the following in a shell (make sure to replace x with a branch number):
 git checkout x
 ```
 
-To see all branches, run the following command (hit 'q' to exit):
+The following command shows you all the branches (hit 'q' to exit):
 
 ```
 git branch -all
