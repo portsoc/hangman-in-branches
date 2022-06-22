@@ -115,7 +115,7 @@ git checkout x
 To see all branches, run:
 
 ```
-git branch -a
+git branch -all
 ```
 
 ### Selecting a branch using GitHub Desktop
