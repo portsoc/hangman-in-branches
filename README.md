@@ -2,7 +2,7 @@
 
 <!-- BRANCH TITLE -->
 
-# Branch 1: Functions
+# Branch 1: NPM
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -16,6 +16,11 @@
 </details>
 
 ## Objectives
+
+In this step, we will start to use the [NPM](https://www.npmjs.com/) package manager to install and manage dependencies for our project.
+
+The files `package.json` and `package-lock.json` are created by NPM after running the `npm init` command.
+For more information on this, watch [our YouTube tutorial on NPM](https://youtu.be/2nFO0E6q-1o?t=570).
 
 Instead of manually selecting elements from our `words` array, let's pick them out randomly.
 
