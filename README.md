@@ -99,8 +99,10 @@ Follow this [instruction on how to clone a repository in VSCode](https://code.vi
 
 ## Selecting a branch
 
-This project is built in stages and each stage is labelled with a number starting from zero.
-Here is the link to the first branch for example: [https://github.com/portsoc/hangman-in-branches/tree/0](https://github.com/portsoc/hangman-in-branches/tree/0).
+This project is built in stages.
+Each stage is labelled with a number starting from zero.
+As an example, here is the link to the first branch:
+[https://github.com/portsoc/hangman-in-branches/tree/0](https://github.com/portsoc/hangman-in-branches/tree/0).
 
 To switch your clone of this repository to a branch _x_ (where x is a number):
 
