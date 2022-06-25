@@ -2,7 +2,7 @@
 
 <!-- BRANCH TITLE -->
 
-# Branch 1: NPM
+# Branch 2: NPM
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -19,42 +19,32 @@
 
 In this step, we will start to use the [NPM](https://www.npmjs.com/) package manager to install and manage dependencies for our project.
 
-The files `package.json` and `package-lock.json` are created by NPM after running the `npm init` command.
-For more information on this, watch [our YouTube tutorial on NPM](https://youtu.be/2nFO0E6q-1o?t=570).
-
-Instead of manually selecting elements from our `words` array, let's pick them out randomly.
-
-We first need to select a random index of our array.
-Then we can use that index to select the element from our array.
-
-We will be grouping lines of code for each task into functions and then calling our functions to get our results.
-
 ## Implementation
 
-We start by writing the `randomIndex` function to select a random index of an array given its length.
+Using a shell, we first navigate into this directory.
+Next, we initiate a new project with the following command.
 
-Next, we will use `randomIndex` within a new function: `randomElement`.
-This function will take an array and return a random element from it.
+```bash
+npm init
+```
 
-Lastly, we will test `randomElement` by calling it twice and printing the randomly selected element that it returns.
+This generates the `package.json` that you can see in the directory. Note that we do not have a `package-lock.json` file yet as we have not installed any packages using NPM.
 
-[Visit this compare page](https://github.com/portsoc/hangman-in-branches/compare/0...1?diff=split) to see all the differences between branches 0 (previous branch) and 1 (this branch).
+For more information on this, watch [our YouTube tutorial on NPM](https://youtu.be/2nFO0E6q-1o?t=570).
+
+Also, [visit this compare page](https://github.com/portsoc/hangman-in-branches/compare/1...2?diff=split) to see all the differences between branches 1 and 2.
 
 ## Usage
 
-Navigate to the `hangman` folder in a shell or open a new terminal in your editor and run the following command:
+The file `hangman.js` is unchanged from the previous branch so after running the following command, you will be getting the same output:
 
 ```
 node hangman.js
 ```
 
-This runs the `hangman.js` script which selects two random elements from `words` and prints them in the console.
-
 ## Further Exploration
 
-Make sure to run this script multiple times.
-Does the output change each time you run it?
-
-Why is `word` defined using the `let` keyword instead of `const`?
+Can you work out our answers for the questions the `npm init` command asks us?
+Use this as a template for your own projects.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
