@@ -2,7 +2,7 @@
 
 <!-- BRANCH TITLE -->
 
-# Branch 2: NPM
+# Branch 3: DOM
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -17,22 +17,24 @@
 
 ## Objectives
 
-In this step, we will start to use the [NPM](https://www.npmjs.com/) package manager to install and manage dependencies for our project.
+Our website needs a homepage.
+So our first task is to create a simple HTML page.
+
+All we care about at this stage is to have placeholders for different components of our game.
+Therefore the **style of the page** is not important at the moment.
+
+
 
 ## Implementation
 
-Using a shell, we first navigate into this directory.
-Next, we initiate a new project with the following command.
+We have created a simple HTML page, titled `index.html`.
 
-```bash
-npm init
-```
+Here, we have set standard metadata such as the title, character set and viewport of the page.
+We have also added placeholders for the canvas and two more for different parts of the page.
 
-This generates the `package.json` that you can see in the directory. Note that we do not have a `package-lock.json` file yet as we have not installed any packages using NPM.
+Additionally, we have linked our JS file to this page and as a result, have renamed `hangman.js` to `index.js` (a more conventional name for a JavaScript file).
 
-For more information on this, watch [our YouTube tutorial on NPM](https://youtu.be/2nFO0E6q-1o?t=570).
-
-Also, [visit this compare page](https://github.com/portsoc/hangman-in-branches/compare/1...2?diff=split) to see all the differences between branches 1 and 2.
+Also, [visit this compare page](https://github.com/portsoc/hangman-in-branches/compare/2...3?diff=split) to see all the differences between branches 2 and 3.
 
 ## Usage
 
