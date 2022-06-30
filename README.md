@@ -52,15 +52,9 @@ Do you see the keyboard or the dashes for the hangman word?
 
 ## Further Exploration
 
-Add the following line before the closing brackets of the `startNewGame` function in `index.js`.
-We are doing this to print the secret word to the browser console:
-
-```
-console.log(word);
-```
-
-Save `index.js` and refresh the page in your browser.
-Next inspect the page wih <kbd>F12</kbd> or by right-clicking on the page and selecting 'Inspect'.
+Console log the value of `word` before the closing brackets of the `startNewGame` function in `index.js`.
+Then save `index.js` and refresh the page in your browser.
+Now inspect the page wih <kbd>F12</kbd> or by right-clicking on the page and selecting 'Inspect'.
 Can you find the secret word in the console?
 
 It is a good habit to log the value of variables while you are developing a project.
