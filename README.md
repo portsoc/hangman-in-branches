@@ -28,12 +28,12 @@ In there, we have defined an array of strings called `words` which contains movi
 
 Navigate to the `hangman` folder in a shell or open a new terminal in your editor (in Visual Studio Code, the shortcut is <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>'</kbd> on Linux/Windows and <kbd>^</kbd>+<kbd>`</kbd> for Mac).
 
-In the shell, run the following command:
+Now run the following command:
 
 ```
 node hangman.js
 ```
 
-This runs the `hangman.js` script which selects two elements from `words` and prints them back to you.
+This runs the `hangman.js` script, which selects two elements from `words` and prints them back to you.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
