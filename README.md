@@ -20,18 +20,20 @@ Let's begin by storing the words for the game and then test how we can select th
 
 ## Implementation
 
-We have begun by creating `hangman.js` to hold the game's logic.
+We have begun by creating the script `hangman.js` to hold the game's logic.
 
 In there, we have defined an array of strings called `words` which contains movie titles.
 
 ## Usage
 
-Navigate to the `hangman` folder in a shell or open a new terminal in your editor and run the following command:
+Navigate to the `hangman` folder in a shell or open a new terminal in your editor (in Visual Studio Code, the shortcut is <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>'</kbd> on Linux/Windows and <kbd>^</kbd>+<kbd>`</kbd> for Mac).
+
+In the shell, run the following command:
 
 ```
 node hangman.js
 ```
 
-This runs the `hangman.js` script which selects two elements from `words` and prints them in the console.
+This runs the `hangman.js` script which selects two elements from `words` and prints them back to you.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
