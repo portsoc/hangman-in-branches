@@ -2,7 +2,7 @@
 
 <!-- BRANCH TITLE -->
 
-# Branch 3: DOM
+# Branch 4: Events
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -17,14 +17,11 @@
 
 ## Objectives
 
-Our website needs a homepage.
-So our task here is to create a simple HTML page.
+The website must react to events that happen during the game.
 
-All we care about at this stage is to have placeholders for different components of our game.
-Therefore we don't care about the **style of the page**.
+These events include the user clicking on the on-screen buttons or using the keyboard to make a guess.
 
-We also require the JavaScript (previously called `hangman.js`) to be linked to the HTML page.
-Ideally, we would like the script to perform some forms of basic DOM manipulation too.
+Eventually, the user may either guess the word or use up all of their attempts in which case they should be given the chance to restart the game.
 
 ## Implementation
 
