@@ -11,6 +11,7 @@
     <li><a href="#objectives">Objectives</a></li>
     <li><a href="#implementation">Implementation</a>
     <li><a href="#usage">Usage</a></li>
+    <li><a href="#todo">Todo</a></li>
     <li><a href="#further-exploration">Further Exploration</a></li>
   </ol>
 </details>
@@ -34,10 +35,10 @@ We have created a simple HTML page titled `index.html`.
 
 `index.html` also contains sections for the following:
 
-  * **Noose**: The image/canvas of the hangman. At the moment, it contains a placeholder image.
-  * **Instructions**: It currently contains a row of dashes representing letters to be guessed.
-  * **Feedback**: Hints and messages to the player.
-  * **Keyboard**: An on-screen keyboard.
+- **Noose**: The image/canvas of the hangman. At the moment, it contains a placeholder image.
+- **Instructions**: It currently contains a row of dashes representing letters to be guessed.
+- **Feedback**: Hints and messages to the player.
+- **Keyboard**: An on-screen keyboard.
 
 Additionally, we have renamed `hangman.js` to `index.js` (a more conventional name) and linked it to `index.html`.
 
@@ -46,7 +47,7 @@ At the end of `index.js`, we have defined a function `init` that is called once 
 `init` calls two functions: `drawKeyboard`, which creates a set of buttons making an on-screen keyboard.
 And `startNewGame`, which at the moment inserts a random word as the content of the instruct section.
 
-If any of the script is confusing, checkout the examples in [DOM101 repository](https://github.com/portsoc/dom101) and attempt the tasks in that repo.
+If any part of the script is confusing, check out the examples in [DOM101 repository](https://github.com/portsoc/dom101) and attempt the tasks in that repo.
 
 To see our new changes, [visit this compare page](https://github.com/portsoc/hangman-in-branches/compare/2...3?diff=split) showing the difference between branches 2 and 3.
 
@@ -60,9 +61,9 @@ Do you see the keyboard or the dashes for the hangman word?
 ## Further Exploration
 
 Console log the value of `word` before the closing brackets of the `startNewGame` function in `index.js`.
-Afterwards, save `index.js` and refresh the page in your browser.
+Afterward, save `index.js` and refresh the page in your browser.
 
-Now, inspect the page wih <kbd>F12</kbd> or by right-clicking on the page and selecting 'Inspect'.
+Now, inspect the page with <kbd>F12</kbd> or by right-clicking on the page and selecting 'Inspect'.
 Can you find the secret word displayed in the console?
 
 It is a good habit to log the value of variables while you are developing a project.
