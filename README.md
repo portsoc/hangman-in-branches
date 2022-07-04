@@ -17,11 +17,11 @@
 
 ## Objectives
 
-The website must react to events that happen during the game.
+The site must react to events that happen during the game: The user clicks on the on-screen buttons or uses the keyboard to make a guess.
 
-These events include the user clicking on the on-screen buttons or using the keyboard to make a guess.
+Additionally, the user may either guess the word or use up all of their attempts in which case they should be given the chance to restart the game.
 
-Eventually, the user may either guess the word or use up all of their attempts in which case they should be given the chance to restart the game.
+Our goal in this branch is to add event listeners and event handlers (functions) that will respond to the user's actions.
 
 ## Implementation
 
@@ -31,10 +31,10 @@ We have created a simple HTML page titled `index.html`.
 
 `index.html` also contains sections for the following:
 
-  * **Noose**: The image/canvas of the hangman. At the moment, it contains a placeholder image.
-  * **Instructions**: It currently contains a row of dashes representing letters to be guessed.
-  * **Feedback**: Hints and messages to the player.
-  * **Keyboard**: An on-screen keyboard.
+- **Noose**: The image/canvas of the hangman. At the moment, it contains a placeholder image.
+- **Instructions**: It currently contains a row of dashes representing letters to be guessed.
+- **Feedback**: Hints and messages to the player.
+- **Keyboard**: An on-screen keyboard.
 
 Additionally, we have renamed `hangman.js` to `index.js` (a more conventional name) and linked it to `index.html`.
 
