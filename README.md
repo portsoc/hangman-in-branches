@@ -11,7 +11,6 @@
     <li><a href="#objectives">Objectives</a></li>
     <li><a href="#implementation">Implementation</a>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#todo">Todo</a></li>
     <li><a href="#further-exploration">Further Exploration</a></li>
   </ol>
 </details>
