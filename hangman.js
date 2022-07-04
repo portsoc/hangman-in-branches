@@ -4,13 +4,18 @@ const words = [
     'The Lord of the Rings', 'The Dark Knight', 'Pulp Fiction',
 ];
 
-// Takes the size of an array and returns an index from 0 to size-1
+/* 
+* Takes a number and returns a random index between 0 and that number
+* The number itself is not included in the range
+*/
 function randomIndex(size) {
     const index = Math.floor(Math.random() * size);
     return index;
 }
 
-// Takes an array and returns a randomly selected element
+/*
+* Takes a an array and returns a random element from that array
+*/
 function randomElement(array) {
     const size = array.length;
     const index = randomIndex(size);
