@@ -11,6 +11,7 @@
     <li><a href="#objectives">Objectives</a></li>
     <li><a href="#implementation">Implementation</a>
     <li><a href="#usage">Usage</a></li>
+    <li><a href="#todo">Todo</a></li>
     <li><a href="#further-exploration">Further Exploration</a></li>
   </ol>
 </details>
@@ -53,6 +54,11 @@ Open `index.html` in your browser (<kbd>Ctrl</kbd> + <kbd>O</kbd> in Linux/Windo
 
 The JavaScript should be already running.
 Do you see the keyboard or the dashes for the hangman word?
+
+## Todo
+
+The user is only expected to guess alphabetical characters (not the symbols or punctuation within the word).
+Therefore we should only hide alphabetical characters from the user and display the rest.
 
 ## Further Exploration
 
