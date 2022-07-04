@@ -31,6 +31,9 @@ We start by writing the `randomIndex` function to select a random index of an ar
 Next, we will use `randomIndex` within a new function: `randomElement`.
 This function will take an array and return a random element from it.
 
+Note that both of these functions have a block of comments before them.
+The comments explain what the functions take as inputs and what they do.
+
 Lastly, we will test `randomElement` by calling it twice and printing the randomly selected element that it returns.
 
 [Visit this compare page](https://github.com/portsoc/hangman-in-branches/compare/0...1?diff=split) to see all the differences between branches 0 (previous branch) and 1 (this branch).
