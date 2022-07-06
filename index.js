@@ -62,8 +62,8 @@ function drawKeyboard() {
 * Initializes the game by starting a new game and drawing the keyboard
 */
 function init() {
-  drawKeyboard();
   startNewGame();
+  drawKeyboard();
 }
 
 // The init function will be called when the page loads
