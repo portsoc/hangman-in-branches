@@ -26,23 +26,14 @@ Our goal in this branch is to add event listeners and event handlers (functions)
 
 ## Implementation
 
-We have created a simple HTML page titled `index.html`.
+The `init` function first selects some key DOM elements that will be used by our functions and adds them as properties of the global `el` object.
 
-`index.html` begins with defining standard metadata for the page, such as the title, character set, and viewport.
+Each on screen key has a `data-letter` attribute that contains the letter that it represents.
+Similarly the press of every physical key on the keyboard triggers an event that has a code that corresponds to the key that was pressed.
+Therefore in the `addEventListeners` function called within `init`, we attach event listeners to the on-screen and physical keys that call the `registerLetter` function.
 
-`index.html` also contains sections for the following:
-
-- **Noose**: The image/canvas of the hangman. At the moment, it contains a placeholder image.
-- **Instructions**: It currently contains a row of dashes representing letters to be guessed.
-- **Feedback**: Hints and messages to the player.
-- **Keyboard**: An on-screen keyboard.
-
-Additionally, we have renamed `hangman.js` to `index.js` (a more conventional name) and linked it to `index.html`.
-
-At the end of `index.js`, we have defined a function `init` that is called once the window has loaded.
-
-`init` calls two functions: `drawKeyboard`, which creates a set of buttons making an on-screen keyboard.
-And `startNewGame`, which at the moment inserts a random word as the content of the instruct section.
+`registerLetter` will in turn call the `checkLetter` function which will check if the letter is in the word and update the guessed array if necessary.
+This action will also update the `instruct` and `feedback` sections of the page accordingly.
 
 If any part of the script is confusing, check out the examples in [DOM101 repository](https://github.com/portsoc/dom101) and attempt the tasks in that repo.
 
