@@ -6,6 +6,8 @@ const words = [
 
 // The array of guessed letters so far (if not guessed, it is '_')
 let guessed = [];
+// The word that the user needs to guess
+let word;
 
 /* 
 * Takes a number and returns a random index between 0 and that number
@@ -28,15 +30,14 @@ function randomElement(array) {
 
 /* 
 * Starts a new game by choosing a new word from the words array
-* and resetting the guessed letters array
+* and resetting the guessed letters array populating it with '_'s
 * lastly it displays the word in the instructions section
 */
 function startNewGame() {
-  const word = randomElement(words);
+  word = randomElement(words);
 
-  // Reset the guessed letters array and pupulate it with '_'s
   guessed = [];
-  for (const letter of word) {
+  for (let i = 0; i < word.length; i++) {
     guessed.push('_');
   }
 
