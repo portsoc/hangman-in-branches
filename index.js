@@ -28,7 +28,7 @@ function randomElement(array) {
 
 /* 
 * Starts a new game by choosing a new word from the words array
-* and resetting the guessed letters array
+* and resetting the guessed letters array populating it with '_'s
 * lastly it displays the word in the instructions section
 */
 function startNewGame() {
