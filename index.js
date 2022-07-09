@@ -39,7 +39,6 @@ function randomElement(array) {
 * it then retruns the true if the letter is in the word and false otherwise
 */
 function checkLetter(letter) {
-  letter = letter.trim().toLowerCase();
   let found = false;
   for (let i = 0; i < word.length; i++) {
     if (word[i].toLowerCase() === letter) {
@@ -121,6 +120,7 @@ function checkClick(e) {
 * then it updates the number of lives and displays a feedback to user
 */
 function registerLetter(letter) {
+  letter = letter.trim().toLowerCase();
   if (lives > 0) {
     // this updates the guessed letter array too
     const found = checkLetter(letter);
