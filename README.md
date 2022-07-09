@@ -26,14 +26,16 @@ Our goal in this branch is to add event listeners and event handlers (functions)
 
 ## Implementation
 
-The `init` function first selects some key DOM elements that will be used by our functions and adds them as properties of the global `el` object.
+The `init` function first selects key DOM elements that will be used by our functions and adds them as properties of the global `el` object.
+It will also call `startNewGame` function which selects a new word to be guessed and resets the number of lives the user has.
 
 Each on-screen key has a `data-letter` attribute that contains the letter that it represents.
 Similarly, the press of every physical key on the keyboard triggers an event that has a code that corresponds to the key that was pressed.
 Therefore, in the `addEventListeners` function called within `init`, we attach event listeners to the on-screen and physical keys that call the `registerLetter` function.
 
-`registerLetter` will in turn call the `checkLetter` function which will check if the letter is in the word and update the guessed array if necessary.
-This action will also update the `instruct` and `feedback` sections of the page accordingly.
+`registerLetter` will in turn call the `checkLetter` function if the game has not been won or lost.
+`checkLetter` decides if the letter is in the word and updates the guessed array if necessary.
+`registerLetter` will also update the `instruct` and `feedback` sections of the page accordingly and end the game if necessary.
 
 If any part of the script is confusing, check out the examples in [DOM101 repository](https://github.com/portsoc/dom101) and attempt the tasks in that repo.
 
@@ -48,8 +50,21 @@ Do you see the keyboard or the dashes for the hangman word?
 
 ## Todo
 
-The user is only expected to guess alphabetical characters (not the symbols or punctuation within the word).
-Therefore we should only hide alphabetical characters from the user and display the rest.
+You are expected to build your website in stages (not in one go!).
+So it is a good habit to leave notes reminding yourself of what needs to be done next.
+
+- [ ] The user is only expected to guess alphabetical characters (not the symbols or punctuation within the word).
+      Currently, the user cannot win the game because of this.
+
+- [ ] At the moment, the user can guess the same letter multiple times.
+      Our game should prevent this and display a message in such a case.
+
+- [ ] We have too many global variables and it is hard to keep track of the game's state.
+      We should start thinking about the maintainability of our system.
+
+- [ ] We have no way of restarting the game other than refreshing the page.
+
+- [ ] The stock image of the hangman should either be swapped or we should use a canvas to draw the hangman in stages.
 
 ## Further Exploration
 

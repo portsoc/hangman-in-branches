@@ -10,6 +10,10 @@ let guessed = [];
 let word;
 // Stores all the needed DOM elements
 let el = {};
+// Stores the number of lives the user has
+let lives;
+// True if the game is still on going and false (user won or lost)
+let onGoing = false;
 
 /* 
 * Takes a number and returns a random index between 0 and that number
@@ -32,9 +36,8 @@ function randomElement(array) {
 
 /*
 * Checks if the letter is in the word and updates the guessed letters array
-* it also displays a message in the feedback section accordingly
+* it then retruns the true if the letter is in the word and false otherwise
 */
-// TODO should only be called on unused words, also non alphabetical should be visible
 function checkLetter(letter) {
   letter = letter.trim().toLowerCase();
   let found = false;
@@ -45,14 +48,21 @@ function checkLetter(letter) {
     }
   }
 
-  el.feedback.textContent = `${letter} is ${found ? '' : 'not'} in the word`;
+  return found;
+}
 
+/*
+* Returns true if the user has guessed the word
+*/
+function checkWon() {
+  return guessed.join('') === word;
 }
 
 /* 
 * Starts a new game by choosing a new word from the words array
 * and resetting the guessed letters array populating it with '_'s
-* lastly it displays the word in the instructions section
+* next it displays the word in the instructions section
+* lastly it resets the lives counter and turns the game on
 */
 function startNewGame() {
   word = randomElement(words);
@@ -63,6 +73,9 @@ function startNewGame() {
   }
 
   el.instruct.textContent = guessed.join(' ');
+
+  lives = 9;
+  onGoing = true;
 }
 
 /* 
@@ -80,32 +93,62 @@ function drawKeyboard() {
 }
 
 /*
- * Respond to press of keys on the physical keyboard
- */
+ * Respond to the keys on the physical keyboard if the game is on going
+*/
 function checkKeyPress(e) {
-  console.log(e);
-  if (e.code.indexOf('Key') === 0) {
-    registerLetter(e.code[3]);
+  if (onGoing) {
+    if (e.code.indexOf('Key') === 0) {
+      registerLetter(e.code[3]);
+    }
   }
 }
 
 /*
-* Responds to the click of the on-screen keyboard
+* Responds to the on-screen keyboard if the game is on going
 */
 function checkClick(e) {
-  const letter = e.target.dataset.letter;
-  if (letter) {
-    registerLetter(letter);
+  if (onGoing) {
+    const letter = e.target.dataset.letter;
+    if (letter) {
+      registerLetter(letter);
+    }
   }
 }
 
 /*
-* Checks if the letter is in the word and updates the guessed letters array
-* it also updates the guessed word in the insntruct section
+* If the user has lives left it checks if letter is in the word
+* it updates the guessed letters array and guessed word in insntruct section
+* then it updates the number of lives and displays a feedback to user
 */
 function registerLetter(letter) {
-  checkLetter(letter);
-  el.instruct.textContent = guessed.join(' ');
+  if (lives > 0) {
+    // this updates the guessed letter array too
+    const found = checkLetter(letter);
+    el.instruct.textContent = guessed.join(' ');
+
+    if (!found) {
+      // this part is the same regardless of number of lives
+      lives--;
+      el.feedback.textContent = `${letter} is not in the word! ❌`;
+
+      // if the lives is greater than 1, the user can still play
+      if (lives > 1) {
+        el.feedback.textContent += `\nYou have ${lives} lives left.`;
+      } else if (lives === 1) {
+        el.feedback.textContent += `\nGame Over, you lost! 😭`;
+        onGoing = false;
+      }
+    } else {
+      // the feedback differs if the user has guessed the word
+      if (checkWon()) {
+        el.feedback.textContent = `You guessed it! Well done! 🎉`;
+        onGoing = false;
+      }
+      else {
+        el.feedback.textContent = `${letter} is in the word, keep it up! 👍`;
+      }
+    }
+  }
 }
 
 /*
