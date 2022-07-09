@@ -28,9 +28,9 @@ Our goal in this branch is to add event listeners and event handlers (functions)
 
 The `init` function first selects some key DOM elements that will be used by our functions and adds them as properties of the global `el` object.
 
-Each on screen key has a `data-letter` attribute that contains the letter that it represents.
-Similarly the press of every physical key on the keyboard triggers an event that has a code that corresponds to the key that was pressed.
-Therefore in the `addEventListeners` function called within `init`, we attach event listeners to the on-screen and physical keys that call the `registerLetter` function.
+Each on-screen key has a `data-letter` attribute that contains the letter that it represents.
+Similarly, the press of every physical key on the keyboard triggers an event that has a code that corresponds to the key that was pressed.
+Therefore, in the `addEventListeners` function called within `init`, we attach event listeners to the on-screen and physical keys that call the `registerLetter` function.
 
 `registerLetter` will in turn call the `checkLetter` function which will check if the letter is in the word and update the guessed array if necessary.
 This action will also update the `instruct` and `feedback` sections of the page accordingly.
