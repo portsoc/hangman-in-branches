@@ -109,6 +109,7 @@ function checkClick(e) {
 
 /*
  * Respond to the keys on the physical keyboard if the game is on going
+ * Source: https://developer.mozilla.org/en-US/docs/Web/API/Element/keypress_event#examples
  */
 function checkKeyPress(e) {
     if (onGoing) {

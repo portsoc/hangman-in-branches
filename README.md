@@ -50,19 +50,22 @@ Do you see the keyboard or the dashes for the hangman word?
 
 ## Todo
 
-You are expected to build your website in stages (not in one go!).
-So it is a good habit to leave notes reminding yourself of what needs to be done next.
+It is a good habit to leave notes reminding yourself of what needs to be done next stage(s) of development.
 
-- [ ] The user is only expected to guess alphabetical characters (not the symbols or punctuation within the word).
-      Currently, the user cannot win the game because of this.
+- [ ] The user is only expected to guess alphabetical characters (not the symbols or punctuations).
+      For example, the user cannot win at the moment because of spaces.
 
 - [ ] At the moment, the user can guess the same letter multiple times.
-      Our game should prevent this and display a message in such a case.
+      Our game should prevent this and display a message to warn the user perhaps.
+
+- [ ] We have no way of restarting the game other than refreshing the page.
+      We should display a button only at the end of a game that allows the user to restart.
 
 - [ ] We have too many global variables and it is hard to keep track of the game's state.
       We should start thinking about the maintainability of our system.
 
-- [ ] We have no way of restarting the game other than refreshing the page.
+- [ ] We are not currently serving our game from a server.
+      A good next step would be to create an express server and serve the game from there.
 
 - [ ] The stock image of the hangman should either be swapped or we should use a canvas to draw the hangman in stages.
 
