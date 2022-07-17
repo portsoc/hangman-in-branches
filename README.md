@@ -86,4 +86,3 @@ Can you find the secret word displayed in the console?
 It is a good habit to log the value of variables while you are developing a project.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-```
