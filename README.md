@@ -52,22 +52,17 @@ Do you see the keyboard or the dashes for the hangman word?
 
 It is a good habit to leave notes reminding yourself of what needs to be done next stage(s) of development.
 
-- [ ] The user is only expected to guess alphabetical characters (not the symbols or punctuations).
-      For example, the user cannot win at the moment because of spaces.
+- [ ] At the moment the user cannot win even if they guess all the letters correctly.
 
-- [ ] At the moment, the user can guess the same letter multiple times.
-      Our game should prevent this and display a message to warn the user perhaps.
+- [ ] Another issue that we have is that the user can guess the same letter multiple times.
 
 - [ ] We have no way of restarting the game other than refreshing the page.
-      We should display a button only at the end of a game that allows the user to restart.
 
 - [ ] We have too many global variables and it is hard to keep track of the game's state.
-      We should start thinking about the maintainability of our system.
 
 - [ ] We are not currently serving our game from a server.
-      A good next step would be to create an express server and serve the game from there.
 
-- [ ] The stock image of the hangman should either be swapped or we should use a canvas to draw the hangman in stages.
+- [ ] The image of the hangman game is not updating as the game is being played.
 
 ## Further Exploration
 
