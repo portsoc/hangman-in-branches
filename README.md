@@ -35,7 +35,9 @@ npm install express
 This adds express to the dependencies of the `package.json` file and automatically creates the `package-lock.json` file.
 Installing express will also create a `node_modules` folder in the hangman-in-branches.
 This contains all the dependencies specific to the computer we are running the program in.
-So we have not included `node_modules` in the repository (neither should you include it in your submission).
+So we have not included `node_modules` in the repository.
+
+Inside `package.json` we have added a "start" script and added the attribute "type" set to "module".
 
 To see the new changes, [visit this compare page](https://github.com/portsoc/hangman-in-branches/compare/4...5?diff=split) showing the difference between branches 4 and 5.
 
