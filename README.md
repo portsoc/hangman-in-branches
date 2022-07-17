@@ -81,7 +81,7 @@ git clone https://github.com/portsoc/hangman-in-branches.git
 
 ### Cloning using GitHub CLI
 
-Run the following a shell:
+Run the following in a shell:
 
 ```
 gh repo clone portsoc/hangman-in-branches
@@ -100,7 +100,10 @@ Follow this [instruction on how to clone a repository in VSCode](https://code.vi
 ## Selecting a branch
 
 This project is built in stages.
-Each stage is labelled with a number starting from zero.
+Each stage is labeled with a number starting from zero.
+
+For simplicity, we have made a branch for each stage but be aware that this is not a conventional use of braches.
+
 As an example, here is the link to the first branch:
 [https://github.com/portsoc/hangman-in-branches/tree/0](https://github.com/portsoc/hangman-in-branches/tree/0).
 
