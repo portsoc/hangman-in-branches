@@ -18,11 +18,11 @@
 
 ## Objectives
 
-The site must react to events that happen during the game: The user clicks on the on-screen buttons or uses the keyboard to make a guess.
+We will be mainly fixing issues and making some of the enhancements left open in the previous branch.
 
-Additionally, the user may either guess the word or use up all of their attempts in which case they should be given the chance to restart the game.
-
-Our goal in this branch is to add event listeners and event handlers (functions) that will respond to the user's actions.
+Firstly, to serve the website, we have made client and server folders.
+Next, we moved `index.html`, `index.js`, and `images` to the client folder and created the `svr.js` file in the server folder.
+`svr.js` at the moment is just a basic express server that serves the client folder.
 
 ## Implementation
 
