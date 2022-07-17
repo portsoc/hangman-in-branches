@@ -38,6 +38,7 @@ This contains all the dependencies specific to the computer we are running the p
 So we have not included `node_modules` in the repository.
 
 Inside `package.json` we have added a "start" script and added the attribute "type" set to "module".
+Now by running `npm start` in the shell, we can see our site being served on port 8080 (http://localhost:8080).
 
 To see the new changes, [visit this compare page](https://github.com/portsoc/hangman-in-branches/compare/4...5?diff=split) showing the difference between branches 4 and 5.
 
