@@ -2,7 +2,7 @@
   "name": "hangman-in-branches",
   "version": "1.0.0",
   "description": "A hangman game built in stages",
-  "main": "hangman.js",
+  "main": "server/svr.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,7 +19,8 @@
   ],
   "author": "Mani Ghahremani <mani.ghahremani@port.ac.uk>",
   "contributors": [
-    "Rich Boakes <rjb@port.ac.uk>"
+    "Rich Boakes <rjb@port.ac.uk>",
+    "Matt Dennis <matthew.dennis@port.ac.uk>"
   ],
   "license": "ISC",
   "bugs": {
