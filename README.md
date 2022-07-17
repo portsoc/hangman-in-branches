@@ -38,16 +38,26 @@ This contains all the dependencies specific to the computer we are running the p
 So we have not included `node_modules` in the repository.
 
 Inside `package.json` we have added a "start" script and added the attribute "type" set to "module".
+This enables ES6 modules and we can use the import syntax (for more info check out [this documentation page](https://nodejs.org/docs/latest-v13.x/api/esm.html#esm_enabling)).
 Now by running `npm start` in the shell, we can see our site being served on port 8080 (http://localhost:8080).
 
 To see the new changes, [visit this compare page](https://github.com/portsoc/hangman-in-branches/compare/4...5?diff=split) showing the difference between branches 4 and 5.
 
 ## Usage
 
-Open `index.html` in your browser (<kbd>Ctrl</kbd> + <kbd>O</kbd> in Linux/Windows or <kbd>Cmd</kbd> + <kbd>O</kbd> in Mac).
+Run the following command to install all the dependencies:
 
-The JavaScript should be already running.
-Do you see the keyboard or the dashes for the hangman word?
+```
+npm install
+```
+
+Next, run the start script to start the server:
+
+```
+npm start
+```
+
+The website is now running locally on port 8080 so view it by visiting http://localhost:8080 in your browser.
 
 ## Todo
 
@@ -61,7 +71,7 @@ It is a good habit to leave notes reminding yourself of what needs to be done ne
 
 - [ ] We have too many global variables and it is hard to keep track of the game's state.
 
-- [ ] We are not currently serving our game from a server.
+- [x] We are not currently serving our game from a server.
 
 - [ ] The image of the hangman game is not updating as the game is being played.
 
@@ -76,3 +86,4 @@ Can you find the secret word displayed in the console?
 It is a good habit to log the value of variables while you are developing a project.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+```
