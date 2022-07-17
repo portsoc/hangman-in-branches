@@ -45,8 +45,7 @@ To see our new changes, [visit this compare page](https://github.com/portsoc/han
 
 Open `index.html` in your browser (<kbd>Ctrl</kbd> + <kbd>O</kbd> in Linux/Windows or <kbd>Cmd</kbd> + <kbd>O</kbd> in Mac).
 
-The JavaScript should be already running.
-Do you see the keyboard or the dashes for the hangman word?
+Remember to open the inspector in your browser (typically the shortcut is <kbd>F12</kbd>) and view the console.
 
 ## Todo
 
