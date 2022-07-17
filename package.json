@@ -4,7 +4,7 @@
   "description": "A hangman game built in stages",
   "main": "server/svr.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server/svr.js"
   },
   "repository": {
     "type": "git",
@@ -26,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/portsoc/hangman-in-branches/issues"
   },
-  "homepage": "https://github.com/portsoc/hangman-in-branches#readme"
+  "homepage": "https://github.com/portsoc/hangman-in-branches#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
 }

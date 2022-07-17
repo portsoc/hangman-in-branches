@@ -2,7 +2,7 @@
 
 <!-- BRANCH TITLE -->
 
-# Branch 4: Events
+# Branch 5: Debugging
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -20,26 +20,24 @@
 
 We will be mainly fixing issues and making some of the enhancements left open in the previous branch.
 
+## Implementation
+
 Firstly, to serve the website, we have made client and server folders.
 Next, we moved `index.html`, `index.js`, and `images` to the client folder and created the `svr.js` file in the server folder.
 `svr.js` at the moment is just a basic express server that serves the client folder.
 
-## Implementation
+To install express, we ran the following in the shell (while in the hangman-in-branches folder):
 
-The `init` function first selects key DOM elements that will be used by our functions and adds them as properties of the global `el` object.
-It will also call `startNewGame` function which selects a new word to be guessed and resets the number of lives the user has.
+```
+npm install express
+```
 
-Each on-screen key has a `data-letter` attribute that contains the letter that it represents.
-Similarly, the press of every physical key on the keyboard triggers an event that has a code that corresponds to the key that was pressed.
-Therefore, in the `addEventListeners` function called within `init`, we attach event listeners to the on-screen and physical keys that call the `registerLetter` function.
+This adds express to the dependencies of the `package.json` file and automatically creates the `package-lock.json` file.
+Installing express will also create a `node_modules` folder in the hangman-in-branches.
+This contains all the dependencies specific to the computer we are running the program in.
+So we have not included `node_modules` in the repository (neither should you include it in your submission).
 
-`registerLetter` will in turn call the `checkLetter` function if the game has not been won or lost.
-`checkLetter` decides if the letter is in the word and updates the guessed array if necessary.
-`registerLetter` will also update the `instruct` and `feedback` sections of the page accordingly and end the game if necessary.
-
-If any part of the script is confusing, check out the examples in [DOM101 repository](https://github.com/portsoc/dom101) and attempt the tasks in that repo.
-
-To see our new changes, [visit this compare page](https://github.com/portsoc/hangman-in-branches/compare/2...3?diff=split) showing the difference between branches 2 and 3.
+To see the new changes, [visit this compare page](https://github.com/portsoc/hangman-in-branches/compare/4...5?diff=split) showing the difference between branches 4 and 5.
 
 ## Usage
 
