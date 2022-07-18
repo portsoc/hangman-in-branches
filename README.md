@@ -75,6 +75,10 @@ It is a good habit to leave notes reminding yourself of what needs to be done ne
 
 - [ ] The image of the hangman game is not updating as the game is being played.
 
+# NEW Todo
+
+- [ ] Spaces in the word are not being displayed to the user.
+
 ## Further Exploration
 
 Console log the value of `word` before the closing brackets of the `startNewGame` function in `index.js`.
