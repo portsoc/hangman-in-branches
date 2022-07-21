@@ -71,7 +71,7 @@ function startNewGame() {
   // More info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp
   guessed = word.replace(/[a-z]/ig, '_').split('');
 
-  el.instruct.textContent = guessed.join(' ');
+  redrawWord();
 
   lives = 9;
   onGoing = true;
@@ -135,7 +135,7 @@ function registerLetter(letter) {
   if (lives > 0) {
     // this updates the guessed letter array too
     const found = checkLetter(letter);
-    el.instruct.textContent = guessed.join(' ');
+    redrawWord();
 
     if (!found) {
       // this part is the same regardless of number of lives
@@ -158,6 +158,30 @@ function registerLetter(letter) {
         el.feedback.textContent = `${letter} is in the word! ✅`;
       }
     }
+  }
+}
+
+/*
+  * Creates an element with id guessMe in the instructions section
+  * For every letter a span is created in guessMe
+  */
+function redrawWord() {
+  const oldGuessMe = document.querySelector('#guessMe');
+  // first time we call redrawWord, there may be no guessMe element
+  oldGuessMe?.remove(); // removes the old guessMe element if it exists
+
+  const guessMe = document.createElement('div');
+  guessMe.id = 'guessMe';
+  el.instruct.append(guessMe);
+
+  for (const letter of guessed) {
+    // const char = create('span', guessMe, {}, letter);
+    const char = document.createElement('span');
+    char.textContent = letter;
+    guessMe.append(char);
+
+    char.dataset.letter = letter;
+    char.dataset.unknown = (letter === '_'); // false if letter has been guessed
   }
 }
 
