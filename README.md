@@ -22,6 +22,8 @@ We will be mainly fixing issues and making some of the enhancements left open in
 
 ## Implementation
 
+### Serve the website
+
 Firstly, to serve the website, we have made client and server folders.
 Next, we moved `index.html`, `index.js`, and `images` to the client folder and created the `svr.js` file in the server folder.
 `svr.js` at the moment is just a basic express server that serves the client folder.
@@ -38,8 +40,18 @@ This contains all the dependencies specific to the computer we are running the p
 So we have not included `node_modules` in the repository.
 
 Inside `package.json` we have added a "start" script and added the attribute "type" set to "module".
-This enables ES6 modules and we can use the import syntax (for more info check out [this documentation page](https://nodejs.org/docs/latest-v13.x/api/esm.html#esm_enabling)).
+This lets us use import statements (for more info check out [this documentation page](https://nodejs.org/docs/latest-v13.x/api/esm.html#esm_enabling)).
 Now by running `npm start` in the shell, we can see our site being served on port 8080 (http://localhost:8080).
+
+### Fix issue with non-alphabetical symbols
+
+We start by using a regular expression to pick all the alphabetical characters in the word, replacing them with '\_'.
+For more information read our comments in `startNewGame`.
+
+Multiple spaces in HTML are rendered as a single space in the browser.
+There are simple ways around it (e.g., using '\&nbsp;') but we have decided to place each letter in a span element.
+This decision will later allow us to treat letters individually (e.g., styling them differently).
+The newly created function `redrawWord` takes care of this job.
 
 To see the new changes, [visit this compare page](https://github.com/portsoc/hangman-in-branches/compare/4...5?diff=split) showing the difference between branches 4 and 5.
 
