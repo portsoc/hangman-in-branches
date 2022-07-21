@@ -14,7 +14,9 @@ let el = {};
 let lives;
 // True if the game is still on going otherwise false (user won or lost)
 let onGoing = false;
-
+// We split the letters the user guessed into two arrays: misses and hits
+let misses;
+let hits;
 /* 
  * Takes a number and returns a random index between 0 and that number
  * The number itself is not included in the range
@@ -60,8 +62,8 @@ function checkWon() {
 /* 
  * Starts a new game by choosing a new word from the words array
  * all the alphabetical characters are replaced with '_'s and stored in guessed
- * next it displays gussed as a word in the instructions
- * lastly it resets the lives counter and turns onGoing to true
+ * it displays guessed as a word in the instructions
+ * it resets the lives, hits and misses and turns onGoing to true
  */
 function startNewGame() {
   word = randomElement(words);
@@ -75,9 +77,8 @@ function startNewGame() {
 
   lives = 9;
   onGoing = true;
-
-  //TODO:
-  console.log(word);
+  hits = [];
+  misses = [];
 }
 
 /* 
@@ -127,35 +128,47 @@ function checkKeyPress(e) {
 
 /*
  * If the user has lives left, it checks whether a given letter is in the word
- * it updates the guessed letters array and guessed word in insntruct section
+ * it updates hits, misses and guessed letters array and guessed word in insntruct
  * it then updates count of lives and displays a feedback to user
  */
 function registerLetter(letter) {
   letter = letter.trim().toLowerCase();
+
   if (lives > 0) {
-    // this updates the guessed letter array too
-    const found = checkLetter(letter);
-    redrawWord();
-
-    if (!found) {
-      // this part is the same regardless of number of lives
-      lives--;
-      el.feedback.textContent = `${letter} is not in the word! ❌`;
-
-      // if the lives is at least 1, the user can still play
-      if (lives >= 1) {
-        el.feedback.textContent += `\nYou have ${lives} lives left.`;
-      } else if (lives === 0) {
-        el.feedback.textContent += `\nGame Over, you lost! 😭`;
-        onGoing = false;
-      }
+    const hitsAndMisses = hits.concat(misses);
+    if (hitsAndMisses.includes(letter)) {
+      el.feedback.textContent =
+        `You have already tried "${letter}".\nTry another letter. 😇`;
     } else {
-      // the feedback differs if the user has guessed the word
-      if (checkWon()) {
-        el.feedback.textContent = `You guessed it! Well done! 🎉`;
-        onGoing = false;
+      // this updates the guessed letter array too
+      const found = checkLetter(letter);
+      redrawWord();
+      redrawKeyboard();
+
+      if (!found) {
+        misses.push(letter);
+
+        // this part is the same regardless of number of lives
+        lives--;
+        el.feedback.textContent = `${letter} is not in the word! ❌`;
+
+        // if the lives is at least 1, the user can still play
+        if (lives >= 1) {
+          el.feedback.textContent += `\nYou have ${lives} lives left.`;
+        } else if (lives === 0) {
+          el.feedback.textContent += `\nGame Over, you lost! 😭`;
+          onGoing = false;
+        }
       } else {
-        el.feedback.textContent = `${letter} is in the word! ✅`;
+        hits.push(letter);
+
+        // the feedback differs if the user has guessed the word
+        if (checkWon()) {
+          el.feedback.textContent = `You guessed it! Well done! 🎉`;
+          onGoing = false;
+        } else {
+          el.feedback.textContent = `${letter} is in the word! ✅`;
+        }
       }
     }
   }
@@ -182,6 +195,20 @@ function redrawWord() {
 
     char.dataset.letter = letter;
     char.dataset.unknown = (letter === '_'); // false if letter has been guessed
+  }
+}
+
+/*
+  * Updates the on-screen keyboard by disabling every button whose letter has been guessed
+  */
+function redrawKeyboard() {
+  const keyboard = document.querySelector('#keyboard');
+  const keyboardLetters = keyboard.querySelectorAll('[data-letter]');
+  for (const letter of keyboardLetters) {
+    const hitsAndMisses = hits.concat(misses);
+    if (hitsAndMisses.includes(letter.dataset.letter)) {
+      letter.disabled = true;
+    }
   }
 }
 
