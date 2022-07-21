@@ -43,7 +43,7 @@ Inside `package.json` we have added a "start" script and added the attribute "ty
 This lets us use import statements (for more info check out [this documentation page](https://nodejs.org/docs/latest-v13.x/api/esm.html#esm_enabling)).
 Now by running `npm start` in the shell, we can see our site being served on port 8080 (http://localhost:8080).
 
-### Fix issue with non-alphabetical symbols
+### Fix: non-alphabetical symbols
 
 We start by using a regular expression to pick all the alphabetical characters in the word, replacing them with '\_'.
 For more information read our comments in `startNewGame`.
@@ -52,6 +52,10 @@ Multiple spaces in HTML are rendered as a single space in the browser.
 There are simple ways around it (e.g., using '\&nbsp;') but we have decided to place each letter in a span element.
 This decision will later allow us to treat letters individually (e.g., styling them differently).
 The newly created function `redrawWord` takes care of this job.
+
+### Fix: repeat guesses
+
+
 
 To see the new changes, [visit this compare page](https://github.com/portsoc/hangman-in-branches/compare/4...5?diff=split) showing the difference between branches 4 and 5.
 
@@ -75,30 +79,28 @@ The website is now running locally on port 8080 so view it by visiting http://lo
 
 It is a good habit to leave notes reminding yourself of what needs to be done next stage(s) of development.
 
-- [ ] At the moment the user cannot win even if they guess all the letters correctly.
-
-- [ ] Another issue that we have is that the user can guess the same letter multiple times.
+- [x] At the moment the user cannot win even if they guess all the letters correctly.
 
 - [ ] We have no way of restarting the game other than refreshing the page.
 
-- [ ] We have too many global variables and it is hard to keep track of the game's state.
-
 - [x] We are not currently serving our game from a server.
+
+## Todo for later
 
 - [ ] The image of the hangman game is not updating as the game is being played.
 
-# NEW Todo
+- [ ] The user cannot guess the same letter again but the keyboard is not updating on time.
 
-- [ ] Spaces in the word are not being displayed to the user.
+- [ ] We have too many global variables and it is hard to keep track of the game's state.
+      Lives can also be calculated from misses.
 
 ## Further Exploration
 
-Console log the value of `word` before the closing brackets of the `startNewGame` function in `index.js`.
-Afterward, save `index.js` and refresh the page in your browser.
+The keys on the on-screen keyboard are not updating on time.
+The user has to make a new guess for the previous letter to be registered and reflected on the keyboard.
+Use what you have learned in the lessons to fix this issue.
 
-Now, inspect the page with <kbd>F12</kbd> or by right-clicking on the page and selecting 'Inspect'.
-Can you find the secret word displayed in the console?
-
-It is a good habit to log the value of variables while you are developing a project.
+**Hint:** Use your browser's developer tools and set breakpoints within the source code.
+Check the content of hits and misses to see if they update on time or if the problem is from something else.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
