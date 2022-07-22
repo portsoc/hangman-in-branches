@@ -43,7 +43,7 @@ Inside `package.json` we have added a `start` script and added the attribute `ty
 This lets us use import statements (for more info check out [this documentation page](https://nodejs.org/docs/latest-v13.x/api/esm.html#esm_enabling)).
 Now by running `npm start` in the shell, we can see our site being served on port 8080 (http://localhost:8080).
 
-### Fix: non-alphabetical symbols
+### Fix: Non-alphabetical symbols
 
 We start by using a regular expression to pick all the alphabetical characters in the word, replacing them with '\_'.
 For more information read our comments in `startNewGame`.
@@ -53,7 +53,7 @@ There are simple ways around it (e.g., using '\&nbsp;') but we have decided to p
 This decision will later allow us to treat letters individually (e.g., styling them differently).
 The newly created function `redrawWord` takes care of this job.
 
-### Fix: repeat guesses
+### Fix: Repeat guesses
 
 To be able to prevent the user from guessing the same letter twice, we have created `hits` and `misses` arrays.
 We could have done it in one array but we would like to distinguish between them when it comes to styling the letters.
@@ -62,6 +62,12 @@ We could have done it in one array but we would like to distinguish between them
 Every time the user makes a new guess, we call `redrawKeyboard` to update the keyboard accordingly.
 
 To see the new changes, [visit this compare page](https://github.com/portsoc/hangman-in-branches/compare/4...5?diff=split) showing the difference between branches 4 and 5.
+
+### Fix: Restart the game
+
+At the end of a game, we call `generateNewGame` function which will remove the keyboard and display a restart button.
+When the user clicks the restart button, we call `startNewGame` to start a new game.
+Consequently, `startNewGame` now calls `drawKeyboard` to create a new keyboard every time.
 
 ## Usage
 
