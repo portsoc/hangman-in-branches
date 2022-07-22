@@ -59,13 +59,36 @@ function checkWon() {
   return guessed.join('') === word;
 }
 
+/*
+ * Removes the keyboard from the screen and instead displays a button for a new game
+ */
+function generateNewGame() {
+  el.keyboard?.remove();// if there is a keyboard, remove it
+  // for more info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
+
+  const newGame = document.createElement('section');
+  newGame.id = 'newGame';
+  el.main.append(newGame);
+
+  const question = document.createElement('button');
+  question.textContent = 'Start New Game';
+  newGame.append(question);
+
+  newGame.addEventListener('click', startNewGame);
+}
+
 /* 
  * Starts a new game by choosing a new word from the words array
  * all the alphabetical characters are replaced with '_'s and stored in guessed
  * it displays guessed as a word in the instructions
  * it resets the lives, hits and misses and turns onGoing to true
+ * calls drawKeyboard to draw the keyboard (that is removed from the screen on restart)
  */
 function startNewGame() {
+  const newGame = document.querySelector('#newGame');
+  newGame?.remove(); // if there is a newGame element, remove it
+  // for more info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
+
   word = randomElement(words);
 
   // Using a regular expression, replaces every alphabetical character, ignoring the case, with '_'
@@ -79,6 +102,10 @@ function startNewGame() {
   onGoing = true;
   hits = [];
   misses = [];
+
+  drawKeyboard();
+
+  el.feedback.textContent = `Start clicking on the buttons or press a letter on the keyboard.`;
 }
 
 /* 
@@ -87,11 +114,17 @@ function startNewGame() {
 function drawKeyboard() {
   const alphabet = 'abcdefghijklmnopqrstuvwxyz';
 
+  const keyboard = document.createElement('section');
+  keyboard.id = 'keyboard';
+  el.main.append(keyboard);
+  // this is moved from prepareHandles to here
+  el.keyboard = keyboard;
+
   for (const letter of alphabet) {
     const button = document.createElement('button');
     button.textContent = letter;
     button.dataset.letter = letter;
-    el.keyboard.append(button);
+    keyboard.append(button);
   }
 }
 
@@ -147,8 +180,9 @@ function registerLetter(letter) {
         if (lives >= 1) {
           el.feedback.textContent += `\nYou have ${lives} lives left.`;
         } else if (lives === 0) {
-          el.feedback.textContent += `\nGame Over, you lost! 😭`;
+          el.feedback.textContent += `\nGame Over, you lost!`;
           onGoing = false;
+          generateNewGame();
         }
       } else {
         hits.push(letter);
@@ -156,6 +190,7 @@ function registerLetter(letter) {
         if (checkWon()) {
           el.feedback.textContent = `You guessed it! Well done! 🎉`;
           onGoing = false;
+          generateNewGame();
         } else {
           el.feedback.textContent = `${letter} is in the word! ✅`;
         }
@@ -172,6 +207,8 @@ function redrawWord() {
   const oldGuessMe = document.querySelector('#guessMe');
   // first time we call redrawWord, there may be no guessMe element
   oldGuessMe?.remove(); // removes the old guessMe element if it exists
+  // for more info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
+
 
   const guessMe = document.createElement('div');
   guessMe.id = 'guessMe';
@@ -214,9 +251,9 @@ function addEventListeners() {
  * Selects needed DOM elements and stores them in the global el object
  */
 function prepareHandles() {
-  el.keyboard = document.querySelector('#keyboard');
   el.instruct = document.querySelector('#instruct');
   el.feedback = document.querySelector('#feedback');
+  el.main = document.querySelector('main');
 }
 
 /* 
@@ -227,7 +264,6 @@ function prepareHandles() {
 function init() {
   prepareHandles();
   startNewGame();
-  drawKeyboard();
   addEventListeners();
 }
 
