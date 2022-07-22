@@ -100,10 +100,6 @@ function drawKeyboard() {
  */
 function checkClick(e) {
   if (onGoing) {
-    // If you are confused by what we are checking, uncomment the console.log line
-    // investigate the target attribute of the printed object in browser's console
-    // it should have a dataset attribute that has a letter defined in drawKeyboard
-    // console.log(e);
     const letter = e.target.dataset.letter;
     if (letter) {
       registerLetter(letter);
@@ -113,13 +109,9 @@ function checkClick(e) {
 
 /*
  * Respond to the keys on the physical keyboard if the game is on going
- * Source: https://developer.mozilla.org/en-US/docs/Web/API/Element/keypress_event#examples
  */
 function checkKeyPress(e) {
   if (onGoing) {
-    // If you find the if statement confusing, uncomment the console.log line
-    // investigate 'code' attribute of the object printed in browser's console
-    // console.log(e);
     if (e.code.indexOf('Key') === 0) {
       registerLetter(e.code[3]);
     }
@@ -152,7 +144,6 @@ function registerLetter(letter) {
         lives--;
         el.feedback.textContent = `${letter} is not in the word! ❌`;
 
-        // if the lives is at least 1, the user can still play
         if (lives >= 1) {
           el.feedback.textContent += `\nYou have ${lives} lives left.`;
         } else if (lives === 0) {
@@ -162,7 +153,6 @@ function registerLetter(letter) {
       } else {
         hits.push(letter);
 
-        // the feedback differs if the user has guessed the word
         if (checkWon()) {
           el.feedback.textContent = `You guessed it! Well done! 🎉`;
           onGoing = false;
@@ -216,11 +206,7 @@ function redrawKeyboard() {
  * Adds event listeners to the on-screen keyboard and the physical keyboard
  */
 function addEventListeners() {
-  // For physical keyboard, there is no need to add the event listener to
-  // a specific DOM element so the window is fine
   window.addEventListener('keydown', checkKeyPress);
-  // For on-screen keyboard, we can add the event listener to the parent
-  // element of all buttons (keyboard)
   el.keyboard.addEventListener('click', checkClick);
 }
 
