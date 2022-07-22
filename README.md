@@ -25,21 +25,21 @@ We will be mainly fixing issues and making some of the enhancements left open in
 ### Serve the website
 
 Firstly, to serve the website, we have made client and server folders.
-Next, we moved `index.html`, `index.js`, and `images` to the client folder and created the `svr.js` file in the server folder.
-`svr.js` at the moment is just a basic express server that serves the client folder.
+We moved `index.html`, `index.js`, and `images` to the client folder and created the `svr.js` in the server folder.
+`svr.js` at the moment is just a basic Express server that serves the client folder.
 
-To install express, we ran the following in the shell (while in the hangman-in-branches folder):
+To install Express, we ran the following in the shell (while in the hangman-in-branches folder):
 
 ```
 npm install express
 ```
 
-This adds express to the dependencies of the `package.json` file and automatically creates the `package-lock.json` file.
-Installing express will also create a `node_modules` folder in the hangman-in-branches.
+This adds Express to the dependencies of the `package.json` file and automatically creates the `package-lock.json` file.
+Installing Express will also create a `node_modules` folder in the hangman-in-branches.
 This contains all the dependencies specific to the computer we are running the program in.
 So we have not included `node_modules` in the repository.
 
-Inside `package.json` we have added a "start" script and added the attribute "type" set to "module".
+Inside `package.json` we have added a `start` script and added the attribute `type` set to `module`.
 This lets us use import statements (for more info check out [this documentation page](https://nodejs.org/docs/latest-v13.x/api/esm.html#esm_enabling)).
 Now by running `npm start` in the shell, we can see our site being served on port 8080 (http://localhost:8080).
 
@@ -55,7 +55,11 @@ The newly created function `redrawWord` takes care of this job.
 
 ### Fix: repeat guesses
 
+To be able to prevent the user from guessing the same letter twice, we have created `hits` and `misses` arrays.
+We could have done it in one array but we would like to distinguish between them when it comes to styling the letters.
 
+`registerLetter` now checks whether the new guess is in the `hits` or `misses` array and displays a message accordingly.
+Every time the user makes a new guess, we call `redrawKeyboard` to update the keyboard accordingly.
 
 To see the new changes, [visit this compare page](https://github.com/portsoc/hangman-in-branches/compare/4...5?diff=split) showing the difference between branches 4 and 5.
 
