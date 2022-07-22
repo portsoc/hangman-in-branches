@@ -87,19 +87,9 @@ The website is now running locally on port 8080 so view it by visiting http://lo
 
 ## Todo
 
-It is a good habit to leave notes reminding yourself of what needs to be done next stage(s) of development.
-
-- [x] At the moment the user cannot win even if they guess all the letters correctly.
-
-- [ ] We have no way of restarting the game other than refreshing the page.
-
-- [x] We are not currently serving our game from a server.
-
-## Todo for later
+We need to address the following issues in later branches:
 
 - [ ] The image of the hangman game is not updating as the game is being played.
-
-- [ ] The user cannot guess the same letter again but the keyboard is not updating on time.
 
 - [ ] We have too many global variables and it is hard to keep track of the game's state.
       Lives can also be calculated from misses.
