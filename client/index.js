@@ -273,7 +273,7 @@ function init() {
   prepareHandles();
   startNewGame();
   addEventListeners();
-  drawHangman(el.canvas, 0);
+  drawHangman(el.canvas, 2);
 }
 
 window.addEventListener('load', init);
