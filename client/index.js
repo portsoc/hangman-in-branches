@@ -237,6 +237,13 @@ function redrawKeyboard() {
       letter.disabled = true;
     }
   }
+
+}
+
+function fillCanvas(el) {
+  const ctx = el.getContext('2d');
+  ctx.fillStyle = '#fff';
+  ctx.fillRect(0, 0, el.width, el.height);
 }
 
 /*
@@ -254,6 +261,7 @@ function prepareHandles() {
   el.instruct = document.querySelector('#instruct');
   el.feedback = document.querySelector('#feedback');
   el.main = document.querySelector('main');
+  el.canvas = document.querySelector('#canvas');
 }
 
 /* 
@@ -265,6 +273,7 @@ function init() {
   prepareHandles();
   startNewGame();
   addEventListeners();
+  fillCanvas(el.canvas);
 }
 
 window.addEventListener('load', init);
