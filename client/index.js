@@ -242,7 +242,7 @@ function redrawKeyboard() {
 
 function fillCanvas(el) {
   const ctx = el.getContext('2d');
-  ctx.fillStyle = '#fff';
+  ctx.fillStyle = 'blue';
   ctx.fillRect(0, 0, el.width, el.height);
 }
 
