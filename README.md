@@ -65,25 +65,24 @@ We start by using a regular expression to pick all the alphabetical characters i
 For more information read our comments in `startNewGame`.
 
 Multiple spaces in HTML are rendered as a single space in the browser.
-There are simple ways around it (e.g., using '\&nbsp;') but we have decided to place each letter in a span element.
+There are simple ways around it (e.g., using '\&nbsp;') but instead, the `redrawWord` function places each letter in a span element.
 This decision will later allow us to treat letters individually (e.g., styling them differently).
-The newly created function `redrawWord` takes care of this job.
 
 ### Fix: Repeat guesses
 
-To be able to prevent the user from guessing the same letter twice, we have created `hits` and `misses` arrays.
+To prevent the user from guessing the same letter twice, we have created `hits` and `misses` arrays.
 We could have done it in one array but we would like to distinguish between them when it comes to styling the letters.
 
 `registerLetter` now checks whether the new guess is in the `hits` or `misses` array and displays a message accordingly.
 Every time the user makes a new guess, we call `redrawKeyboard` to update the keyboard accordingly.
 
-To see the new changes, [visit this compare page](https://github.com/portsoc/hangman-in-branches/compare/4...5?diff=split) showing the difference between branches 4 and 5.
-
 ### Fix: Restart the game
 
 At the end of a game, we call `generateNewGame` function which will remove the keyboard and display a restart button.
-When the user clicks the restart button, we call `startNewGame` to start a new game.
+When the user clicks the restart button, we call `startNewGame` to start a new game (resets the number of lives, chooses a new word and so on).
 Consequently, `startNewGame` now calls `drawKeyboard` to create a new keyboard every time.
+
+To see the new changes, [visit this compare page](https://github.com/portsoc/hangman-in-branches/compare/4...5?diff=split) showing the difference between branches 4 and 5.
 
 ## Usage
 
@@ -100,11 +99,12 @@ npm start
 ```
 
 The website is now running locally on port 8080 so view it by visiting http://localhost:8080 in your browser.
-Stop the server with <kbd>Ctrl</kbd> + <kbd>C</kbd>  in the shell.
+Stop the server with <kbd>Ctrl</kbd> + <kbd>C</kbd> in the shell.
 
 ## Todo
 
-We need to address the following issues in later branches:
+This is our to-do list from the previous branch.
+The tasks that are left to do are going to be addressed in later branches:
 
 - [ ] The image of the hangman game is not updating as the game is being played.
 
