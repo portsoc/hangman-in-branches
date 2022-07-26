@@ -2,7 +2,7 @@
 
 <!-- BRANCH TITLE -->
 
-# Branch 5: Debugging
+# Branch 6: Canvas and Graphics
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -25,7 +25,7 @@ We will be mainly fixing issues and making some of the enhancements left open in
 ### Serve the website
 
 To serve the website, we need to distinguish between what resources are for the server and what is for the client.
-So we have made client folder which includes:
+So we have made a client folder that includes:
 
 ```
 client/
