@@ -8,3 +8,6 @@ app.use(express.static('client'));
 
 // 8080 is the default port for a server
 app.listen(8080);
+
+console.log('Server is running on port 8080. View it by visiting the following link in the browser:');
+console.log('http://localhost:8080/');
