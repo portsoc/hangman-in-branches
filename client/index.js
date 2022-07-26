@@ -172,7 +172,6 @@ function registerLetter(letter) {
       // this updates the guessed letter array too
       const found = checkLetter(letter);
       redrawWord();
-      redrawKeyboard();
 
       if (!found) {
         misses.push(letter);
@@ -199,6 +198,9 @@ function registerLetter(letter) {
           el.feedback.textContent = `${letter} is in the word! ✅`;
         }
       }
+
+      // update the keyboard only when a new guess is made
+      redrawKeyboard();
     }
   }
 }
