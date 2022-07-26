@@ -1,3 +1,7 @@
+import {
+  drawHangman,
+} from './canvas.js';
+
 const words = [
   'Jurassic Park', 'Star Wars', 'The Matrix',
   'The Godfather', 'The Dark Knight', 'The Lord of the Rings',
@@ -168,6 +172,7 @@ function registerLetter(letter) {
       // this updates the guessed letter array too
       const found = checkLetter(letter);
       redrawWord();
+      redrawKeyboard();
 
       if (!found) {
         misses.push(letter);
@@ -195,9 +200,6 @@ function registerLetter(letter) {
         }
       }
     }
-
-    // the keyboard should be updated after a new guess
-    redrawKeyboard();
   }
 }
 
@@ -242,12 +244,6 @@ function redrawKeyboard() {
 
 }
 
-function fillCanvas(el) {
-  const ctx = el.getContext('2d');
-  ctx.fillStyle = 'blue';
-  ctx.fillRect(0, 0, el.width, el.height);
-}
-
 /*
  * Adds event listeners to the on-screen keyboard and the physical keyboard
  */
@@ -275,7 +271,7 @@ function init() {
   prepareHandles();
   startNewGame();
   addEventListeners();
-  fillCanvas(el.canvas);
+  drawHangman(el.canvas, 0);
 }
 
 window.addEventListener('load', init);
