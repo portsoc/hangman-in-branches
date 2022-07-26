@@ -98,7 +98,7 @@ function startNewGame() {
 
   redrawWord();
 
-  lives = 9;
+  lives = 10;
   onGoing = true;
   hits = [];
   misses = [];
