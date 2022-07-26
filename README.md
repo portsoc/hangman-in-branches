@@ -27,12 +27,15 @@ Then attempt to complete the exercises in [the canvas repository](https://github
 
 ## Implementation
 
+Before we start, we placed the call to `redrawKeyboard` in the correct line in `registerLetter`.
+This was left as a challenge in the previous branch, make sure to check it out.
+
 We being by replacing our placeholder image (in `index.html`) with a canvas element.
 In `index.js` we select the canvas and pass it to the functions `drawHangman` alongside the number of lives.
 
 Note that `drawHangman` is an external function (in the new script: `canvas.js`) and is imported into `index.js`.
 To import this function, we need to change the `type` attribute of the `script` tag in `index.html` to `module`.
-Also observe that `drawHangman` is the only function that is being exported in `canvas.js`.
+Also, observe that `drawHangman` is the only function that is being exported in `canvas.js`.
 The rest of the functions are private helper functions within this script.
 
 To see the new changes, head to [this compare page](https://github.com/portsoc/hangman-in-branches/compare/5...6?diff=split).
