@@ -24,9 +24,23 @@ We will be mainly fixing issues and making some of the enhancements left open in
 
 ### Serve the website
 
-Firstly, to serve the website, we have made client and server folders.
-We moved `index.html`, `index.js`, and `images` to the client folder and created the `svr.js` in the server folder.
-`svr.js` at the moment is just a basic Express server that serves the client folder.
+To serve the website, we need to distinguish between what resources are for the server and what is for the client.
+So we have made client folder which includes:
+
+```
+client/
+├── images
+│   └── hangman.png
+├── index.html
+└── index.js
+```
+
+And a server folder that just includes a script for a basic Express server:
+
+```
+server/
+└── svr.js
+```
 
 To install Express, we ran the following in the shell (while in the hangman-in-branches folder):
 
@@ -41,7 +55,9 @@ So we have not included `node_modules` in the repository.
 
 Inside `package.json` we have added a `start` script and added the attribute `type` set to `module`.
 This lets us use import statements (for more info check out [this documentation page](https://nodejs.org/docs/latest-v13.x/api/esm.html#esm_enabling)).
-Now by running `npm start` in the shell, we can see our site being served on port 8080 (http://localhost:8080).
+
+Now by running `npm start` in the shell, we can see our site being served in our machine over on port 8080 (http://localhost:8080).
+To stop the site, we can use <kbd>Ctrl</kbd> + <kbd>C</kbd> in the shell.
 
 ### Fix: Non-alphabetical symbols
 
@@ -84,6 +100,7 @@ npm start
 ```
 
 The website is now running locally on port 8080 so view it by visiting http://localhost:8080 in your browser.
+Stop the server with <kbd>Ctrl</kbd> + <kbd>C</kbd>  in the shell.
 
 ## Todo
 
