@@ -106,10 +106,17 @@ Stop the server with <kbd>Ctrl</kbd> + <kbd>C</kbd> in the shell.
 This is our to-do list from the previous branch.
 The tasks that are left to do are going to be addressed in later branches:
 
-- [ ] The image of the hangman game is not updating as the game is being played.
+- [x] At the moment the user cannot win even if they guess all the letters correctly.
+
+- [x] Another issue that we have is that the user can guess the same letter multiple times.
+
+- [x] We have no way of restarting the game other than refreshing the page.
 
 - [ ] We have too many global variables and it is hard to keep track of the game's state.
-      Lives can also be calculated from misses.
+
+- [x] We are not currently serving our game from a server.
+
+- [ ] The image of the hangman game is not updating as the game is being played.
 
 ## Further Exploration
 
