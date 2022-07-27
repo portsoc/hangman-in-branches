@@ -26,8 +26,8 @@ Therefore we don't care about the **style of the page**.
 We also require the JavaScript (previously called `hangman.js`) to be linked to the HTML page.
 Ideally, we would like the script to perform some forms of basic DOM manipulation too.
 
-Before you start, make sure to check out the moodle resources, especially the [dom101 repository](https://github.com/portsoc/dom101).
-You will find it easier to understand our implementation once you have attempted the tests in that repository.
+Before you start, make sure to check out the moodle resources, especially:
+Try the examples in [Code Examples to Copy, stage 5](https://portsoc.github.io/code-copy-examples/stage-5) and attempt the tests in the [dom101 repository](https://github.com/portsoc/dom101).
 
 ## Implementation
 
