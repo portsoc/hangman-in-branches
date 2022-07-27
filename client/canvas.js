@@ -1,7 +1,9 @@
-/*
- * Draws a hangman on the given canvas based on the number of lives left
+/**
+ * It draws a hangman on a canvas, relative to its size, and depending on the number lives left
  * the canvas is empty if lives is 10 and the hangman is completely drawm if it is 0
  * in between these values, the function adds limbs/pieces of the noose one by one
+ * @param canvas - the canvas element
+ * @param lives - the number of lives the player has left
  */
 export function drawHangman(canvas, lives) {
   const c = canvas.getContext('2d');
@@ -32,8 +34,13 @@ export function drawHangman(canvas, lives) {
   lives === 0 && line(c, x - 20, y - 40, x, y - 80); // left arm
 }
 
-/*
- * Draws a line on canvas context `c`, from point (x1,y1) to (x2,y2)
+/**
+ * It draws a line from (x1, y1) to (x2, y2) on the canvas c
+ * @param c - the canvas context
+ * @param x1 - The x-coordinate of the start point
+ * @param y1 - The y-coordinate of the start of the line
+ * @param x2 - The x-coordinate of the end point of the line.
+ * @param y2 - The y-coordinate of the end point of the line.
  */
 function line(c, x1, y1, x2, y2) {
   c.beginPath();
@@ -42,8 +49,11 @@ function line(c, x1, y1, x2, y2) {
   c.stroke();
 }
 
-/*
- * Draws the hangman's head on canvas context `c`, centered at point (x,y)
+/**
+ * It the hangman's head on canvas context `c`, centered at point (x,y)
+ * @param c - the canvas context
+ * @param x - The x coordinate of the center of the circle
+ * @param y - y-coordinate of the center of the circle
  */
 function drawHead(c, x, y) {
   // head is a circle with eyes and a smile
@@ -58,8 +68,12 @@ function drawHead(c, x, y) {
   arc(c, x, y, 12, startAngle, endAngle);
 }
 
-/*
- * Draws a white circle on canvas context `c`, centered at point (x,y) with radius r
+/**
+ * Draws a white circle on canvas context `c`, centered at point (x,y) with radius `r`
+ * @param c - the canvas context
+ * @param x - The x-coordinate of the center of the circle
+ * @param y - The y coordinate of the center of the circle
+ * @param r - radius
  */
 function circle(c, x, y, r) {
   c.beginPath();
@@ -69,24 +83,36 @@ function circle(c, x, y, r) {
   c.stroke();
 }
 
-/*
- * Converts degrees to radians
+
+/**
+ * Convert degrees to radians.
+ * @param deg - The degree of the angle.
+ * @returns The radian of the angle.
  */
-function rad(x) {
-  return x * Math.PI / 180;
+function rad(deg) {
+  return deg * Math.PI / 180;
 }
 
-/*
- * Draws a cross on canvas context `c`, centered at point (x,y)
+/**
+ * It draws a cross on the canvas
+ * @param c - the canvas context
+ * @param x - The x-coordinate of the center of the cross
+ * @param y - The y coordinate of the center of the cross
+ * @param r - The radius of the cross (roughly, the length of the arms)
  */
 function cross(c, x, y, r) {
   line(c, x - (r / 2), y - (r / 2), x + (r / 2), y + (r / 2));
   line(c, x - (r / 2), y + (r / 2), x + (r / 2), y - (r / 2));
 }
 
-/*
- * Draws an arc that is part of a circle on canvas context `c`, centered at point (x,y)
- * with radius r and starts at angle startAngle and ends at angle endAngle
+/**
+ * It draws an arc on the canvas
+ * @param c - the canvas context
+ * @param x - The x-coordinate of the center of the circle
+ * @param y - The y-coordinate of the center of the circle
+ * @param r - the radius of the circle the arc is part of
+ * @param startAngle - The starting angle, in radians (0 is at the 3 o'clock of the circle)
+ * @param endAngle - The angle at which the arc ends, in radians
  */
 function arc(c, x, y, r, startAngle, endAngle) {
   c.beginPath();
