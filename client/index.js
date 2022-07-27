@@ -175,7 +175,6 @@ function registerLetter(letter) {
       el.feedback.textContent =
         `You have already tried "${letter}".\nTry another letter. 😇`;
     } else {
-      // this updates the guessed letter array too
       const found = checkLetter(letter);
       redrawWord();
 
