@@ -26,9 +26,9 @@ Then we can use that index to select the element from our array.
 
 We will be grouping lines of code for each task into functions and then calling our functions to get our results.
 
-If you find the code confusing here and have not yet visited
+If you have not yet visited
 [Code Examples to Copy](https://portsoc.github.io/code-copy-examples/)
-make sure you attempt the first 3 stages before going any further:
+make sure you write and run (in [Replit](https://replit.com/new/nodejs)) some of its example from the first 3 stages:
 
 - [Stage 1](https://portsoc.github.io/code-copy-examples)
 - [Stage 2](https://portsoc.github.io/code-copy-examples/stage-2)
