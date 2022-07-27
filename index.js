@@ -137,22 +137,22 @@ function registerLetter(letter) {
     if (!found) {
       // this part is the same regardless of number of lives
       lives--;
-      el.feedback.textContent = `${letter} is not in the word! ❌`;
+      el.feedback.textContent = '${letter} is not in the word! ❌';
 
       // if the lives is at least 1, the user can still play
       if (lives >= 1) {
-        el.feedback.textContent += `\nYou have ${lives} lives left.`;
+        el.feedback.textContent += '\nYou have ${lives} lives left.';
       } else if (lives === 0) {
-        el.feedback.textContent += `\nGame Over, you lost! 😭`;
+        el.feedback.textContent += '\nGame Over, you lost! 😭';
         onGoing = false;
       }
     } else {
       // the feedback differs if the user has guessed the word
       if (checkWon()) {
-        el.feedback.textContent = `You guessed it! Well done! 🎉`;
+        el.feedback.textContent = 'You guessed it! Well done! 🎉';
         onGoing = false;
       } else {
-        el.feedback.textContent = `${letter} is in the word! ✅`;
+        el.feedback.textContent = '${letter} is in the word! ✅';
       }
     }
   }
