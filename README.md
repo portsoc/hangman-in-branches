@@ -17,12 +17,18 @@
 
 ## Objectives
 
-Instead of manually selecting elements from our `words` array, let's pick them out randomly.
+We have defined an array of movie titles called `words`.
+One of them needs to be selected for the hangman game.
+Instead of manually selecting elements from our `words` array, we want to pick them out randomly.
 
 We first need to select a random index of our array.
 Then we can use that index to select the element from our array.
 
 We will be grouping lines of code for each task into functions and then calling our functions to get our results.
+
+If you find the code confusing here and have not yet visited
+[Code Examples to Copy](https://portsoc.github.io/code-copy-examples/)
+make sure you do so before going any further.
 
 ## Implementation
 
