@@ -215,7 +215,6 @@ function redrawWord() {
   el.instruct.append(guessMe);
 
   for (const letter of guessed) {
-    // const char = create('span', guessMe, {}, letter);
     const char = document.createElement('span');
     char.textContent = letter;
     guessMe.append(char);
