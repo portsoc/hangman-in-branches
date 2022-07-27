@@ -22,17 +22,21 @@ let onGoing = false;
 let misses;
 let hits;
 
-/*
- * Takes a number and returns a random index between 0 and that number
- * The number itself is not included in the range
+/**
+ * Takes the size of an array and returns a random index between 0 and size
+ * the number itself is not included in the range
+ * @param size - The size of the array.
+ * @returns A random index from the array.
  */
 function randomIndex(size) {
   const index = Math.floor(Math.random() * size);
   return index;
 }
 
-/*
- * Takes a an array and returns a random element from that array
+/**
+ * Return a random element from the given array.
+ * @param array - The array to choose a random element from.
+ * @returns A random element from the array.
  */
 function randomElement(array) {
   const size = array.length;
@@ -41,9 +45,10 @@ function randomElement(array) {
   return element;
 }
 
-/*
- * Checks if the letter is in the word and updates the guessed letters array
- * it then retruns true if the letter is in the word otherwise false
+/**
+ * If the letter is in the word, then update the guessed array with the letter
+ * @param letter - the letter that the user guessed
+ * @returns true if the letter is in the word, false otherwise
  */
 function checkLetter(letter) {
   let found = false;
@@ -57,15 +62,16 @@ function checkLetter(letter) {
   return found;
 }
 
-/*
- * Returns true if the user has guessed the word
+/**
+ * Checks whether the user has guessed the word
+ * @returns The return value is a boolean.
  */
 function checkWon() {
   return guessed.join('') === word;
 }
 
-/*
- * Removes the keyboard from the screen and instead displays a button for a new game
+/**
+ * Removes the keyboard and adds a button for a new game that calls startNewGame on click
  */
 function generateNewGame() {
   el.keyboard?.remove();
@@ -81,12 +87,13 @@ function generateNewGame() {
   newGame.addEventListener('click', startNewGame);
 }
 
-/*
+
+/**
  * Starts a new game by choosing a new word from the words array
- * all the alphabetical characters are replaced with '_'s and stored in guessed
- * it displays guessed as a word in the instructions
- * it resets the lives, hits and misses and turns onGoing to true
- * calls drawKeyboard to draw the keyboard (that is removed from the screen on restart)
+ * all the letters are replaced with '_'s and stored in guessed array
+ * content of guessed is displayed in the instructions
+ * number of lives is set to 10, arrays hits and misses are emptied
+ * onGiong is set to true and  drawKeyboard is called to draw the keyboard
  */
 function startNewGame() {
   const newGame = document.querySelector('#newGame');
@@ -94,12 +101,12 @@ function startNewGame() {
 
   word = randomElement(words);
 
-  // Replace alphabetical characters, ignoring the case, with '_' and store as array of characters
+  // Replace all the letters, ignoring the case, with '_' and store as array of characters
   guessed = word.replace(/[a-z]/ig, '_').split('');
 
   redrawWord();
 
-  lives = 9;
+  lives = 10;
   onGoing = true;
   hits = [];
   misses = [];
@@ -109,7 +116,7 @@ function startNewGame() {
   el.feedback.textContent = 'Start clicking on the buttons or press a letter on the keyboard.';
 }
 
-/*
+/**
  * Draws the keyboard on the screen by creating a button for each letter
  */
 function drawKeyboard() {
@@ -128,8 +135,9 @@ function drawKeyboard() {
   }
 }
 
-/*
- * Responds to the on-screen keyboard only if game is on going
+/**
+ * If the game is on, and the user clicked on an on-screen key, registers the letter
+ * @param e - the click event object
  */
 function checkClick(e) {
   if (onGoing) {
@@ -140,8 +148,9 @@ function checkClick(e) {
   }
 }
 
-/*
- * Respond to the keys on the physical keyboard if the game is on going
+/**
+ * If the game is on, and the user pressed on a letter on the keyboard, registers the letter
+ * @param e - the key press event object
  */
 function checkKeyPress(e) {
   if (onGoing) {
@@ -151,10 +160,11 @@ function checkKeyPress(e) {
   }
 }
 
-/*
+/**
  * If the user has lives left, it checks whether a given letter is in the word
- * it updates hits, misses and guessed letters array and guessed word in insntruct
- * it then updates count of lives and displays a feedback to user
+ * if it is, it adds it to the `hits` array, otherwise to the `misses` array
+ * it also updates the lives count and displays a feedback to user
+ * @param letter - the letter that the user has guessed
  */
 function registerLetter(letter) {
   letter = letter.trim().toLowerCase();
@@ -200,10 +210,9 @@ function registerLetter(letter) {
   }
 }
 
-/*
-  * Creates an element with id guessMe in the instructions section
-  * For every letter a span is created in guessMe
-  */
+/**
+ * It removes the old `#guessMe` element, and creates a new one with the letters in the `guessed` array
+ */
 function redrawWord() {
   const oldGuessMe = document.querySelector('#guessMe');
   oldGuessMe?.remove();
@@ -222,9 +231,9 @@ function redrawWord() {
   }
 }
 
-/*
-  * Updates the on-screen keyboard by disabling every button whose letter has been guessed
-  */
+/**
+ * Updates the on-screen keyboard by disabling every button whose letter has been guessed
+ */
 function redrawKeyboard() {
   const keyboard = document.querySelector('#keyboard');
   const keyboardLetters = keyboard.querySelectorAll('[data-letter]');
@@ -236,16 +245,16 @@ function redrawKeyboard() {
   }
 }
 
-/*
- * Adds event listeners to the on-screen keyboard and the physical keyboard
+/**
+ * It adds event listeners for the physical keyboard presses and the on-screen keyboard
  */
 function addEventListeners() {
   window.addEventListener('keydown', checkKeyPress);
   el.keyboard.addEventListener('click', checkClick);
 }
 
-/*
- * Selects needed DOM elements and stores them in the global el object
+/**
+ * Selects the DOM elements that we'll be using and stores them in `el`
  */
 function prepareHandles() {
   el.instruct = document.querySelector('#instruct');
@@ -254,10 +263,8 @@ function prepareHandles() {
   el.canvas = document.querySelector('#canvas');
 }
 
-/*
- * Starts by adding handles to key DOM elements to the el object
- * it then starts a new game and draws the keyboard
- * it also adds event listeners to the on-screen and physical keyboard
+/**
+ * It prepares the game handles, starts a new game and adds event listeners
  */
 function init() {
   prepareHandles();
