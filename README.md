@@ -19,6 +19,10 @@
 
 In this step, we will start to use the [NPM](https://www.npmjs.com/) package manager to install and manage dependencies for our project.
 
+We highly urge you to visit the resources on moodle before proceeding.
+Make sure to write and run the programs of [Code Examples to Copy, stage 4](https://portsoc.github.io/code-copy-examples/stage-4) on your computers or the university machines (this cannot be done on Replit).
+Afterward, attempt the tests in the [node101 repository](https://github.com/portsoc/node101).
+
 ## Implementation
 
 Using a shell, we have first navigated into this directory.
