@@ -22,7 +22,9 @@ The site must react to events that happen during the game: The user clicks on th
 
 Additionally, the user may either guess the word or use up all of their attempts in which case they should be given the chance to restart the game.
 
-Our goal in this branch is to add event listeners and event handlers (functions) that will respond to the user's actions.
+Our goal in this branch is to add event listeners and handlers (functions) that will respond to the user's actions.
+
+If you have not already done so, make sure to check the moodle resources for this topic and attempt the tests [in event101 repository](https://github.com/portsoc/events101).
 
 ## Implementation
 
@@ -39,7 +41,7 @@ Therefore, in the `addEventListeners` function called within `init`, we attach e
 
 If any part of the script is confusing, check out the examples in [DOM101 repository](https://github.com/portsoc/dom101) and attempt the tasks in that repo.
 
-To see our new changes, [visit this compare page](https://github.com/portsoc/hangman-in-branches/compare/4...5?diff=split) showing the difference between branches 4 and 5.
+To see our new changes, [visit this compare page](https://github.com/portsoc/hangman-in-branches/compare/3...4?diff=split) showing the difference between branches 3 and 4.
 
 ## Usage
 
