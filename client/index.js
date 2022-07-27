@@ -112,6 +112,8 @@ function startNewGame() {
   misses = [];
 
   drawKeyboard();
+  // on a new game, and empty canvas is drawn
+  drawHangman(el.canvas, lives);
 
   el.feedback.textContent = 'Start clicking on the buttons or press a letter on the keyboard.';
 }
@@ -191,6 +193,9 @@ function registerLetter(letter) {
           onGoing = false;
           generateNewGame();
         }
+
+        // update the hangman after a wrong guess
+        drawHangman(el.canvas, lives);
       } else {
         hits.push(letter);
 
@@ -269,7 +274,6 @@ function init() {
   prepareHandles();
   startNewGame();
   addEventListeners();
-  drawHangman(el.canvas, 2);
 }
 
 window.addEventListener('load', init);
