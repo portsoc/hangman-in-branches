@@ -28,7 +28,11 @@ We will be grouping lines of code for each task into functions and then calling 
 
 If you find the code confusing here and have not yet visited
 [Code Examples to Copy](https://portsoc.github.io/code-copy-examples/)
-make sure you do so before going any further.
+make sure you attempt the first 3 stages before going any further:
+
+- [Stage 1](https://portsoc.github.io/code-copy-examples)
+- [Stage 2](https://portsoc.github.io/code-copy-examples/stage-2)
+- [Stage 3](https://portsoc.github.io/code-copy-examples/stage-3)
 
 ## Implementation
 
