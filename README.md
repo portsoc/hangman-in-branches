@@ -12,7 +12,6 @@
     <li><a href="#implementation">Implementation</a>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#todo">Todo</a></li>
-    <li><a href="#further-exploration">Further Exploration</a></li>
   </ol>
 </details>
 
@@ -76,14 +75,5 @@ The open tasks are going to be addressed in later branches:
 - [x] We are not currently serving our game from a server.
 
 - [x] The image of the hangman game is not updating as the game is being played.
-
-## Further Exploration
-
-The keys on the on-screen keyboard are not updating on time.
-The user has to make a new guess for the previous letter to be registered and reflected on the keyboard.
-Use what you have learned in the lessons to fix this issue.
-
-**Hint:** Use your browser's developer tools and set breakpoints within the source code.
-Check the content of hits and misses to see if they update on time or if the problem is from something else.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
