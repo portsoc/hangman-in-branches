@@ -105,7 +105,7 @@ function startNewGame() {
 
   drawKeyboard();
 
-  el.feedback.textContent = `Start clicking on the buttons or press a letter on the keyboard.`;
+  el.feedback.textContent = 'Start clicking on the buttons or press a letter on the keyboard.';
 }
 
 /* 
@@ -163,7 +163,7 @@ function registerLetter(letter) {
     const hitsAndMisses = hits.concat(misses);
     if (hitsAndMisses.includes(letter)) {
       el.feedback.textContent =
-        `You have already tried "${letter}".\nTry another letter. 😇`;
+        'You have already tried "${letter}".\nTry another letter. 😇';
     } else {
       // this updates the guessed letter array too
       const found = checkLetter(letter);
@@ -175,12 +175,12 @@ function registerLetter(letter) {
 
         // this part is the same regardless of number of lives
         lives--;
-        el.feedback.textContent = `${letter} is not in the word! ❌`;
+        el.feedback.textContent = '${letter} is not in the word! ❌';
 
         if (lives >= 1) {
-          el.feedback.textContent += `\nYou have ${lives} lives left.`;
+          el.feedback.textContent += '\nYou have ${lives} lives left.';
         } else if (lives === 0) {
-          el.feedback.textContent += `\nGame Over, you lost!`;
+          el.feedback.textContent += '\nGame Over, you lost!';
           onGoing = false;
           generateNewGame();
         }
@@ -188,11 +188,11 @@ function registerLetter(letter) {
         hits.push(letter);
 
         if (checkWon()) {
-          el.feedback.textContent = `You guessed it! Well done! 🎉`;
+          el.feedback.textContent = 'You guessed it! Well done! 🎉';
           onGoing = false;
           generateNewGame();
         } else {
-          el.feedback.textContent = `${letter} is in the word! ✅`;
+          el.feedback.textContent = '${letter} is in the word! ✅';
         }
       }
     }
