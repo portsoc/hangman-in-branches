@@ -18,7 +18,7 @@
 
 ## Objectives
 
-In this branch, we use the canvas element and JavaScript to draw graphics.
+We will be carrying out minor fixes from the previous branch but mainly we will be focusing on graphics.
 More specifically, we will draw the hangman that completes as the user makes wrong guesses.
 
 If you have not done so already, check out the examples in
@@ -29,6 +29,7 @@ Then attempt to complete the exercises in [the canvas repository](https://github
 
 Before we start, we placed the call to `redrawKeyboard` in the correct line in `registerLetter`.
 This was left as a challenge in the previous branch, make sure to check it out.
+We have also tidied up the comments (notice that you can see our documentation when hovering over the functions).
 
 We being by replacing our placeholder image (in `index.html`) with a canvas element.
 In `index.js` we select the canvas and pass it to the functions `drawHangman` alongside the number of lives.
