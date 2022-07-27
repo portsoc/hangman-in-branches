@@ -12,15 +12,16 @@ const words = [
 let guessed = [];
 // Word that the user needs to guess
 let word;
-// Stores all the needed DOM elements, will be set in prepareHandles
+// Stores all the needed DOM elements
 let el = {};
-// Stores the number of lives, will be set in startNewGame
+// Stores the number of lives
 let lives;
-// True if the game is still on going otherwise false (user won or lost)
+// True if the game is still on going
 let onGoing = false;
-// We split the letters the user guessed into two arrays: misses and hits
+// The guessed letters are either misses and hits
 let misses;
 let hits;
+
 /* 
  * Takes a number and returns a random index between 0 and that number
  * The number itself is not included in the range
@@ -67,8 +68,7 @@ function checkWon() {
  * Removes the keyboard from the screen and instead displays a button for a new game
  */
 function generateNewGame() {
-  el.keyboard?.remove();// if there is a keyboard, remove it
-  // for more info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
+  el.keyboard?.remove();
 
   const newGame = document.createElement('section');
   newGame.id = 'newGame';
@@ -90,14 +90,11 @@ function generateNewGame() {
  */
 function startNewGame() {
   const newGame = document.querySelector('#newGame');
-  newGame?.remove(); // if there is a newGame element, remove it
-  // for more info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
+  newGame?.remove();
 
   word = randomElement(words);
 
-  // Using a regular expression, replaces every alphabetical character, ignoring the case, with '_'
-  // It then splits the string into an array of characters
-  // More info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp
+  // Replace alphabetical characters, ignoring the case, with '_' and store as array of characters
   guessed = word.replace(/[a-z]/ig, '_').split('');
 
   redrawWord();
@@ -121,7 +118,6 @@ function drawKeyboard() {
   const keyboard = document.createElement('section');
   keyboard.id = 'keyboard';
   el.main.append(keyboard);
-  // this is moved from prepareHandles to here
   el.keyboard = keyboard;
 
   for (const letter of alphabet) {
@@ -176,7 +172,6 @@ function registerLetter(letter) {
       if (!found) {
         misses.push(letter);
 
-        // this part is the same regardless of number of lives
         lives--;
         el.feedback.textContent = `${letter} is not in the word! ❌`;
 
@@ -211,23 +206,19 @@ function registerLetter(letter) {
   */
 function redrawWord() {
   const oldGuessMe = document.querySelector('#guessMe');
-  // first time we call redrawWord, there may be no guessMe element
-  oldGuessMe?.remove(); // removes the old guessMe element if it exists
-  // for more info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
-
+  oldGuessMe?.remove();
 
   const guessMe = document.createElement('div');
   guessMe.id = 'guessMe';
   el.instruct.append(guessMe);
 
   for (const letter of guessed) {
-    // const char = create('span', guessMe, {}, letter);
     const char = document.createElement('span');
     char.textContent = letter;
     guessMe.append(char);
 
     char.dataset.letter = letter;
-    char.dataset.unknown = (letter === '_'); // false if letter has been guessed
+    char.dataset.unknown = (letter === '_');
   }
 }
 
