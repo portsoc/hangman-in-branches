@@ -31,13 +31,15 @@ Before we start, we placed the call to `redrawKeyboard` in the correct line in `
 This was left as a challenge in the previous branch, make sure to check it out.
 We have also tidied up the comments (notice that you can see our documentation when hovering over the functions).
 
-We being by replacing our placeholder image (in `index.html`) with a canvas element.
+We start by replacing our placeholder image (in `index.html`) with a canvas element.
 In `index.js` we select the canvas and pass it to the functions `drawHangman` alongside the number of lives.
 
 Note that `drawHangman` is an external function (in the new script: `canvas.js`) and is imported into `index.js`.
 To import this function, we need to change the `type` attribute of the `script` tag in `index.html` to `module`.
-Also, observe that `drawHangman` is the only function that is being exported in `canvas.js`.
+
+Observe that `drawHangman` is the only function that is being exported in `canvas.js`.
 The rest of the functions are private helper functions within this script.
+This script has a few good examples of modularisation, a topic which we will cover in the next branch.
 
 To see the new changes, head to [this compare page](https://github.com/portsoc/hangman-in-branches/compare/5...6?diff=split).
 
@@ -61,7 +63,7 @@ Stop the server with <kbd>Ctrl</kbd> + <kbd>C</kbd> in the shell.
 ## Todo
 
 This is our to-do list from the previous branch.
-The tasks that are left to do are going to be addressed in later branches:
+The open tasks are going to be addressed in later branches:
 
 - [x] At the moment the user cannot win even if they guess all the letters correctly.
 
@@ -73,7 +75,7 @@ The tasks that are left to do are going to be addressed in later branches:
 
 - [x] We are not currently serving our game from a server.
 
-- [ ] The image of the hangman game is not updating as the game is being played.
+- [x] The image of the hangman game is not updating as the game is being played.
 
 ## Further Exploration
 
