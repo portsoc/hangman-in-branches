@@ -1,4 +1,4 @@
-/* 
+/*
  * Draws a hangman on the given canvas based on the number of lives left
  * the canvas is empty if lives is 10 and the hangman is completely drawm if it is 0
  * in between these values, the function adds limbs/pieces of the noose one by one
@@ -32,7 +32,7 @@ export function drawHangman(canvas, lives) {
   lives === 0 && line(c, x - 20, y - 40, x, y - 80); // left arm
 }
 
-/* 
+/*
  * Draws a line on canvas context `c`, from point (x1,y1) to (x2,y2)
  */
 function line(c, x1, y1, x2, y2) {
@@ -42,7 +42,7 @@ function line(c, x1, y1, x2, y2) {
   c.stroke();
 }
 
-/* 
+/*
  * Draws the hangman's head on canvas context `c`, centered at point (x,y)
  */
 function drawHead(c, x, y) {
@@ -58,7 +58,7 @@ function drawHead(c, x, y) {
   arc(c, x, y, 12, startAngle, endAngle);
 }
 
-/* 
+/*
  * Draws a white circle on canvas context `c`, centered at point (x,y) with radius r
  */
 function circle(c, x, y, r) {
@@ -69,14 +69,14 @@ function circle(c, x, y, r) {
   c.stroke();
 }
 
-/* 
+/*
  * Converts degrees to radians
  */
 function rad(x) {
   return x * Math.PI / 180;
 }
 
-/* 
+/*
  * Draws a cross on canvas context `c`, centered at point (x,y)
  */
 function cross(c, x, y, r) {
@@ -84,7 +84,7 @@ function cross(c, x, y, r) {
   line(c, x - (r / 2), y + (r / 2), x + (r / 2), y - (r / 2));
 }
 
-/* 
+/*
  * Draws an arc that is part of a circle on canvas context `c`, centered at point (x,y)
  * with radius r and starts at angle startAngle and ends at angle endAngle
  */
