@@ -26,6 +26,9 @@ Therefore we don't care about the **style of the page**.
 We also require the JavaScript (previously called `hangman.js`) to be linked to the HTML page.
 Ideally, we would like the script to perform some forms of basic DOM manipulation too.
 
+Before you start, make sure to check out the moodle resources, especially the [dom101 repository](https://github.com/portsoc/dom101).
+You will find it easier to understand our implementation once you have attempted the tests in that repository.
+
 ## Implementation
 
 We have created a simple HTML page titled `index.html`.
@@ -34,10 +37,10 @@ We have created a simple HTML page titled `index.html`.
 
 `index.html` also contains sections for the following:
 
-- **Noose**: The image/canvas of the hangman. At the moment, it contains a placeholder image.
-- **Instructions**: It currently contains a row of dashes representing letters to be guessed.
-- **Feedback**: Hints and messages to the player.
-- **Keyboard**: An on-screen keyboard.
+- Noose: The image/canvas of the hangman. At the moment, it contains a placeholder image.
+- Instructions: It currently contains a row of dashes representing letters to be guessed.
+- Feedback: Hints and messages to the player.
+- Keyboard: An on-screen keyboard.
 
 Additionally, we have renamed `hangman.js` to `index.js` (a more conventional name) and linked it to `index.html`.
 
@@ -45,8 +48,6 @@ At the end of `index.js`, we have defined a function `init` that is called once 
 
 `init` calls two functions: `drawKeyboard`, which creates a set of buttons making an on-screen keyboard.
 And `startNewGame`, which at the moment inserts a random word as the content of the instruct section.
-
-If any part of the script is confusing, check out the examples in [DOM101 repository](https://github.com/portsoc/dom101) and attempt the tasks in that repo.
 
 To see our new changes, [visit this compare page](https://github.com/portsoc/hangman-in-branches/compare/2...3?diff=split) showing the difference between branches 2 and 3.
 
