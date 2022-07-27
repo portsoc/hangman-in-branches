@@ -22,7 +22,7 @@ let onGoing = false;
 let misses;
 let hits;
 
-/* 
+/*
  * Takes a number and returns a random index between 0 and that number
  * The number itself is not included in the range
  */
@@ -81,7 +81,7 @@ function generateNewGame() {
   newGame.addEventListener('click', startNewGame);
 }
 
-/* 
+/*
  * Starts a new game by choosing a new word from the words array
  * all the alphabetical characters are replaced with '_'s and stored in guessed
  * it displays guessed as a word in the instructions
@@ -106,10 +106,10 @@ function startNewGame() {
 
   drawKeyboard();
 
-  el.feedback.textContent = `Start clicking on the buttons or press a letter on the keyboard.`;
+  el.feedback.textContent = 'Start clicking on the buttons or press a letter on the keyboard.';
 }
 
-/* 
+/*
  * Draws the keyboard on the screen by creating a button for each letter
  */
 function drawKeyboard() {
@@ -178,7 +178,7 @@ function registerLetter(letter) {
         if (lives >= 1) {
           el.feedback.textContent += `\nYou have ${lives} lives left.`;
         } else if (lives === 0) {
-          el.feedback.textContent += `\nGame Over, you lost!`;
+          el.feedback.textContent += '\nGame Over, you lost!';
           onGoing = false;
           generateNewGame();
         }
@@ -186,7 +186,7 @@ function registerLetter(letter) {
         hits.push(letter);
 
         if (checkWon()) {
-          el.feedback.textContent = `You guessed it! Well done! 🎉`;
+          el.feedback.textContent = 'You guessed it! Well done! 🎉';
           onGoing = false;
           generateNewGame();
         } else {
@@ -234,7 +234,6 @@ function redrawKeyboard() {
       letter.disabled = true;
     }
   }
-
 }
 
 /*
@@ -255,7 +254,7 @@ function prepareHandles() {
   el.canvas = document.querySelector('#canvas');
 }
 
-/* 
+/*
  * Starts by adding handles to key DOM elements to the el object
  * it then starts a new game and draws the keyboard
  * it also adds event listeners to the on-screen and physical keyboard
