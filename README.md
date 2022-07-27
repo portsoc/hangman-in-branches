@@ -40,7 +40,7 @@
 
 ## About the project
 
-This repository contains a worked solution to the [2021-2022 coursework for the Application Programming module](https://docs.google.com/document/d/1cF3u2ldutHaBAzFOEsnVwfKrnPTylOrn-hAGFSDWca8/edit?usp). View the _Core capabilities_ section within this document.
+This repository contains a worked solution to the [2021-2022 coursework for the Application Programming module](https://docs.google.com/document/d/1cF3u2ldutHaBAzFOEsnVwfKrnPTylOrn-hAGFSDWca8/edit?usp). View the Core capabilities section within this document to see the requirements we need to satisfy.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -50,17 +50,17 @@ This repository contains a worked solution to the [2021-2022 coursework for the 
 
 ### On University machines
 
-1. Search for _Git GUI_ and _Node.js_ in [AppsAnywhere](https://appsanywhere.port.ac.uk) and launch them.
+1. Search for "Git GUI" and "Node.js" in [AppsAnywhere](https://appsanywhere.port.ac.uk) and launch them.
 
-1. Launch an editor from AppsAnywhere (e.g., _Visual Studio Code_ or _Atom_).
+1. Launch an editor from AppsAnywhere (e.g., "Visual Studio Code" or "Atom").
 
 ### On your computers
 
 1. Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [Node](https://nodejs.org/en/download/).
 
-1. Install an editor (e.g., [VSCode](https://code.visualstudio.com)or [Atom](https://atom.io)).
+1. Install an editor (e.g., [Visual Studio Code](https://code.visualstudio.com) or [Atom](https://atom.io)).
 
-1. Optionally install [GitHub client](https://github.com/cli/cli) or [GitHub Desktop](https://desktop.github.com).
+1. If you are new to GitHub, also install [GitHub Desktop](https://desktop.github.com) or [GitHub client](https://github.com/cli/cli).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -68,7 +68,7 @@ This repository contains a worked solution to the [2021-2022 coursework for the 
 
 ## Cloning
 
-Try not to download this repository as a zip file.
+Don't download this repository as a zip file.
 Instead, follow the instructions below to clone this repository on your machine.
 
 ### Cloning using Git
@@ -89,11 +89,11 @@ gh repo clone portsoc/hangman-in-branches
 
 ### Cloning using the GitHub Desktop
 
-While this repository is open in the browser, click the green _Code_ button and then _Open with GitHub Desktop_.
+While this repository is open in the browser, click the green "Code" button and then "Open with GitHub Desktop".
 
 ### Cloning on Visual Studio Code
 
-Follow this [instruction on how to clone a repository in VSCode](https://code.visualstudio.com/docs/editor/versioncontrol#_cloning-a-repository).
+Follow this [instruction on how to clone a repository in Visual Studio Code](https://code.visualstudio.com/docs/editor/versioncontrol#_cloning-a-repository).
 
 <!-- SELECTING A BRANCH -->
 
@@ -107,7 +107,7 @@ For simplicity, we have made a branch for each stage but be aware that this is n
 As an example, here is the link to the first branch:
 [https://github.com/portsoc/hangman-in-branches/tree/0](https://github.com/portsoc/hangman-in-branches/tree/0).
 
-To switch your clone of this repository to a branch _x_ (where x is a number):
+To switch your copy of our code to a branch "x" (where x is a number):
 
 ### Selecting a branch using Git
 
@@ -117,7 +117,7 @@ Run the following in a shell (make sure to replace x with a branch number):
 git checkout x
 ```
 
-The following command shows you all the branches (hit 'q' to exit):
+The following command shows you all the branches (hit <kbd>q</kbd> to exit):
 
 ```
 git branch -all
@@ -129,7 +129,7 @@ Follow this [instruction on how to switch branches on GitHub Desktop](https://do
 
 ### Selecting a branch on Visual Studio Code
 
-Follow this [instruction on branches for VSCode](https://code.visualstudio.com/docs/editor/versioncontrol#_branches-and-tags).
+Follow this [instruction on branches for Visual Studio Code](https://code.visualstudio.com/docs/editor/versioncontrol#_branches-and-tags).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -138,9 +138,11 @@ Follow this [instruction on branches for VSCode](https://code.visualstudio.com/d
 ## Viewing the code
 
 After selecting a branch, you can view the code in your favorite editor.
-
 Make sure to open the hangman folder (not individual files).
 
 Always start by reading the `README.md` file to see what were the objectives for the branch and notes on its implementation or features.
+
+We point out that the `.gitignore` file has been automatically generated for us by GitHub on the creation of a Node repository.
+Generally speaking, it helps to ignore files that you don't want to be saved in your repository (e.g., settings of the code editor, temporary files, etc.).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
