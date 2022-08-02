@@ -92,7 +92,7 @@ function startNewGame() {
   gameState.word = randomElement(words);
 
   // Replace all the letters, ignoring the case, with '_' and store as array of characters
-  ggameState.uessed = gameState.word.replace(/[a-z]/ig, '_').split('');
+  gameState.guessed = gameState.word.replace(/[a-z]/ig, '_').split('');
 
   redrawWord();
 
@@ -100,12 +100,9 @@ function startNewGame() {
   gameState.hits = [];
   gameState.misses = [];
 
-  // no need to store a new variable for lives, can be calculated from misses
-  const lives = 10 - gameState.misses.length;
-
   drawKeyboard();
   // on a new game, and empty canvas is drawn
-  drawHangman(el.canvas, lives);
+  drawHangman(el.canvas, 10);
 
   el.feedback.textContent = 'Start clicking on the buttons or press a letter on the keyboard.';
 }
