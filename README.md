@@ -18,20 +18,23 @@
 
 ## Objectives
 
-We will be carrying out minor fixes from the previous branch but mainly we will be focusing on graphics.
-More specifically, we will draw the hangman that completes as the user makes wrong guesses.
+You can already see that our program is growing in size and complexity.
+Not only do we have rather large functions but the `index.js` script is also way too long.
 
-If you have not done so already, check out the examples in
-[the Canvas Stick Figure repository](https://github.com/portsoc/Web-Canvas-Stick-Figures).
-Then attempt to complete the exercises in [the canvas repository](https://github.com/portsoc/ws_canvas).
+This makes it harder to debug our code or develop it further.
+So our aim in this branch is to make the code more modular (breaking it down into smaller but tightly related modules).
+
+We encourage you to visit the resources on moodle before continuing.
+You should already be familiar with the concepts of modularisation and why it increases one's code quality.
 
 ## Implementation
 
 
-| Syntax      | Description |
-| ----------- | ----------- |
-| Header      | Title |
-| List        | <ul><li>Item one.</li><li>Item two.</li></ul> |
+
+| Syntax | Description                                   |
+| ------ | --------------------------------------------- |
+| Header | Title                                         |
+| List   | <ul><li>Item one.</li><li>Item two.</li></ul> |
 
 Before we start, we placed the call to `redrawKeyboard` in the correct line in `registerLetter`.
 This was left as a challenge in the previous branch, make sure to check it out.
