@@ -37,6 +37,17 @@ function randomElement(array) {
 }
 
 /**
+ * Remove all elements that match the given selector.
+ * @param selector - A string that specifies the CSS selector of the elements to remove
+ */
+function safeRemove(selector) {
+  const elements = document.querySelectorAll(selector);
+  for (const element of elements) {
+    element.remove();
+  }
+}
+
+/**
  * Checks if the letter is in the word, then update the guessed array with the letter
  * @param letter - the letter that the user guessed
  * @returns true if the letter is in the word, false otherwise
@@ -65,7 +76,7 @@ function checkWon() {
  * Removes the keyboard and adds a button for a new game that calls startNewGame on click
  */
 function generateNewGame() {
-  el.keyboard?.remove();
+  safeRemove('#keyboard');
 
   const newGame = document.createElement('section');
   newGame.id = 'newGame';
@@ -86,8 +97,7 @@ function generateNewGame() {
  * onGoing is set to true and  drawKeyboard is called to draw the keyboard
  */
 function startNewGame() {
-  const newGame = document.querySelector('#newGame');
-  newGame?.remove();
+  safeRemove('#newGame');
 
   gameState.word = randomElement(words);
 
@@ -207,8 +217,7 @@ function registerLetter(letter) {
  * It removes the old `#guessMe` element, and creates a new one with the letters in the `guessed` array
  */
 function redrawWord() {
-  const oldGuessMe = document.querySelector('#guessMe');
-  oldGuessMe?.remove();
+  safeRemove('#guessMe');
 
   const guessMe = document.createElement('div');
   guessMe.id = 'guessMe';
