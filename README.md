@@ -29,9 +29,25 @@ You should already be familiar with the concepts of modularisation and why it in
 
 ## Implementation
 
-We will begin by grouping our variables `hits`, `misses`, `guessed`, `word` and `onGoing` to in a `gameState` variable.
+### Grouping existing variables
+
+We have grouped our variables `hits`, `misses`, `guessed`, `word` and `onGoing` to in a single `gameState` variable.
+They are now all properties of `gameState`.
+
 This will make more sense in the later branches (where `gameState` is fetched from the server).
 We have also simplified things by calculating lives from the `misses` array and removing the `lives` variable.
+
+### Extracting repeated code into new functions
+
+On multiple occasions, we have used the same two lines of code to remove a DOM element.
+A better practice is to extract this code into a new fanction, called `safeRemove`, and reuse it.
+
+
+
+
+
+
+
 
 | Syntax | Description                                   |
 | ------ | --------------------------------------------- |
