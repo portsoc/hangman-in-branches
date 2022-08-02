@@ -64,7 +64,7 @@ function checkLetter(letter) {
 
 /**
  * Checks whether the user has guessed the word
- * @returns The return value is a boolean.
+ * @returns true if the user has guessed the word, false otherwise
  */
 function checkWon() {
   return guessed.join('') === word;
