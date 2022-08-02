@@ -39,8 +39,16 @@ We have also simplified things by calculating lives from the `misses` array and 
 
 ### Extracting repeated code into new functions
 
-On multiple occasions, we have used the same two lines of code to remove a DOM element.
-A better practice is to extract this code into a new fanction, called `safeRemove`, and reuse it.
+First, we have created a `safeRemove` function.
+This is because, on multiple occasions, we have used the same two lines of code to remove a DOM element.
+So we extracted these lines into a new function, called `safeRemove`, and reused it.
+
+Similarly, we have created a `feedback` function that updates the user and displays their life count.
+We can then improve this function in later branches.
+For example, we could split the displayed text into multiple DOM elements and give them classes.
+The important benefit is that we only have to update the `feedback` function, not every place where it was used.
+
+Although our changes do not significantly decrease the volume of code, they help with the readability and maintainability of our code.
 
 
 
@@ -54,21 +62,8 @@ A better practice is to extract this code into a new fanction, called `safeRemov
 | Header | Title                                         |
 | List   | <ul><li>Item one.</li><li>Item two.</li></ul> |
 
-Before we start, we placed the call to `redrawKeyboard` in the correct line in `registerLetter`.
-This was left as a challenge in the previous branch, make sure to check it out.
-We have also tidied up the comments (notice that you can see our documentation when hovering over the functions).
 
-We start by replacing our placeholder image (in `index.html`) with a canvas element.
-In `index.js` we select the canvas and pass it to the functions `drawHangman` alongside the number of lives.
-
-Note that `drawHangman` is an external function (in the new script: `canvas.js`) and is imported into `index.js`.
-To import this function, we need to change the `type` attribute of the `script` tag in `index.html` to `module`.
-
-Observe that `drawHangman` is the only function that is being exported in `canvas.js`.
-The rest of the functions are private helper functions within this script.
-This script has a few good examples of modularisation, a topic which we will cover in the next branch.
-
-To see the new changes, head to [this compare page](https://github.com/portsoc/hangman-in-branches/compare/5...6?diff=split).
+To see the new changes, head to [this compare page](https://github.com/portsoc/hangman-in-branches/compare/6...7?diff=split).
 
 ## Usage
 
