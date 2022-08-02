@@ -93,7 +93,7 @@ function generateNewGame() {
  * all the letters are replaced with '_'s and stored in guessed array
  * content of guessed is displayed in the instructions
  * number of lives is set to 10, arrays hits and misses are emptied
- * onGiong is set to true and  drawKeyboard is called to draw the keyboard
+ * onGoing is set to true and  drawKeyboard is called to draw the keyboard
  */
 function startNewGame() {
   const newGame = document.querySelector('#newGame');
