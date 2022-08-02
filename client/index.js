@@ -48,6 +48,21 @@ function safeRemove(selector) {
 }
 
 /**
+ * It takes a message as an argument, and displays it in the feedback section
+ * it also displays the lives left or a game over message.
+ * @param message - the message to display to the user
+ */
+function feedback(message) {
+  const lives = 10 - gameState.misses.length;
+  if (lives === 0) {
+    message += ` You lost! The word was: ${gameState.word}`;
+  } else {
+    message += ` You have ${lives} lives left.`;
+  }
+  el.feedback.textContent = message;
+}
+
+/**
  * Checks if the letter is in the word, then update the guessed array with the letter
  * @param letter - the letter that the user guessed
  * @returns true if the letter is in the word, false otherwise
@@ -114,7 +129,7 @@ function startNewGame() {
   // on a new game, and empty canvas is drawn
   drawHangman(el.canvas, 10);
 
-  el.feedback.textContent = 'Start clicking on the buttons or press a letter on the keyboard.';
+  feedback('Start clicking on the buttons or press a letter on the keyboard.');
 }
 
 /**
@@ -173,8 +188,7 @@ function registerLetter(letter) {
   if (gameState.misses.length < 10) {
     const hitsAndMisses = gameState.hits.concat(gameState.misses);
     if (hitsAndMisses.includes(letter)) {
-      el.feedback.textContent =
-        `You have already tried "${letter}".\nTry another letter. 😇`;
+      feedback(`You already guessed ${letter}. Try another letter. 😇`);
     } else {
       const found = checkLetter(letter);
       redrawWord();
@@ -183,12 +197,9 @@ function registerLetter(letter) {
         gameState.misses.push(letter);
         const newLives = 10 - gameState.misses.length;
 
-        el.feedback.textContent = `${letter} is not in the word! ❌`;
+        feedback(`${letter} is not in the word! ❌`);
 
-        if (newLives > 1) {
-          el.feedback.textContent += `\nYou have ${newLives} lives left.`;
-        } else if (newLives === 0) {
-          el.feedback.textContent += '\nGame Over, you lost!';
+        if (newLives === 0) {
           gameState.onGoing = false;
           generateNewGame();
         }
@@ -199,11 +210,11 @@ function registerLetter(letter) {
         gameState.hits.push(letter);
 
         if (checkWon()) {
-          el.feedback.textContent = 'You guessed it! Well done! 🎉';
+          feedback(`You won! Well done! 🎉`);
           gameState.onGoing = false;
           generateNewGame();
         } else {
-          el.feedback.textContent = `${letter} is in the word! ✅`;
+          feedback(`${letter} is in the word! ✅`);
         }
       }
 
