@@ -10,20 +10,8 @@ const words = [
 
 // Holds all of our game variables (hits and misses, onGoing, word, guessed)
 let gameState = {};
-
-// Array of guessed letters so far (if not guessed, it is '_')
-let guessed = [];
-// Word that the user needs to guess
-let word;
 // Stores all the needed DOM elements
 let el = {};
-// Stores the number of lives
-let lives;
-// True if the game is still on going
-let onGoing = false;
-// The guessed letters are either misses and hits
-let misses;
-let hits;
 
 /**
  * Takes the size of an array and returns a random index between 0 and size
@@ -95,24 +83,25 @@ function generateNewGame() {
  * Starts a new game by choosing a new word from the words array
  * all the letters are replaced with '_'s and stored in guessed array
  * content of guessed is displayed in the instructions
- * number of lives is set to 10, arrays hits and misses are emptied
- * onGiong is set to true and  drawKeyboard is called to draw the keyboard
+ * onGoing is set to true and  drawKeyboard is called to draw the keyboard
  */
 function startNewGame() {
   const newGame = document.querySelector('#newGame');
   newGame?.remove();
 
-  word = randomElement(words);
+  gameState.word = randomElement(words);
 
   // Replace all the letters, ignoring the case, with '_' and store as array of characters
-  guessed = word.replace(/[a-z]/ig, '_').split('');
+  ggameState.uessed = gameState.word.replace(/[a-z]/ig, '_').split('');
 
   redrawWord();
 
-  lives = 10;
-  onGoing = true;
-  hits = [];
-  misses = [];
+  gameState.onGoing = true;
+  gameState.hits = [];
+  gameState.misses = [];
+
+  // no need to store a new variable for lives, can be calculated from misses
+  const lives = 10 - gameState.misses.length;
 
   drawKeyboard();
   // on a new game, and empty canvas is drawn
@@ -145,7 +134,7 @@ function drawKeyboard() {
  * @param e - the click event object
  */
 function checkClick(e) {
-  if (onGoing) {
+  if (gameState.onGoing) {
     const letter = e.target.dataset.letter;
     if (letter) {
       registerLetter(letter);
@@ -158,7 +147,7 @@ function checkClick(e) {
  * @param e - the key press event object
  */
 function checkKeyPress(e) {
-  if (onGoing) {
+  if (gameState.onGoing) {
     if (e.code.indexOf('Key') === 0) {
       registerLetter(e.code[3]);
     }
@@ -174,8 +163,8 @@ function checkKeyPress(e) {
 function registerLetter(letter) {
   letter = letter.trim().toLowerCase();
 
-  if (lives > 0) {
-    const hitsAndMisses = hits.concat(misses);
+  if (gameState.misses.length < 10) {
+    const hitsAndMisses = gameState.hits.concat(gameState.misses);
     if (hitsAndMisses.includes(letter)) {
       el.feedback.textContent =
         `You have already tried "${letter}".\nTry another letter. 😇`;
@@ -184,27 +173,27 @@ function registerLetter(letter) {
       redrawWord();
 
       if (!found) {
-        misses.push(letter);
+        gameState.misses.push(letter);
+        const newLives = 10 - gameState.misses.length;
 
-        lives--;
         el.feedback.textContent = `${letter} is not in the word! ❌`;
 
-        if (lives >= 1) {
-          el.feedback.textContent += `\nYou have ${lives} lives left.`;
-        } else if (lives === 0) {
+        if (newLives > 1) {
+          el.feedback.textContent += `\nYou have ${newLives} lives left.`;
+        } else if (newLives === 0) {
           el.feedback.textContent += '\nGame Over, you lost!';
-          onGoing = false;
+          gameState.onGoing = false;
           generateNewGame();
         }
 
         // update the hangman after a wrong guess
-        drawHangman(el.canvas, lives);
+        drawHangman(el.canvas, newLives);
       } else {
-        hits.push(letter);
+        gameState.hits.push(letter);
 
         if (checkWon()) {
           el.feedback.textContent = 'You guessed it! Well done! 🎉';
-          onGoing = false;
+          gameState.onGoing = false;
           generateNewGame();
         } else {
           el.feedback.textContent = `${letter} is in the word! ✅`;
@@ -228,7 +217,7 @@ function redrawWord() {
   guessMe.id = 'guessMe';
   el.instruct.append(guessMe);
 
-  for (const letter of guessed) {
+  for (const letter of gameState.guessed) {
     const char = document.createElement('span');
     char.textContent = letter;
     guessMe.append(char);
@@ -245,7 +234,7 @@ function redrawKeyboard() {
   const keyboard = document.querySelector('#keyboard');
   const keyboardLetters = keyboard.querySelectorAll('[data-letter]');
   for (const letter of keyboardLetters) {
-    const hitsAndMisses = hits.concat(misses);
+    const hitsAndMisses = gameState.hits.concat(gameState.misses);
     if (hitsAndMisses.includes(letter.dataset.letter)) {
       letter.disabled = true;
     }
