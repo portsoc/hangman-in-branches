@@ -240,11 +240,15 @@ function redrawWord() {
  */
 function redrawKeyboard() {
   const keyboard = document.querySelector('#keyboard');
-  const keyboardLetters = keyboard.querySelectorAll('[data-letter]');
-  for (const letter of keyboardLetters) {
-    const hitsAndMisses = hits.concat(misses);
-    if (hitsAndMisses.includes(letter.dataset.letter)) {
-      letter.disabled = true;
+  
+  // only update if the keyboard exists (on game over it gets deleted)
+  if (keyboard) {
+    const keyboardLetters = keyboard.querySelectorAll('[data-letter]');
+    for (const letter of keyboardLetters) {
+      const hitsAndMisses = gameState.hits.concat(gameState.misses);
+      if (hitsAndMisses.includes(letter.dataset.letter)) {
+        letter.disabled = true;
+      }
     }
   }
 }
