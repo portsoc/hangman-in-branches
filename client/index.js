@@ -46,7 +46,7 @@ function randomElement(array) {
 }
 
 /**
- * If the letter is in the word, then update the guessed array with the letter
+ * Checks if the letter is in the word, then update the guessed array with the letter
  * @param letter - the letter that the user guessed
  * @returns true if the letter is in the word, false otherwise
  */
