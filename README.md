@@ -22,7 +22,7 @@ You can already see that our program is growing in size and complexity.
 Not only do we have rather large functions but the `index.js` script is also way too long.
 
 This makes it harder to debug our code or develop it further.
-So our aim in this branch is to make the code more modular (breaking it down into smaller but tightly related modules).
+So in this branch, we will not implement any new features and just spend our time breaking down the existing code into smaller but tightly related modules.
 
 We encourage you to visit the resources on moodle before continuing.
 You should already be familiar with the concepts of modularisation and why it increases one's code quality.
