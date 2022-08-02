@@ -84,7 +84,7 @@ function generateNewGame() {
   prompt.textContent = 'Start New Game';
   newGame.append(prompt);
 
-  newGame.addEventListener('click', startNewGame);
+  prompt.addEventListener('click', startNewGame);
 }
 
 
