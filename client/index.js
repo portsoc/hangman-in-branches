@@ -8,6 +8,9 @@ const words = [
   'The Lord of the Rings', 'The Dark Knight', 'Pulp Fiction',
 ];
 
+// Holds all of our game variables (hits and misses, onGoing, word, guessed)
+let gameState = {};
+
 // Array of guessed letters so far (if not guessed, it is '_')
 let guessed = [];
 // Word that the user needs to guess
@@ -52,9 +55,9 @@ function randomElement(array) {
  */
 function checkLetter(letter) {
   let found = false;
-  for (let i = 0; i < word.length; i++) {
-    if (word[i].toLowerCase() === letter) {
-      guessed[i] = word[i];
+  for (let i = 0; i < gameState.word.length; i++) {
+    if (gameState.word[i].toLowerCase() === letter) {
+      gameState.guessed[i] = gameState.word[i];
       found = true;
     }
   }
@@ -64,10 +67,10 @@ function checkLetter(letter) {
 
 /**
  * Checks whether the user has guessed the word
- * @returns The return value is a boolean.
+ * @returns true if the user has guessed the word, false otherwise
  */
 function checkWon() {
-  return guessed.join('') === word;
+  return gameState.guessed.join('') === gameState.word;
 }
 
 /**
