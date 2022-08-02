@@ -80,9 +80,9 @@ function generateNewGame() {
   newGame.id = 'newGame';
   el.main.append(newGame);
 
-  const question = document.createElement('button');
-  question.textContent = 'Start New Game';
-  newGame.append(question);
+  const prompt = document.createElement('button');
+  prompt.textContent = 'Start New Game';
+  newGame.append(prompt);
 
   newGame.addEventListener('click', startNewGame);
 }
