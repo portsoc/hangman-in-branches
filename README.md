@@ -54,7 +54,11 @@ Although our changes do not significantly decrease the volume of code, they help
 ### Extracting helper functions into a separate script
 
 We have created a new file called `helpers.js` to contain all the helper functions.
-These are functions that are not directly related to the game itself.
+These are functions that are not directly related to the game itself (and most importantly do not need access to the `gameState` variable).
+These functions are `safeRemove`, `create`, and `drawKeyboard`.
+
+We have on purpose kept `randomIndex` and `randomElement` in the `index.js` file.
+This will make sense when you attempt the task mentioned under the <a href="#further-exploration">further exploration</a> section.
 
 ### Miscellaneous improvements
 
@@ -62,11 +66,6 @@ OK, we lied.
 We have added a tiny feature.
 To restart the game when `onGiong` is false, we can now use the keyboard.
 It was done to speed up testing.
-
-| Syntax | Description                                   |
-| ------ | --------------------------------------------- |
-| Header | Title                                         |
-| List   | <ul><li>Item one.</li><li>Item two.</li></ul> |
 
 To see the new changes, head to [this compare page](https://github.com/portsoc/hangman-in-branches/compare/6...7?diff=split).
 
@@ -89,8 +88,9 @@ Stop the server with <kbd>Ctrl</kbd> + <kbd>C</kbd> in the shell.
 
 ## Todo
 
-This is our to-do list from the previous branch.
-The open tasks are going to be addressed in later branches:
+We have met all of the goals we have set previously.
+So it is time to set out new goals for ourself.
+See the <a href="#further-exploration">further exploration</a>.
 
 - [x] At the moment the user cannot win even if they guess all the letters correctly.
 
@@ -98,7 +98,7 @@ The open tasks are going to be addressed in later branches:
 
 - [x] We have no way of restarting the game other than refreshing the page.
 
-- [ ] We have too many global variables and it is hard to keep track of the game's state.
+- [x] We have too many global variables and it is hard to keep track of the game's state.
 
 - [x] We are not currently serving our game from a server.
 
