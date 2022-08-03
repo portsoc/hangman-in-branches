@@ -43,25 +43,18 @@ First, we have created a `safeRemove` function.
 This is because, on multiple occasions, we have used the same two lines of code to remove a DOM element.
 So we extracted these lines into a new function, called `safeRemove`, and reused it.
 
-Similarly, we have created a `feedback` function that updates the user and displays their life count.
-We can then improve this function in later branches.
-For example, we could split the displayed text into multiple DOM elements and give them classes.
-The important benefit is that we only have to update the `feedback` function, not every place where it was used.
+Similarly, we have created the `create` and `feedback` functions.
+
+We can then improve these functions in later branches.
+For example, we could improve `feedback` by displaying multiple DOM elements and giving them classes.
+The important benefit of our changes is that we only have to update the function's definition, not every place where it was used.
 
 Although our changes do not significantly decrease the volume of code, they help with the readability and maintainability of our code.
-
-
-
-
-
-
-
 
 | Syntax | Description                                   |
 | ------ | --------------------------------------------- |
 | Header | Title                                         |
 | List   | <ul><li>Item one.</li><li>Item two.</li></ul> |
-
 
 To see the new changes, head to [this compare page](https://github.com/portsoc/hangman-in-branches/compare/6...7?diff=split).
 
