@@ -51,6 +51,18 @@ The important benefit of our changes is that we only have to update the function
 
 Although our changes do not significantly decrease the volume of code, they help with the readability and maintainability of our code.
 
+### Extracting helper functions into a separate script
+
+We have created a new file called `helpers.js` to contain all the helper functions.
+These are functions that are not directly related to the game itself.
+
+### Miscellaneous improvements
+
+OK, we lied.
+We have added a tiny feature.
+To restart the game when `onGiong` is false, we can now use the keyboard.
+It was done to speed up testing.
+
 | Syntax | Description                                   |
 | ------ | --------------------------------------------- |
 | Header | Title                                         |
