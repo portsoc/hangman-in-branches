@@ -120,6 +120,8 @@ function generateNewGame() {
   safeRemove('#keyboard');
 
   const newGame = create('section', el.main, { id: 'newGame' });
+  const shortcut = create('p', newGame, {},
+    'Press the button below or hit Enter/Space to start a new game.');
   const prompt = create('button', newGame, {}, 'Start a new game');
 
   prompt.addEventListener('click', startNewGame);
@@ -136,18 +138,13 @@ function startNewGame() {
   safeRemove('#newGame');
 
   gameState.word = randomElement(words);
-
-  // Replace all the letters, ignoring the case, with '_' and store as array of characters
-  gameState.guessed = gameState.word.replace(/[a-z]/ig, '_').split('');
-
-  redrawWord();
-
   gameState.onGoing = true;
   gameState.hits = [];
   gameState.misses = [];
+  gameState.guessed = gameState.word.replace(/[a-z]/ig, '_').split('');
 
+  redrawWord();
   drawKeyboard();
-  // on a new game, and empty canvas is drawn
   drawHangman(el.canvas, 10);
 
   feedback('Start clicking on the buttons or press a letter on the keyboard.');
@@ -190,6 +187,11 @@ function checkKeyPress(e) {
     if (e.code.indexOf('Key') === 0) {
       registerLetter(e.code[3]);
     }
+  } else {
+    // a shortcut to restart the game, only works when onGiong is false
+    if (e.code === 'Space' || e.code === 'Enter') {
+      startNewGame();
+    }
   }
 }
 
@@ -212,16 +214,14 @@ function registerLetter(letter) {
 
       if (!found) {
         gameState.misses.push(letter);
-        const newLives = 10 - gameState.misses.length;
-
         feedback(`${letter} is not in the word! ❌`);
 
+        const newLives = 10 - gameState.misses.length;
         if (newLives === 0) {
           gameState.onGoing = false;
           generateNewGame();
         }
 
-        // update the hangman after a wrong guess
         drawHangman(el.canvas, newLives);
       } else {
         gameState.hits.push(letter);
@@ -245,7 +245,6 @@ function registerLetter(letter) {
  */
 function redrawWord() {
   safeRemove('#guessMe');
-
   const guessMe = create('div', el.instruct, { id: 'guessMe' });
 
   for (const letter of gameState.guessed) {
@@ -260,7 +259,6 @@ function redrawWord() {
  */
 function redrawKeyboard() {
   const keyboard = document.querySelector('#keyboard');
-
   // only update if the keyboard exists (on game over it gets deleted)
   if (keyboard) {
     const keyboardLetters = keyboard.querySelectorAll('[data-letter]');
