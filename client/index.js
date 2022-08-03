@@ -48,6 +48,32 @@ function safeRemove(selector) {
 }
 
 /**
+ * It creates an element of the type provided, sets the attributes and text content if
+ * provided, and appends the element to the parent element if provided
+ * @param type - the type of the element to be created, e.g. div, p, h1, etc.
+ * @param parent - the parent element to append the new element to
+ * @param [attributes] - a map of attributes to be set on the element
+ * @param text - the text to be displayed in the element
+ * @returns The element that was created
+ */
+function create(type, parent, attributes = {}, text) {
+  const element = document.createElement(type);
+  // for every property name (key in the map of attributes)
+  for (const propertyName of Object.keys(attributes)) {
+    // set the attribute of the element to the value of the property in the attributes map
+    element[propertyName] = attributes[propertyName];
+  }
+  // if the text parameter is provided, set the textContent of the element to the text parameter
+  if (text) {
+    element.textContent = text;
+  }
+  // append the element to the parent element if exists
+  parent?.append(element);
+  // return the element in case it is needed to be used further
+  return element;
+}
+
+/**
  * It takes a message as an argument, and displays it in the feedback section
  * it also displays the lives left or a game over message.
  * @param message - the message to display to the user
@@ -93,13 +119,8 @@ function checkWon() {
 function generateNewGame() {
   safeRemove('#keyboard');
 
-  const newGame = document.createElement('section');
-  newGame.id = 'newGame';
-  el.main.append(newGame);
-
-  const prompt = document.createElement('button');
-  prompt.textContent = 'Start New Game';
-  newGame.append(prompt);
+  const newGame = create('section', el.main, { id: 'newGame' });
+  const prompt = create('button', newGame, {}, 'Start a new game');
 
   prompt.addEventListener('click', startNewGame);
 }
@@ -138,16 +159,12 @@ function startNewGame() {
 function drawKeyboard() {
   const alphabet = 'abcdefghijklmnopqrstuvwxyz';
 
-  const keyboard = document.createElement('section');
-  keyboard.id = 'keyboard';
-  el.main.append(keyboard);
+  const keyboard = create('section', el.main, { id: 'keyboard' });
   el.keyboard = keyboard;
 
   for (const letter of alphabet) {
-    const button = document.createElement('button');
-    button.textContent = letter;
+    const button = create('button', keyboard, {}, letter);
     button.dataset.letter = letter;
-    keyboard.append(button);
   }
 }
 
@@ -229,15 +246,10 @@ function registerLetter(letter) {
 function redrawWord() {
   safeRemove('#guessMe');
 
-  const guessMe = document.createElement('div');
-  guessMe.id = 'guessMe';
-  el.instruct.append(guessMe);
+  const guessMe = create('div', el.instruct, { id: 'guessMe' });
 
   for (const letter of gameState.guessed) {
-    const char = document.createElement('span');
-    char.textContent = letter;
-    guessMe.append(char);
-
+    const char = create('span', guessMe, {}, letter);
     char.dataset.letter = letter;
     char.dataset.unknown = (letter === '_');
   }
