@@ -106,11 +106,12 @@ See the <a href="#further-exploration">further exploration</a>.
 
 ## Further Exploration
 
-The keys on the on-screen keyboard are not updating on time.
-The user has to make a new guess for the previous letter to be registered and reflected on the keyboard.
-Use what you have learned in the lessons to fix this issue.
+Some of the functionality of the game does not need to take place on the client side.
+The client should instead fetch these resources from the server.
 
-**Hint:** Use your browser's developer tools and set breakpoints within the source code.
-Check the content of hits and misses to see if they update on time or if the problem is from something else.
+In the next branch, we will start to move functions from the `client` folder to `server`.
+So your task in this branch is to decide which one of the functions within `index.js` should be moved to `server`.
+
+Write down your guesses and compare them with other students if you can, before checking our model solution in the next branch.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
