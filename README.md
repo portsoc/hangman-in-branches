@@ -22,7 +22,7 @@ You can already see that our program is growing in size and complexity.
 Not only do we have long functions that have repeated code, but `index.js` has way too many lines.
 
 This makes it harder to read and debug our code or develop it further.
-So in this branch, we will try not implement any new features and just spend our time breaking down the existing code into smaller but tightly related modules.
+So in this branch, we will try not to implement any new features and just spend our time breaking down the existing code into smaller but tightly related modules.
 
 We encourage you to visit the resources on moodle before continuing.
 You should already be familiar with the concepts of modularisation and why it increases code quality.
@@ -47,7 +47,7 @@ So we have extracted these lines into a new function, called `safeRemove`, and w
 Note that Visual Studio Code has a shortcut for this action:
 First select a set of lines.
 Then right-click and select "Refactor".
-Afterwards select "Extract to function in module scope".
+Afterward, select "Extract to function in module scope".
 
 Similarly, we have created the `lives`, `hitsAndMisses`, `create` and `feedback` functions.
 
@@ -95,7 +95,7 @@ Stop the server with <kbd>Ctrl</kbd> + <kbd>C</kbd> in the shell.
 ## Todo
 
 We have met all of the goals we have set previously.
-So it is time to set out new goals for ourself.
+So it is time to set out new goals for ourselves.
 See the <a href="#further-exploration">further exploration</a>.
 
 - [x] At the moment the user cannot win even if they guess all the letters correctly.
@@ -113,10 +113,10 @@ See the <a href="#further-exploration">further exploration</a>.
 ## Further Exploration
 
 Think about a restaurant.
-Not all the functionalities take place in the front of house.
-For example preparing the food is done at the back of the restaurant and is served to the client.
+Not all the functionalities take place in the front of the house.
+For example, preparing the food is done at the back of the restaurant and is served to the client.
 
-Similarly some of the functions that we currently have in `index.js` of the `client` folder can be moved to the `server` folder (more specifically to `svr.js`).
+Similarly, some of the functions that we currently have in `index.js` of the `client` folder can be moved to the `server` folder (more specifically to `svr.js`).
 This way we purposefully limit the client's access to some resources and instead ask them to send a request each time (using an API).
 
 Your task in this branch is to decide which one of the functions and variables within `index.js` should be moved to files within the `server` folder.
