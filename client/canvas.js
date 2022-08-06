@@ -14,7 +14,7 @@ export function drawHangman(canvas, lives) {
   c.lineJoin = 'round';
   c.strokeStyle = '#000';
 
-  // draw hangman rcanvasative to the size of the canvas
+  // draw hangman relative to the size of the canvas
   const x = canvas.width / 2.5;
   const y = canvas.height / 1.25;
 
