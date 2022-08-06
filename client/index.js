@@ -14,14 +14,14 @@ const words = [
   'The Lord of the Rings', 'The Dark Knight', 'Pulp Fiction',
 ];
 
-// Holds all of our game variables (hits and misses, onGoing, word, guessed)
+// Holds all game variables (guessed, hits & misses arrays, onGoing boolean & word string)
 let gameState = {};
 // Stores all the needed DOM elements
 let el = {};
 
 /**
- * Takes the size of an array and returns a random index between 0 and size
- * the number itself is not included in the range
+ * Takes the size of an array and returns a random index between 0 and size.
+ * The number itself is not included in the range.
  * @param size - The size of the array.
  * @returns A random index from the array.
  */
@@ -43,9 +43,28 @@ function randomElement(array) {
 }
 
 /**
- * Checks if the letter is in the word, then update the guessed array with the letter
+ * Returns number of lives based on `gameState.misses` (if exists).
+ * @returns number of lives
+ */
+function lives() {
+  if (gameState.misses) {
+    return 10 - gameState.misses.length;
+  }
+  return 0;
+}
+
+/**
+ * Returns the union of the arrays `gameState.hits` and `gameState.misses`.
+ * @returns union of hits and misses arrays
+ */
+function hitsAndMisses() {
+  return gameState.hits.concat(gameState.misses);
+}
+
+/**
+ * Checks if a given letter is in the word, then updates `gameState.guessed`.
  * @param letter - the letter that the user guessed
- * @returns true if the letter is in the word, false otherwise
+ * @returns `true` if the letter is in the word, `false` otherwise
  */
 function checkLetter(letter) {
   let found = false;
@@ -60,48 +79,48 @@ function checkLetter(letter) {
 }
 
 /**
- * Checks whether the user has guessed the word
- * @returns true if the user has guessed the word, false otherwise
+ * Checks whether the user has guessed the word.
+ * @returns `true` if the user has guessed the word, `false` otherwise
  */
 function checkWon() {
   return gameState.guessed.join('') === gameState.word;
 }
 
 /**
- * It takes a message as an argument, and displays it in the feedback section
- * it also displays the lives left or a game over message.
- * @param message - the message to display to the user
+ * It takes a message as an argument, and displays it in the feedback section.
+ * It also displays the lives left or a game over message.
+ * @param message - the message to display
  */
 function feedback(message) {
-  const lives = 10 - gameState.misses.length;
-  if (lives === 0) {
+  const currentLives = lives();
+  if (currentLives === 0) {
     message += ` You lost! The word was: ${gameState.word}`;
   } else {
-    message += ` You have ${lives} lives left.`;
+    message += ` You have ${currentLives} lives left.`;
   }
   el.feedback.textContent = message;
 }
 
 /**
- * Removes the keyboard and adds a button for a new game that calls startNewGame on click
+ * Removes the keyboard and adds a button for a new game that calls `startNewGame` on click.
  */
 function generateNewGame() {
   safeRemove('#keyboard');
 
   const newGame = create('section', el.main, { id: 'newGame' });
-  const shortcut = create('p', newGame, {},
-    'Press the button below or hit Enter/Space to start a new game.');
+  create('p', newGame, {},
+    'Use the button or hit Enter/Space to start a new game.');
   const prompt = create('button', newGame, {}, 'Start a new game');
 
   prompt.addEventListener('click', startNewGame);
 }
 
-
 /**
- * Starts a new game by choosing a new word from the words array
- * all the letters are replaced with '_'s and stored in guessed array
- * content of guessed is displayed in the instructions
- * onGoing is set to true and  drawKeyboard is called to draw the keyboard
+ * Starts a new game by choosing a random word from `words`.
+ * All the letters are replaced with '_'s and stored in `gameState.guessed`.
+ * This is then displayed in the instructions.
+ * `gameState.onGoing` is set to `true`. `gameState.hits` and
+ * `gameState.misses` are set to empty arrays. `drawKeyboard` is also called.
  */
 function startNewGame() {
   safeRemove('#newGame');
@@ -113,14 +132,13 @@ function startNewGame() {
   gameState.guessed = gameState.word.replace(/[a-z]/ig, '_').split('');
 
   redrawWord();
-  el.keyboard = drawKeyboard();
+  el.keyboard = drawKeyboard(el.main);
   drawHangman(el.canvas, 10);
-
   feedback('Start clicking on the buttons or press a letter on the keyboard.');
 }
 
 /**
- * If the game is on, and the user clicked on an on-screen key, registers the letter
+ * If the game is on, and the user clicked on an on-screen key, registers the letter.
  * @param e - the click event object
  */
 function checkClick(e) {
@@ -133,7 +151,7 @@ function checkClick(e) {
 }
 
 /**
- * If the game is on, and the user pressed on a letter on the keyboard, registers the letter
+ * If the game is on, and the user pressed on a letter on the keyboard, registers the letter.
  * @param e - the key press event object
  */
 function checkKeyPress(e) {
@@ -150,17 +168,16 @@ function checkKeyPress(e) {
 }
 
 /**
- * If the user has lives left, it checks whether a given letter is in the word
- * if it is, it adds it to the `hits` array, otherwise to the `misses` array
- * it also updates the lives count and displays a feedback to user
+ * If the user has lives left, it checks whether a given letter is in the word.
+ * If this is the case, the letter is added to the `hits` array, otherwise to the `misses`.
+ * It also displays a feedback to user.
  * @param letter - the letter that the user has guessed
  */
 function registerLetter(letter) {
   letter = letter.trim().toLowerCase();
 
-  if (gameState.misses.length < 10) {
-    const hitsAndMisses = gameState.hits.concat(gameState.misses);
-    if (hitsAndMisses.includes(letter)) {
+  if (lives() > 0) {
+    if (hitsAndMisses().includes(letter)) {
       feedback(`You already guessed ${letter}. Try another letter. 😇`);
     } else {
       const found = checkLetter(letter);
@@ -170,13 +187,13 @@ function registerLetter(letter) {
         gameState.misses.push(letter);
         feedback(`${letter} is not in the word! ❌`);
 
-        const newLives = 10 - gameState.misses.length;
-        if (newLives === 0) {
+        const currentLives = lives();
+        if (currentLives === 0) {
           gameState.onGoing = false;
           generateNewGame();
         }
 
-        drawHangman(el.canvas, newLives);
+        drawHangman(el.canvas, currentLives);
       } else {
         gameState.hits.push(letter);
 
@@ -195,7 +212,7 @@ function registerLetter(letter) {
 }
 
 /**
- * It removes the old `#guessMe` element, and creates a new one with the letters in the `guessed` array
+ * Updates the `guessMe` element based on `gameState.guessed` array.
  */
 function redrawWord() {
   safeRemove('#guessMe');
@@ -209,7 +226,7 @@ function redrawWord() {
 }
 
 /**
- * Updates the on-screen keyboard by disabling every button whose letter has been guessed
+ * Updates the on-screen keyboard by disabling every button whose letter has been guessed.
  */
 function redrawKeyboard() {
   const keyboard = document.querySelector('#keyboard');
@@ -217,8 +234,7 @@ function redrawKeyboard() {
   if (keyboard) {
     const keyboardLetters = keyboard.querySelectorAll('[data-letter]');
     for (const letter of keyboardLetters) {
-      const hitsAndMisses = gameState.hits.concat(gameState.misses);
-      if (hitsAndMisses.includes(letter.dataset.letter)) {
+      if (hitsAndMisses().includes(letter.dataset.letter)) {
         letter.disabled = true;
       }
     }
@@ -226,7 +242,7 @@ function redrawKeyboard() {
 }
 
 /**
- * It adds event listeners for the physical keyboard presses and the on-screen keyboard
+ * It adds event listeners for the physical keyboard presses and the on-screen keyboard.
  */
 function addEventListeners() {
   window.addEventListener('keydown', checkKeyPress);
@@ -234,7 +250,7 @@ function addEventListeners() {
 }
 
 /**
- * Selects the DOM elements that we'll be using and stores them in `el`
+ * Selects the DOM elements that we'll be using and stores them in `el`.
  */
 function prepareHandles() {
   el.instruct = document.querySelector('#instruct');
@@ -244,7 +260,7 @@ function prepareHandles() {
 }
 
 /**
- * It prepares the game handles, starts a new game and adds event listeners
+ * Prepares the game handles, starts a new game and adds event listeners.
  */
 function init() {
   prepareHandles();
