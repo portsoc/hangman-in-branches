@@ -84,10 +84,11 @@ function checkWon() {
  * @param message - the message to display to the user
  */
 function feedback(message) {
-  if (lives() === 0) {
+  const currentLives = lives();
+  if (currentLives === 0) {
     message += ` You lost! The word was: ${gameState.word}`;
   } else {
-    message += ` You have ${lives()} lives left.`;
+    message += ` You have ${currentLives} lives left.`;
   }
   el.feedback.textContent = message;
 }
@@ -100,7 +101,7 @@ function generateNewGame() {
 
   const newGame = create('section', el.main, { id: 'newGame' });
   const shortcut = create('p', newGame, {},
-    'Press the button below or hit Enter/Space to start a new game.');
+    'Use the button or hit Enter/Space to start a new game.');
   const prompt = create('button', newGame, {}, 'Start a new game');
 
   prompt.addEventListener('click', startNewGame);
@@ -167,7 +168,7 @@ function checkKeyPress(e) {
 function registerLetter(letter) {
   letter = letter.trim().toLowerCase();
 
-  if (gameState.misses.length < 10) {
+  if (lives() < 10) {
     const hitsAndMisses = gameState.hits.concat(gameState.misses);
     if (hitsAndMisses.includes(letter)) {
       feedback(`You already guessed ${letter}. Try another letter. 😇`);
@@ -179,13 +180,13 @@ function registerLetter(letter) {
         gameState.misses.push(letter);
         feedback(`${letter} is not in the word! ❌`);
 
-        const newLives = 10 - gameState.misses.length;
-        if (newLives === 0) {
+        const currentLives = lives();
+        if (currentLives === 0) {
           gameState.onGoing = false;
           generateNewGame();
         }
 
-        drawHangman(el.canvas, newLives);
+        drawHangman(el.canvas, currentLives);
       } else {
         gameState.hits.push(letter);
 
