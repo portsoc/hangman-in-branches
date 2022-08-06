@@ -108,7 +108,7 @@ function generateNewGame() {
   safeRemove('#keyboard');
 
   const newGame = create('section', el.main, { id: 'newGame' });
-  const shortcut = create('p', newGame, {},
+  create('p', newGame, {},
     'Use the button or hit Enter/Space to start a new game.');
   const prompt = create('button', newGame, {}, 'Start a new game');
 
