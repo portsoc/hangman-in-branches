@@ -10,8 +10,8 @@ export function safeRemove(selector) {
 }
 
 /**
- * It creates an element of the type provided, sets the attributes and text content if
- * provided, and appends the element to the parent element if provided
+ * It creates an element of the given type, sets the attributes and text content (if
+ * provided), and appends the element to the parent element (if provided).
  * @param type - the type of the element to be created, e.g. div, p, h1, etc.
  * @param parent - the parent element to append the new element to
  * @param [attributes] - a map of attributes to be set on the element
@@ -36,8 +36,8 @@ export function create(type, parent, attributes = {}, text) {
 }
 
 /**
- * Draws the keyboard on the screen by creating a button for each letter
- * @param parent - The parent element to append the keyboard to.
+ * Draws the keyboard on the screen by creating a button for each letter.
+ * @param parent - The parent element to append the keyboard to
  * @returns The keyboard element
  */
 export function drawKeyboard(parent) {
