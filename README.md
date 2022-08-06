@@ -119,7 +119,7 @@ For example preparing the food is done at the back of the restaurant and is serv
 Similarly some of the functions that we currently have in `index.js` of the `client` folder can be moved to the `server` folder (more specifically to `svr.js`).
 This way we purposefully limit the client's access to some resources and instead ask them to send a request each time (using an API).
 
-Your task in this branch is to decide which one of the functions within `index.js` should be moved to `server`.
+Your task in this branch is to decide which one of the functions and variables within `index.js` should be moved to files within the `server` folder.
 Write down your guesses and compare them with other students, then check our model solution (the next branch).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
