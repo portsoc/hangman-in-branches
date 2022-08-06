@@ -19,37 +19,43 @@
 ## Objectives
 
 You can already see that our program is growing in size and complexity.
-Not only do we have rather large functions but the `index.js` script is also way too long.
+Not only do we have long functions that have repeated code, but `index.js` has way too many lines.
 
-This makes it harder to debug our code or develop it further.
-So in this branch, we will not implement any new features and just spend our time breaking down the existing code into smaller but tightly related modules.
+This makes it harder to read and debug our code or develop it further.
+So in this branch, we will try not implement any new features and just spend our time breaking down the existing code into smaller but tightly related modules.
 
 We encourage you to visit the resources on moodle before continuing.
-You should already be familiar with the concepts of modularisation and why it increases one's code quality.
+You should already be familiar with the concepts of modularisation and why it increases code quality.
 
 ## Implementation
 
 ### Grouping existing variables
 
-We have grouped our variables `hits`, `misses`, `guessed`, `word` and `onGoing` to in a single `gameState` variable.
-They are now all properties of `gameState`.
+We have grouped our variables `hits`, `misses`, `guessed`, `word` and `onGoing` into a single variable called `gameState`.
+All those variables are now properties of `gameState`.
 
 This will make more sense in the later branches (where `gameState` is fetched from the server).
-We have also simplified things by calculating lives from the `misses` array and removing the `lives` variable.
+We have also simplified things by calculating lives from the `misses` array.
+This means we don't need a separate `lives` variable.
 
 ### Extracting repeated code into new functions
 
-First, we have created a `safeRemove` function.
+We have started by creating a `safeRemove` function.
 This is because, on multiple occasions, we have used the same two lines of code to remove a DOM element.
-So we extracted these lines into a new function, called `safeRemove`, and reused it.
+So we have extracted these lines into a new function, called `safeRemove`, and we can reuse it.
 
-Similarly, we have created the `create` and `feedback` functions.
+Note that Visual Studio Code has a shortcut for this action:
+First select a set of lines.
+Then right-click and select "Refactor".
+Afterwards select "Extract to function in module scope".
+
+Similarly, we have created the `lives`, `hitsAndMisses`, `create` and `feedback` functions.
 
 We can then improve these functions in later branches.
 For example, we could improve `feedback` by displaying multiple DOM elements and giving them classes.
 The important benefit of our changes is that we only have to update the function's definition, not every place where it was used.
 
-Although our changes do not significantly decrease the volume of code, they help with the readability and maintainability of our code.
+Although our changes do not significantly decrease the volume of code, they help with the readability and maintainability.
 
 ### Extracting helper functions into a separate script
 
@@ -106,12 +112,14 @@ See the <a href="#further-exploration">further exploration</a>.
 
 ## Further Exploration
 
-Some of the functionality of the game does not need to take place on the client side.
-The client should instead fetch these resources from the server.
+Think about a restaurant.
+Not all the functionalities take place in the front of house.
+For example preparing the food is done at the back of the restaurant and is served to the client.
 
-In the next branch, we will start to move functions from the `client` folder to `server`.
-So your task in this branch is to decide which one of the functions within `index.js` should be moved to `server`.
+Similarly some of the functions that we currently have in `index.js` of the `client` folder can be moved to the `server` folder (more specifically to `svr.js`).
+This way we purposefully limit the client's access to some resources and instead ask them to send a request each time (using an API).
 
-Write down your guesses and compare them with other students if you can, before checking our model solution in the next branch.
+Your task in this branch is to decide which one of the functions and variables within `index.js` should be moved to files within the `server` folder.
+Write down your guesses and compare them with other students, then check our model solution (the next branch).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
