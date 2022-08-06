@@ -115,7 +115,6 @@ function startNewGame() {
   redrawWord();
   el.keyboard = drawKeyboard();
   drawHangman(el.canvas, 10);
-
   feedback('Start clicking on the buttons or press a letter on the keyboard.');
 }
 
