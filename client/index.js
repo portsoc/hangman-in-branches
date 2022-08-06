@@ -44,13 +44,21 @@ function randomElement(array) {
 
 /**
  * Returns number of lives based on `gameState` misses array, if exists
- * @returns The number of lives left
+ * @returns number of lives
  */
 function lives() {
   if (gameState.misses) {
     return 10 - gameState.misses.length;
   }
   return 0;
+}
+
+/**
+ * Returns the union of the arrays `gameStatehits` and `gameState.misses`
+ * @returns union of hits and misses arrays
+ */
+function hitsAndMisses() {
+  return gameState.hits.concat(gameState.misses);
 }
 
 /**
@@ -169,8 +177,7 @@ function registerLetter(letter) {
   letter = letter.trim().toLowerCase();
 
   if (lives() < 10) {
-    const hitsAndMisses = gameState.hits.concat(gameState.misses);
-    if (hitsAndMisses.includes(letter)) {
+    if (hitsAndMisses().includes(letter)) {
       feedback(`You already guessed ${letter}. Try another letter. 😇`);
     } else {
       const found = checkLetter(letter);
@@ -227,8 +234,7 @@ function redrawKeyboard() {
   if (keyboard) {
     const keyboardLetters = keyboard.querySelectorAll('[data-letter]');
     for (const letter of keyboardLetters) {
-      const hitsAndMisses = gameState.hits.concat(gameState.misses);
-      if (hitsAndMisses.includes(letter.dataset.letter)) {
+      if (hitsAndMisses().includes(letter.dataset.letter)) {
         letter.disabled = true;
       }
     }
