@@ -14,7 +14,7 @@ const words = [
   'The Lord of the Rings', 'The Dark Knight', 'Pulp Fiction',
 ];
 
-// Holds all game variables (guessed, hits and misses arrays, onGoing boolean word string)
+// Holds all game variables (`guessed`, `hits` & `misses` arrays, `onGoing` boolean & `word` string)
 let gameState = {};
 // Stores all the needed DOM elements
 let el = {};
@@ -43,7 +43,7 @@ function randomElement(array) {
 }
 
 /**
- * Returns number of lives based on `gameState` misses array, if exists
+ * Returns number of lives based on `gameState.misses`, if exists
  * @returns number of lives
  */
 function lives() {
