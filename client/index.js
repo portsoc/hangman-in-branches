@@ -43,6 +43,17 @@ function randomElement(array) {
 }
 
 /**
+ * Returns number of lives based on `gameState` misses array, if exists
+ * @returns The number of lives left
+ */
+function lives() {
+  if (gameState.misses) {
+    return 10 - gameState.misses.length;
+  }
+  return 0;
+}
+
+/**
  * Checks if the letter is in the word, then update the guessed array with the letter
  * @param letter - the letter that the user guessed
  * @returns true if the letter is in the word, false otherwise
@@ -73,11 +84,10 @@ function checkWon() {
  * @param message - the message to display to the user
  */
 function feedback(message) {
-  const lives = 10 - gameState.misses.length;
-  if (lives === 0) {
+  if (lives() === 0) {
     message += ` You lost! The word was: ${gameState.word}`;
   } else {
-    message += ` You have ${lives} lives left.`;
+    message += ` You have ${lives()} lives left.`;
   }
   el.feedback.textContent = message;
 }
