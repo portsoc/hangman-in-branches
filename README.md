@@ -31,7 +31,7 @@ You should already be familiar with the concepts of modularisation and why it in
 
 ### Grouping existing variables
 
-We have grouped our variables `hits`, `misses`, `guessed`, `word` and `onGoing` into a single `gameState` variable.
+We have grouped our variables `hits`, `misses`, `guessed`, `word` and `onGoing` into a single variable called `gameState`.
 All those variables are now properties of `gameState`.
 
 This will make more sense in the later branches (where `gameState` is fetched from the server).
@@ -44,10 +44,10 @@ We have started by creating a `safeRemove` function.
 This is because, on multiple occasions, we have used the same two lines of code to remove a DOM element.
 So we have extracted these lines into a new function, called `safeRemove`, and we can reuse it.
 
-Note that Visual Studio Code has a shortcut for this.
-Begin by selecting a set of lines.
-The  right-click and select "Refactor".
-Then you can select "Extract into function in module score". 
+Note that Visual Studio Code has a shortcut for this action:
+First select a set of lines.
+Then right-click and select "Refactor".
+Afterwards select "Extract to function in module scope".
 
 Similarly, we have created the `lives`, `hitsAndMisses`, `create` and `feedback` functions.
 
@@ -55,7 +55,7 @@ We can then improve these functions in later branches.
 For example, we could improve `feedback` by displaying multiple DOM elements and giving them classes.
 The important benefit of our changes is that we only have to update the function's definition, not every place where it was used.
 
-Although our changes do not significantly decrease the volume of code, they help with the readability and maintainability of our code.
+Although our changes do not significantly decrease the volume of code, they help with the readability and maintainability.
 
 ### Extracting helper functions into a separate script
 
@@ -112,12 +112,14 @@ See the <a href="#further-exploration">further exploration</a>.
 
 ## Further Exploration
 
-Some of the functionality of the game does not need to take place on the client side.
-The client should instead fetch these resources from the server.
+Think about a restaurant.
+Not all the functionalities take place in the front of house.
+For example preparing the food is done at the back of the restaurant and is served to the client.
 
-In the next branch, we will start to move functions from the `client` folder to `server`.
-So your task in this branch is to decide which one of the functions within `index.js` should be moved to `server`.
+Similarly some of the functions that we currently have in `index.js` of the `client` folder can be moved to the `server` folder (more specifically to `svr.js`).
+This way we purposefully limit the client's access to some resources and instead ask them to send a request each time (using an API).
 
-Write down your guesses and compare them with other students if you can, before checking our model solution in the next branch.
+Your task in this branch is to decide which one of the functions within `index.js` should be moved to `server`.
+Write down your guesses and compare them with other students, then check our model solution (the next branch).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
