@@ -1,6 +1,6 @@
 /**
  * Remove all elements that match the given selector.
- * @param selector - A string that specifies the CSS selector of the elements to remove
+ * @param selector - a string that specifies the CSS selector of the elements to remove
  */
 export function safeRemove(selector) {
   const elements = document.querySelectorAll(selector);
@@ -16,7 +16,7 @@ export function safeRemove(selector) {
  * @param parent - the parent element to append the new element to
  * @param [attributes] - a map of attributes to be set on the element
  * @param text - the text to be displayed in the element
- * @returns The element that was created
+ * @returns the element that was created
  */
 export function create(type, parent, attributes = {}, text) {
   const element = document.createElement(type);
@@ -37,8 +37,8 @@ export function create(type, parent, attributes = {}, text) {
 
 /**
  * Draws the keyboard on the screen by creating a button for each letter.
- * @param parent - The parent element to append the keyboard to
- * @returns The keyboard element
+ * @param parent - the parent element to append the keyboard to
+ * @returns the keyboard element
  */
 export function drawKeyboard(parent) {
   const alphabet = 'abcdefghijklmnopqrstuvwxyz';

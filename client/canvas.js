@@ -37,10 +37,10 @@ export function drawHangman(canvas, lives) {
 /**
  * It draws a line from (x1, y1) to (x2, y2) on the canvas `c`.
  * @param c - the canvas context
- * @param x1 - The x-coordinate of the start point
- * @param y1 - The y-coordinate of the start of the line
- * @param x2 - The x-coordinate of the end point of the line.
- * @param y2 - The y-coordinate of the end point of the line.
+ * @param x1 - the x-coordinate of the start point
+ * @param y1 - the y-coordinate of the start of the line
+ * @param x2 - The x-coordinate of the end point of the line
+ * @param y2 - The y-coordinate of the end point of the line
  */
 function line(c, x1, y1, x2, y2) {
   c.beginPath();
@@ -52,7 +52,7 @@ function line(c, x1, y1, x2, y2) {
 /**
  * It the hangman's head on canvas context `c`, centered at point (x,y).
  * @param c - the canvas context
- * @param x - The x coordinate of the center of the circle
+ * @param x - the x coordinate of the center of the circle
  * @param y - y-coordinate of the center of the circle
  */
 function drawHead(c, x, y) {
@@ -71,8 +71,8 @@ function drawHead(c, x, y) {
 /**
  * Draws a white circle on canvas context `c`, centered at point (x,y) with radius `r`
  * @param c - the canvas context
- * @param x - The x-coordinate of the center of the circle
- * @param y - The y coordinate of the center of the circle
+ * @param x - the x-coordinate of the center of the circle
+ * @param y - the y coordinate of the center of the circle
  * @param r - radius
  */
 function circle(c, x, y, r) {
