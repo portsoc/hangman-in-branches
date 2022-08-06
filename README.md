@@ -19,29 +19,35 @@
 ## Objectives
 
 You can already see that our program is growing in size and complexity.
-Not only do we have rather large functions but the `index.js` script is also way too long.
+Not only do we have long functions that have repeated code, but `index.js` has way too many lines.
 
-This makes it harder to debug our code or develop it further.
-So in this branch, we will not implement any new features and just spend our time breaking down the existing code into smaller but tightly related modules.
+This makes it harder to read and debug our code or develop it further.
+So in this branch, we will try not implement any new features and just spend our time breaking down the existing code into smaller but tightly related modules.
 
 We encourage you to visit the resources on moodle before continuing.
-You should already be familiar with the concepts of modularisation and why it increases one's code quality.
+You should already be familiar with the concepts of modularisation and why it increases code quality.
 
 ## Implementation
 
 ### Grouping existing variables
 
-We have grouped our variables `hits`, `misses`, `guessed`, `word` and `onGoing` to in a single `gameState` variable.
-They are now all properties of `gameState`.
+We have grouped our variables `hits`, `misses`, `guessed`, `word` and `onGoing` into a single `gameState` variable.
+All those variables are now properties of `gameState`.
 
 This will make more sense in the later branches (where `gameState` is fetched from the server).
-We have also simplified things by calculating lives from the `misses` array and removing the `lives` variable.
+We have also simplified things by calculating lives from the `misses` array.
+This means we don't need a separate `lives` variable.
 
 ### Extracting repeated code into new functions
 
-First, we have created a `safeRemove` function.
+We have started by creating a `safeRemove` function.
 This is because, on multiple occasions, we have used the same two lines of code to remove a DOM element.
-So we extracted these lines into a new function, called `safeRemove`, and reused it.
+So we have extracted these lines into a new function, called `safeRemove`, and we can reuse it.
+
+Note that Visual Studio Code has a shortcut for this.
+Begin by selecting a set of lines.
+The  right-click and select "Refactor".
+Then you can select "Extract into function in module score". 
 
 Similarly, we have created the `lives`, `hitsAndMisses`, `create` and `feedback` functions.
 
