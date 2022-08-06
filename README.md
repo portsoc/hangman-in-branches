@@ -43,7 +43,7 @@ First, we have created a `safeRemove` function.
 This is because, on multiple occasions, we have used the same two lines of code to remove a DOM element.
 So we extracted these lines into a new function, called `safeRemove`, and reused it.
 
-Similarly, we have created the `create` and `feedback` functions.
+Similarly, we have created the `lives`, `create` and `feedback` functions.
 
 We can then improve these functions in later branches.
 For example, we could improve `feedback` by displaying multiple DOM elements and giving them classes.
