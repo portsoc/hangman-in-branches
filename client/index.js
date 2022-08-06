@@ -132,7 +132,7 @@ function startNewGame() {
   gameState.guessed = gameState.word.replace(/[a-z]/ig, '_').split('');
 
   redrawWord();
-  el.keyboard = drawKeyboard();
+  el.keyboard = drawKeyboard(el.main);
   drawHangman(el.canvas, 10);
   feedback('Start clicking on the buttons or press a letter on the keyboard.');
 }
@@ -176,7 +176,7 @@ function checkKeyPress(e) {
 function registerLetter(letter) {
   letter = letter.trim().toLowerCase();
 
-  if (lives() < 10) {
+  if (lives() > 0) {
     if (hitsAndMisses().includes(letter)) {
       feedback(`You already guessed ${letter}. Try another letter. 😇`);
     } else {
