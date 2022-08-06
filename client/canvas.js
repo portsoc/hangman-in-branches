@@ -1,7 +1,7 @@
 /**
  * It draws a hangman on a canvas, relative to its size, and depending on the number lives left
  * the canvas is empty if lives is 10 and the hangman is completely drawm if it is 0
- * in between these values, the function adds limbs/pieces of the noose one by one
+ * in between these values, the function adds limbs/pieces of the noose one by one.
  * @param canvas - the canvas element
  * @param lives - the number of lives the player has left
  */
@@ -14,7 +14,7 @@ export function drawHangman(canvas, lives) {
   c.lineJoin = 'round';
   c.strokeStyle = '#000';
 
-  // draw hangman rcanvasative to the size of the canvas
+  // draw hangman relative to the size of the canvas
   const x = canvas.width / 2.5;
   const y = canvas.height / 1.25;
 
@@ -35,7 +35,7 @@ export function drawHangman(canvas, lives) {
 }
 
 /**
- * It draws a line from (x1, y1) to (x2, y2) on the canvas c
+ * It draws a line from (x1, y1) to (x2, y2) on the canvas `c`.
  * @param c - the canvas context
  * @param x1 - The x-coordinate of the start point
  * @param y1 - The y-coordinate of the start of the line
@@ -50,7 +50,7 @@ function line(c, x1, y1, x2, y2) {
 }
 
 /**
- * It the hangman's head on canvas context `c`, centered at point (x,y)
+ * It the hangman's head on canvas context `c`, centered at point (x,y).
  * @param c - the canvas context
  * @param x - The x coordinate of the center of the circle
  * @param y - y-coordinate of the center of the circle
@@ -94,7 +94,7 @@ function rad(deg) {
 }
 
 /**
- * It draws a cross on the canvas
+ * It draws a cross on the canvas `c`.
  * @param c - the canvas context
  * @param x - The x-coordinate of the center of the cross
  * @param y - The y coordinate of the center of the cross
@@ -106,7 +106,7 @@ function cross(c, x, y, r) {
 }
 
 /**
- * It draws an arc on the canvas
+ * It draws an arc on the canvas `c`.
  * @param c - the canvas context
  * @param x - The x-coordinate of the center of the circle
  * @param y - The y-coordinate of the center of the circle
