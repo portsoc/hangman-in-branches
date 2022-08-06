@@ -14,7 +14,7 @@ const words = [
   'The Lord of the Rings', 'The Dark Knight', 'Pulp Fiction',
 ];
 
-// Holds all of our game variables (hits and misses, onGoing, word, guessed)
+// Holds all game variables (guessed, hits and misses arrays, onGoing boolean word string)
 let gameState = {};
 // Stores all the needed DOM elements
 let el = {};
