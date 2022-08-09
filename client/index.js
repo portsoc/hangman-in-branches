@@ -12,39 +12,8 @@ import {
   drawKeyboard
 } from './helpers.js';
 
-const words = [
-  'Jurassic Park', 'Star Wars', 'The Matrix',
-  'The Godfather', 'The Dark Knight', 'The Lord of the Rings',
-  'The Lord of the Rings', 'The Dark Knight', 'Pulp Fiction',
-];
-
-// Holds all game variables (guessed, hits & misses arrays, onGoing boolean & word string)
 let gameState = {};
-// Stores all the needed DOM elements
 let el = {};
-
-/**
- * Takes the size of an array and returns a random index between 0 and size.
- * The number itself is not included in the range.
- * @param size - The size of the array.
- * @returns A random index from the array.
- */
-function randomIndex(size) {
-  const index = Math.floor(Math.random() * size);
-  return index;
-}
-
-/**
- * Return a random element from the given array.
- * @param array - The array to choose a random element from.
- * @returns A random element from the array.
- */
-function randomElement(array) {
-  const size = array.length;
-  const index = randomIndex(size);
-  const element = array[index];
-  return element;
-}
 
 /**
  * Returns number of lives based on `gameState.misses` (if exists).
@@ -66,7 +35,7 @@ function hitsAndMisses() {
 }
 
 /**
- * Checks if a given letter is in the word, then updates `gameState.guessed`.
+ * Checks if a given letter is in the word, then updates `gameState.userWord`.
  * @param letter - the letter that the user guessed
  * @returns `true` if the letter is in the word, `false` otherwise
  */
@@ -74,7 +43,7 @@ function checkLetter(letter) {
   let found = false;
   for (let i = 0; i < gameState.word.length; i++) {
     if (gameState.word[i].toLowerCase() === letter) {
-      gameState.guessed[i] = gameState.word[i];
+      gameState.userWord[i] = gameState.word[i];
       found = true;
     }
   }
@@ -87,7 +56,7 @@ function checkLetter(letter) {
  * @returns `true` if the user has guessed the word, `false` otherwise
  */
 function checkWon() {
-  return gameState.guessed.join('') === gameState.word;
+  return gameState.userWord.join('') === gameState.word;
 }
 
 /**
@@ -121,19 +90,17 @@ function generateNewGame() {
 
 /**
  * Starts a new game by choosing a random word from `words`.
- * All the letters are replaced with '_'s and stored in `gameState.guessed`.
+ * All the letters are replaced with '_'s and stored in `gameState.userWord`.
  * This is then displayed in the instructions.
  * `gameState.onGoing` is set to `true`. `gameState.hits` and
  * `gameState.misses` are set to empty arrays. `drawKeyboard` is also called.
+ * Prepares game handles.
  */
-function startNewGame() {
+async function startNewGame() {
   safeRemove('#newGame');
-
-  gameState.word = randomElement(words);
-  gameState.onGoing = true;
-  gameState.hits = [];
-  gameState.misses = [];
-  gameState.guessed = gameState.word.replace(/[a-z]/ig, '_').split('');
+  const response = await fetch('/games', POST);
+  gameState = await response.json();
+  console.log(gameState);
 
   redrawWord();
   el.keyboard = drawKeyboard(el.main);
@@ -216,13 +183,13 @@ function registerLetter(letter) {
 }
 
 /**
- * Updates the `guessMe` element based on `gameState.guessed` array.
+ * Updates the `guessMe` element based on `gameState.userWord`.
  */
 function redrawWord() {
   safeRemove('#guessMe');
   const guessMe = create('div', el.instruct, { id: 'guessMe' });
 
-  for (const letter of gameState.guessed) {
+  for (const letter of gameState.userWord) {
     const char = create('span', guessMe, {}, letter);
     char.dataset.letter = letter;
     char.dataset.unknown = (letter === '_');
@@ -264,20 +231,11 @@ function prepareHandles() {
 }
 
 /**
- * Prepares the game handles, starts a new game and adds event listeners.
+ * Prepares the game handles and starts a new game.
  */
 function init() {
   prepareHandles();
   startNewGame();
-  addEventListeners();
-
-  testStart();
-}
-
-async function testStart() {
-  const response = await fetch('/games', POST);
-  const gs = await response.json();
-  console.log(gs);
 }
 
 window.addEventListener('load', init);
