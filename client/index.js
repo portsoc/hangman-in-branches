@@ -100,7 +100,6 @@ async function startNewGame() {
   safeRemove('#newGame');
   const response = await fetch('/games', POST);
   gameState = await response.json();
-  console.log(gameState);
 
   redrawWord();
   el.keyboard = drawKeyboard(el.main);
