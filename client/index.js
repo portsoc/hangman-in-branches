@@ -266,6 +266,14 @@ function init() {
   prepareHandles();
   startNewGame();
   addEventListeners();
+
+  testStart();
+}
+
+function testStart() {
+  const response = await fetch('/games', POST);
+  gameState = await response.json();
+  console.log(gameState);
 }
 
 window.addEventListener('load', init);
