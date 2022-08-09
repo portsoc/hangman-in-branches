@@ -18,14 +18,23 @@
 
 ## Objectives
 
-Our aim in this branch is to move some of the functionality from our `client` folder to the `server` one.
-Our web server should be able to handle requests from the client and return the appropriate response.
-Additionally, we will be using fetch so that our client can request smaller and more manageable pieces of data from the server.
+Our aim in this branch is to move some of the resources (functions and variables) from our `client` folder to the `server` one.
+
+For example, the clinet does not need to know the word to be guessed during the game.
+Instead, they should send requests to the server with a guess and the server handle the guess and update the state of the game.
 
 If you have not already done so, visit the module resources on the topic and be sure to work your way through the examples and tests of the [fetch101 repository](https://github.com/portsoc/fetch101).
 We also recommend you view the [staged-simple-messageboard](https://github.com/portsoc/staged-simple-message-board)[ repository](https://github.com/portsoc/staged-simple-message-board).
 
 ## Implementation
+
+We start by moving two our core functions (and all that they depend on) from `client/index.js` to `server/svr.js`:
+
+### `startNewGame`
+
+
+
+### `registerLetter`
 
 To see the new changes, head to [this compare page](https://github.com/portsoc/hangman-in-branches/compare/7...8?diff=split).
 
