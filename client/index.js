@@ -1,3 +1,5 @@
+// we are using 'POST' to send a request to make a new game or check our guess
+// we can't use 'GET' (for read-only requests) as we are changing `status` in `server/svr.js`
 const POST = { method: 'POST' };
 
 import {
