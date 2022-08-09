@@ -32,7 +32,15 @@ We start by moving two our core functions (and all that they depend on) from `cl
 
 ### `startNewGame`
 
+The task of populating the `gameState` variable has now been moved to `createGame` function in `server/svr.js`. 
+The function responds with a sanitized version of this variable (which does not contain the word to be guessed by the client).
+We have also renamed `guessed` array to `userWord` to avoid confusion.
 
+
+The references to `guessed` in `index.js` are updated too.
+
+Since `statrNewGame` is an asynchronous function, we need to use the `async` keyword.
+Additionally we have moved `addEventListeners` at the end of this function so that it gets called once the game is started (and the keyboard is created).
 
 ### `registerLetter`
 
