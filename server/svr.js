@@ -51,7 +51,7 @@ function createGame(req, res) {
   status.onGoing = true;
   status.hits = [];
   status.misses = [];
-  status.userword = status.word.replace(/[a-z]/ig, '_').split('');
+  status.userWord = status.word.replace(/[a-z]/ig, '_').split('');
 
   // use the spread operator to copy the object otherwise it will be a reference to the same object
   const sanitizedStatus = { ...status };
