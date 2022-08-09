@@ -1,7 +1,11 @@
 import express from 'express';
+import path from 'path';
 
 const app = express();
-app.use(express.static('client'));
+
+// define the path to the client folder using "path.join" (works both on windows and unix systems)
+const clientPath = path.join(path.resolve(), '/client');
+app.use(express.static(clientPath));
 
 const words = [
   'Jurassic Park', 'Star Wars', 'The Matrix',
@@ -42,17 +46,17 @@ function randomElement(array) {
  * `onGoing` - a boolean that indicates if the game is still in progress,
  * `userWord` - an array of letters that has been guessed so far ('_' for unguessed letters).
  */
-function createGame() {
+function createGame(req, res) {
   status.word = randomElement(words);
   status.onGoing = true;
   status.hits = [];
   status.misses = [];
-  status.userword = gameState.word.replace(/[a-z]/ig, '_').split('');
+  status.userword = status.word.replace(/[a-z]/ig, '_').split('');
 
   // use the spread operator to copy the object otherwise it will be a reference to the same object
   const sanitizedStatus = { ...status };
   delete sanitizedStatus.word;
-  return sanitizedStatus;
+  res.json(sanitizedStatus);
 }
 
 app.post('/games/', createGame);
