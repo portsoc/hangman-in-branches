@@ -1,3 +1,5 @@
+const POST = { method: 'POST' };
+
 import {
   drawHangman,
 } from './canvas.js';
@@ -270,10 +272,10 @@ function init() {
   testStart();
 }
 
-function testStart() {
+async function testStart() {
   const response = await fetch('/games', POST);
-  gameState = await response.json();
-  console.log(gameState);
+  const gs = await response.json();
+  console.log(gs);
 }
 
 window.addEventListener('load', init);
