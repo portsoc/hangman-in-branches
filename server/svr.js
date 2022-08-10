@@ -111,7 +111,7 @@ function checkWon() {
  * @param res - response that contains the status object
  */
 function guessLetter(req, res) {
-  const letter = req.params.letter;
+  const letter = req.params.letter.toLowerCase();
 
   if (status.onGoing) {
     status.last = checkLetter(letter);
