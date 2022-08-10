@@ -30,17 +30,30 @@ We also recommend you view the [staged-simple-messageboard](https://github.com/p
 
 We are moving the following functionalities (and all that they depend on) from `client/index.js` to `server/svr.js`:
 
-### `startNewGame`
+### Starting a new game
 
-The task of populating the `gameState` variable has now been moved to `createGame` function in `server/svr.js`. 
-The function responds with a sanitized version of this variable (which does not contain the word to be guessed by the client).
+The task of populating the `gameState` variable has now been moved from `client/index.js` to the `createGame` function in `server/svr.js`.
+This means we had to move `words`, `randomIndex`, and `randomElement` to the server too.
+
+`gameState` is stored as `status` in `server/svr.js` and has remained pretty much the same except that it now contains the `last` property (whether the last guess was correct).
 We have also renamed `guessed` array to `userWord` to avoid confusion.
 The references to `guessed` in `index.js` are updated too.
+
+`createGame` responds with a sanitized version of the `status` (which does not contain the word to be guessed by the client).
 
 Since `statrNewGame` is an asynchronous function, we need to use the `async` keyword.
 Additionally, we have moved `addEventListeners` at the end of this function so that it gets called once the game is started (and the keyboard is created).
 
-### `registerLetter`
+### Checking a guess
+
+First, we have moved `checkLetter` and `checkWon` to the server (they perform the same job as before).
+Some of the functionalities of `registerLetter` that are not related to the frontend have been moved to the server too as described below.
+
+`guessLetter` in the server checks the letter that is passed as a parameter of the request object.
+It updates the properties of `status` and returns the sanitized version of it if the game is not finished (otherwise it returns `status` as is).
+
+We should minimize the number of times the client requests the server to check a letter.
+So, for example, we should check, on client side, if user's input has been already guessed and if so, we can skip the server request.
 
 To see the new changes, head to [this compare page](https://github.com/portsoc/hangman-in-branches/compare/7...8?diff=split).
 
