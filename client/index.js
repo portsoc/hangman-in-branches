@@ -12,6 +12,15 @@ import {
   drawKeyboard
 } from './helpers.js';
 
+/**
+ * `hits` - an array of the letters that have been guessed correctly,
+ * `misses` - an array of the letters that have been guessed incorrectly,
+ * `onGoing` - a boolean that indicates if the game is still in progress,
+ * `userWord` - an array of letters that has been guessed so far ('_' for unguessed letters),
+ * `last` - a boolean that is true if the last guess was a hit,
+ * `won` - a boolean that is true if the user has guessed the word,
+ * `word` - the word to be guessed (only defined when game is over).
+ */
 let gameState = {};
 let el = {};
 
@@ -35,39 +44,19 @@ function hitsAndMisses() {
 }
 
 /**
- * Checks if a given letter is in the word, then updates `gameState.userWord`.
- * @param letter - the letter that the user guessed
- * @returns `true` if the letter is in the word, `false` otherwise
- */
-function checkLetter(letter) {
-  let found = false;
-  for (let i = 0; i < gameState.word.length; i++) {
-    if (gameState.word[i].toLowerCase() === letter) {
-      gameState.userWord[i] = gameState.word[i];
-      found = true;
-    }
-  }
-
-  return found;
-}
-
-/**
- * Checks whether the user has guessed the word.
- * @returns `true` if the user has guessed the word, `false` otherwise
- */
-function checkWon() {
-  return gameState.userWord.join('') === gameState.word;
-}
-
-/**
  * It takes a message as an argument, and displays it in the feedback section.
- * It also displays the lives left or a game over message.
+ * It also displays the lives left, whether game is won or lost too.
  * @param message - the message to display
  */
 function feedback(message) {
   const currentLives = lives();
-  if (currentLives === 0) {
-    message += ` You lost! The word was: ${gameState.word}`;
+  if (gameState.won) {
+    message += `You won! Well done! 🎉`;
+  }
+  else if (currentLives === 0) {
+    message += ' You lost!'
+    // if the word is defined, show that to the user too
+    message += gameState.word ? ` The word was: ${gameState.word}` : '';
   } else {
     message += ` You have ${currentLives} lives left.`;
   }
@@ -89,12 +78,9 @@ function generateNewGame() {
 }
 
 /**
- * Starts a new game by choosing a random word from `words`.
- * All the letters are replaced with '_'s and stored in `gameState.userWord`.
- * This is then displayed in the instructions.
- * `gameState.onGoing` is set to `true`. `gameState.hits` and
- * `gameState.misses` are set to empty arrays. `drawKeyboard` is also called.
- * Prepares game handles.
+ * Starts a new game by requesting a new `gameState` from the server.
+ * Removes the newGame element, prepares game handles and event listeners, 
+ * redraws the hangman and keyboard, and displays a feedback message too.
  */
 async function startNewGame() {
   safeRemove('#newGame');
@@ -131,7 +117,6 @@ function checkKeyPress(e) {
       registerLetter(e.code[3]);
     }
   } else {
-    // a shortcut to restart the game, only works when onGoing is false
     if (e.code === 'Space' || e.code === 'Enter') {
       startNewGame();
     }
@@ -139,41 +124,40 @@ function checkKeyPress(e) {
 }
 
 /**
- * If the user has lives left, it checks whether a given letter is in the word.
- * If this is the case, the letter is added to the `hits` array, otherwise to the `misses`.
- * It also displays a feedback to user.
+ * If the user has lives left and has made a new guess, it requests the server to check a letter.
+ * Depending on the server response, it also displays a feedback to user
+ * and generates a new game if the game is won or no lives left.
+ * The hangman and keyboard are updated too.
+ * Otherwise (if no lives left or repetetive guess has been made) it skips the request 
+ * and just displays a feedback message.
  * @param letter - the letter that the user has guessed
  */
-function registerLetter(letter) {
+async function registerLetter(letter) {
   letter = letter.trim().toLowerCase();
 
   if (lives() > 0) {
     if (hitsAndMisses().includes(letter)) {
       feedback(`You already guessed ${letter}. Try another letter. 😇`);
     } else {
-      const found = checkLetter(letter);
-      redrawWord();
+      const url = `/games/${letter}`;
+      const response = await fetch(url, POST);
+      gameState = await response.json();
 
-      if (!found) {
-        gameState.misses.push(letter);
+      if (!gameState.last) {
         feedback(`${letter} is not in the word! ❌`);
 
         const currentLives = lives();
         if (currentLives === 0) {
-          gameState.onGoing = false;
           generateNewGame();
         }
 
         drawHangman(el.canvas, currentLives);
       } else {
-        gameState.hits.push(letter);
+        feedback(`${letter} is in the word! ✅`);
+        redrawWord();
 
-        if (checkWon()) {
-          feedback(`You won! Well done! 🎉`);
-          gameState.onGoing = false;
+        if (gameState.won) {
           generateNewGame();
-        } else {
-          feedback(`${letter} is in the word! ✅`);
         }
       }
 
@@ -201,7 +185,6 @@ function redrawWord() {
  */
 function redrawKeyboard() {
   const keyboard = document.querySelector('#keyboard');
-  // only update if the keyboard exists (on game over it gets deleted)
   if (keyboard) {
     const keyboardLetters = keyboard.querySelectorAll('[data-letter]');
     for (const letter of keyboardLetters) {
