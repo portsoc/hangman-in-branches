@@ -33,10 +33,10 @@ You should already be familiar with the concepts of modularisation and why it in
 
 We have grouped our variables `hits`, `misses`, `guessed`, `word` and `onGoing` into a single variable called `gameState`.
 All those variables are now properties of `gameState`.
-
 This will make more sense in the later branches (where `gameState` is fetched from the server).
+
 We have also simplified things by calculating lives from the `misses` array.
-This means we don't need a separate `lives` variable.
+This means we don't need a separate `lives` variable that has to be updated independently (thus improving our code quality).
 
 ### Extracting repeated code into new functions
 
