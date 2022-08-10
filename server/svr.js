@@ -19,8 +19,9 @@ const words = [
  * `hits` - an array of the letters that have been guessed correctly,
  * `misses` - an array of the letters that have been guessed incorrectly,
  * `onGoing` - a boolean that indicates if the game is still in progress,
- * `userWord` - an array of letters that has been guessed so far('_' for unguessed letters)
- * `last` - a boolean that is true if the last guess was a hit.
+ * `userWord` - an array of letters that has been guessed so far ('_' for unguessed letters),
+ * `last` - a boolean that is true if the last guess was a hit,
+ * `won` - a boolean that is true if the user has guessed the word.
  */
 const status = {};
 
@@ -110,8 +111,10 @@ function checkWon() {
  * @param res - response that contains the status object
  */
 function guessLetter(req, res) {
+  const letter = req.params.letter;
+
   if (status.onGoing) {
-    status.last = checkLetter(req.params.letter);
+    status.last = checkLetter(letter);
 
     if (status.last) {
       status.hits.push(letter);
@@ -119,8 +122,8 @@ function guessLetter(req, res) {
       status.misses.push(letter);
     }
 
-    const won = checkWon();
-    if (won || status.misses.length > 9) {
+    status.won = checkWon();
+    if (status.won || status.misses.length > 9) {
       status.onGoing = false;
     }
   }
@@ -133,7 +136,8 @@ function guessLetter(req, res) {
 }
 
 app.post('/games/', createGame);
-app.post('/games/:id/:letter', guessLetter);
+// for example /games/a will call guessLetter with letter = 'a'
+app.post('/games/:letter', guessLetter);
 
 app.listen(8080);
 
