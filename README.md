@@ -24,7 +24,7 @@ Additionally, the user may either guess the word or use up all of their attempts
 
 Our goal in this branch is to add event listeners and handlers (functions) that will respond to the user's actions.
 
-If you have not already done so, make sure to check the moodle resources for this topic and attempt the tests [in event101 repository](https://github.com/portsoc/events101).
+If you have not already done so, make sure to check the moodle resources for this topic and attempt the tests [in the event101 repository](https://github.com/portsoc/events101).
 
 ## Implementation
 
@@ -39,7 +39,7 @@ Therefore, in the `addEventListeners` function called within `init`, we attach e
 `checkLetter` decides if the letter is in the word and updates the guessed array if necessary.
 `registerLetter` will also update the `instruct` and `feedback` sections of the page accordingly and end the game if necessary.
 
-If any part of the script is confusing, check out the examples in [DOM101 repository](https://github.com/portsoc/dom101) and attempt the tasks in that repo.
+If any part of the script is confusing, check out the examples in [the DOM101 repository](https://github.com/portsoc/dom101) and attempt the tasks in that repo.
 
 To see our new changes, [visit this compare page](https://github.com/portsoc/hangman-in-branches/compare/3...4?diff=split) showing the difference between branches 3 and 4.
 
