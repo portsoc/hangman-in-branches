@@ -72,6 +72,7 @@ function createGame(req, res) {
   status.hits = [];
   status.misses = [];
   status.userWord = status.word.replace(/[a-z]/ig, '_').split('');
+
   res.json(sanitizedStatus());
 }
 
@@ -82,10 +83,10 @@ function createGame(req, res) {
  */
 function checkLetter(letter) {
   let found = false;
-  const lowercaseWord = status.word.toLowerCase();
+  const lowerCaseWord = status.word.toLowerCase();
 
   for (let i = 0; i < status.word.length; i++) {
-    if (lowercaseWord[i] === letter.toLowerCase()) {
+    if (lowerCaseWord[i] === letter.toLowerCase()) {
       status.userWord[i] = status.word[i];
       found = true;
     }
