@@ -88,9 +88,11 @@ Stop the server with <kbd>Ctrl</kbd> + <kbd>C</kbd> in the shell.
 
 Our to-do list at the moment is focusing mainly on the implementation of the server. We will later add more features to the client (e.g., CSS styling):
 
-- [ ] The server is only capable of handling one game at a time. We need to add a mechanism to handle multiple games simultaneously.
+- [ ] We still have not satisfied one of the core requirements of displaying how many moves it took to win as a score.
 
-- [ ] `server/svr.js` should be split into multiple files (we need to modularise our code serverside too).
+- [ ] The server is only capable of handling one game at a time. We need to add a mechanism to handle multiple games simultaneously. This could be a nice additional feature (as suggested in [the coursework specification](https://docs.google.com/document/d/1cF3u2ldutHaBAzFOEsnVwfKrnPTylOrn-hAGFSDWca8/edit)).
+
+- [ ] `server/svr.js` should be split into multiple files (we need to modularise the code in our server too).
 
 - [ ] Data should be stored in a database. We need a better way to store `words` and maybe the state of games at play.
 
