@@ -13,6 +13,7 @@ import {
 } from './helpers.js';
 
 /**
+ *  Stores the status of the game and has the following properties:
  * `hits` - an array of the letters that have been guessed correctly,
  * `misses` - an array of the letters that have been guessed incorrectly,
  * `onGoing` - a boolean that indicates if the game is still in progress,
@@ -22,6 +23,15 @@ import {
  * `word` - the word to be guessed (only defined when game is over).
  */
 let gameState = {};
+
+/**
+ * Stores the handles to the elements in the DOM (if exists):
+ * `el.main` - the main element of the page (that contains all sections),
+ * `el.canvas` - the canvas element ('#noose'),
+ * `el.keyboard` - the keyboard section ('#keyboard'),
+ * `el.instruct` - the instructions section ('#instruct'),
+ * `el.feedback` - the feedback section ('#feedback').
+ */
 let el = {};
 
 /**
