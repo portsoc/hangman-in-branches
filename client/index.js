@@ -105,6 +105,7 @@ async function startNewGame() {
   el.keyboard = drawKeyboard(el.main);
   drawHangman(el.canvas, 10);
   feedback('Start clicking on the buttons or press a letter on the keyboard.');
+  addEventListeners();
 }
 
 /**
@@ -130,7 +131,7 @@ function checkKeyPress(e) {
       registerLetter(e.code[3]);
     }
   } else {
-    // a shortcut to restart the game, only works when onGiong is false
+    // a shortcut to restart the game, only works when onGoing is false
     if (e.code === 'Space' || e.code === 'Enter') {
       startNewGame();
     }
