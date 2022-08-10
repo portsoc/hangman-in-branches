@@ -42,7 +42,7 @@ This means we had to move `words`, `randomIndex`, and `randomElement` to the ser
 `status` in `server/svr.js` is pretty much the same as `gameState` except that it now contains the `last` and `won` properties (whether the last guess was correct and if the user has won).
 We have also renamed `guessed` array to `userWord` to avoid confusion.
 The references to `guessed` in `index.js` are updated too.
-Remember that updates and renamings are a natural process of development.
+Remember that these updates and renamings are a natural process of development.
 
 Back on the client side, because `statrNewGame` is an asynchronous function, we need to use the `async` keyword.
 Additionally, we have moved `addEventListeners` at the end of this function so that it gets called once the game is started (and the keyboard is created).
