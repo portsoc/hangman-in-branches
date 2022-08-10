@@ -160,7 +160,7 @@ function checkKeyPress(e) {
       registerLetter(e.code[3]);
     }
   } else {
-    // a shortcut to restart the game, only works when onGiong is false
+    // a shortcut to restart the game, only works when onGoing is false
     if (e.code === 'Space' || e.code === 'Enter') {
       startNewGame();
     }

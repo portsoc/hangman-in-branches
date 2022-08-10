@@ -70,7 +70,7 @@ This will make sense when you attempt the task mentioned under the <a href="#fur
 
 OK, we lied.
 We have added a tiny feature.
-To restart the game when `onGiong` is false, we can now use the keyboard.
+To restart the game when `onGoing` is false, we can now use the keyboard.
 It was done to speed up testing.
 
 To see the new changes, head to [this compare page](https://github.com/portsoc/hangman-in-branches/compare/6...7?diff=split).
