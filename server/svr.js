@@ -19,7 +19,8 @@ const words = [
  * `hits` - an array of the letters that have been guessed correctly,
  * `misses` - an array of the letters that have been guessed incorrectly,
  * `onGoing` - a boolean that indicates if the game is still in progress,
- * `userWord` - an array of letters that has been guessed so far('_' for unguessed letters).
+ * `userWord` - an array of letters that has been guessed so far('_' for unguessed letters)
+ * `last` - a boolean that is true if the last guess was a hit.
  */
 const status = {};
 
@@ -47,6 +48,19 @@ function randomElement(array) {
 }
 
 /**
+ * It returns a copy of the status object, but without the word property
+ * @returns the status object with the word property deleted
+ */
+function sanitizedStatus() {
+  // use the spread operator to copy the object otherwise it will be a reference to the same object
+  // for more info visit the following link:
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
+  const result = { ...status };
+  delete result.word;
+  return result;
+}
+
+/**
  * Creates a new game by resettting the properties of `status` variable.
  * @param req - the request object
  * @param res - response object, contains the sanitized `status` variable (without `word` property)
@@ -57,13 +71,7 @@ function createGame(req, res) {
   status.hits = [];
   status.misses = [];
   status.userWord = status.word.replace(/[a-z]/ig, '_').split('');
-
-  // use the spread operator to copy the object otherwise it will be a reference to the same object
-  // for more info visit the following link:
-  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
-  const sanitizedStatus = { ...status };
-  delete sanitizedStatus.word;
-  res.json(sanitizedStatus);
+  res.json(sanitizedStatus());
 }
 
 /**
@@ -73,11 +81,11 @@ function createGame(req, res) {
  */
 function checkLetter(letter) {
   let found = false;
-  const lowercaseWord = game.word.toLowerCase();
+  const lowercaseWord = status.word.toLowerCase();
 
-  for (let i = 0; i < gameState.word.length; i++) {
+  for (let i = 0; i < status.word.length; i++) {
     if (lowercaseWord[i] === letter.toLowerCase()) {
-      gameState.userWord[i] = gameState.word[i];
+      status.userWord[i] = status.word[i];
       found = true;
     }
   }
@@ -90,40 +98,42 @@ function checkLetter(letter) {
  * @returns `true` if the user has guessed the word, `false` otherwise
  */
 function checkWon() {
-  return gameState.userWord.join('') === gameState.word;
+  return status.userWord.join('') === status.word;
 }
 
 /**
- * It returns a copy of the status object, but without the word property
- * @returns the status object with the word property deleted
+ * If the game is ongoing, then we check if the letter is in the word, and if it is,
+ * we add it to hits array, otherwise we add it to the misses array.
+ * If the user has guessed the word or has no lives left, then we end the game.
+ * The sanitized status is sent to the client as a response (or the full status on gameover).
+ * @param req - request object
+ * @param res - response that contains the status object
  */
-function sanitizedStatus() {
-  const result = { ...status };
-  delete result.word;
-  return result;
-}
-
 function guessLetter(req, res) {
-  if (game.ongoing) {
-    const hit = checkLetter(req.params.letter);
+  if (status.onGoing) {
+    status.last = checkLetter(req.params.letter);
 
-    if (hit) {
-      game.hits.push(letter);
+    if (status.last) {
+      status.hits.push(letter);
     } else {
-      game.misses.push(letter);
+      status.misses.push(letter);
     }
 
     const won = checkWon();
-    if (won || game.misses.length > 9) {
-      game.ongoing = false;
+    if (won || status.misses.length > 9) {
+      status.onGoing = false;
     }
   }
 
-  return game.ongoing ? sanitizedStatus(id) : game;
-  res.json(game.guessLetter(req.params.id, req.params.letter));
+  // if gameover then we don't mind sending status.word to client
+  // if you are confused by the conditional operator (?) checkout this page:
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
+  const response = status.onGoing ? sanitizedStatus() : status;
+  res.json(response);
 }
 
 app.post('/games/', createGame);
+app.post('/games/:id/:letter', guessLetter);
 
 app.listen(8080);
 
