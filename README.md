@@ -28,8 +28,8 @@ We also recommend you view the [staged-simple-messageboard](https://github.com/p
 
 ## Implementation
 
-We are planning to move `gameState` and all functions that update it from `client/index.js` to `server/svr.js`.
-We also need to update the client so that it sends a request to get this variable or update it.
+We are moving `gameState` and all functions that update it from `client/index.js` to `server/svr.js`.
+We are also going to update the client so that it sends a request to get this variable for the first time or update it.
 
 ### Starting a new game
 
@@ -79,12 +79,21 @@ Stop the server with <kbd>Ctrl</kbd> + <kbd>C</kbd> in the shell.
 
 ## Todo
 
-We have met all of the goals we have set previously.
-So it is time to set out new goals for ourselves.
-See the <a href="#further-exploration">further exploration</a>.
+Our to-do list at the moment is focusing mainly on the implementation of the server. We will later add more features to the client (e.g., CSS styling):
 
-- [] Task 1
+- [ ] The server is only capable of handling one game at a time. We need to add a mechanism to handle multiple games simultaneously.
+
+- [ ] `server/svr.js` should be split into multiple files (we need to modularise our code serverside too).
+
+- [ ] Data should be stored in a database. We need a better way to store `words` and maybe the state of games at play.
 
 ## Further Exploration
+
+IMDB provides an API that returns a list of movies (e.g. top 250 films).
+Check out their [API documentation](https://imdb-api.com/api) and if you feel up to the challenge, try to implement it as a means to provide a list of movies.
+
+We are not going to implement this in later branches but feel free to show us your solution.
+To recap, your goal is to replace the `words` array with the list of movies retrieved from this API.
+If you get stuck, take a look at [this example](https://github.com/portsoc/fetch101/blob/master/examples/6_other_peoples_data/script.mjs) from the fetch101 repository.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
