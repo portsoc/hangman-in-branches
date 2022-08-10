@@ -35,7 +35,7 @@ let gameState = {};
 let el = {};
 
 /**
- * Returns number of lives based on `gameState.misses` (if exists).
+ * Returns number of lives based on `gameState.misses`, if it doesn't exist, it returns `0`.
  * @returns number of lives
  */
 function lives() {
@@ -55,13 +55,13 @@ function hitsAndMisses() {
 
 /**
  * It takes a message as an argument, and displays it in the feedback section.
- * It also displays the lives left, whether game is won or lost too.
+ * It also displays the lives left and whether game is won or lost.
  * @param message - the message to display
  */
 function feedback(message) {
   const currentLives = lives();
   if (gameState.won) {
-    message += `You won! Well done! 🎉`;
+    message += ' You won! Well done! 🎉';
   }
   else if (currentLives === 0) {
     message += ' You lost!'
@@ -134,7 +134,7 @@ function checkKeyPress(e) {
 }
 
 /**
- * If the user has lives left and has made a new guess, it requests the server to check a letter.
+ * If the game is ongoing and the user has made a new guess, requests the server to check a letter.
  * Depending on the server response, it also displays a feedback to user
  * and generates a new game if the game is won or no lives left.
  * The hangman and keyboard are updated too.
@@ -145,7 +145,7 @@ function checkKeyPress(e) {
 async function registerLetter(letter) {
   letter = letter.trim().toLowerCase();
 
-  if (lives() > 0) {
+  if (gameState.onGoing && letter.length === 1) {
     if (hitsAndMisses().includes(letter)) {
       feedback(`You already guessed ${letter}. Try another letter. 😇`);
     } else {
@@ -156,12 +156,11 @@ async function registerLetter(letter) {
       if (!gameState.last) {
         feedback(`${letter} is not in the word! ❌`);
 
-        const currentLives = lives();
-        if (currentLives === 0) {
+        if (!gameState.onGoing) {
           generateNewGame();
         }
 
-        drawHangman(el.canvas, currentLives);
+        drawHangman(el.canvas, lives());
       } else {
         feedback(`${letter} is in the word! ✅`);
         redrawWord();
@@ -195,22 +194,24 @@ function redrawWord() {
  */
 function redrawKeyboard() {
   const keyboard = document.querySelector('#keyboard');
+
   if (keyboard) {
-    const keyboardLetters = keyboard.querySelectorAll('[data-letter]');
-    for (const letter of keyboardLetters) {
-      if (hitsAndMisses().includes(letter.dataset.letter)) {
-        letter.disabled = true;
+    const keys = keyboard.querySelectorAll('[data-letter]');
+
+    for (const key of keys) {
+      if (hitsAndMisses().includes(key.dataset.letter)) {
+        key.disabled = true;
       }
     }
   }
 }
 
 /**
- * It adds event listeners for the physical keyboard presses and the on-screen keyboard.
+ * Adds event listeners for the physical keyboard presses and the on-screen keyboard (if exists).
  */
 function addEventListeners() {
   window.addEventListener('keydown', checkKeyPress);
-  el.keyboard.addEventListener('click', checkClick);
+  el.keyboard?.addEventListener('click', checkClick);
 }
 
 /**
