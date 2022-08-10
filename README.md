@@ -100,7 +100,8 @@ Follow this [instruction on how to clone a repository in Visual Studio Code](htt
 ## Selecting a branch
 
 This project is built in stages.
-Each stage is labeled with a number starting from zero (which is the branch you are currently in).
+Each stage of our development is labeled with a number starting from zero.
+The branch you are currently in is labeled as 'intro'.
 
 For simplicity, we have made a branch for each stage (but be aware that this is not a conventional use of branches).
 
