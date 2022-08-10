@@ -56,7 +56,7 @@ So we have not included `node_modules` in the repository.
 Inside `package.json` we have added a `start` script and added the attribute `type` set to `module`.
 This lets us use import statements (for more info check out [this documentation page](https://nodejs.org/docs/latest-v13.x/api/esm.html#esm_enabling)).
 
-Now by running `npm start` in the shell, we can see our site being served in our machine over on port 8080 (http://localhost:8080).
+Now by running `npm start` in the shell, we can see our site is being served in our machine over port 8080 (http://localhost:8080).
 To stop the site, we can use <kbd>Ctrl</kbd> + <kbd>C</kbd> in the shell.
 
 ### Fix: Non-alphabetical symbols
