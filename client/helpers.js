@@ -4,6 +4,7 @@
  */
 export function safeRemove(selector) {
   const elements = document.querySelectorAll(selector);
+
   for (const element of elements) {
     element.remove();
   }
@@ -20,18 +21,17 @@ export function safeRemove(selector) {
  */
 export function create(type, parent, attributes = {}, text) {
   const element = document.createElement(type);
-  // for every property name (key in the map of attributes)
+
   for (const propertyName of Object.keys(attributes)) {
-    // set the attribute of the element to the value of the property in the attributes map
     element[propertyName] = attributes[propertyName];
   }
-  // if the text parameter is provided, set the textContent of the element to the text parameter
+
   if (text) {
     element.textContent = text;
   }
-  // append the element to the parent element if exists
+
   parent?.append(element);
-  // return the element in case it is needed to be used further
+
   return element;
 }
 
