@@ -100,9 +100,9 @@ Follow this [instruction on how to clone a repository in Visual Studio Code](htt
 ## Selecting a branch
 
 This project is built in stages.
-Each stage is labeled with a number starting from zero.
+Each stage is labeled with a number starting from zero (which is the branch you are currently in).
 
-For simplicity, we have made a branch for each stage but be aware that this is not a conventional use of braches.
+For simplicity, we have made a branch for each stage (but be aware that this is not a conventional use of branches).
 
 As an example, here is the link to the first branch:
 [https://github.com/portsoc/hangman-in-branches/tree/0](https://github.com/portsoc/hangman-in-branches/tree/0).
