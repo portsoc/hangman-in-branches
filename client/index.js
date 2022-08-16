@@ -58,13 +58,15 @@ function hitsAndMisses() {
  * It also displays the lives left and whether game is won or lost.
  * @param message - the message to display
  */
-function feedback(message) {
+async function feedback(message) {
   const currentLives = lives();
   if (gameState.won) {
-    message += ' You won! Well done! 🎉';
+    message += ' You won!';
+    const score = await getScore();
+    message += ` Your score is ${score}, well done! 🎉`;
   }
   else if (currentLives === 0) {
-    message += ' You lost!'
+    message += ' You lost! 😭';
     message += gameState.word ? ` The word was: ${gameState.word}` : '';
   } else {
     message += ` You have ${currentLives} lives left.`;
@@ -101,11 +103,19 @@ async function startNewGame() {
   drawHangman(el.canvas, 10);
   feedback('Start clicking on the buttons or press a letter on the keyboard.');
   addEventListeners();
+}
 
-  //TODO: remove this
-  const scoreResponse = await fetch('/games/score', GET);
-  const score = await scoreResponse.json();
-  console.log(score.score);
+/**
+ * It requests the score of the game from the server and returns it if the game was won.
+ * @returns The score of the game.
+ */
+async function getScore() {
+  const response = await fetch('/games/score', GET);
+  const responseObject = await response.json();
+
+  // check if the score property exists
+  const score = responseObject.score ? responseObject.score : 0;
+  return score;
 }
 
 /**
