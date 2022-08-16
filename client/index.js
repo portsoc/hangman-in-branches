@@ -1,6 +1,6 @@
-// we are using 'POST' to send a request to make a new game or check our guess
-// we can't use 'GET' (for read-only requests) as we are changing `status` in `server/svr.js`
 const POST = { method: 'POST' };
+// we are using 'GET' to request the score from the server (it is a read-only request)
+const GET = { method: 'GET' };
 
 import {
   drawHangman,
@@ -65,7 +65,6 @@ function feedback(message) {
   }
   else if (currentLives === 0) {
     message += ' You lost!'
-    // if the word is defined, show that to the user too
     message += gameState.word ? ` The word was: ${gameState.word}` : '';
   } else {
     message += ` You have ${currentLives} lives left.`;
@@ -102,6 +101,11 @@ async function startNewGame() {
   drawHangman(el.canvas, 10);
   feedback('Start clicking on the buttons or press a letter on the keyboard.');
   addEventListeners();
+
+  //TODO: remove this
+  const scoreResponse = await fetch('/games/score', GET);
+  const score = await scoreResponse.json();
+  console.log(score.score);
 }
 
 /**
