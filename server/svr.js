@@ -130,13 +130,13 @@ function guessLetter(req, res) {
 }
 
 /**
- * If the player won, return a score based on the number of misses, otherwise returns `0`.
+ * Game is won and over, respond with a score based on the number of misses, otherwise `0`.
  * @param req - request object
  * @param res - response that contains the score
  */
 function calculateScore(req, res) {
   let score = 0;
-  if (status.won) {
+  if (status.won && !status.onGoing) {
     score = 1 / (1 + status.misses.length) * 1000;
     // let's round the score to the nearest integer
     score = Math.round(score);

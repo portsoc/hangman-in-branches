@@ -43,12 +43,12 @@ Since we want to allow multiple games to run concurrently and perhaps create a l
 Of course, we don't want the client to calculate their score as well (it would be redundant) and nor do we want them to put their scores on the server (which allows them to cheat).
 So we should add the score calculation to `server/svr.js`.
 
-
-
-
-
+`calculateScore` in the server now responds with the score if the game is won.
+`getScore` in `client/index.js` requests the score from the server and is used by the `feedback` function to display the score.
 
 ### Hosting multiple games
+
+
 
 ### Modularising the server
 
