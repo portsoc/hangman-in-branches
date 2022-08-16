@@ -60,8 +60,9 @@ function hitsAndMisses() {
  */
 async function feedback(message) {
   const currentLives = lives();
-  if (gameState.won) {
+  if (gameState.won && !gameState.onGoing) {
     message += ' You won!';
+    
     const score = await getScore();
     message += ` Your score is ${score}, well done! 🎉`;
   }
