@@ -2,7 +2,7 @@
 
 <!-- BRANCH TITLE -->
 
-# Branch 9: Sever Part 2
+# Branch 9: Server Part 2
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -18,7 +18,7 @@
 
 ## Objectives
 
-Aside from minor improvements, we are aiming to close the following tasks that we opened in the to-do list of [the previous branch](https://github.com/portsoc/hangman-in-branches/tree/8):
+Aside from minor improvements, we are aiming to close the following tasks opened in the to-do list of [the previous branch](https://github.com/portsoc/hangman-in-branches/tree/8):
 
 - Calculating and displaying a score
 - Hosting multiple games
@@ -27,6 +27,24 @@ Aside from minor improvements, we are aiming to close the following tasks that w
 ## Implementation
 
 ### Calculating and displaying a score
+
+We as the developer can decide what a score is and how it is calculated.
+So let's define the score with the following formula:
+  
+  ```js
+  score = 1 / (1 + misses.length) * 1000
+  ```
+
+If we choose to expand our game by introducing a countdown or a difficult level, we can update the formula later.
+But let's keep it simple for now.
+
+We need to think about where we add the functionality to calculate a score, client-side or server-side.
+Since we want to allow multiple games to run concurrently and perhaps create a leaderboard, we need access to the scores on the server.
+Of course, we don't want the client to calculate their score as well (it would be redundant) and nor do we want them to put their scores on the server (which allows them to cheat).
+So we can conclude that we need to add the score calculation to the server.
+
+
+
 
 ### Hosting multiple games
 
