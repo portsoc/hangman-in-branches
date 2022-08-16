@@ -3,7 +3,6 @@ import path from 'path';
 
 const app = express();
 
-// define the path to the client folder using "path.join" (works both on windows and unix systems)
 const clientPath = path.join(path.resolve(), '/client');
 app.use(express.static(clientPath));
 
@@ -53,9 +52,6 @@ function randomElement(array) {
  * @returns the status object with the word property deleted
  */
 function sanitizedStatus() {
-  // use the spread operator to copy the object otherwise it will be a reference to the same object
-  // for more info visit the following link:
-  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
   const result = { ...status };
   delete result.word;
   return result;
@@ -129,29 +125,29 @@ function guessLetter(req, res) {
     }
   }
 
-  // if gameover then we don't mind sending status.word to client
-  // if you are confused by the conditional operator (?) checkout this page:
-  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator
   const response = status.onGoing ? sanitizedStatus() : status;
   res.json(response);
 }
 
 /**
- * If the player won, return a score based on the number of misses, otherwise return 0
- * @returns score of the game (1000 if game won without any misses, 0 otherwise)
+ * If the player won, return a score based on the number of misses, otherwise returns `0`.
+ * @param req - request object
+ * @param res - response that contains the score
  */
-function calculateScore() { 
+function calculateScore(req, res) {
   let score = 0;
   if (status.won) {
     score = 1 / (1 + status.misses.length) * 1000;
-    return Math.round(score); 
+    // let's round the score to the nearest integer
+    score = Math.round(score);
   }
-  return 0;
+
+  res.json({ score });
 }
 
 app.post('/games/', createGame);
-// for example /games/a will call guessLetter with letter = 'a'
 app.post('/games/:letter', guessLetter);
+app.get('/games/score', calculateScore);
 
 app.listen(8080);
 
