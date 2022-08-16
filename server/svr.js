@@ -136,6 +136,19 @@ function guessLetter(req, res) {
   res.json(response);
 }
 
+/**
+ * If the player won, return a score based on the number of misses, otherwise return 0
+ * @returns score of the game (1000 if game won without any misses, 0 otherwise)
+ */
+function calculateScore() { 
+  let score = 0;
+  if (status.won) {
+    score = 1 / (1 + status.misses.length) * 1000;
+    return Math.round(score); 
+  }
+  return 0;
+}
+
 app.post('/games/', createGame);
 // for example /games/a will call guessLetter with letter = 'a'
 app.post('/games/:letter', guessLetter);
