@@ -103,4 +103,17 @@ Our to-do list at the moment is focusing mainly on the implementation of the ser
 
 ## Further Exploration
 
+Our multiplayer game may not make much sense at the moment since we are serving it on localhost.
+You can still access the game from different browsers but you will have to host your game to be able to access it on the internet from different devices.
+
+Try hosting this game to learn how to do the same with your submissions.
+Remember that you need to have the code for your submission on a private GitHub repository.
+Once you have done this, follow the instructions in the "If you want to run a Web server" section of [this document](https://docs.google.com/document/d/1zqvC5jOoXQlXggKZkEC025H-N6k7HxdTHpsy0Iylt0c/edit?usp=sharing).
+Clone the repository in the `web` directory of your [Virtual Machines](https://uop-1-server-per-student-devel.appspot.com/), serve it and try to access the game from different devices.
+
+We will also leave you with another challenge to try out.
+At the moment, we have no way of deleting a game from the server once it is finished.
+The `status` object stays in the `gamesInPlay` array even after the game is finished and the user has started a new one.
+Develop a solution for this issue and feel free to show it to us in the class.
+
 <p align="right">(<a href="#top">back to top</a>)</p>
