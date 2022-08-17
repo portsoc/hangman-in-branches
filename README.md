@@ -48,7 +48,9 @@ So we should add the score calculation to `server/svr.js`.
 
 ### Hosting multiple games
 
-
+We need to store a collection of games on the server (each game has its `status` variable).
+But to be able to distinguish between every game, we need to add a unique identifier to each game.
+For this reason, we turn to [the `uuid` npm package](https://www.npmjs.com/package/uuid).
 
 ### Modularising the server
 
