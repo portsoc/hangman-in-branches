@@ -160,7 +160,6 @@ function guessLetter(req, res) {
  */
 function calculateScore(req, res) {
   const id = req.params.id;
-  console.log(gamesInPlay[id]);
 
   let score = 0;
   if (gamesInPlay[id].won && !gamesInPlay[id].onGoing) {
