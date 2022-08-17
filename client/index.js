@@ -14,6 +14,8 @@ import {
 
 /**
  *  Stores the status of the game and has the following properties:
+ * `id` - the id of the game,
+ * `word` - the word to be guessed (only available if the game is lost),
  * `hits` - an array of the letters that have been guessed correctly,
  * `misses` - an array of the letters that have been guessed incorrectly,
  * `onGoing` - a boolean that indicates if the game is still in progress,
