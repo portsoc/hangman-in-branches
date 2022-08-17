@@ -65,19 +65,6 @@ async function feedback(message) {
     message += ` You have ${lives()} lives left.`;
   }
 
-  const currentLives = lives();
-  if (gameState.won && !gameState.onGoing) {
-    message += ' You won!';
-
-    const score = await getScore();
-    message += ` Your score is ${score}, well done! 🎉`;
-  }
-  else if (!gameState.onGoing) {
-    message += ' You lost! 😭';
-    message += gameState.word ? ` The word was: ${gameState.word}` : '';
-  } else {
-    message += ` You have ${lives()} lives left.`;
-  }
   el.feedback.textContent = message;
 }
 
@@ -169,19 +156,19 @@ async function registerLetter(letter) {
 
   if (gameState.onGoing && letter.length === 1) {
     if (hitsAndMisses().includes(letter)) {
-      feedback(`You already guessed ${letter}. Try another letter. 😇`);
+      feedback(`You already guessed '${letter}'. Try another letter. 😇`);
     } else {
       await sendGuess(letter);
 
       if (!gameState.last) {
         if (!gameState.onGoing) {
-          const message = `Your last guess '${letter}' was wrong. You lost 😭.`
-          message += gameState.word ? ` The word was: ${gameState.word}` : '';
+          let message = `You lost! Your last guess, '${letter}', was wrong. 😭`
+          message += gameState.word ? ` The word was: '${gameState.word}'` : '';
           feedback(message);
 
           generateNewGame();
         } else {
-          feedback(`${letter} is not in the word! ❌`);
+          feedback(`Sorry! '${letter}' is not a letter in the word. ❌`);
         }
 
         drawHangman(el.canvas, lives());
@@ -193,7 +180,7 @@ async function registerLetter(letter) {
           feedback(`You won! Your score is ${score}, well done! 🎉`);
           generateNewGame();
         } else {
-          feedback(`${letter} is in the word! ✅`);
+          feedback(`Good job! '${letter}' is in the word. ✅`);
         }
       }
 
