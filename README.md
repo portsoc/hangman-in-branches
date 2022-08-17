@@ -30,10 +30,10 @@ Aside from minor improvements, we are aiming to close the following tasks opened
 
 We as the developer can decide what a score is and how it is calculated.
 So let's define the score with the following formula:
-  
-  ```js
-  score = 1 / (1 + misses.length) * 1000
-  ```
+
+```js
+score = (1 / (1 + misses.length)) * 1000;
+```
 
 If we choose to expand our game by introducing a countdown or a difficult level, we can update the formula later.
 But let's keep it simple for now.
@@ -50,7 +50,18 @@ So we should add the score calculation to `server/svr.js`.
 
 We need to store a collection of games on the server (each game has its `status` variable).
 But to be able to distinguish between every game, we need to add a unique identifier to each game.
-For this reason, we turn to [the `uuid` npm package](https://www.npmjs.com/package/uuid).
+For this reason, we are going to be using [the `uuid` npm package](https://www.npmjs.com/package/uuid).
+
+Following the instructions in the "Quickstart" section of the NPM page, we can install the `uuid` package with:
+
+```bash
+npm install uuid
+```
+
+We then import it to our server and use it to create unique IDs for each game in the `gamesInPlay` array.
+`createGame` now adds the status to `gamesInPlay` and returns the unique ID to the client.
+`guessLetter` also requires a unique ID to identify the game in addition to the letter that the player has guessed.
+Notice the change in the route for guessing a letter too.
 
 ### Modularising the server
 
@@ -90,7 +101,5 @@ Our to-do list at the moment is focusing mainly on the implementation of the ser
 - [ ] We should lint our code, checking its quality, before submission (although this could have been done earlier too).
 
 ## Further Exploration
-
-At the moment we are not using the request parameter of the `createGame` and `calculateScore` functions
 
 <p align="right">(<a href="#top">back to top</a>)</p>
