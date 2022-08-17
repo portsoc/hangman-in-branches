@@ -62,7 +62,7 @@ async function feedback(message) {
   const currentLives = lives();
   if (gameState.won && !gameState.onGoing) {
     message += ' You won!';
-    
+
     const score = await getScore();
     message += ` Your score is ${score}, well done! 🎉`;
   }
@@ -111,7 +111,8 @@ async function startNewGame() {
  * @returns The score of the game.
  */
 async function getScore() {
-  const response = await fetch('/games/score', GET);
+  const url = `/games/${gameState.id}/score`;
+  const response = await fetch(url, GET);
   const responseObject = await response.json();
 
   // check if the score property exists
@@ -164,7 +165,7 @@ async function registerLetter(letter) {
     if (hitsAndMisses().includes(letter)) {
       feedback(`You already guessed ${letter}. Try another letter. 😇`);
     } else {
-      const url = `/games/${letter}`;
+      const url = `/games/${gameState.id}/${letter}`;
       const response = await fetch(url, POST);
       gameState = await response.json();
 
