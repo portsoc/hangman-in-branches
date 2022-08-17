@@ -57,10 +57,14 @@ function hitsAndMisses() {
 
 /**
  * It takes a message as an argument, and displays it in the feedback section.
- * It also displays the lives left and whether game is won or lost.
+ * It also displays the number of lives in the feedback section if the game is on.
  * @param message - the message to display
  */
 async function feedback(message) {
+  if (gameState.onGoing) {
+    message += ` You have ${lives()} lives left.`;
+  }
+
   const currentLives = lives();
   if (gameState.won && !gameState.onGoing) {
     message += ' You won!';
@@ -68,11 +72,11 @@ async function feedback(message) {
     const score = await getScore();
     message += ` Your score is ${score}, well done! 🎉`;
   }
-  else if (currentLives === 0) {
+  else if (!gameState.onGoing) {
     message += ' You lost! 😭';
     message += gameState.word ? ` The word was: ${gameState.word}` : '';
   } else {
-    message += ` You have ${currentLives} lives left.`;
+    message += ` You have ${lives()} lives left.`;
   }
   el.feedback.textContent = message;
 }
@@ -167,30 +171,45 @@ async function registerLetter(letter) {
     if (hitsAndMisses().includes(letter)) {
       feedback(`You already guessed ${letter}. Try another letter. 😇`);
     } else {
-      const url = `/games/${gameState.id}/${letter}`;
-      const response = await fetch(url, POST);
-      gameState = await response.json();
+      await sendGuess(letter);
 
       if (!gameState.last) {
-        feedback(`${letter} is not in the word! ❌`);
-
         if (!gameState.onGoing) {
+          const message = `Your last guess '${letter}' was wrong. You lost 😭.`
+          message += gameState.word ? ` The word was: ${gameState.word}` : '';
+          feedback(message);
+
           generateNewGame();
+        } else {
+          feedback(`${letter} is not in the word! ❌`);
         }
 
         drawHangman(el.canvas, lives());
       } else {
-        feedback(`${letter} is in the word! ✅`);
         redrawWord();
 
         if (gameState.won) {
+          const score = await getScore();
+          feedback(`You won! Your score is ${score}, well done! 🎉`);
           generateNewGame();
+        } else {
+          feedback(`${letter} is in the word! ✅`);
         }
       }
 
       redrawKeyboard();
     }
   }
+}
+
+/**
+ * It sends a guess to the server and updates the game state
+ * @param letter - The letter that the user guessed.
+ */
+async function sendGuess(letter) {
+  const url = `/games/${gameState.id}/${letter}`;
+  const response = await fetch(url, POST);
+  gameState = await response.json();
 }
 
 /**
