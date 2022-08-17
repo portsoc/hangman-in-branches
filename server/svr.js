@@ -123,7 +123,7 @@ function checkWon(id) {
 }
 
 /**
- * Given a game's id, if the game is ongoing, it checks if a given letter is in the word.
+ * Given a game's id, if the game exists and is ongoing, it checks if a given letter is in the word.
  * If this was the case, we add it to hits array, otherwise we add it to the misses array.
  * If the user has guessed the word or has no lives left, then we end the game.
  * The sanitized status is sent to the client as a response (or the full status on gameover).
@@ -134,7 +134,7 @@ function guessLetter(req, res) {
   const letter = req.params.letter.toLowerCase();
   const id = req.params.id;
 
-  if (gamesInPlay[id].onGoing) {
+  if (gamesInPlay[id]?.onGoing) {
     gamesInPlay[id].last = checkLetter(letter, id);
 
     if (gamesInPlay[id].last) {
@@ -147,22 +147,22 @@ function guessLetter(req, res) {
     if (gamesInPlay[id].won || gamesInPlay[id].misses.length > 9) {
       gamesInPlay[id].onGoing = false;
     }
-  }
 
-  const response = gamesInPlay[id].onGoing ? sanitizedStatus(id) : gamesInPlay[id];
-  res.json(response);
+    const response = gamesInPlay[id].onGoing ? sanitizedStatus(id) : gamesInPlay[id];
+    res.json(response);
+  }
 }
 
 /**
- * Game is won and over, respond with a score based on the number of misses, otherwise `0`.
+ * Game is won, respond with a score based on the number of misses, otherwise and error message.
  * @param req - request object containing the game's id
  * @param res - response that contains the score
  */
 function calculateScore(req, res) {
   const id = req.params.id;
 
-  let score = 0;
-  if (gamesInPlay[id].won && !gamesInPlay[id].onGoing) {
+  let score = 'Error in calcularing the score.';
+  if (gamesInPlay[id]?.won) {
     score = 1 / (1 + gamesInPlay[id].misses.length) * 1000;
     // let's round the score to the nearest integer
     score = Math.round(score);
