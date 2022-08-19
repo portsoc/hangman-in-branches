@@ -66,6 +66,11 @@ Notice the change in the route for guessing a letter too.
 
 ### Modularising the server
 
+The `svr.js` at this point is very large and contains a lot of functionality.
+We are going to separate the game's logic from the server logic and place it in a new module called `game.js`.
+
+The server is now just handling requests and calling the game module to generate responses.
+
 See all of our changes by visiting [this compare page](https://github.com/portsoc/hangman-in-branches/compare/8...9?diff=split).
 
 ## Usage
