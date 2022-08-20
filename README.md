@@ -39,7 +39,7 @@ If we choose to expand our game by introducing a countdown or a difficulty, we c
 But let's keep it simple for now.
 
 We need to think about where we add the functionality to calculate a score, client-side or server-side.
-Since we want to allow multiple games to run concurrently and perhaps create a leaderboard, we need access to the scores on the server.
+Since we want to allow multiple games to run concurrently and perhaps create a leaderboard, we need access to the scores on the server (where are the games are stored).
 Of course, we don't want the client to calculate their score as well (it would be redundant) and nor do we want them to put their scores on the server (which allows them to cheat).
 This concludes that we should add the score calculation to the server.
 
