@@ -1,4 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
+import { words } from './data.js';
+
 
 /**
  * Stores the status objects of the game in play. Each object has the following properties:
@@ -12,12 +14,6 @@ import { v4 as uuidv4 } from 'uuid';
  * `won` - a boolean that is true if the user has guessed the word.
  */
 const gamesInPlay = [];
-
-const words = [
-  'Jurassic Park', 'Star Wars', 'The Matrix',
-  'The Godfather', 'The Dark Knight', 'The Lord of the Rings',
-  'The Lord of the Rings', 'The Dark Knight', 'Pulp Fiction',
-];
 
 /**
  * Takes the size of an array and returns a random index between 0 and size.
