@@ -1,6 +1,6 @@
 import express from 'express';
 import path from 'path';
-import { createGame, guessLetter, calculateScore } from './game';
+import * as game from './game.js';
 
 const app = express();
 
