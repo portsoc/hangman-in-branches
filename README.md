@@ -62,7 +62,7 @@ We then import it to our server and use it (by calling `uuidv4()`) to create uni
 
 `createGame` now creates a new game in `gamesInPlay` and returns it (with its unique ID) to the client.
 `guessLetter` also requires a unique ID to identify the game in addition to the letter that the player has guessed.
-Notice the change in the route for guessing a letter too.
+Notice the change in the url for guessing a letter too (see `sendGuess`).
 
 ### Modularising the server
 
