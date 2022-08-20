@@ -79,8 +79,8 @@ export function createGame() {
 /**
  * Given a game's id, check if a given letter is in the game's word.
  * It also updates the `userWord` of the game.
- * @param letter - the letter that the user guessed
- * @param id - the unique identifier for the game
+ * @param letter - The letter that the user guessed
+ * @param id - The unique identifier for the game
  * @returns `true` if the letter is in the word, `false` otherwise
  */
 function checkLetter(letter, id) {
@@ -103,7 +103,7 @@ function checkLetter(letter, id) {
 
 /**
  * Given a game's id, checks whether the user has guessed the word.
- * @param id - the unique identifier for the game
+ * @param id - The unique identifier for the game
  * @returns `true` if the user has guessed the word, `false` otherwise
  */
 function checkWon(id) {
@@ -117,8 +117,10 @@ function checkWon(id) {
 /**
  * Given a game's id, if the game exists and is ongoing, it checks if a given letter is in the word.
  * If this was the case, we add it to hits array, otherwise we add it to the misses array.
- * If the user has guessed the word or has no lives left, then we end the game.
+ * If the user has fully guessed the word or has no lives left, then we end the game.
  * The sanitized status is returned (or the full status on gameover).
+ * @param id - The unique identifier for the game
+ * @param letter - The letter to check
  * @returns The status object.
  */
 export function guessLetter(id, letter) {
@@ -140,4 +142,19 @@ export function guessLetter(id, letter) {
 
     return gamesInPlay[id].onGoing ? sanitizedStatus(id) : gamesInPlay[id];
   }
+}
+
+/**
+ * Game is won, respond with a score based on the number of misses, otherwise and error message.
+ * @param id - The unique identifier for the game
+ * @returns The score if the game is won, otherwise an error message.
+ */
+export function calculateScore(id) {
+  let score = 'Error in calcularing the score.';
+  if (gamesInPlay[id]?.won) {
+    score = 1 / (1 + gamesInPlay[id].misses.length) * 1000;
+    // let's round the score to the nearest integer
+    score = Math.round(score);
+  }
+  return score;
 }

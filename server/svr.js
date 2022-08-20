@@ -1,6 +1,6 @@
 import express from 'express';
 import path from 'path';
-import { createGame, guessLetter } from './game';
+import { createGame, guessLetter, calculateScore } from './game';
 
 const app = express();
 
@@ -37,13 +37,7 @@ function guessLetter(req, res) {
  */
 function calculateScore(req, res) {
   const id = req.params.id;
-
-  let score = 'Error in calcularing the score.';
-  if (gamesInPlay[id]?.won) {
-    score = 1 / (1 + gamesInPlay[id].misses.length) * 1000;
-    // let's round the score to the nearest integer
-    score = Math.round(score);
-  }
+  const score = game.calculateScore(id);
 
   res.json({ score });
 }
