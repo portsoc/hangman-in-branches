@@ -66,11 +66,11 @@ Notice the change in the route for guessing a letter too.
 
 ### Modularising the server
 
-The `svr.js` at this point is very large and contains, data, a lot of functionality as well as helper functions.
-We are going to separate the game's logic from the server logic and place it in a new module called `game.js`.
-We then take the static data (`words` array) and place it in `data.js` and similarly moved the helper functions to `helpers.js`.
-By the end, the `svr.js` is just handling requests and calling `game.js` to generate responses.
-`game.js` in turn uses `data.js` and calls `helpers.js` to handle the game's logic.
+The `server/svr.js` at this point is very large and contains, data, a lot of functionality as well as helper functions.
+We are going to separate the game's logic from the server logic and place it in a new module called `server/game.js`.
+We then take the static data (`words` array) and place it in `server/data.js` and similarly moved the helper functions to `server/helpers.js`.
+By the end, the `server/svr.js` is just handling requests and calling `server/game.js` to generate responses.
+`server/game.js` in turn takes its data from `server/data.js` and uses `server/helpers.js` to handle the game's logic.
 
 See all of our changes by visiting [this compare page](https://github.com/portsoc/hangman-in-branches/compare/8...9?diff=split).
 
