@@ -41,7 +41,7 @@ But let's keep it simple for now.
 We need to think about where we add the functionality to calculate a score, client-side or server-side.
 Since we want to allow multiple games to run concurrently and perhaps create a leaderboard, we need access to the scores on the server.
 Of course, we don't want the client to calculate their score as well (it would be redundant) and nor do we want them to put their scores on the server (which allows them to cheat).
-So we should add the score calculation to `server/svr.js`.
+This concludes that we should add the score calculation to the server.
 
 `calculateScore` in the server now responds with the score if the game is won.
 `getScore` in `client/index.js` requests the score from the server and is used by the `feedback` function to display the score.
@@ -69,7 +69,9 @@ Notice the change in the route for guessing a letter too.
 The `svr.js` at this point is very large and contains a lot of functionality.
 We are going to separate the game's logic from the server logic and place it in a new module called `game.js`.
 
-The server is now just handling requests and calling the game module to generate responses.
+You will find that `gamesInPlay`, `words`, `createGame`, `guessLetter` and `calculateScore` are located in the `game.js` module (alongside their dependencies).
+The `svr.js` is just handling requests and calling `game.js` to generate responses.
+It is always a good idea to maintain this separation between your application's logic and the actual server.
 
 See all of our changes by visiting [this compare page](https://github.com/portsoc/hangman-in-branches/compare/8...9?diff=split).
 
@@ -140,7 +142,7 @@ function keepGameAlive(id) {
 }
 ```
 
-Ultimately use the [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) to call a function like `deleteOldGames` to regularly delete old games:
+Ultimately use the [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) to regularly call a function like `deleteOldGames` to delete old games:
 
 ```js
 function deleteOldGames() {
@@ -153,6 +155,7 @@ function deleteOldGames() {
 }
 ```
 
-Develop a solution for this issue and feel free to show it to us in the class.
+Remember that you should return appropriate responses to the client when their requests' are about old/expired games.
+Once you have a working solution, make sure to test it and feel free to show it to us in the class.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
