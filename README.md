@@ -99,11 +99,11 @@ Our to-do list at the moment is focusing mainly on the implementation of the ser
 
 - [x] The server is only capable of handling one game at a time. We need to add a mechanism to handle multiple games simultaneously. This could be a nice additional feature (as suggested in [the coursework specification](https://docs.google.com/document/d/1cF3u2ldutHaBAzFOEsnVwfKrnPTylOrn-hAGFSDWca8/edit)).
 
-- [x] `server/svr.js` should be split into multiple files (we need to modularise the code in our server too).
+- [x] `server/svr.js` should be split into multiple files (we need to modularize the code in our server too).
 
 - [ ] Data should be stored in a database. We need a better way to store `words` and maybe the state of games at play.
 
-- [ ] As we have almost met all of the core requirements, we can start with the style of our website.
+- [ ] As we have almost met all the core requirements, we can start with the style of our website.
 
 - [ ] We should lint our code, checking its quality, before submission (although this could have been done earlier too).
 
