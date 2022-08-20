@@ -140,7 +140,7 @@ function keepGameAlive(id) {
 }
 ```
 
-Ultimately use the `setInterval()` function to call a function like `deleteOldGames` to regularly delete old games:
+Ultimately use the [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) to call a function like `deleteOldGames` to regularly delete old games:
 
 ```js
 function deleteOldGames() {
