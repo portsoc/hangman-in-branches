@@ -60,7 +60,7 @@ npm install uuid
 
 We then import it to our server and use it (by calling `uuidv4()`) to create unique IDs for each game in the `gamesInPlay` array.
 
-`createGame` now adds the newly created `status` to `gamesInPlay` and returns it with its unique ID to the client.
+`createGame` now creates a new game in `gamesInPlay` and returns it (with its unique ID) to the client.
 `guessLetter` also requires a unique ID to identify the game in addition to the letter that the player has guessed.
 Notice the change in the route for guessing a letter too.
 
