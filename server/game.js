@@ -58,16 +58,18 @@ export function createGame() {
  * @returns `true` if the letter is in the word, `false` otherwise
  */
 function checkLetter(letter, id) {
-  if (!gamesInPlay[id]) {
+  const game = gamesInPlay[id];
+
+  if (!game) {
     return false;
   }
 
   let found = false;
-  const lowerCaseWord = gamesInPlay[id].word.toLowerCase();
+  const lowerCaseWord = game.word.toLowerCase();
 
-  for (let i = 0; i < gamesInPlay[id].word.length; i++) {
+  for (let i = 0; i < game.word.length; i++) {
     if (lowerCaseWord[i] === letter.toLowerCase()) {
-      gamesInPlay[id].userWord[i] = gamesInPlay[id].word[i];
+      game.userWord[i] = game.word[i];
       found = true;
     }
   }
@@ -81,11 +83,13 @@ function checkLetter(letter, id) {
  * @returns `true` if the user has guessed the word, `false` otherwise
  */
 function checkWon(id) {
-  if (!gamesInPlay[id]) {
+  const game = gamesInPlay[id];
+
+  if (!game) {
     return false;
   }
 
-  return gamesInPlay[id].userWord.join('') === gamesInPlay[id].word;
+  return game.userWord.join('') === game.word;
 }
 
 /**
@@ -99,22 +103,23 @@ function checkWon(id) {
  */
 export function guessLetter(id, letter) {
   letter = letter.toLowerCase();
+  const game = gamesInPlay[id];
 
-  if (gamesInPlay[id]?.onGoing) {
-    gamesInPlay[id].last = checkLetter(letter, id);
+  if (game?.onGoing) {
+    game.last = checkLetter(letter, id);
 
-    if (gamesInPlay[id].last) {
-      gamesInPlay[id].hits.push(letter);
+    if (game.last) {
+      game.hits.push(letter);
     } else {
-      gamesInPlay[id].misses.push(letter);
+      game.misses.push(letter);
     }
 
-    gamesInPlay[id].won = checkWon(id);
-    if (gamesInPlay[id].won || gamesInPlay[id].misses.length > 9) {
-      gamesInPlay[id].onGoing = false;
+    game.won = checkWon(id);
+    if (game.won || game.misses.length > 9) {
+      game.onGoing = false;
     }
 
-    return gamesInPlay[id].onGoing ? sanitizedStatus(id) : gamesInPlay[id];
+    return game.onGoing ? sanitizedStatus(id) : game;
   }
 }
 
@@ -125,8 +130,10 @@ export function guessLetter(id, letter) {
  */
 export function calculateScore(id) {
   let score = 'Error in calcularing the score.';
-  if (gamesInPlay[id]?.won) {
-    score = 1 / (1 + gamesInPlay[id].misses.length) * 1000;
+  const game = gamesInPlay[id];
+
+  if (game?.won) {
+    score = 1 / (1 + game.misses.length) * 1000;
     // let's round the score to the nearest integer
     score = Math.round(score);
   }
