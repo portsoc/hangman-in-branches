@@ -44,7 +44,7 @@ Of course, we don't want the client to calculate their score as well (it would b
 This concludes that we should add the score calculation to the server.
 
 `calculateScore` in the server now responds with the score if the game is won.
-`getScore` in `client/index.js` requests the score from the server and is used by the `feedback` function to display the score.
+`getScore` in `client/index.js` requests the score from the server and is used by the `registerLetter` function to display the score.
 
 ### Hosting multiple games
 
