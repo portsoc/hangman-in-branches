@@ -66,13 +66,11 @@ Notice the change in the route for guessing a letter too.
 
 ### Modularising the server
 
-The `svr.js` at this point is very large and contains a lot of functionality.
+The `svr.js` at this point is very large and contains, data, a lot of functionality as well as helper functions.
 We are going to separate the game's logic from the server logic and place it in a new module called `game.js`.
-
-You will find that `gamesInPlay`, `words`, `createGame`, `guessLetter` and `calculateScore` are located in the `game.js` module (alongside their dependencies).
-The `svr.js` is just handling requests and calling `game.js` to generate responses.
-It is always a good idea to maintain this separation between your application's logic and the actual server.
-In later stages, we aim to separate the data from `game.js` and place it in a separate module or even better, a database.
+We then take the static data (`words` array) and place it in `data.js` and similarly movie the helper functions to `helpers.js`.
+By the end, the `svr.js` is just handling requests and calling `game.js` to generate responses.
+`game.js` in turn uses `data.js` and calls `helpers.js` to handle the game's logic.
 
 See all of our changes by visiting [this compare page](https://github.com/portsoc/hangman-in-branches/compare/8...9?diff=split).
 
