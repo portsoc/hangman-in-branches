@@ -28,7 +28,7 @@ Aside from minor improvements, we are aiming to close the following tasks opened
 
 ### Calculating and displaying a score
 
-We as the developer can decide what a score is and how it is calculated.
+We as the developers can decide what a score is and how it is calculated.
 So let's define the score with the following formula:
 
 ```js
