@@ -114,12 +114,45 @@ You can still access the game from different browsers but you will have to host 
 Try hosting this game to learn how to do the same with your submissions.
 Remember that you need to have the code for your submission on a private GitHub repository.
 Once you have done this, follow the instructions in [this document](https://docs.google.com/document/d/1zqvC5jOoXQlXggKZkEC025H-N6k7HxdTHpsy0Iylt0c/edit?usp=sharing).
-Remember to make a `web` folder in your [Virtual Machines](https://uop-1-server-per-student-devel.appspot.com/) before cloning the repository into it.
+Remember to make a `web` folder in your [virtual machines](https://uop-1-server-per-student-devel.appspot.com/) before cloning the repository into it.
 Serve it and try to access the site from different devices.
 
-We will also leave you with another challenge to try out.
-At the moment, we have no way of deleting a game from the server once it is finished.
-The `status` object stays in the `gamesInPlay` array even after the game is finished and the user has started a new one.
+We will also leave you with another challenge that you can try to solve.
+At the moment, we have no way of deleting a game from the server.
+The client requests for the creation of a `status` object which stays in the `gamesInPlay` for as long as the server is running.
+Regardless of whether the game is finished or not, the `status` should be deleted from `gamesInPlay` after a set amount of time.
+
+Begin by creating a global constant `TIMEOUT` as shown below (decide whether this should be part of `svr.js` or `game.js`):
+
+```js
+const TIMEOUT = 1000 * 60 * 10; // 10 mins
+```
+
+We want every `status` object to have a `timeout` property depending on which, we can decide to delete it from `gamesInPlay`.
+This property should be updated every time the game is created or played.
+So create a `keepGameAlive` function as shown below and call it from `createGame` and `guessLetter`:
+
+```js
+function keepGameAlive(id) {
+  if (gamesInPlay[id]) {
+    gamesInPlay[id].timeout = new Date().getTime() + TIMEOUT;
+  }
+}
+```
+
+Ultimately use the `setInterval()` function to call a function like `deleteOldGames` to regularly delete old games:
+
+```js
+function deleteOldGames() {
+  const now = new Date().getTime();
+  for (const id in gamesInPlay) {
+    if (gamesInPlay[id].timeout < now) {
+      delete gamesInPlay[id];
+    }
+  }
+}
+```
+
 Develop a solution for this issue and feel free to show it to us in the class.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
