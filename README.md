@@ -35,7 +35,7 @@ So let's define the score with the following formula:
 score = (1 / (1 + misses.length)) * 1000;
 ```
 
-If we choose to expand our game by introducing a countdown or a difficult level, we can update the formula later.
+If we choose to expand our game by introducing a countdown or a difficulty, we can update the formula later.
 But let's keep it simple for now.
 
 We need to think about where we add the functionality to calculate a score, client-side or server-side.
