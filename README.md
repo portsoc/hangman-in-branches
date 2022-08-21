@@ -50,7 +50,7 @@ This concludes that we should add the score calculation to the server.
 
 We need to store a collection of games on the server (each game has its `status` variable).
 But to be able to distinguish between every game, we need to add a unique identifier to each game.
-For this reason, we are going to be using [the `uuid` npm package](https://www.npmjs.com/package/uuid).
+For this reason, we are going to be using [the `uuid` NPM package](https://www.npmjs.com/package/uuid).
 
 Following the instructions in the "Quickstart" section of the NPM page, we can install the `uuid` package with:
 
@@ -62,17 +62,17 @@ We then import it to our server and use it (by calling `uuidv4()`) to create uni
 
 `createGame` now creates a new game in `gamesInPlay` and returns it (with its unique ID) to the client.
 `guessLetter` also requires a unique ID to identify the game in addition to the letter that the player has guessed.
-Notice the change in the url for guessing a letter too (see `sendGuess`).
+Notice the change in the URL for guessing a letter too (see `sendGuess`).
 
 ### Modularising the server
 
 `server/svr.js` at this point is very large and contains, data, a lot of functionality as well as helper functions.
 We need to separate the game's logic from the server and place it in a new module called `server/game.js`.
 We then take the static data (`words` array) and place it in `server/data.js`.
-By the way, we have added way more movie titles to this array.
+By the way, we have added a lot more movie titles to this array.
 
 Similarly, we moved the helper functions to `server/helpers.js`.
-By the end, the `server/svr.js` is just handling requests and calling `server/game.js` to generate responses.
+By the end, the `server/svr.js` is just handling requests and calling the appropriate function in `server/game.js` to generate responses.
 `server/game.js` in turn takes its data from `server/data.js` and uses `server/helpers.js` to handle the game's logic.
 
 See all of our changes by visiting [this compare page](https://github.com/portsoc/hangman-in-branches/compare/8...9?diff=split).
@@ -96,8 +96,6 @@ Stop the server with <kbd>Ctrl</kbd> + <kbd>C</kbd> in the shell.
 
 ## Todo
 
-Our to-do list at the moment is focusing mainly on the implementation of the server. We will later add more features to the client (e.g., CSS styling):
-
 - [x] We still have not satisfied one of the core requirements of displaying how many moves it took to win as a score.
 
 - [x] The server is only capable of handling one game at a time. We need to add a mechanism to handle multiple games simultaneously. This could be a nice additional feature (as suggested in [the coursework specification](https://docs.google.com/document/d/1cF3u2ldutHaBAzFOEsnVwfKrnPTylOrn-hAGFSDWca8/edit)).
@@ -108,20 +106,26 @@ Our to-do list at the moment is focusing mainly on the implementation of the ser
 
 - [ ] As we have almost met all the core requirements, we can start with the style of our website.
 
-- [ ] We should lint our code, checking its quality, before submission (although this could have been done earlier too).
+- [ ] We should lint our code, checking its stylistic quality, before submission.
 
 ## Further Exploration
 
-Our multiplayer game may not make much sense at the moment since we are serving it on localhost.
-You can still access the game from different browsers but you will have to host your game to be able to access it on the internet from different devices.
+### Host this site
+
+Our multiplayer game may not make much sense at the moment since we are serving it on local host (to only one client).
+You can still play multiply games from different browsers but you will have to host your game to be able to access it on the internet from different devices.
 
 Try hosting this game to learn how to do the same with your submissions.
-Remember that you need to have the code for your submission on a private GitHub repository.
-Once you have done this, follow the instructions in [this document](https://docs.google.com/document/d/1zqvC5jOoXQlXggKZkEC025H-N6k7HxdTHpsy0Iylt0c/edit?usp=sharing).
+For this, it is best to have your code on a private Git repository.
+Once you have done that, follow the instructions in [this document](https://docs.google.com/document/d/1zqvC5jOoXQlXggKZkEC025H-N6k7HxdTHpsy0Iylt0c/edit?usp=sharing).
+
 Remember to make a `web` folder in your [virtual machines](https://uop-1-server-per-student-devel.appspot.com/) before cloning the repository into it.
 Serve it and try to access the site from different devices.
 
 We will also leave you with another challenge that you can try to solve.
+
+### Delete old games
+
 At the moment, we have no way of deleting a game from the server.
 The client requests for the creation of a `status` object which stays in the `gamesInPlay` for as long as the server is running.
 Regardless of whether the game is finished or not, the `status` should be deleted from `gamesInPlay` after a set amount of time.
@@ -157,7 +161,9 @@ function deleteOldGames() {
 }
 ```
 
-Remember that you should return appropriate responses to the client when their requests' are about old/expired games.
+Remember that you should return appropriate responses to the client when their requests are about non-existing games.
 Once you have a working solution, make sure to test it and feel free to show it to us in the class.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+
