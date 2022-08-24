@@ -27,7 +27,7 @@ If you have not already done so, make sure to check the Moodle resources on the 
 
 ## Implementation
 
-Start by creating `index.css` in the `client` folder (CSS is used to style the HTML page so it should not be in `server`).
+Start by creating `index.css` in the `client` folder (CSS is used to style the HTML page so it should not be in `server`) and link it in the `index.html` file.
 
 ### Colour palette
 
