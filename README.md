@@ -88,6 +88,8 @@ We are going to add spaces between the `span`s in this element and generally mak
 
 ### Improve the presentation of the `#keyboard` element
 
+To make our keyboard more like a real keyboard, we are going to draw the letters in rows.
+
 See all of our changes by visiting [this compare page](https://github.com/portsoc/hangman-in-branches/compare/8...9?diff=split).
 
 ## Usage
