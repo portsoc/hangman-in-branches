@@ -52,8 +52,10 @@ A simple [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/p
 }
 ```
 
+The user's device/browser preference will now be used to determine the colour palette of our website.
 Notice that our colours are defined in the [hexadecimal syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/hex-color).
-Now we can use these colours to style the background and the foreground colour of our elements.
+
+Now we can use these colours to change the background and the foreground colour of our elements.
 
 ```css
 body,
