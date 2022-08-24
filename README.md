@@ -23,11 +23,27 @@ Our goal is not to create a visually stylish website, that would be the job of a
 We just aim to create a website that has a simple layout, consistent theme and is usable on a variety of devices.
 Meanwhile, we should care about the quality of our CSS too (and maybe use some modern CSS features).
 
-If you have not already done so, make sure to check the Moodle resources on the topic of CSS.
+If you have not already done so, visit the Moodle resources on the topic of CSS.
+Be sure to check out the examples on custom properties and flexbox in the [CSS repository](https://github.com/portsoc/ws_css3).
 
 ## Implementation
 
-Start by creating `index.css` in the `client` folder (CSS is used to style the HTML page so it should not be in `server`) and link it in the `index.html` file.
+Start by creating `index.css` in the `client` folder (CSS is used to style the HTML page so it should not be in `server`) and add a link to it in `index.html` file.
+
+### Aligning of elements and flexbox
+
+Let's start by centre-aligning elements on the page and making them flexible.
+Our change will affect all elements on the page:
+
+```css
+body,
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+```
 
 ### Colour palette
 
@@ -57,14 +73,12 @@ A simple [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/p
 The user's device/browser preference will now be used to determine the colour palette of our website.
 Notice that our colours are defined in the [hexadecimal syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/hex-color).
 
-Now we can use these colours to change the background and the foreground colour of our elements.
+Now we can use these colours to change the background and the foreground colour of all elements.
+We do this by adding the following to the properties of `body` and `main`:
 
 ```css
-body,
-main {
-  background: var(--bg);
-  color: var(--fg);
-}
+background: var(--bg);
+color: var(--fg);
 ```
 
 ### Fix spacing between letters in `#guessMe`
@@ -72,7 +86,7 @@ main {
 One thing that we could not easily fix with HTML or JavaScript is the presentation of the `#guessMe` element.
 We are going to add spaces between the `span`s in this element and generally make things more legible by increasing the size of the letters.
 
-### 
+### Improve the presentation of the `#keyboard` element
 
 See all of our changes by visiting [this compare page](https://github.com/portsoc/hangman-in-branches/compare/8...9?diff=split).
 
