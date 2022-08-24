@@ -15,3 +15,9 @@ main {
   background: var(--bg);
   color: var(--fg);
 }
+
+#guessMe span {
+    font-size: 140%;
+    margin: 0.25em;
+    min-width: 1em;
+}
