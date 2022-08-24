@@ -23,6 +23,8 @@ Our goal is not to create a visually stylish website, that would be the job of a
 We just aim to create a website that has a simple layout, consistent theme and is usable on a variety of devices.
 Meanwhile, we should care about the quality of our CSS too (and maybe use some modern CSS features).
 
+If you have not already done so, make sure to check the Moodle resources on the topic of CSS.
+
 ## Implementation
 
 Start by creating `index.css` in the `client` folder (CSS is used to style the HTML page so it should not be in `server`).
