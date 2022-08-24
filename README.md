@@ -67,6 +67,13 @@ main {
 }
 ```
 
+### Fix spacing between letters in `#guessMe`
+
+One thing that we could not easily fix with HTML or JavaScript is the presentation of the `#guessMe` element.
+We are going to add spaces between the `span`s in this element and generally make things more legible by increasing the size of the letters.
+
+### 
+
 See all of our changes by visiting [this compare page](https://github.com/portsoc/hangman-in-branches/compare/8...9?diff=split).
 
 ## Usage
