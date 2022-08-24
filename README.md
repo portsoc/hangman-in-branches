@@ -2,7 +2,7 @@
 
 <!-- BRANCH TITLE -->
 
-# Branch 9: Server Part 2
+# Branch 10: Style
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -18,62 +18,50 @@
 
 ## Objectives
 
-Aside from minor improvements, we are aiming to close the following tasks opened in the to-do list of [the previous branch](https://github.com/portsoc/hangman-in-branches/tree/8):
-
-- Calculating and displaying a score
-- Hosting multiple games
-- Modularising the server
+Since we have completed every core feature of our game, we can now begin to style our website.
+Our goal is not to create a visually stylish website, that would be the job of a front-end designer, not a software engineer.
+We just aim to create a website that has a simple layout, consistent theme and is usable on a variety of devices.
+Meanwhile, we should care about the quality of our CSS too (and maybe use some modern CSS features).
 
 ## Implementation
 
-### Calculating and displaying a score
+Start by creating `index.css` in the `client` folder (CSS is used to style the HTML page so it should not be in `server`).
 
-We as developers can decide what a score is and how it is calculated.
-So let's define the score with the following formula:
+### Colour palette
 
-```js
-score = (1 / (1 + misses.length)) * 1000;
+Let's start by creating a simple colour palette to be used throughout our website.
+Instead of repeating our colours, we are going to define a set of properties at the root level which makes them globally accessible in our CSS.
+If you find any of this confusing, we refer you to the MDN page on [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties).
+
+```css
+:root {
+  --bg: #fff; /* background color: white */
+  --fg: #000; /* foreground color: balck */
+}
 ```
 
-If we choose to expand our game by introducing a countdown or a difficulty, we can update the formula later.
-But let's keep it simple for now.
+Using CSS variables makes it easy to change the colour palette of our website to make a dark theme.
+A simple [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme) is now enough to redefine the colour palette of our website.
 
-We need to think about where we add the functionality to calculate a score, client-side or server-side.
-Since we want to allow multiple games to run concurrently and perhaps create a leaderboard, we need access to the scores on the server (where the games are stored).
-Of course, we don't want the client to calculate their score as well (it would be redundant) and nor do we want them to put their scores on the server (which allows them to cheat).
-This concludes that we should add the score calculation to the server.
-
-`calculateScore` in the server now responds with the score if the game is won.
-`getScore` in `client/index.js` requests the score from the server and is used by the `registerLetter` function to display the score.
-
-### Hosting multiple games
-
-We need to store a collection of games on the server (each game has its `status` variable).
-But to be able to distinguish between every game, we need to add a unique identifier to each game.
-For this reason, we are going to be using [the `uuid` NPM package](https://www.npmjs.com/package/uuid).
-
-Following the instructions in the "Quickstart" section of the NPM page, we can install the `uuid` package with:
-
-```bash
-npm install uuid
+```css
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #222; /* background color: black */
+    --fg: #ccc; /* foreground color: grey */
+  }
+}
 ```
 
-We then import it to our server and use it (by calling `uuidv4()`) to create unique IDs for each game in the `gamesInPlay` array.
+Notice that our colours are defined in the [hexadecimal syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/hex-color).
+Now we can use these colours to style the background and the foreground colour of our elements.
 
-`createGame` now creates a new game in `gamesInPlay` and returns it (with its unique ID) to the client.
-`guessLetter` also requires a unique ID to identify the game in addition to the letter that the player has guessed.
-Notice the change in the URL for guessing a letter too (see `sendGuess`).
-
-### Modularising the server
-
-`server/svr.js` at this point is very large and contains, data, a lot of functionality as well as helper functions.
-We need to separate the game's logic from the server and place it in a new module called `server/game.js`.
-We then take the static data (`words` array) and place it in `server/data.js`.
-By the way, we have added a lot more movie titles to this array.
-
-Similarly, we moved the helper functions to `server/helpers.js`.
-By the end, the `server/svr.js` is just handling requests and calling the appropriate function in `server/game.js` to generate responses.
-`server/game.js` in turn takes its data from `server/data.js` and uses `server/helpers.js` to handle the game's logic.
+```css
+body,
+main {
+  background: var(--bg);
+  color: var(--fg);
+}
+```
 
 See all of our changes by visiting [this compare page](https://github.com/portsoc/hangman-in-branches/compare/8...9?diff=split).
 
@@ -104,66 +92,10 @@ Stop the server with <kbd>Ctrl</kbd> + <kbd>C</kbd> in the shell.
 
 - [ ] Data should be stored in a database. We need a better way to store `words` and maybe the state of games at play.
 
-- [ ] As we have almost met all the core requirements, we can start with the style of our website.
+- [x] As we have almost met all the core requirements, we can start with the style of our website.
 
 - [ ] We should lint our code, checking its stylistic quality, before submission.
 
 ## Further Exploration
 
-### Host this site
-
-Our multiplayer game may not make much sense at the moment since we are serving it on local host (to only one client).
-You can still play multiply games from different browsers but you will have to host your game to be able to access it on the internet from different devices.
-
-Try hosting this game to learn how to do the same with your submissions.
-For this, it is best to have your code on a private Git repository.
-Once you have done that, follow the instructions in [this document](https://docs.google.com/document/d/1zqvC5jOoXQlXggKZkEC025H-N6k7HxdTHpsy0Iylt0c/edit?usp=sharing).
-
-Remember to make a `web` folder in your [virtual machines](https://uop-1-server-per-student-devel.appspot.com/) before cloning the repository into it.
-Serve it and try to access the site from different devices.
-
-We will also leave you with another challenge that you can try to solve.
-
-### Delete old games
-
-At the moment, we have no way of deleting a game from the server.
-The client requests for the creation of a `status` object which stays in the `gamesInPlay` for as long as the server is running.
-Regardless of whether the game is finished or not, the `status` should be deleted from `gamesInPlay` after a set amount of time.
-
-Begin by creating a global constant `TIMEOUT` as shown below (decide whether this should be part of `svr.js` or `game.js`):
-
-```js
-const TIMEOUT = 1000 * 60 * 10; // 10 mins
-```
-
-We want every `status` object to have a `timeout` property depending on which, we can decide to delete it from `gamesInPlay`.
-This property should be updated every time the game is created or played.
-So create a `keepGameAlive` function as shown below and call it from `createGame` and `guessLetter`:
-
-```js
-function keepGameAlive(id) {
-  if (gamesInPlay[id]) {
-    gamesInPlay[id].timeout = new Date().getTime() + TIMEOUT;
-  }
-}
-```
-
-Ultimately use the [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) to regularly call a function like `deleteOldGames` to delete old games:
-
-```js
-function deleteOldGames() {
-  const now = new Date().getTime();
-  for (const id in gamesInPlay) {
-    if (gamesInPlay[id].timeout < now) {
-      delete gamesInPlay[id];
-    }
-  }
-}
-```
-
-Remember that you should return appropriate responses to the client when their requests are about non-existing games.
-Once you have a working solution, make sure to test it and feel free to show it to us in the class.
-
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
