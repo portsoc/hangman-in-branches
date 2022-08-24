@@ -32,8 +32,9 @@ Start by creating `index.css` in the `client` folder (CSS is used to style the H
 
 ### Aligning of elements and flexbox
 
-Let's start by centre-aligning elements on the page and making them flexible.
-Our change will affect all elements on the page:
+We start by centre-aligning elements and specifying a flexible layout (using [flexbox](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox)).
+Since we want our sections to stack on top of each other vertically (like a column), we have to specify a `flex-direction` of `column`.
+Again, our change will affect all elements on the page:
 
 ```css
 body,
