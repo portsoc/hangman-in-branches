@@ -78,6 +78,7 @@ function generateNewGame() {
   create('p', newGame, {},
     'Use the button or hit Enter/Space to start a new game.');
   const prompt = create('button', newGame, {}, 'Start a new game');
+  prompt.classList.add('newGame');
 
   prompt.addEventListener('click', startNewGame);
 }
