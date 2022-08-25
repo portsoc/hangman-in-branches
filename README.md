@@ -30,11 +30,10 @@ Be sure to check out the examples on custom properties and flexbox in the [CSS r
 
 Start by creating `index.css` in the `client` folder (CSS is used to style the HTML page so it should not be in `server`) and add a link to it in `index.html` file.
 
-### Aligning of elements and flexbox
+### Size and alignment of elements
 
 We start by centre-aligning elements and specifying a flexible layout (using [flexbox](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox)).
 Since we want our sections to stack on top of each other vertically (like a column), we have to specify a `flex-direction` of `column`.
-Again, our change will affect all elements on the page:
 
 ```css
 body,
@@ -45,6 +44,9 @@ main {
   flex-direction: column;
 }
 ```
+
+Pay attention to the rest of our stylesheet and observe that we are avoiding absolute measurements in favour of relative ones such as `em` or `vw`.
+For more information check out this page on [CSS units](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units).
 
 ### Colour palette
 
@@ -82,14 +84,15 @@ background: var(--bg);
 color: var(--fg);
 ```
 
-### Fix spacing between letters in `#guessMe`
+### Presentation of letters in `#guessMe`
 
 One thing that we could not easily fix with HTML or JavaScript is the presentation of the `#guessMe` element.
-We are going to add spaces between the `span`s in this element and generally make things more legible by increasing the size of the letters.
+We are going to add spaces between the `span` elements and generally make things more legible by increasing the size of the letters.
 
-### Improve the presentation of the `#keyboard` element
+### Presentation of `#keyboard`
 
-To make our keyboard more like a real keyboard, we are going to draw the letters in rows.
+To make our keyboard more like a real keyboard, we are going to draw the letters in rows (that flow like a row, `flex-direction: row`).
+But this requires us to rework our `drawKeyboard` function in `client/helper.js`.
 
 See all of our changes by visiting [this compare page](https://github.com/portsoc/hangman-in-branches/compare/8...9?diff=split).
 
