@@ -103,14 +103,15 @@ Another thing of note is that we are adding a `hit` and `miss` class to the keys
 Using these classes, we can colour the keys differently in addition to disabling them.
 Notice how added these colours to our existing colour palette and distinguished foreground and background colours using prefixes `--fg` and `--bg`.
 
-See all of our changes by visiting [this compare page](https://github.com/portsoc/hangman-in-branches/compare/8...9?diff=split).
-
 ### Canvas
 
 In HTML, we have defined a default canvas size of `300` by `400` pixels.
 However, to accommodate devices with small screens, we are going to set out the maximum size of our canvas using CSS.
 To reduce the space around the hangman in the canvas, we have to modify the `client/canvas.js` file too.
 This is frankly a tedious task, and in a later branch, we will show you an easier way to draw the hangman (using SVGs).
+
+
+See all of our changes by visiting [this compare page](https://github.com/portsoc/hangman-in-branches/compare/8...9?diff=split).
 
 ## Usage
 
