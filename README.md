@@ -59,7 +59,7 @@ Although our changes do not significantly decrease the volume of code, they help
 
 ### Extracting helper functions into a separate script
 
-We have created a new file called `helpers.js` to contain all the helper functions.
+We have created a new file called `helper.js` to contain all the helper functions.
 These are functions that are not directly related to the game itself (and most importantly do not need access to the `gameState` variable).
 These functions are `safeRemove`, `create`, and `drawKeyboard`.
 

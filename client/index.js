@@ -6,7 +6,7 @@ import {
   safeRemove,
   create,
   drawKeyboard
-} from './helpers.js';
+} from './helper.js';
 
 const words = [
   'Jurassic Park', 'Star Wars', 'The Matrix',
