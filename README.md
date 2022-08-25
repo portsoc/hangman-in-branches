@@ -138,4 +138,6 @@ Stop the server with <kbd>Ctrl</kbd> + <kbd>C</kbd> in the shell.
 
 ## Further Exploration
 
+At the moment we are not caring for the users who may want to play the game in landscape mode.
+
 <p align="right">(<a href="#top">back to top</a>)</p>
