@@ -55,7 +55,7 @@ We can then improve these functions in later branches.
 For example, we could improve `feedback` by displaying multiple DOM elements and giving them classes.
 The important benefit of our changes is that we only have to update the function's definition, not every place where it was used.
 
-Although our changes do not significantly decrease the volume of code, they help with the readability and maintainability.
+Although our changes do not significantly decrease the volume of code, they help with readability and maintainability.
 
 ### Extracting helper functions into a separate script
 
