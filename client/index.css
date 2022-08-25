@@ -57,7 +57,7 @@ button {
 }
 
 #guessMe span {
-    font-size: 140%;
+    font-size: min(6vw, 140%);
     margin: 0.25em;
     min-width: 1em;
 }
