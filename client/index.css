@@ -2,19 +2,19 @@
   --bg: #fff;
   --fg: #000;
   --fg-hit: #040;
-  --fg-miss: #333;
-  --bg-hit: #0F0;
-  --bg-miss: #F33;
+  --fg-miss: #400;
+  --bg-hit: #3C3;
+  --bg-miss: #C33;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #222;
     --fg: #ccc;
-    --fg-hit: #0F0;
-    --fg-miss: #F33;
+    --fg-hit: #3C3;
+    --fg-miss: #C33;
     --bg-hit: #040;
-    --bg-miss: #333;
+    --bg-miss: #400;
   }
 }
 
