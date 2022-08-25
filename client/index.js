@@ -223,8 +223,14 @@ function redrawKeyboard() {
     const keys = keyboard.querySelectorAll('[data-letter]');
 
     for (const key of keys) {
-      if (hitsAndMisses().includes(key.dataset.letter)) {
+      const letter = key.dataset.letter;
+
+      if (hitsAndMisses().includes(letter)) {
         key.disabled = true;
+
+        // add a class to the key to indicate whether the guess was correct or not
+        key.classList.toggle('miss', gameState.misses.includes(letter));
+        key.classList.toggle('hit', gameState.hits.includes(letter));
       }
     }
   }
