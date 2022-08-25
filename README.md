@@ -93,8 +93,11 @@ We are going to add spaces between the `span` elements and generally make things
 
 ### Presentation of `#keyboard`
 
-To make our keyboard more like a real keyboard, we are going to draw the letters in rows (that flow like a row, `flex-direction: row`).
-But first we need to rework our `drawKeyboard` function in `client/helper.js`.
+To make our keyboard more like a real keyboard, we need to rework our `drawKeyboard` function in `client/helper.js`.
+`drawKeyboard` now splits the buttons into three rows, similar to a QWERTY keyboard.
+Observe how we are adding a class to the rows, this will be useful shortly.
+
+In CSS, we specify the width of the rows and the flow of the buttons within them.
 
 See all of our changes by visiting [this compare page](https://github.com/portsoc/hangman-in-branches/compare/8...9?diff=split).
 
