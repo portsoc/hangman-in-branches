@@ -41,13 +41,23 @@ export function create(type, parent, attributes = {}, text) {
  * @returns The keyboard element
  */
 export function drawKeyboard(parent) {
-  const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+  // separate the letters into 3 rows similar to a QWERTY keyboard
+  const alphabet = ['qwertyuiop', 'asdfghjkl', 'zxcvbnm'];
 
   const keyboard = create('section', parent, { id: 'keyboard' });
 
-  for (const letter of alphabet) {
-    const button = create('button', keyboard, {}, letter);
-    button.dataset.letter = letter;
+  for (const row of alphabet) {
+    const letterRow = create('div', keyboard, { id: 'keys_' + row });
+    letterRow.classList.add('letterRow');
+
+    for (const letter of row) {
+      const btn = create('button', letterRow, {
+        id: 'key_' + letter,
+        textContent: letter
+      }, letter);
+      btn.dataset.letter = letter;
+    }
   }
+
   return keyboard;
 }
