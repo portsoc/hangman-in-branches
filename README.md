@@ -47,7 +47,7 @@ main {
 ```
 
 In addition to this, we are also going to add margins and paddings to our elements.
-Pay attention to our units and notice that we are avoiding absolute measurements in favour of relative ones such as `em` or `vw`.
+Pay attention to our units and notice that we are avoiding absolute measurements in favour of relative ones such as percentages, `em` or `vw`.
 For more information check out this page on [CSS units](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units).
 
 ### Colour palette and font
@@ -95,9 +95,9 @@ We are going to add spaces between the `span` elements and generally make things
 
 To make our keyboard more like a real keyboard, we need to rework our `drawKeyboard` function in `client/helper.js`.
 `drawKeyboard` now splits the buttons into three rows, similar to a QWERTY keyboard.
-Observe how we are adding a class to the rows, this will be useful shortly.
+Observe how we are adding a class `.letterRow` to the rows, this will be useful shortly.
 
-In CSS, we specify the width of the rows and the flow of the buttons within them.
+Back in CSS we use this class name and specify the width of the rows (`max-width: 100vw;`). We also define the direction in which they are stacked (`flex-direction: row;`). Remember that we already have rules for centre alignment of elements (being applied to `main` and `body`). So we just have to add `.letterRow` to our existing rule.
 
 See all of our changes by visiting [this compare page](https://github.com/portsoc/hangman-in-branches/compare/8...9?diff=split).
 
