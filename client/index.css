@@ -10,6 +10,10 @@
   }
 }
 
+body {
+    font-family: Helvetica, sans-serif;
+}
+
 body,
 main {
   display: flex;
@@ -20,8 +24,28 @@ main {
   color: var(--fg);
 }
 
+main {
+    max-width: 60em;
+}
+
+section {
+    padding: 1em 2em;
+    margin-bottom: 1em;
+}
+
+
+
 #guessMe span {
     font-size: 140%;
     margin: 0.25em;
     min-width: 1em;
+}
+
+.letterRow {
+    max-width: 100vw;
+    flex-direction: row;
+}
+
+#keyboard {
+  max-width: 100vw;
 }
