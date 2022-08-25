@@ -161,7 +161,8 @@ async function registerLetter(letter) {
     } else {
       await sendGuess(letter);
 
-      if (!gameState.last) {
+      const wasHit = gameState.last;
+      if (!wasHit) {
         if (!gameState.onGoing) {
           let message = `You lost! Your last guess, '${letter}', was wrong. 😭`
           message += gameState.word ? ` The word was: '${gameState.word}'` : '';
@@ -171,8 +172,6 @@ async function registerLetter(letter) {
         } else {
           feedback(`Sorry! '${letter}' is not a letter in the word. ❌`);
         }
-
-        drawHangman(el.canvas, lives());
       } else {
         redrawWord();
 
@@ -185,6 +184,8 @@ async function registerLetter(letter) {
         }
       }
 
+      // canvas' background is redrawn after each guess (hit or miss)
+      drawHangman(el.canvas, lives(), wasHit);
       redrawKeyboard();
     }
   }

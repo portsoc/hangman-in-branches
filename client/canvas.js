@@ -2,10 +2,12 @@
  * It draws a hangman on a canvas, relative to its size, and depending on the number lives left
  * the canvas is empty if lives is 10 and the hangman is completely drawm if it is 0
  * in between these values, the function adds limbs/pieces of the noose one by one.
+ * It also adds a background color to the canvas depending on the `hit` parameter.
  * @param canvas - the canvas element
  * @param lives - the number of lives the player has left
+ * @param [hit] - optional parameter determinning whether the last guess was correct or not
  */
-export function drawHangman(canvas, lives) {
+export function drawHangman(canvas, lives, hit = true) {
   const c = canvas.getContext('2d');
 
   // setting our drawing style
@@ -18,8 +20,8 @@ export function drawHangman(canvas, lives) {
   const x = canvas.width / 2.5;
   const y = canvas.height / 1.25;
 
-  // add a background for now
-  c.fillStyle = '#faa';
+  // colour background depending on hit
+  c.fillStyle = hit ? '#afa' : '#faa';
   c.fillRect(0, 0, canvas.width, canvas.height);
 
   lives <= 9 && line(c, x + 100, y + 20, x - 50, y + 20); // ground
