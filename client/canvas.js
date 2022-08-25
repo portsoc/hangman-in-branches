@@ -17,7 +17,7 @@ export function drawHangman(canvas, lives, hit = true) {
   c.strokeStyle = '#000';
 
   // draw hangman relative to the size of the canvas
-  const x = canvas.width / 2.5;
+  const x = canvas.width / 3;
   const y = canvas.height / 1.25;
 
   // colour background depending on hit

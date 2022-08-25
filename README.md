@@ -105,10 +105,12 @@ Notice how added these colours to our existing colour palette and distinguished 
 
 ### Canvas
 
-In HTML, we have defined a default canvas size of `300` by `400` pixels.
-However, to accommodate devices with small screens, we are going to set out the maximum size of our canvas using CSS.
-To reduce the space around the hangman in the canvas, we have to modify the `client/canvas.js` file too.
-This is frankly a tedious task, and in a later branch, we will show you an easier way to draw the hangman (using SVGs).
+To accommodate devices with small screens, we are going to set out the maximum size of this element using CSS.
+Our change makes the canvas element smaller (as well as the hangman figure drawn on it).
+
+To balance this, we can decrease the size of the canvas element in the HTML page so that the hangman figure itself appears bigger (remember that the figure is drawn relative to the size of the canvas).
+
+We've also updated the `drawHangman` function in `client/canvas.js` so that the background colour reflects whether the last guess was a hit or a miss.
 
 ### Adding a favicon
 
