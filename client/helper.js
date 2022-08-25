@@ -48,6 +48,7 @@ export function drawKeyboard(parent) {
 
   for (const row of alphabet) {
     const letterRow = create('div', keyboard, { id: 'keys_' + row });
+    // rows have unique ids but share the same class so we can style them all the same way
     letterRow.classList.add('letterRow');
 
     for (const letter of row) {
