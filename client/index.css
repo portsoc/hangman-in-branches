@@ -18,11 +18,19 @@
   }
 }
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: Helvetica, sans-serif;
 }
 
-body, main, .letterRow {
+* {
+    transition: all 1s linear;
+}
+
+body, main, .letterRow, #newGame {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -71,4 +79,9 @@ button {
 .miss {
     color: var(--fg-miss);
     background: var(--bg-miss);
+}
+
+canvas {
+    max-width: 10em;
+    max-height: 12em;
 }
