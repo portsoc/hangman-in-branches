@@ -110,6 +110,17 @@ However, to accommodate devices with small screens, we are going to set out the 
 To reduce the space around the hangman in the canvas, we have to modify the `client/canvas.js` file too.
 This is frankly a tedious task, and in a later branch, we will show you an easier way to draw the hangman (using SVGs).
 
+### Adding a favicon
+
+If you have been checking out the console in the inspection tools, you may have noticed the following error:
+
+```
+Failed to load resource: net::ERR_EMPTY_RESPONSE
+```
+
+The fix of this error is not related to styles.
+We just need to add a favicon to our `client` folder.
+You can easily get one using [online generators](https://favicon.io).
 
 See all of our changes by visiting [this compare page](https://github.com/portsoc/hangman-in-branches/compare/8...9?diff=split).
 
