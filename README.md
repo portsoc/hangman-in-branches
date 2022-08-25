@@ -31,7 +31,7 @@ Be sure to check out the examples on custom properties and flexbox in the [CSS r
 Start by creating `index.css` in the `client` folder (CSS is used to style the HTML page so it should not be in `server`) and add a link to it in `index.html` file.
 Below we have listed the notable style decisions we have made.
 
-### Size and alignment of elements
+### Size and alignment
 
 We start by centre-aligning elements and specifying a flexible layout (using [flexbox](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox)).
 Since we want our sections to stack on top of each other vertically (like a column), we have to specify a `flex-direction` of `column`.
@@ -50,7 +50,7 @@ In addition to this, we are also going to add margins and paddings to our elemen
 Pay attention to our units and notice that we are avoiding absolute measurements in favour of relative ones such as percentages, `em` or `vw`.
 For more information check out this page on [CSS units](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units).
 
-### Colour palette and font
+### Colours
 
 Let's define a simple colour palette to be used throughout our website.
 So instead of repeating our colours, we are going to define a set of properties (at the root level) which makes them globally accessible.
@@ -86,12 +86,12 @@ background: var(--bg);
 color: var(--fg);
 ```
 
-### Presentation of letters in `#guessMe`
+### Guessed letters
 
 One thing that we could not easily fix with HTML or JavaScript is the presentation of the `#guessMe` element.
 We are going to add spaces between the `span` elements and generally make things more legible by increasing the size of the letters.
 
-### Presentation of `#keyboard`
+### Keyboard
 
 To make our keyboard more like a real keyboard, we need to rework our `drawKeyboard` function in `client/helper.js`.
 `drawKeyboard` now splits the buttons into three rows, similar to a QWERTY keyboard.
@@ -104,6 +104,13 @@ Using these classes, we can colour the keys differently in addition to disabling
 Notice how added these colours to our existing colour palette and distinguished foreground and background colours using prefixes `--fg` and `--bg`.
 
 See all of our changes by visiting [this compare page](https://github.com/portsoc/hangman-in-branches/compare/8...9?diff=split).
+
+### Canvas
+
+In HTML, we have defined a default canvas size of `300` by `400` pixels.
+However, to accommodate devices with small screens, we are going to set out the maximum size of our canvas using CSS.
+To reduce the space around the hangman in the canvas, we have to modify the `client/canvas.js` file too.
+This is frankly a tedious task, and in a later branch, we will show you an easier way to draw the hangman (using SVGs).
 
 ## Usage
 
