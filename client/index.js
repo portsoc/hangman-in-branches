@@ -10,7 +10,7 @@ import {
   safeRemove,
   create,
   drawKeyboard
-} from './helpers.js';
+} from './helper.js';
 
 /**
  *  Stores the status of the game and has the following properties:

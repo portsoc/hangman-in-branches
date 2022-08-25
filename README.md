@@ -71,9 +71,9 @@ We need to separate the game's logic from the server and place it in a new modul
 We then take the static data (`words` array) and place it in `server/data.js`.
 By the way, we have added a lot more movie titles to this array.
 
-Similarly, we moved the helper functions to `server/helpers.js`.
+Similarly, we moved the helper functions to `server/helper.js`.
 By the end, the `server/svr.js` is just handling requests and calling the appropriate function in `server/game.js` to generate responses.
-`server/game.js` in turn takes its data from `server/data.js` and uses `server/helpers.js` to handle the game's logic.
+`server/game.js` in turn takes its data from `server/data.js` and uses `server/helper.js` to handle the game's logic.
 
 See all of our changes by visiting [this compare page](https://github.com/portsoc/hangman-in-branches/compare/8...9?diff=split).
 
@@ -165,5 +165,3 @@ Remember that you should return appropriate responses to the client when their r
 Once you have a working solution, make sure to test it and feel free to show it to us in the class.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
