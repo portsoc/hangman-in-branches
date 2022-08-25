@@ -29,6 +29,7 @@ Be sure to check out the examples on custom properties and flexbox in the [CSS r
 ## Implementation
 
 Start by creating `index.css` in the `client` folder (CSS is used to style the HTML page so it should not be in `server`) and add a link to it in `index.html` file.
+Below we have listed the notable style decisions we have made.
 
 ### Size and alignment of elements
 
@@ -45,13 +46,14 @@ main {
 }
 ```
 
-Pay attention to the rest of our stylesheet and observe that we are avoiding absolute measurements in favour of relative ones such as `em` or `vw`.
+In addition to this, we are also going to add margins and paddings to our elements.
+Pay attention to our units and notice that we are avoiding absolute measurements in favour of relative ones such as `em` or `vw`.
 For more information check out this page on [CSS units](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units).
 
-### Colour palette
+### Colour palette and font
 
-Let's start by creating a simple colour palette to be used throughout our website.
-Instead of repeating our colours, we are going to define a set of properties at the root level which makes them globally accessible in our CSS.
+Let's define a simple colour palette to be used throughout our website.
+So instead of repeating our colours, we are going to define a set of properties (at the root level) which makes them globally accessible.
 If you find any of this confusing, we refer you to the MDN page on [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties).
 
 ```css
@@ -61,8 +63,8 @@ If you find any of this confusing, we refer you to the MDN page on [CSS custom p
 }
 ```
 
-Using CSS variables makes it easy to change the colour palette of our website to make a dark theme.
-A simple [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme) is now enough to redefine the colour palette of our website.
+Using CSS variables makes it easy to change the colours of our website to make a dark theme.
+We can now do this using a simple [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme) which redefines the colour palette.
 
 ```css
 @media (prefers-color-scheme: dark) {
@@ -73,8 +75,8 @@ A simple [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/p
 }
 ```
 
-The user's device/browser preference will now be used to determine the colour palette of our website.
-Notice that our colours are defined in the [hexadecimal syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/hex-color).
+Note that the user's device/browser preference decides the colour palette of our website.
+We also point out that our colours are defined in the [hexadecimal syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/hex-color).
 
 Now we can use these colours to change the background and the foreground colour of all elements.
 We do this by adding the following to the properties of `body` and `main`:
@@ -92,7 +94,7 @@ We are going to add spaces between the `span` elements and generally make things
 ### Presentation of `#keyboard`
 
 To make our keyboard more like a real keyboard, we are going to draw the letters in rows (that flow like a row, `flex-direction: row`).
-But this requires us to rework our `drawKeyboard` function in `client/helper.js`.
+But first we need to rework our `drawKeyboard` function in `client/helper.js`.
 
 See all of our changes by visiting [this compare page](https://github.com/portsoc/hangman-in-branches/compare/8...9?diff=split).
 
