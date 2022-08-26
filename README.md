@@ -59,6 +59,14 @@ Make sure to check out the `package.json` file to see the changes our actions ha
 
 ### Linting our app
 
+Once you have installed and fully configured ESLint, you should start seeing errors in the Problems view of Visual Studio Code.
+To focus on the problems, hit <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> on Windows/Linux or <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> on Mac to open Command Palette
+Then search for "Problems: Focus on Problems View" and select it.
+
+If you do this on the code from [the previous branch](https://github.com/portsoc/hangman-in-branches/tree/10), you should see the following errors:
+![Screenshot of the errors pickec up by the linter](https://imgur.com/a/ARBUeRB)
+
+
 The differences between our current branch and the last are shown on [this compare](https://github.com/portsoc/hangman-in-branches/compare/10...11?diff=split) page](https://github.com/portsoc/hangman-in-branches/compare/10...11?diff=split).
 
 ## Usage
