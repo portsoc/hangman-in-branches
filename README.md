@@ -29,8 +29,13 @@ Note that the instructions here are written for Visual Studio Code, but things a
 
 ### Installing and configuring ESLint
 
+Begin by installing [the ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) in Visual Studio Code.
+For more information on installing extensions, see [this guide for Visual Studio Code](https://code.visualstudio.com/docs/editor/extension-marketplace#_install-an-extension).
+
 We have previously installed packages using NPM that were needed for our website to function.
 This time, we are installing the ESLint package that is only needed for developing our app (hence the `--save-dev` flag).
+
+Run the following command in the terminal:
 
 ```bash
 npm i --save-dev eslint eslint-config-portsoc
