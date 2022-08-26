@@ -124,7 +124,7 @@ The fix of this error is not related to styles.
 We just need to add a favicon to our `client` folder.
 You can easily get one using [online favicon generators](https://favicon.io).
 
-See all of our changes by visiting [this compare page](https://github.com/portsoc/hangman-in-branches/compare/8...9?diff=split).
+See all of our changes by visiting [this compare page](https://github.com/portsoc/hangman-in-branches/compare/9...10?diff=split).
 
 ## Usage
 
