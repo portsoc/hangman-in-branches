@@ -54,7 +54,7 @@ Make sure to check out the `package.json` file to see the changes our actions ha
 
 ### Linting our app
 
-The differences between our current branch and the last are shown [this compare page](https://github.com/portsoc/hangman-in-branches/compare/10...11?diff=split).
+The differences between our current branch and the last are shown on [this compare](https://github.com/portsoc/hangman-in-branches/compare/10...11?diff=split) page](https://github.com/portsoc/hangman-in-branches/compare/10...11?diff=split).
 
 ## Usage
 
