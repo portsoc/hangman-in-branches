@@ -1,7 +1,3 @@
-const POST = { method: 'POST' };
-// we are using 'GET' to request the score from the server (it is a read-only request)
-const GET = { method: 'GET' };
-
 import {
   drawHangman,
 } from './canvas.js';
@@ -9,8 +5,12 @@ import {
 import {
   safeRemove,
   create,
-  drawKeyboard
+  drawKeyboard,
 } from './helper.js';
+
+const POST = { method: 'POST' };
+// we are using 'GET' to request the score from the server (it is a read-only request)
+const GET = { method: 'GET' };
 
 /**
  *  Stores the status of the game and has the following properties:
@@ -34,7 +34,7 @@ let gameState = {};
  * `el.instruct` - the instructions section ('#instruct'),
  * `el.feedback` - the feedback section ('#feedback').
  */
-let el = {};
+const el = {};
 
 /**
  * Returns number of lives based on `gameState.misses`, if it doesn't exist, it returns `0`.
@@ -60,7 +60,7 @@ function hitsAndMisses() {
  * It also displays the number of lives in the feedback section if the game is on.
  * @param message - the message to display
  */
-async function feedback(message) {
+function feedback(message) {
   if (gameState.onGoing) {
     message += ` You have ${lives()} lives left.`;
   }
@@ -85,7 +85,7 @@ function generateNewGame() {
 
 /**
  * Starts a new game by requesting a new `gameState` from the server.
- * Removes the newGame element, prepares game handles and event listeners, 
+ * Removes the newGame element, prepares game handles and event listeners,
  * redraws the hangman and keyboard, and displays a feedback message too.
  */
 async function startNewGame() {
@@ -148,7 +148,7 @@ function checkKeyPress(e) {
  * Depending on the server response, it also displays a feedback to user
  * and generates a new game if the game is won or no lives left.
  * The hangman and keyboard are updated too.
- * Otherwise (if no lives left or repetetive guess has been made) it skips the request 
+ * Otherwise (if no lives left or repetetive guess has been made) it skips the request
  * and just displays a feedback message.
  * @param letter - the letter that the user has guessed
  */
@@ -164,7 +164,7 @@ async function registerLetter(letter) {
       const wasHit = gameState.last;
       if (!wasHit) {
         if (!gameState.onGoing) {
-          let message = `You lost! Your last guess, '${letter}', was wrong. 😭`
+          let message = `You lost! Your last guess, '${letter}', was wrong. 😭`;
           message += gameState.word ? ` The word was: '${gameState.word}'` : '';
           feedback(message);
 

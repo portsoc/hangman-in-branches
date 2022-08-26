@@ -54,7 +54,7 @@ export function drawKeyboard(parent) {
     for (const letter of row) {
       const btn = create('button', letterRow, {
         id: 'key_' + letter,
-        textContent: letter
+        textContent: letter,
       }, letter);
       btn.dataset.letter = letter;
     }

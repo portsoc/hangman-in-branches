@@ -63,11 +63,18 @@ Once you have installed and fully configured ESLint, you should start seeing err
 To focus on the problems, hit <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> on Windows/Linux or <kbd>Cmd</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> on Mac to open Command Palette
 Then search for "Problems: Focus on Problems View" and select it.
 
-If you do this on the code from [the previous branch](https://github.com/portsoc/hangman-in-branches/tree/10), you should see the following errors:
+If you do this on the code from [the previous branch](https://github.com/portsoc/hangman-in-branches/tree/10), you should see the following errors.
+Remember that sometimes you will have to save the code before you can see the errors.
 
 ![Screenshot of the errors pickec up by the linter](https://i.imgur.com/wDlqZhI.png)
 
-The differences between our current branch and the last are shown on [this compare](https://github.com/portsoc/hangman-in-branches/compare/10...11?diff=split) page](https://github.com/portsoc/hangman-in-branches/compare/10...11?diff=split).
+Click once on the error to open the file in the editor, focusing on the line that causes the error.
+Right-click on each of these errors to see the options you have.
+If you are confused by them, visit the documentation for the error (if exists).
+Then if you understand the error, you can select the fix or the fix all option from the menu.
+
+The code that we have in the current branch is not perfect, but it has passed all the checks that the linter carries out.
+Check out the differences between our current branch and the last as shown on [this compare](https://github.com/portsoc/hangman-in-branches/compare/10...11?diff=split) page](https://github.com/portsoc/hangman-in-branches/compare/10...11?diff=split).
 
 ## Usage
 
