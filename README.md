@@ -18,17 +18,43 @@
 
 ## Objectives
 
-Since we have completed every core feature of our game, we can now begin to style our website.
-Our goal is not to create a visually stylish website, that would be the job of a front-end designer, not a software engineer.
-We just aim to create a website that has a simple layout, consistent theme and is usable on a variety of devices.
-Meanwhile, we should care about the quality of our CSS too (and maybe use some modern CSS features).
-
-If you have not already done so, visit the Moodle resources on the topic of CSS.
-Be sure to check out the examples on custom properties and flexbox in the [CSS repository](https://github.com/portsoc/ws_css3).
+We are only humans, and we make mistakes.
+Luckily, there is an automated way to check the quality of your code: Liners.
+Before proceeding any further, make sure to visit the module resources, especially the [lint101 repository](https://github.com/portsoc/lint101).
 
 ## Implementation
 
-See all of our changes by visiting [this compare page](https://github.com/portsoc/hangman-in-branches/compare/10...11?diff=split).
+We will start by following the installation steps stated in the [eslint-config-portsoc repository](https://github.com/portsoc/eslint-config-portsoc).
+Note that the instructions here are written for Visual Studio Code, but things are pretty similar for other editors.
+
+### Installing and configuring ESLint
+
+We have previously installed packages using NPM that were needed for our website to function.
+This time, we are installing the ESLint package that is only needed for developing our app (hence the `--save-dev` flag).
+
+```bash
+npm i --save-dev eslint eslint-config-portsoc
+```
+
+We are also installing this package with the configuration that we want to use (`eslint-config-portsoc`).
+There are some more configurations that we need to add to our `package.json`.
+Remember that the objects in a JSON file are comma-separated, so we need to add a comma before the end of the last object (this should be `devDependencies`):
+
+```json
+  "eslintConfig": {
+  "extends": "portsoc",
+  "root": true,
+  "env": {
+    "browser": true
+  }
+}
+```
+
+Make sure to check out the `package.json` file to see the changes our actions have made.
+
+### Linting our app
+
+The differences between our current branch and the last are shown [this compare page](https://github.com/portsoc/hangman-in-branches/compare/10...11?diff=split).
 
 ## Usage
 
