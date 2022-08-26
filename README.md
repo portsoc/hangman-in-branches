@@ -20,12 +20,12 @@
 
 We are only humans, and we make mistakes.
 Luckily, there is an automated way to check the quality of your code: Liners.
-Before proceeding any further, make sure to visit the module resources, especially the [lint101 repository](https://github.com/portsoc/lint101).
+Before proceeding further, visit the module resources, specifically the [lint101 repository](https://github.com/portsoc/lint101).
 
 ## Implementation
 
 We will start by following the installation steps stated in the [eslint-config-portsoc repository](https://github.com/portsoc/eslint-config-portsoc).
-Note that the instructions here are written for Visual Studio Code, but things are pretty similar for other editors.
+Note that the instructions here are written for Visual Studio Code, but things are similar for other editors.
 
 ### Installing and configuring ESLint
 
@@ -41,7 +41,7 @@ Run the following command in the terminal:
 npm i --save-dev eslint eslint-config-portsoc
 ```
 
-We are also installing this package with the configuration that we want to use (`eslint-config-portsoc`).
+We are installing this package with the needed configuration (`eslint-config-portsoc`).
 There are some more configurations that we need to add to our `package.json`.
 Remember that the objects in a JSON file are comma-separated, so we need to add a comma before the end of the last object (this should be `devDependencies`):
 
@@ -55,7 +55,7 @@ Remember that the objects in a JSON file are comma-separated, so we need to add 
 }
 ```
 
-Make sure to check out the `package.json` file to see the changes our actions have made.
+Check out the `package.json` file to see the changes our actions have made.
 
 ### Linting our app
 
@@ -66,15 +66,15 @@ Then search for "Problems: Focus on Problems View" and select it.
 If you do this on the code from [the previous branch](https://github.com/portsoc/hangman-in-branches/tree/10), you should see the following errors.
 Remember that sometimes you will have to save the code before you can see the errors.
 
-![Screenshot of the errors pickec up by the linter](https://i.imgur.com/wDlqZhI.png)
+![Screenshot of the errors picked up by the linter](https://i.imgur.com/wDlqZhI.png)
 
 Click once on the error to open the file in the editor, focusing on the line that causes the error.
 Right-click on each of these errors to see the options you have.
-If you are confused by them, visit the documentation for the error (if exists).
+If you are confused by them, visit the documentation for the error (if it exists).
 Then if you understand the error, you can select the fix or the fix all option from the menu.
 
 The code that we have in the current branch is not perfect, but it has passed all the checks that the linter carries out.
-Check out the differences between our current branch and the last as shown on [this compare](https://github.com/portsoc/hangman-in-branches/compare/10...11?diff=split) page](https://github.com/portsoc/hangman-in-branches/compare/10...11?diff=split).
+Check out the differences between our current branch and the last as shown on [this compare page](https://github.com/portsoc/hangman-in-branches/compare/10...11?diff=split).
 
 ## Usage
 
