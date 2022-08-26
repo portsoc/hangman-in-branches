@@ -122,7 +122,7 @@ Failed to load resource: net::ERR_EMPTY_RESPONSE
 
 The fix of this error is not related to styles.
 We just need to add a favicon to our `client` folder.
-You can easily get one using [online generators](https://favicon.io).
+You can easily get one using [online favicon generators](https://favicon.io).
 
 See all of our changes by visiting [this compare page](https://github.com/portsoc/hangman-in-branches/compare/8...9?diff=split).
 
@@ -159,6 +159,11 @@ Stop the server with <kbd>Ctrl</kbd> + <kbd>C</kbd> in the shell.
 
 ## Further Exploration
 
-At the moment we are not caring for the users who may want to play the game in landscape mode.
+Our website is not adjusting to device orientation (it is designed to work in portrait mode only).
+Similar to how we implemented the colour palette, we can define a set of custom properties for the flow direction and sizes of our elements.
+Furthermore, we can use media queries to reset the value of these variables depending on the orientation of the device.
+
+Your task is to make sure that our website is responsive to device orientation.
+We recommend you check out [this page on device orientations](https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model/Managing_screen_orientation).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
