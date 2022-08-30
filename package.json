@@ -5,7 +5,8 @@
   "main": "server/svr.js",
   "type": "module",
   "scripts": {
-    "start": "node server/svr.js"
+    "start": "node server/svr.js",
+    "setup": "echo 'Setting up...' && createdb hangman_db && psql hangman_db < server/game.sql"
   },
   "repository": {
     "type": "git",
