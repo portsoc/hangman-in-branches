@@ -20,9 +20,6 @@
 
 ## Implementation
 
-Note that we are implementing the database in a Unix environment (e.g., your student VMs or Linux/MacOS machines) not Windows.
-For more information on serving the site on your student VMs, revisit the [README of branch 9](https://github.com/portsoc/hangman-in-branches/tree/9#host-this-site).
-
 For now, we are using the default `postgres` user that comes with the installation of PostgreSQL.
 If running the `setup` script fails, make sure that you switch to this user by running:
   
@@ -42,13 +39,36 @@ Check out the differences between our current branch and the last as shown on [t
 
 ## Usage
 
+### Prerequisites
+
+This branch has been implemented in a Unix environment (e.g., your student VMs or Linux/macOS machines) not Windows.
+For more information on serving the site on your student VMs, revisit the [README of branch 9](https://github.com/portsoc/hangman-in-branches/tree/9#host-this-site).
+
+We are also using [the PostgreSQL database](https://www.postgresql.org/download/) so make sure you have it installed on your machines (it is already installed on the student VMs).
+Verify your installation by running the following command which should output the version of PostgreSQL you are using:
+
+```bash
+psql --version
+```
+
+### Setup
+
+Note that the setup is only run once.
 Run the following command to install all the dependencies:
 
 ```
 npm install
 ```
 
-Next, run the start script to start the server:
+You also need to run the following command to set up the database:
+
+```bash
+npm run setup
+```
+
+### Run the server
+
+Run the start script to start the server:
 
 ```
 npm start
