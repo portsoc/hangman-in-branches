@@ -88,8 +88,7 @@ npm start
 
 ### Access the site
 
-If you are running the server on your student VMs, you can now access it by visiting the IP address shown on the MyVM page or [upABCDEF.myvm.port.ac.uk](upABCDEF.myvm.port.ac.uk)
-where ABCDEF is replaced by your student number.
+If you are running the server on your student VMs, you can now access it by visiting the IP address shown on the MyVM page or [upABCDEF.myvm.port.ac.uk](upABCDEF.myvm.port.ac.uk) where ABCDEF is replaced by your student number.
 
 On your machines, the website will be running locally on port 8080 so view it by visiting http://localhost:8080 in your browser.
 Stop the server with <kbd>Ctrl</kbd> + <kbd>C</kbd> in the shell.
