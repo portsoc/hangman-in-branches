@@ -20,20 +20,7 @@
 
 ## Implementation
 
-For now, we are using the default `postgres` user that comes with the installation of PostgreSQL.
-If running the `setup` script fails, make sure that you switch to this user by running:
-  
-```bash
-sudo su postgres
-```
-
-The above command will switch to the `postgres` user.
-Once you are done, you can switch back to the original user by running:
-  
-```bash
-exit
-```
-
+Check out the prerequisites in [the usage section](#usage) before reproducing the implementation.
 
 Check out the differences between our current branch and the last as shown on [this compare page](https://github.com/portsoc/hangman-in-branches/compare/11...12?diff=split).
 
@@ -64,6 +51,21 @@ You also need to run the following command to set up the database:
 
 ```bash
 npm run setup
+```
+
+For now, we are using the default `postgres` user that comes with the installation of PostgreSQL.
+Running the `setup` script may fail on your machines.
+If this happens, first switch the user by running the following command then re-try the setup script:
+
+```bash
+sudo su postgres
+```
+
+The above command (which will ask you for your system's password) will switch to the `postgres` user.
+Once you are done, you can switch back to the original user by running:
+
+```bash
+exit
 ```
 
 ### Run the server
