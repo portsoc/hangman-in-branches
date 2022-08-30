@@ -48,6 +48,4 @@ app.get('/games/:id/score', calculateScore);
 
 app.listen(8080);
 
-console.log('Server is running on port 8080. \
-View it by visiting the following link in the browser: ');
-console.log('http://localhost:8080/');
+console.log('Server is now running on port 8080');
