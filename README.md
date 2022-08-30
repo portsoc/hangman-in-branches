@@ -117,7 +117,7 @@ You can still play multiple games from different browsers but you will have to h
 
 Your challenge is to host this game to learn how to do the same with your submissions.
 We will start by showing you how to serve an app with your student VMs.
-Visit your [MyVm page](https://uop-1-server-per-student-devel.appspot.com/instance/get) and follow the instructions in [this document](https://docs.google.com/document/d/1zqvC5jOoXQlXggKZkEC025H-N6k7HxdTHpsy0Iylt0c/edit?usp=sharing).
+Visit your [MyVm page](http://port.ac.uk/myvm) and follow the instructions in [this document](https://docs.google.com/document/d/1zqvC5jOoXQlXggKZkEC025H-N6k7HxdTHpsy0Iylt0c/edit?usp=sharing).
 
 If you would like to host your app, make sure it is in a private git repository.
 Check [this guide](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories), if you have any authentication errors while cloning your repository into your VM.
