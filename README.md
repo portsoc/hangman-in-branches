@@ -112,15 +112,20 @@ Stop the server with <kbd>Ctrl</kbd> + <kbd>C</kbd> in the shell.
 
 ### Host this site
 
-Our multiplayer game may not make much sense at the moment since we are serving it on local host (to only one client).
-You can still play multiply games from different browsers but you will have to host your game to be able to access it on the internet from different devices.
+Our multiplayer game may not make much sense at the moment since we are serving it on localhost (to only one client).
+You can still play multiple games from different browsers but you will have to host your game to be able to access it on the internet from different devices.
 
 Try hosting this game to learn how to do the same with your submissions.
-For this, it is best to have your code on a private Git repository.
-Once you have done that, follow the instructions in [this document](https://docs.google.com/document/d/1zqvC5jOoXQlXggKZkEC025H-N6k7HxdTHpsy0Iylt0c/edit?usp=sharing).
+Make sure to have your code in a private git repository.
+Make a `web` folder in your [virtual machines](https://uop-1-server-per-student-devel.appspot.com/) before cloning the repository into it.
 
-Remember to make a `web` folder in your [virtual machines](https://uop-1-server-per-student-devel.appspot.com/) before cloning the repository into it.
-Serve it and try to access the site from different devices.
+```bash
+mkdir web && cd web
+```
+
+Clone your repository into the `web` folder (if you have any authentication errors, check [this guide](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories)).
+Once you have done that, follow the instructions in [this document](https://docs.google.com/document/d/1zqvC5jOoXQlXggKZkEC025H-N6k7HxdTHpsy0Iylt0c/edit?usp=sharing).
+Serve your site and try to access the site from different devices.
 
 We will also leave you with another challenge that you can try to solve.
 
