@@ -33,7 +33,7 @@ Check out the differences between our current branch and the last as shown on [t
 ### Prerequisites
 
 This branch has been implemented in a Unix environment (e.g., your student VMs or Linux/macOS machines) not Windows.
-For more information on serving the site on your student VMs, revisit the [README of branch 9](https://github.com/portsoc/hangman-in-branches/tree/9#host-this-site).
+For more information on serving the site on [your student VM](http://port.ac.uk/myvm), revisit the [README of branch 9](https://github.com/portsoc/hangman-in-branches/tree/9#host-this-site).
 
 We are also using [the PostgreSQL database](https://www.postgresql.org/download/) so make sure you have it installed on your machines (it is already installed on the student VMs).
 Verify your installation by running the following command which should output the version of PostgreSQL you are using:
