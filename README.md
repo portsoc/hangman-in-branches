@@ -115,17 +115,17 @@ Stop the server with <kbd>Ctrl</kbd> + <kbd>C</kbd> in the shell.
 Our multiplayer game may not make much sense at the moment since we are serving it on localhost (to only one client).
 You can still play multiple games from different browsers but you will have to host your game to be able to access it on the internet from different devices.
 
-Try hosting this game to learn how to do the same with your submissions.
-Make sure to have your code in a private git repository.
-Make a `web` folder in your [virtual machines](https://uop-1-server-per-student-devel.appspot.com/) before cloning the repository into it.
+Your challenge is to host this game to learn how to do the same with your submissions.
+We will start by showing you how to serve an app with your student VMs.
+Visit your [MyVm page](https://uop-1-server-per-student-devel.appspot.com/instance/get) and follow the instructions in [this document](https://docs.google.com/document/d/1zqvC5jOoXQlXggKZkEC025H-N6k7HxdTHpsy0Iylt0c/edit?usp=sharing).
 
-```bash
-mkdir web && cd web
-```
+If you would like to host your app, make sure it is in a private git repository.
+Check [this guide](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories), if you have any authentication errors while cloning your repository into your VM.
+Alternatively, you can clone this public repository as practice.
 
-Clone your repository into the `web` folder (if you have any authentication errors, check [this guide](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories)).
-Once you have done that, follow the instructions in [this document](https://docs.google.com/document/d/1zqvC5jOoXQlXggKZkEC025H-N6k7HxdTHpsy0Iylt0c/edit?usp=sharing).
-Serve your site and try to access the site from different devices.
+Make sure that you clone into the `web` folder in your virtual machines as instructed in the above document.
+Serve your site (as shown in the [usage section](#usage)) and try to access it, from different devices, by visiting the IP address or the DNS name shown in the details section of your MyVM page.
+
 
 We will also leave you with another challenge that you can try to solve.
 
