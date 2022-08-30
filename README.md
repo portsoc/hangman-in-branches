@@ -20,8 +20,8 @@
 
 ## Implementation
 
-Note that we are implementing the database in a Unix environment (e.g., your student VMs or Linux/MacOS machines).
-Our instructions have not been tested on Windows machines.
+Note that we are implementing the database in a Unix environment (e.g., your student VMs or Linux/MacOS machines) not Windows.
+For more information on serving the site on your student VMs, revisit the [README of branch 9](https://github.com/portsoc/hangman-in-branches/tree/9#host-this-site).
 
 For now, we are using the default `postgres` user that comes with the installation of PostgreSQL.
 If running the `setup` script fails, make sure that you switch to this user by running:
