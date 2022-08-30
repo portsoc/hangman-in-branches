@@ -12,3 +12,5 @@ INSERT INTO Messageboard (msg) VALUES
 ( 'these are three default messages' ),
 ( 'delivered from the server' ),
 ( 'using a custom route' );
+
+SELECt * FROM Messageboard;
