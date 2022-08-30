@@ -20,6 +20,10 @@
 
 ## Implementation
 
+### Storing static data in local storage
+
+### Storing dynamic data in a database
+
 Check out the prerequisites in [the usage section](#usage) before reproducing the implementation.
 
 Check out the differences between our current branch and the last as shown on [this compare page](https://github.com/portsoc/hangman-in-branches/compare/11...12?diff=split).
@@ -40,7 +44,6 @@ psql --version
 
 ### Setup
 
-Note that the setup is only run once.
 Run the following command to install all the dependencies:
 
 ```
@@ -68,6 +71,13 @@ Once you are done, you can switch back to the original user by running:
 exit
 ```
 
+Note that the setup is only run once.
+If you already have a `hangman_db` database, drop it by running the following command:
+
+```bash
+dropdb hangman_db
+```
+
 ### Run the server
 
 Run the start script to start the server:
@@ -76,7 +86,12 @@ Run the start script to start the server:
 npm start
 ```
 
-The website is now running locally on port 8080 so view it by visiting http://localhost:8080 in your browser.
+### Access the site
+
+If you are running the server on your student VMs, you can now access it by visiting the IP address shown on the MyVM page or [upABCDEF.myvm.port.ac.uk](upABCDEF.myvm.port.ac.uk)
+where ABCDEF is replaced by your student number.
+
+On your machines, the website will be running locally on port 8080 so view it by visiting http://localhost:8080 in your browser.
 Stop the server with <kbd>Ctrl</kbd> + <kbd>C</kbd> in the shell.
 
 ## Todo
