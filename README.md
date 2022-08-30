@@ -12,7 +12,6 @@
     <li><a href="#implementation">Implementation</a>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#todo">Todo</a></li>
-    <li><a href="#further-exploration">Further Exploration</a></li>
   </ol>
 </details>
 
@@ -106,7 +105,5 @@ Stop the server with <kbd>Ctrl</kbd> + <kbd>C</kbd> in the shell.
 - [x] As we have almost met all the core requirements, we can start with the style of our website.
 
 - [x] We should lint our code, checking its stylistic quality, before submission.
-
-## Further Exploration
 
 <p align="right">(<a href="#top">back to top</a>)</p>
