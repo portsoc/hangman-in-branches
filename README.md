@@ -125,7 +125,7 @@ Alternatively, you can clone this public repository as practice.
 
 Make sure that you clone into the `web` folder in your virtual machines as instructed in the above document.
 Serve your site (as shown in the [usage section](#usage)) and try to access it, from different devices, by visiting the IP address or the DNS name shown in the details section of your MyVM page.
-
+If the website is being served yet you cannot access it on the internet, try adding the port number, `:8080`, to the end of the URL.
 
 We will also leave you with another challenge that you can try to solve.
 
