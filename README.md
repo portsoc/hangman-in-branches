@@ -74,10 +74,10 @@ exit
 ```
 
 Note that the setup is only run once.
-If you already have a `hangman_db` database, drop it by running the following command:
+If you already have a `hangmanDB` database, drop it by running the following command:
 
 ```bash
-dropdb hangman_db
+dropdb hangmanDB
 ```
 
 ### Run the server

@@ -2,6 +2,6 @@ export default {
   // remove the next line if not running on our VM and connection to PostgreSQL doesn't work
   host: '/var/run/postgresql',
 
-  database: 'hangman_db',
+  database: 'hangmanDB',
   statement_timeout: 5000,
 };
