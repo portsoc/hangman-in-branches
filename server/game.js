@@ -3,7 +3,7 @@ import * as helper from './helper.js';
 import fs from 'fs';
 
 /**
- * It reads the data.txt file, splits it into an array, and returns the array
+ * Reads the data.txt file, splits it into an array, and returns the array
  * @returns An array of words
  */
 function readWords() {
