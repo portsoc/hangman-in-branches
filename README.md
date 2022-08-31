@@ -56,9 +56,11 @@ You also need to run the following command to set up the database:
 npm run setup
 ```
 
-For now, we are using the default `postgres` user that comes with the installation of PostgreSQL.
-Running the `setup` script may fail on your machines.
-If this happens, first switch the user by running the following command then re-try the setup script:
+For now, we are using the default role that comes with our implementation.
+This is usually the username that you have in your VM or the role `postgres` that comes with the installation of PostgreSQL.
+
+Running the `setup` script may fail on your personal machines.
+If this happens, first switch the user by running the following command then re-run the setup script:
 
 ```bash
 sudo su postgres
