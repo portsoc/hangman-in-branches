@@ -24,6 +24,10 @@
 
 ### Storing dynamic data in a database
 
+Pay attention to the `setup` script we have added in `package.json`.
+It creates a Postgres database using the `createdb` command.
+We then use the input redirection operator (`<`) to pass the content of `game.sql` file to `psql` thus creating our `game` table.
+
 Check out the prerequisites in [the usage section](#usage) before reproducing the implementation.
 
 Check out the differences between our current branch and the last as shown on [this compare page](https://github.com/portsoc/hangman-in-branches/compare/11...12?diff=split).
@@ -33,7 +37,7 @@ Check out the differences between our current branch and the last as shown on [t
 ### Prerequisites
 
 This branch has been implemented in a Unix environment (e.g.,your student VMs or Linux/macOS machines) not Windows.
-For more information on serving the site on [your student VM](http://port.ac.uk/myvm),revisit the [README of branch 9](https://github.com/portsoc/hangman-in-branches/tree/9#host-this-site).
+For more information on serving the site on [your student VM](http://port.ac.uk/myvm), revisit the [README of branch 9](https://github.com/portsoc/hangman-in-branches/tree/9#host-this-site).
 
 We are also using [the PostgreSQL database](https://www.postgresql.org/download/) so make sure you have it installed on your machines (it is already installed on the student VMs).
 Verify your installation by running the following command which should output the version of PostgreSQL you are using:
@@ -60,21 +64,21 @@ For now,we are using the default role that comes with our implementation.
 This is usually the username that you have in your VM or the role `postgres` that comes with the installation of PostgreSQL.
 
 Running the `setup` script may fail on your personal machines.
-If this happens,first switch the user by running the following command then re-run the setup script:
+If this happens, first switch the user by running the following command then re-run the setup script:
 
 ```bash
 sudo su postgres
 ```
 
 The above command (which will ask you for your system's password) will switch to the `postgres` user.
-Once you are done,you can switch back to the original user by running:
+Once you are done, you can switch back to the original user by running:
 
 ```bash
 exit
 ```
 
 Note that the setup is only run once.
-If you already have a `hangmanDB` database,drop it by running the following command:
+If you already have a `hangmanDB` database, drop it by running the following command:
 
 ```bash
 dropdb hangmanDB
@@ -106,9 +110,9 @@ Stop the server with <kbd>Ctrl</kbd> + <kbd>C</kbd> in the shell.
 
 - [x] Data should be stored in a database. We need a better way to store `words` and maybe the state of games at play.
 
-- [x] As we have almost met all the core requirements,we can start with the style of our website.
+- [x] As we have almost met all the core requirements, we can start with the style of our website.
 
-- [x] We should lint our code,checking its stylistic quality,before submission.
+- [x] We should lint our code, checking its stylistic quality, before submission.
 
 ## Further Exploration
 
