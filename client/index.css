@@ -3,34 +3,37 @@
   --fg: #000;
   --fg-hit: #040;
   --fg-miss: #400;
-  --bg-hit: #3C3;
-  --bg-miss: #C33;
+  --bg-hit: #3c3;
+  --bg-miss: #c33;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #222;
     --fg: #ccc;
-    --fg-hit: #3C3;
-    --fg-miss: #C33;
+    --fg-hit: #3c3;
+    --fg-miss: #c33;
     --bg-hit: #040;
     --bg-miss: #400;
   }
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: Helvetica, sans-serif;
+  font-family: Helvetica, sans-serif;
 }
 
 * {
-    transition: all 1s linear;
+  transition: all 1s linear;
 }
 
-body, main, .letterRow, #newGame {
+body,
+main,
+.letterRow,
+#newGame {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,31 +43,36 @@ body, main, .letterRow, #newGame {
 }
 
 main {
-    max-width: 60em;
+  max-width: 60em;
+}
+
+h1 {
+  padding: 0.5em 1em;
+  margin: 0;
 }
 
 section {
-    padding: 1em 2em;
-    margin-bottom: 1em;
+  padding: 1em 2em;
+  margin-bottom: 1em;
 }
 
 button {
-    font-size: min(4vw, 140%);
-    min-width: 2em;
-    min-height: 2em;
-    text-transform: uppercase;
-    margin: 0.1em;
+  font-size: min(4vw, 140%);
+  min-width: 2em;
+  min-height: 2em;
+  text-transform: uppercase;
+  margin: 0.1em;
 }
 
 #guessMe span {
-    font-size: min(6vw, 140%);
-    margin: 0.25em;
-    min-width: 1em;
+  font-size: min(6vw, 140%);
+  margin: 0.25em;
+  min-width: 1em;
 }
 
 .letterRow {
-    max-width: 100vw;
-    flex-direction: row;
+  max-width: 100vw;
+  flex-direction: row;
 }
 
 #keyboard {
@@ -72,16 +80,16 @@ button {
 }
 
 .hit {
-    color: var(--fg-hit);
-    background: var(--bg-hit);
+  color: var(--fg-hit);
+  background: var(--bg-hit);
 }
 
 .miss {
-    color: var(--fg-miss);
-    background: var(--bg-miss);
+  color: var(--fg-miss);
+  background: var(--bg-miss);
 }
 
 canvas {
-    max-width: 10em;
-    max-height: 15em;
+  max-width: 10em;
+  max-height: 15em;
 }
