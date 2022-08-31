@@ -8,7 +8,7 @@ import fs from 'fs';
  */
 function readWords() {
   const data = fs.readFileSync('server/data.txt', 'utf8');
-  return data.split(',\n');
+  return data.split('\n');
 }
 
 /**
