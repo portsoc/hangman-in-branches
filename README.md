@@ -18,17 +18,30 @@
 
 ## Objectives
 
+So far, we have been storing our data in memory (saved inside JavaScript variables).
+This means that by restarting the server, all data will be lost.
+In this branch, we will store our data permanently in a database.
+
 ## Implementation
 
-### Storing static data in local storage
+Our data, so far, consists of the `gamesInPlay` and `words` arrays both located on the server.
+They differ significantly in nature: `gamesInPlay` is dynamic in the sense that it is updated as games are created or played. Whereas, `words` array is an example of static data since it does not update as games are played (only the developer may choose to update the words).
 
-The `readWords` function in `server/helper.js` is used to read the content of the `data.txt` file.
+Our solutions to how we store our data will be different as a result.
+To store the static data we are using a simple text file and for the dynamic data, we are using a PostgreSQL database.
+The latter may be overkill (we should ideally be using a non-relational database such as MongoDB), but it is a good example of how to use a relational database in a server-side application.
 
-### Storing dynamic data in a database
+### Static data
+
+To read the content of `server/data.txt`, we need to use the `fs` module.
+Note that the module is native to Node.js, so we don't need to install it.
+The `readWords` function in `server/helper.js` uses the `readFileSync` function from the `fs` module to read the content of the data file synchronously.
+
+### Dynamic data
 
 Pay attention to the `setup` script we have added in `package.json`.
-It creates a Postgres database using the `createdb` command.
-We then use the input redirection operator (`<`) to pass the content of `game.sql` file to `psql` thus creating our `game` table.
+It creates a Postgres database `hangmanDB` using the `createdb` command.
+We then use the input redirection operator (`<`) to pass the content of `server/game.sql` file to `psql`'s `hangmanDB` thus creating our `game` table in that database.
 
 Check out the prerequisites in [the usage section](#usage) before reproducing the implementation.
 
