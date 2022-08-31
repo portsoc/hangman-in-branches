@@ -1,15 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
 import * as helper from './helper.js';
-import fs from 'fs';
-
-/**
- * Reads the data.txt file, splits it into an array, and returns the array
- * @returns An array of words
- */
-function readWords() {
-  const data = fs.readFileSync('server/data.txt', 'utf8');
-  return data.split('\n');
-}
 
 /**
  * Stores the status objects of the game in play. Each object has the following properties:
@@ -42,7 +32,7 @@ function sanitizedStatus(id) {
  */
 export function createGame() {
   const id = uuidv4();
-  const words = readWords();
+  const words = helper.readWords();
   const word = helper.randomElement(words);
 
   gamesInPlay[id] = {

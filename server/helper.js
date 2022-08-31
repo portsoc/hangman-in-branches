@@ -1,3 +1,14 @@
+import fs from 'fs';
+
+/**
+ * Reads the data.txt file, splits it into an array, and returns the array
+ * @returns An array of words
+ */
+export function readWords() {
+  const data = fs.readFileSync('server/data.txt', 'utf8');
+  return data.split('\n');
+}
+
 /**
  * Takes the size of an array and returns a random index between 0 and size.
  * The number itself is not included in the range.
