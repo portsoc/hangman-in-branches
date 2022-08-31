@@ -22,6 +22,8 @@
 
 ### Storing static data in local storage
 
+The `readWords` function in `server/helper.js` is used to read the content of the `data.txt` file.
+
 ### Storing dynamic data in a database
 
 Pay attention to the `setup` script we have added in `package.json`.
