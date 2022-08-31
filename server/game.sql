@@ -10,11 +10,9 @@ CREATE TABLE IF NOT EXISTS game (
     ongoing BOOLEAN NOT NULL DEFAULT true,
     userWord VARCHAR(255) NOT NULL,
     last BOOLEAN NOT NULL DEFAULT false,
-    won BOOLEAN NOT NULL DEFAULT false,
+    won BOOLEAN NOT NULL DEFAULT false
 );
 
 INSERT INTO game (word, hits, misses, ongoing, userWord, last, won) VALUES ('test', '', '', true, '', false, false);
 
 SELECT * FROM game;
-
-DROP TABLE IF EXISTS Messageboard;
