@@ -46,7 +46,7 @@ psql --version
 
 Run the following command to install all the dependencies:
 
-```
+```bash
 npm install
 ```
 
@@ -84,7 +84,7 @@ dropdb hangmanDB
 
 Run the start script to start the server:
 
-```
+```bash
 npm start
 ```
 
