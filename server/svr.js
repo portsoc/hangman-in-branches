@@ -15,6 +15,7 @@ app.use(express.static(clientPath));
  */
 function createGame(req, res) {
   const status = game.createGame();
+  console.log(status);
   res.json(status);
 }
 

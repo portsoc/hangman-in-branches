@@ -1,7 +1,11 @@
 import { v4 as uuidv4 } from 'uuid';
-import { words } from './data.js';
 import * as helper from './helper.js';
+import fs from 'fs';
 
+async function readFile() {
+  const data = await fs.readFile('monolitic.txt', 'utf8');
+  return Buffer.from(data);
+}
 
 /**
  * Stores the status objects of the game in play. Each object has the following properties:
@@ -32,8 +36,9 @@ function sanitizedStatus(id) {
  * It also returns a sanitized copy of the game status object.
  * @returns The sanitized status object.
  */
-export function createGame() {
+export async function createGame() {
   const id = uuidv4();
+  const words = await readFile();
   const word = helper.randomElement(words);
 
   gamesInPlay[id] = {
