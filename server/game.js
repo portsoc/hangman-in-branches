@@ -6,15 +6,15 @@ import config from './config.js';
 // create a new psql client with the configurations from the config file
 const sqlClient = new Postgres.Client(config);
 // attempt to connect to the database
-sqlClient.connect();
+let sqlConnected = false;
+sqlClient.connect(err => {
+  if (err) {
+    console.error(`Tried to connect to database, but ${err.stack}`);
+  } else {
+    sqlConnected = true;
+  }
+});
 
-// TODO: This does not output connection errors as expected.
-// assess if the connection to the database is successful
-if (sqlClient.connectError) {
-  // if not, throw an error and end the connection
-  console.error(`Connection error: ${sqlClient.connectError}`);
-  sqlClient.end();
-}
 
 /**
  * Stores the status objects of the game in play. Each object has the following properties:
@@ -51,6 +51,10 @@ function sanitizedStatus(id) {
  * @returns The sanitized status object.
  */
 export function createGame() {
+  if (!sqlConnected) {
+    return null;
+  }
+
   const id = uuidv4();
   const words = helper.readWords();
   const word = helper.randomElement(words);
