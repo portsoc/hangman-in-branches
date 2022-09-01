@@ -162,7 +162,7 @@ Stop the server with <kbd>Ctrl</kbd> + <kbd>C</kbd> in the shell.
 ### Handle server errors
 
 At the moment, the server (`server/svr.js`) responds with `null` if there was a database connection error in `server/game.js`.
-You can see this by running the server without running the setup script or deleting the database with `dropdb hangmanDB`.
+You can see this by running the server without running the setup script or changing the database name in `server/config.js`.
 
 We can improve this by sending a response with a status code of 500 (Internal Server Error) and a message to the client.
 Check out [the server101 repository](https://github.com/portsoc/server101) for an example of how to handle errors.
