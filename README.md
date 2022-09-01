@@ -103,28 +103,22 @@ You also need to run the following command to set up the database:
 npm run setup
 ```
 
-For now, we are using the default role that comes with our implementation.
-This is usually the username that you have in your VM or the role `postgres` that comes with the installation of PostgreSQL.
-
 Running the `setup` script may fail on your personal machines.
-If this happens, first switch the user by running the following command then re-run the setup script:
+If this happens, begin by checking the configuration of the database in `server/config.js`.
+Read the comments in this file and make sure you have the correct configuration.
+
+If the error persists, switch the user in your shell by running the following command then re-run the setup script:
 
 ```bash
 sudo su postgres
 ```
 
 The above command (which will ask you for your system's password) will switch to the `postgres` user.
+The `postgres` role comes with the installation of PostgreSQL and has all the privileges to create, drop, alter and modify databases.
 Once you are done, you can switch back to the original user by running:
 
 ```bash
 exit
-```
-
-Note that the setup is only run once.
-If you already have a `hangmanDB` database, drop it by running the following command:
-
-```bash
-dropdb hangmanDB
 ```
 
 ### Run the server
