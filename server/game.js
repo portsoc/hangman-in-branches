@@ -8,14 +8,12 @@ const sqlClient = new Postgres.Client(config);
 // attempt to connect to the database
 sqlClient.connect();
 
+// TODO: This does not output connection errors as expected.
 // assess if the connection to the database is successful
-let dbConnection = true;
-
 if (sqlClient.connectError) {
   // if not, throw an error and end the connection
-  console.error(sqlClient.connectError);
+  console.error(`Connection error: ${sqlClient.connectError}`);
   sqlClient.end();
-  dbConnection = false;
 }
 
 /**
