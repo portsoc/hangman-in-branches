@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "node server/svr.js",
-    "setup": "echo 'Setting up...' && createdb hangmanDB && psql hangmanDB < server/game.sql"
+    "cleanup": "echo 'Cleaning up...' && dropdb --if-exists hangmanDB && echo 'Done!'",
+    "setup": "echo 'Setting up...' && createdb hangmanDB && psql hangmanDB < server/game.sql && echo 'Done!'"
   },
   "repository": {
     "type": "git",
