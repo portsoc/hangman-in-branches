@@ -31,7 +31,13 @@ Our solutions to how we store our data will be different as a result.
 To store the static data we are using a simple text file and for the dynamic data, we are using a PostgreSQL database.
 The latter may be overkill (we should ideally be using a non-relational database such as MongoDB), but it is a good example of how to use a relational database in a server-side application.
 
+What is important to note is that our server (`server/svr.js`) and client (everything in the `client` folder) remain unchanged throughout all of our modifications.
+The client certainly does not need to know anything about the changes in our server.
+
 ### Static data
+
+We have moved the array of `words` (previously in `server/data.js`) to a text file `server/data.txt`.
+The movie titles are now separated by a newline (`\n`) whereas before the array elements were separated by a comma (`,`).
 
 To read the content of `server/data.txt`, we need to use the `fs` module.
 Note that the module is native to Node.js, so we don't need to install it.
@@ -42,6 +48,10 @@ The `readWords` function in `server/helper.js` uses the `readFileSync` function 
 Pay attention to the `setup` script we have added in `package.json`.
 It creates a Postgres database `hangmanDB` using the `createdb` command.
 We then use the input redirection operator (`<`) to pass the content of `server/game.sql` file to `psql`'s `hangmanDB` thus creating our `game` table in that database.
+
+Next, we need the [`pg` package](https://www.npmjs.com/package/pg) to connect to the database and manipulate the data.
+
+
 
 Check out the prerequisites in [the usage section](#usage) before reproducing the implementation.
 
