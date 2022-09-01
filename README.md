@@ -18,42 +18,56 @@
 
 ## Objectives
 
+Data should be stored in a database.
+
 So far, we have been storing our data in memory (saved inside JavaScript variables).
-This means that by restarting the server, all data will be lost.
-In this branch, we will store our data permanently in a database.
+But now we will demonstrate how you can have a database inside a Node.js application.
+
+However, we admit that a hangman game may not be the best scenario to showcase this as we do not make permanent changes to our data:
+The words do not change as games are played and the previously played games are deleted.
+It would perhaps be a good idea to have a database if we had implemented a high-score feature.
 
 ## Implementation
 
 Our data, so far, consists of the `gamesInPlay` and `words` arrays both located on the server.
 They differ significantly in nature: `gamesInPlay` is dynamic in the sense that it is updated as games are created or played. Whereas, `words` array is an example of static data since it does not update as games are played (only the developer may choose to update the words).
-
 Our solutions to how we store our data will be different as a result.
+
 To store the static data we are using a simple text file and for the dynamic data, we are using a PostgreSQL database.
-The latter may be overkill (we should ideally be using a non-relational database such as MongoDB), but it is a good example of how to use a relational database in a server-side application.
+The latter may be overkill, we should ideally be using a non-relational database such as MongoDB or even a JSON file.
+Nevertheless, take our work as an example of how to use a relational database in a Node.js application.
 
 What is important to note is that our server (`server/svr.js`) and client (everything in the `client` folder) remain unchanged throughout all of our modifications.
-The client certainly does not need to know anything about the changes in our server.
+We do not want the client to know anything about the changes in our server.
 
 ### Static data
 
 We have moved the array of `words` (previously in `server/data.js`) to a text file `server/data.txt`.
-The movie titles are now separated by a newline (`\n`) whereas before the array elements were separated by a comma (`,`).
+The words are now separated by a newline (`\n`) whereas before the array elements were separated by a comma (`,`).
 
 To read the content of `server/data.txt`, we need to use the `fs` module.
-Note that the module is native to Node.js, so we don't need to install it.
+Note that the module is native to Node.js, so we don't need to install anything.
 The `readWords` function in `server/helper.js` uses the `readFileSync` function from the `fs` module to read the content of the data file synchronously.
 
 ### Dynamic data
 
-Pay attention to the `setup` script we have added in `package.json`.
-It creates a Postgres database `hangmanDB` using the `createdb` command.
-We then use the input redirection operator (`<`) to pass the content of `server/game.sql` file to `psql`'s `hangmanDB` thus creating our `game` table in that database.
+As pointed out in the [usage section](#usage), we need to have PostgreSQL installed on our machines.
+Next, we need to have a database for our data and a SQL script to create the a table.
+We are doing all of this with the `setup` script we have added in `package.json`.
 
-Next, we need the [`pg` package](https://www.npmjs.com/package/pg) to connect to the database and manipulate the data.
+Same as how the `start` script runs a command to serve the website, the `setup` script first creates a Postgres database `hangmanDB` using the `createdb` command.
+Next, it uses the input redirection operator (`<`) to pass the content of `server/game.sql` file to `psql`'s `hangmanDB` thus creating our `game` table in that database.
 
+After this setup, we need to connect to the database and insert/update the data in the table via JavaScript.
+For this, we need to install the [`pg` package](https://www.npmjs.com/package/pg) using the following command:
 
+```bash
+npm install pg
+```
 
-Check out the prerequisites in [the usage section](#usage) before reproducing the implementation.
+We point out that this adds a new entry to the "dependencies" section of `package.json` (therefore `npm install` will install the package).
+
+Since we have modularized our server, we need to import the `pg` module into `server/game.js` and create three functions corresponding to operations that we previously performed on `gamesInPlay` array: `addGame`, `getGame` and `updateGame` (maybe also `deleteGame` if you have implemented the feature to delete games).
 
 Check out the differences between our current branch and the last as shown on [this compare page](https://github.com/portsoc/hangman-in-branches/compare/11...12?diff=split).
 
@@ -61,7 +75,7 @@ Check out the differences between our current branch and the last as shown on [t
 
 ### Prerequisites
 
-This branch has been implemented in a Unix environment (e.g.,your student VMs or Linux/macOS machines) not Windows.
+This branch has been implemented in a Unix environment (e.g., your student VMs or Linux/macOS machines) not Windows.
 For more information on serving the site on [your student VM](http://port.ac.uk/myvm), revisit the [README of branch 9](https://github.com/portsoc/hangman-in-branches/tree/9#host-this-site).
 
 We are also using [the PostgreSQL database](https://www.postgresql.org/download/) so make sure you have it installed on your machines (it is already installed on the student VMs).

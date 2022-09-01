@@ -14,6 +14,11 @@ import * as helper from './helper.js';
  */
 const gamesInPlay = [];
 
+// addGame
+// createGame
+// getGame
+
+
 /**
  * It takes a game id and returns a copy of the game's status, but with the word property removed
  * @param id - The unique identifier for the game.
