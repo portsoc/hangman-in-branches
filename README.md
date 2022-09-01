@@ -121,6 +121,10 @@ Once you are done, you can switch back to the original user by running:
 exit
 ```
 
+One last way the setup script can fail is if the database already exists.
+To handle this error we have provided a clean-up script in `package.json` which will drop the database if it already exists.
+See the [clean-up section](#cleanup) for more information.
+
 ### Run the server
 
 Run the start script to start the server:
@@ -136,6 +140,14 @@ You may also need to specify the port by adding the port number to the end of th
 
 On your machines, the website will be running locally on port 8080 so view it by visiting http://localhost:8080 in your browser.
 Stop the server with <kbd>Ctrl</kbd> + <kbd>C</kbd> in the shell.
+
+### Clean-up
+
+Run the clean-up script to clean up the database created by the setup script:
+
+```bash
+npm run clean-up
+```
 
 ## Todo
 
