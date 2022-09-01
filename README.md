@@ -141,4 +141,10 @@ Stop the server with <kbd>Ctrl</kbd> + <kbd>C</kbd> in the shell.
 
 ## Further Exploration
 
+Our text file can be huge in size and loading all of it to then select a single element may become a waste of resources on our server.
+Update storage of words so that instead of reading the entirety of the text file, only a random line (a single word) is read.
+
+As a second challenge, try to store the games in play as a JSON file as opposed to a PostgreSQL database.
+All we really need is a collection of objects not a relational database.
+
 <p align="right">(<a href="#top">back to top</a>)</p>
