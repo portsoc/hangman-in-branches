@@ -159,6 +159,15 @@ Stop the server with <kbd>Ctrl</kbd> + <kbd>C</kbd> in the shell.
 
 ## Further Exploration
 
+### Handle server errors
+
+At the moment, the server (`server/svr.js``) responds with `null` if there was a database connection error in `server/game.js`.
+We can improve this by sending a response with a status code of 500 (Internal Server Error) and a message to the client.
+Check out [the server101 repository](https://github.com/portsoc/server101) for an example of how to handle errors.
+Remember that you may want to prepare the client in case the server responds with an error too.
+
+### Improve choice of databases
+
 Our text file can be huge in size and loading all of it to then select a single element may become a waste of resources on our server.
 Update storage of words so that instead of reading the entirety of the text file, only a random line (a single word) is read.
 
