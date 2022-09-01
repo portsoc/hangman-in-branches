@@ -1,5 +1,22 @@
 import { v4 as uuidv4 } from 'uuid';
 import * as helper from './helper.js';
+import Postgres from 'pg';
+import config from './config.js';
+
+// create a new psql client with the configurations from the config file
+const sqlClient = new Postgres.Client(config);
+// attempt to connect to the database
+sqlClient.connect();
+
+// assess if the connection to the database is successful
+let dbConnection = true;
+
+if (sqlClient.connectError) {
+  // if not, throw an error and end the connection
+  console.error(sqlClient.connectError);
+  sqlClient.end();
+  dbConnection = false;
+}
 
 /**
  * Stores the status objects of the game in play. Each object has the following properties:
