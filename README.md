@@ -99,7 +99,7 @@ You also need to run the following command to set up the database:
 npm run setup
 ```
 
-For now,we are using the default role that comes with our implementation.
+For now, we are using the default role that comes with our implementation.
 This is usually the username that you have in your VM or the role `postgres` that comes with the installation of PostgreSQL.
 
 Running the `setup` script may fail on your personal machines.
@@ -159,6 +159,6 @@ Our text file can be huge in size and loading all of it to then select a single 
 Update storage of words so that instead of reading the entirety of the text file, only a random line (a single word) is read.
 
 As a second challenge, try to store the games in play as a JSON file as opposed to a PostgreSQL database.
-All we really need is a collection of objects not a relational database.
+All we need is a collection of objects, not a relational database.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
