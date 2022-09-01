@@ -69,6 +69,10 @@ We point out that this adds a new entry to the "dependencies" section of `packag
 
 Since we have modularized our server, we need to import the `pg` module into `server/game.js` and create three functions corresponding to operations that we previously performed on `gamesInPlay` array: `addGame`, `getGame` and `updateGame` (maybe also `deleteGame` if you have implemented the feature to delete games).
 
+Observe the name of the database in the `server/config.js` file.
+Also, remember to comment out the `host` in this configuration file if you are running the server on your machine (leave it uncommented when running on your VM).
+For more information on `pg.Client`, check out [this documentation page](https://node-postgres.com/api/client).
+
 Check out the differences between our current branch and the last as shown on [this compare page](https://github.com/portsoc/hangman-in-branches/compare/11...12?diff=split).
 
 ## Usage
