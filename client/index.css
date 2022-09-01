@@ -62,7 +62,6 @@ button {
   min-height: 2em;
   text-transform: uppercase;
   margin: 0.1em;
-  border-radius: 0px;
 }
 
 #guessMe span {
