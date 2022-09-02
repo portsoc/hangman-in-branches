@@ -66,7 +66,8 @@ npm install pg
 We point out that this adds a new entry to the "dependencies" section of `package.json` (therefore `npm install` will install the package).
 
 Since we have modularized our server, we only need to import the `pg` module into the script which includes the game's logic: `server/game.js`.
-There, we will create three functions corresponding to operations that we previously performed on `gamesInPlay` array: `addGame`, `getGame` and `updateGame` (you may also add `deleteGame` if you have implemented the feature to dispose of old games).
+There, we will update the functions that previously used to deal with the `gamesInPlay` array.
+TODO: explain changes to `server/game.js`
 
 Observe the name of the database in the `server/config.js` file.
 Also, remember to comment out the `host` in this configuration file if you are running the server on your machine (leave it uncommented when running on your VM).
