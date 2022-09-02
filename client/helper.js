@@ -1,14 +1,4 @@
 /**
- * It takes a word and replaces all the letters with underscores, then splits the word into an array of
- * letters
- * @param word - The word to be guessed.
- * @returns An array of the word with all the letters replaced with underscores.
- */
-export function blankWord(word) {
-  return word.replace(/[a-z]/ig, '_').split('');
-}
-
-/**
  * Remove all elements that match the given selector.
  * @param selector - A string that specifies the CSS selector of the elements to remove
  */

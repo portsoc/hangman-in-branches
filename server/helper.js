@@ -1,6 +1,16 @@
 import fs from 'fs';
 
 /**
+ * It takes a word and replaces all the letters with underscores, then splits the word into an array of
+ * letters
+ * @param word - The word to be guessed.
+ * @returns An array of the word with all the letters replaced with underscores.
+ */
+export function blankWord(word) {
+  return word.replace(/[a-z]/ig, '_').split('');
+}
+
+/**
  * Reads the data.txt file, splits it into an array, and returns the array
  * @returns An array of words
  */
