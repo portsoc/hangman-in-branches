@@ -4,7 +4,7 @@
  * @param word - The word to be guessed.
  * @returns An array of the word with all the letters replaced with underscores.
  */
-function blankWord(word) {
+export function blankWord(word) {
   return word.replace(/[a-z]/ig, '_').split('');
 }
 
