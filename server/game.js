@@ -72,7 +72,6 @@ export async function createGame() {
 
   const query = 'INSERT INTO game (id, word, hits, misses, onGoing, userWord, last, won) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)';
 
-  console.log(game.userWord);
   await sqlClient.query(query, Object.values(game));
 
   return sanitizedStatus(game);

@@ -13,8 +13,8 @@ app.use(express.static(clientPath));
  * @param req - the request object
  * @param res - response object, contains the sanitized status object (without `word` property)
  */
-function createGame(req, res) {
-  const status = game.createGame();
+async function createGame(req, res) {
+  const status = await game.createGame();
   res.json(status);
 }
 
@@ -42,7 +42,15 @@ function calculateScore(req, res) {
   res.json({ score });
 }
 
-app.post('/games/', createGame);
+// TODO: Write about this, generate docs too
+function asyncWrap(f) {
+  return (req, res, next) => {
+    Promise.resolve(f(req, res, next))
+      .catch((e) => next(e || new Error()));
+  };
+}
+
+app.post('/games/', asyncWrap(createGame));
 app.post('/games/:id/:letter', guessLetter);
 app.get('/games/:id/score', calculateScore);
 
