@@ -35,22 +35,22 @@ const gamesInPlay = [];
 
 
 /**
- * It takes a game id and returns a copy of the game's status, but with the word property removed
- * @param id - The unique identifier for the game.
+ * It takes a game and returns a copy of it, but with the word property removed
+ * @param game - The game to be copied.
  * @returns The sanitized status object.
  */
-function sanitizedStatus(id) {
-  const result = { ...gamesInPlay[id] };
+function sanitizedStatus(game) {
+  const result = { ...game };
   delete result.word;
   return result;
 }
 
 /**
- * Creates a new game status object and adds it to the `gamesInPlay` array.
+ * Creates a new game status object and adds it to the `game` table.
  * It also returns a sanitized copy of the game status object.
  * @returns The sanitized status object.
  */
-export function createGame() {
+export async function createGame() {
   if (!sqlConnected) {
     return null;
   }
@@ -59,18 +59,22 @@ export function createGame() {
   const words = helper.readWords();
   const word = helper.randomElement(words);
 
-  gamesInPlay[id] = {
+  const game = {
     id,
     word,
-    onGoing: true,
     hits: [],
     misses: [],
-    userWord: word.replace(/[a-z]/ig, '_').split(''),
+    onGoing: true,
+    userWord: helper.blankWord(word),
     last: false,
     won: false,
   };
 
-  return sanitizedStatus(id);
+  const query = 'INSERT INTO games (id, word, hits, misses, onGoing, userWord, last, won) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)';
+
+  await sqlClient.query(query, Object.values(game));
+
+  return sanitizedStatus(game);
 }
 
 /**
@@ -142,7 +146,7 @@ export function guessLetter(id, letter) {
       game.onGoing = false;
     }
 
-    return game.onGoing ? sanitizedStatus(id) : game;
+    return game.onGoing ? sanitizedStatus(game) : game;
   }
 }
 
