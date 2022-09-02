@@ -33,7 +33,7 @@ To store the static data we are using a simple text file and for the dynamic dat
 The latter may be unnecessary, a non-relational database such as MongoDB or even a JSON file is better suited to store `gamesInPlay`.
 Nevertheless, take our work here as an example of how to use a relational database in a Node.js application.
 
-What is important to note is that our server (`server/svr.js`) and client remain unchanged throughout all of our modifications.
+What is important to note is that everything in the `client` folder remains unchanged throughout all of our modifications.
 At this stage, we do not want the client to know anything about the changes in our server (read [the further exploration section](#further-exploration) for more details).
 
 ### Static data
@@ -67,6 +67,39 @@ We point out that this adds a new entry to the "dependencies" section of `packag
 
 Since we have modularized our server, we only need to import the `pg` module into the script which includes the game's logic: `server/game.js`.
 There, we will update the functions that previously used to deal with the `gamesInPlay` array.
+
+For example `createGame`, now inserts the game's values into the database by querying the `sqlClient`.
+Since the operation of querying the database is asynchronous, our functions have also been declared with the `async` keyword.
+
+This creates a problem in the `server/svr.js` script as Expres routing works differently for synchronous and asynchronous functions.
+Previously, `createGame` was a synchronous function called as the response to the `\game\` path.
+Now that this function has been rewritten to be asynchronous, the response to the `\game\` path must be something like this:
+
+```js
+app.post("/games/", async (req, res) => {
+  const status = await game.createGame();
+  res.json(status);
+});
+```
+
+This ignores any errors that may occur while creating the game.
+Our routes should be written like this instead:
+
+```js
+app.get("/games/", async (req, res, next) => {
+  try {
+    const status = await game.createGame();
+    res.json(status);
+  } catch (e) {
+    // This time, we'll catch the error and pass it to the next() function
+    // Express will catch and process the error
+    next(e);
+  }
+});
+```
+
+For more information on error handling in express routing, see [this article](https://expressjs.com/en/guide/error-handling.html).
+
 TODO: explain changes to `server/game.js`
 
 Observe the name of the database in the `server/config.js` file.
