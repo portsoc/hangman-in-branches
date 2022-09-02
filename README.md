@@ -19,26 +19,22 @@
 ## Objectives
 
 Data should be stored in a database.
-
-So far, we have been storing our data in memory (saved inside JavaScript variables).
-But now we will demonstrate how you can have a database inside a Node.js application.
-
-However, we admit that a hangman game may not be the best scenario to showcase this as we do not make permanent changes to our data:
-The words do not change as games are played and the previously played games are deleted.
-It would perhaps be a good idea to have a database if we had implemented a high-score feature.
+But so far, we have been storing our data in memory (saved inside JavaScript variables).
+In this branch, we will demonstrate how you can have a database inside a Node.js application.
 
 ## Implementation
 
 Our data, so far, consists of the `gamesInPlay` and `words` arrays both located on the server.
-They differ significantly in nature: `gamesInPlay` is dynamic in the sense that it is updated as games are created or played. Whereas, `words` array is an example of static data since it does not update as games are played (only the developer may choose to update the words).
+They differ significantly in nature: `gamesInPlay` is dynamic in the sense that it is updated as games are created or played.
+On the other hand, `words` array is an example of static data.
 Our solutions to how we store our data will be different as a result.
 
 To store the static data we are using a simple text file and for the dynamic data, we are using a PostgreSQL database.
-The latter may be overkill, we should ideally be using a non-relational database such as MongoDB or even a JSON file.
-Nevertheless, take our work as an example of how to use a relational database in a Node.js application.
+The latter may be unnecessary, a non-relational database such as MongoDB or even a JSON file is better suited to store `gamesInPlay`.
+Nevertheless, take our work here as an example of how to use a relational database in a Node.js application.
 
-What is important to note is that our server (`server/svr.js`) and client (everything in the `client` folder) remain unchanged throughout all of our modifications.
-We do not want the client to know anything about the changes in our server.
+What is important to note is that our server (`server/svr.js`) and client remain unchanged throughout all of our modifications.
+At this stage, we do not want the client to know anything about the changes in our server (read [the further exploration section](#further-exploration) for more details).
 
 ### Static data
 
@@ -151,6 +147,10 @@ npm run clean-up
 
 ## Todo
 
+That's it.
+We are done with our predefined tasks.
+We have [one more branch](https://github.com/portsoc/hangman-in-branches/tree/12) where we will replace our canvas with an SVG but our application will remain pretty much the same.
+
 - [x] We still have not satisfied one of the core requirements of displaying how many moves it took to win as a score.
 
 - [x] The server is only capable of handling one game at a time. We need to add a mechanism to handle multiple games simultaneously. This could be a nice additional feature (as suggested in [the coursework specification](https://docs.google.com/document/d/1cF3u2ldutHaBAzFOEsnVwfKrnPTylOrn-hAGFSDWca8/edit)).
@@ -167,12 +167,16 @@ npm run clean-up
 
 ### Handle server errors
 
-At the moment, the server (`server/svr.js`) responds with `null` if there was a database connection error in `server/game.js`.
-You can see this by running the server without running the setup script or changing the database name in `server/config.js`.
+Indeed, we should not let the client know about the server's implementations.
+However, we should be able to handle server errors (e.g., errors connecting to the database) and display a meaningful message to the client.
 
-We can improve this by sending a response with a status code of 500 (Internal Server Error) and a message to the client.
+At the moment, the server (`server/svr.js`) responds with `null` if there was a database connection error in `server/game.js`.
+What do you think the client sees in such a scenario?
+Simulate this situation by running the clean-up script before starting the server or changing the database name in `server/config.js`.
+
+We can improve the server by sending a response with a status code of 500 (Internal Server Error) and a message to the client.
 Check out [the server101 repository](https://github.com/portsoc/server101) for an example of how to handle errors.
-Remember that you may want to prepare the client in case the server responds with an error too.
+Don't forget to prepare the client for the case where the server responds with an error.
 
 ### Improve choice of databases
 
