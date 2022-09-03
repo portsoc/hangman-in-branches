@@ -3,10 +3,8 @@ import * as helper from './helper.js';
 import Postgres from 'pg';
 import config from './config.js';
 
-// create a new psql client with the configurations from the config file
 const sqlClient = new Postgres.Client(config);
 
-// used to check if the database is connected
 let sqlConnected = false;
 connectToDB();
 
@@ -15,11 +13,9 @@ connectToDB();
  * Otherwise, it logs the error and exits the process.
  */
 function connectToDB() {
-  // try to connect, if there was any errors, log them as a console error
   sqlClient.connect(error => {
     if (error) {
       console.error(`Tried to connect to database, but ${error.stack}`);
-      // process.exit(1); // kills the server
     } else {
       sqlConnected = true;
     }
@@ -43,7 +39,6 @@ function sanitizedGame(game) {
  * @returns The sanitized game object.
  */
 export async function createGame() {
-  // TODO: We need to do better than this!
   if (!sqlConnected) {
     return null;
   }
@@ -64,9 +59,7 @@ export async function createGame() {
   };
 
   const insertQuery = 'INSERT INTO game (id, word, hits, misses, onGoing, userWord, last, won) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)';
-  // join arrays into strings before inserting them into the database (we have defined their types as varchar)
   const values = [game.id, game.word, game.hits.join(''), game.misses.join(''), game.onGoing, game.userWord.join(''), game.last, game.won];
-  // insert the game into the database
   await sqlClient.query(insertQuery, values);
 
   return sanitizedGame(game);
@@ -112,7 +105,6 @@ function checkWon(game) {
  * @returns The game object.
  */
 export async function guessLetter(id, letter) {
-  // TODO: We need to do better than this!
   if (!sqlConnected) {
     return null;
   }
@@ -120,7 +112,7 @@ export async function guessLetter(id, letter) {
   letter = letter.toLowerCase();
 
   const game = await getGame(id);
-  // if the game exists and is ongoing
+
   if (game?.onGoing) {
     game.last = checkLetter(game, letter);
 
@@ -135,7 +127,6 @@ export async function guessLetter(id, letter) {
       game.onGoing = false;
     }
 
-    // update the game in the database
     const updateQuery = 'UPDATE game SET hits = $1, misses = $2, onGoing = $3, userWord = $4, last = $5, won = $6 WHERE id = $7;';
     const values = [game.hits.join(''), game.misses.join(''), game.onGoing, game.userWord.join(''), game.last, game.won, id];
     await sqlClient.query(updateQuery, values);
@@ -159,10 +150,10 @@ async function getGame(id) {
     return {
       id: firstRow.id,
       word: firstRow.word,
-      hits: firstRow.hits.split(''), // split the varchar into an array
-      misses: firstRow.misses.split(''), // same here
-      onGoing: firstRow.ongoing, // the column name is ongoing, but the property is onGoing
-      userWord: firstRow.userword.split(''), // the column name is userword, but the property is userWord
+      hits: firstRow.hits.split(''),
+      misses: firstRow.misses.split(''),
+      onGoing: firstRow.ongoing,
+      userWord: firstRow.userword.split(''),
       last: firstRow.last,
       won: firstRow.won,
     };
@@ -175,7 +166,6 @@ async function getGame(id) {
  * @returns The score if the game is won, otherwise an error message.
  */
 export async function calculateScore(id) {
-  // TODO: We need to do better than this!
   if (!sqlConnected) {
     return null;
   }
@@ -183,7 +173,6 @@ export async function calculateScore(id) {
   let score = 'Error in calcularing the score.';
 
   const game = await getGame(id);
-  // if the game exists and has been won
   if (game?.won) {
     score = 1 / (1 + game.misses.length) * 1000;
     score = Math.round(score);
