@@ -5,7 +5,8 @@ import config from './config.js';
 
 // create a new psql client with the configurations from the config file
 const sqlClient = new Postgres.Client(config);
-// attempt to connect to the database
+
+// used to check if the database is connected
 let sqlConnected = false;
 connectToDB();
 
