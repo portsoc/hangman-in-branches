@@ -42,26 +42,29 @@ function calculateScore(req, res) {
   res.json({ score });
 }
 
-// TODO: Write about this, generate docs too
-/**
- * It takes a function that returns a promise, and returns a function that calls the original function,
- * and if it throws an error, it calls the next function with the error
- * @param f - The function to wrap
- * @returns A function that takes in a function f, and returns a function that takes in req, res, and
- * next.
- */
-function asyncWrap(f) {
-  return (req, res, next) => {
-    f(req, res, next)
-      .catch((e) => next(e || new Error()));
-  };
-}
+// // TODO: Write about this, generate docs too
+// /**
+//  * It takes a function that returns a promise, and returns a function that calls the original function,
+//  * and if it throws an error, it calls the next function with the error
+//  * @param f - The function to wrap
+//  * @returns A function that takes in a function f, and returns a function that takes in req, res, and
+//  * next.
+//  */
+// function asyncWrap(f) {
+//   return (req, res, next) => {
+//     f(req, res, next)
+//       .catch((e) => next(e || new Error()));
+//   };
+// }
 
-app.post('/games/', asyncWrap(createGame));
+// app.post('/games/', asyncWrap(createGame));
 // app.post('/games/', async (req, res) => {
-//   const status = await game.createGame();
-//   res.json(status);
+//   await createGame(req, res);
 // });
+app.get('/games/', (req, res, next) => {
+  Promise.resolve(createGame(req, res))
+    .catch((e) => next(e || new Error()));
+});
 app.post('/games/:id/:letter', guessLetter);
 app.get('/games/:id/score', calculateScore);
 

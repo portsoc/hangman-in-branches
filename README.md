@@ -89,8 +89,7 @@ Now that `createGame` is asynchronous, our route handler must be changed to some
 
 ```js
 app.post('/games/', async (req, res) => {
-  const status = await game.createGame();
-  res.json(status);
+  await createGame(req, res);
 });
 ```
 
