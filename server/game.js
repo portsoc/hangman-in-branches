@@ -7,13 +7,23 @@ import config from './config.js';
 const sqlClient = new Postgres.Client(config);
 // attempt to connect to the database
 let sqlConnected = false;
-sqlClient.connect(err => {
-  if (err) {
-    console.error(`Tried to connect to database, but ${err.stack}`);
-  } else {
-    sqlConnected = true;
-  }
-});
+connectToDB();
+
+/**
+ * It connects to the database and sets the `sqlConnected` variable to `true` if successful.
+ * Otherwise, it logs the error and exits the process.
+ */
+function connectToDB() {
+  // try to connect, if there was any errors, log them as a console error
+  sqlClient.connect(error => {
+    if (error) {
+      console.error(`Tried to connect to database, but ${error.stack}`);
+      // process.exit(1); // kills the server
+    } else {
+      sqlConnected = true;
+    }
+  });
+}
 
 /**
  * It takes a game and returns a copy of it, but with the word property removed
