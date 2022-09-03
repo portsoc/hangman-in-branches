@@ -66,18 +66,19 @@ npm install pg
 We point out that this adds a new entry to the "dependencies" section of `package.json` (therefore `npm install` will install the package).
 
 Since we have modularized our server, we only need to import the `pg` module into the script which includes the game's logic: `server/game.js`.
-There we will create a connection to the database using the `pg` module's `Client` class as described below.
+There we will use the `pg` module's `Client` class.
+For more information on `pg.Client`, check out [this documentation page](https://node-postgres.com/api/client).
 
 First, we will construct an SQL client with the configurations defined in our `server/config.js` file.
 Remember to check this file and comment out the `host` if you are running the server on your machine (leave it uncommented when running on your VM).
-Then we will check whether we can connect to the database using the `connect` method.
-If we can, we will then query the database using the `query` method.
-For more information on `pg.Client`, check out [this documentation page](https://node-postgres.com/api/client).
+Then we will attempt to connect in the `connectToDB` function.
+If the connection is established, we can move on to querying the database.
 
 We have updated every function in `server/game.js` that previously used to deal with the `gamesInPlay` array.
 For example `createGame`, now inserts the game's values into the database by querying the SQL client.
-TODO: We need to parse the arrays that PostgreSQL returns into objects.
-For example PostgreSQL returns `'{"B","l","o",,"b"}'` which we need to parse into `["B","l","o",,"b"]`.
+
+The only thing to be careful of, while interacting with the database, is that the arrays are stored as varchar in the database.
+Therefore, we need to join arrays before inserting/updating them in the database and split them when we retrieve them.
 
 Since the operation of querying the database is asynchronous, our functions have also been declared with the `async` keyword.
 
@@ -123,8 +124,8 @@ app.post('/games/', (req, res, next) => {
 });
 ```
 
-But surely we don't want to have to write this every time we want to handle errors.
-For this reason, we have introduced the `asyncWrap` function.
+Surely we don't want to have to write all this code for every one of our routes.
+So we have introduced the `asyncWrap` function.
 
 ```js
 function asyncWrap(f) {
@@ -135,7 +136,8 @@ function asyncWrap(f) {
 }
 ```
 
-To view all the differences between our current branch and the last, see [this compare page](https://github.com/portsoc/hangman-in-branches/compare/11...12?diff=split).
+There is a lot to take in so make sure to read the comments in the code.
+Also, view all the differences between our current branch and the last by visiting [this compare page](https://github.com/portsoc/hangman-in-branches/compare/11...12?diff=split).
 
 ## Usage
 
@@ -250,8 +252,21 @@ At the moment, the server (`server/svr.js`) responds with `null` if there was a 
 What do you think the client sees in such a scenario?
 Simulate this situation by running the clean-up script before starting the server or changing the database name in `server/config.js`.
 
-We can improve the server by sending a response with a status code of 500 (Internal Server Error) and a message to the client.
+A harsher alternative to responding with `null` is to kill the server with:
+
+```js
+process.exit(1);
+```
+
+Try it by uncommenting the line in the `connectToDB` function of `server/game.js` and see what happens when you start the server and try to access the website.
+
+None of these two approaches are ideal.
+So we are encouraging you to implement a middle ground where the server does not die but responds with a meaningful message to the client.
+For example, the server can send the status code of 500 (Internal Server Error) and a message to the client.
+The client can then display this message to the user so that they know what went wrong.
+
 Check out [the server101 repository](https://github.com/portsoc/server101) for an example of how to handle errors.
 Don't forget to prepare the client for the case where the server responds with an error.
+The [messageboard repository](https://github.com/portsoc/staged-simple-message-board) is a simple example of how to handle errors on the client side.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
