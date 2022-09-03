@@ -2,7 +2,7 @@
 
 <!-- BRANCH TITLE -->
 
-# Branch 12: Database
+# Branch 13: SVG
 
 <!-- TABLE OF CONTENTS -->
 <details>
