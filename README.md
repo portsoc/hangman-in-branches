@@ -76,6 +76,9 @@ For more information on `pg.Client`, check out [this documentation page](https:/
 
 We have updated every function in `server/game.js` that previously used to deal with the `gamesInPlay` array.
 For example `createGame`, now inserts the game's values into the database by querying the SQL client.
+TODO: We need to parse the arrays that PostgreSQL returns into objects.
+For example PostgreSQL returns `'{"B","l","o",,"b"}'` which we need to parse into `["B","l","o",,"b"]`.
+
 Since the operation of querying the database is asynchronous, our functions have also been declared with the `async` keyword.
 
 Sadly, this creates a problem in the `server/svr.js` script as [Expres routing](https://expressjs.com/en/starter/basic-routing.html) works differently for synchronous and asynchronous functions.
