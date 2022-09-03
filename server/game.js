@@ -126,7 +126,8 @@ export async function guessLetter(id, letter) {
 
     // update the game in the database
     const updateQuery = 'UPDATE game SET hits = $1, misses = $2, onGoing = $3, userWord = $4, last = $5, won = $6 WHERE id = $7;';
-    await sqlClient.query(updateQuery, [game.hits, game.misses, game.onGoing, game.userWord, game.last, game.won, id]);
+    const values = [game.hits.join(''), game.misses.join(''), game.onGoing, game.userWord.join(''), game.last, game.won, id];
+    await sqlClient.query(updateQuery, values);
 
     return game.onGoing ? sanitizedGame(game) : game;
   }
