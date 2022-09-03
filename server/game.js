@@ -15,42 +15,24 @@ sqlClient.connect(err => {
   }
 });
 
-
-/**
- * Stores the status objects of the game in play. Each object has the following properties:
- * `id` - the id of the game
- * `word` - the word to be guessed,
- * `hits` - an array of the letters that have been guessed correctly,
- * `misses` - an array of the letters that have been guessed incorrectly,
- * `onGoing` - a boolean that indicates if the game is still in progress,
- * `userWord` - an array of letters that has been guessed so far ('_' for unguessed letters),
- * `last` - a boolean that is true if the last guess was a hit,
- * `won` - a boolean that is true if the user has guessed the word.
- */
-const gamesInPlay = [];
-
-// addGame
-// createGame
-// getGame
-
-
 /**
  * It takes a game and returns a copy of it, but with the word property removed
  * @param game - The game to be copied.
- * @returns The sanitized status object.
+ * @returns The sanitized game.
  */
-function sanitizedStatus(game) {
+function sanitizedGame(game) {
   const result = { ...game };
   delete result.word;
   return result;
 }
 
 /**
- * Creates a new game status object and adds it to the `game` table.
- * It also returns a sanitized copy of the game status object.
- * @returns The sanitized status object.
+ * Creates a new game object and adds it to the `game` table.
+ * It also returns a sanitized copy of the game game object.
+ * @returns The sanitized game object.
  */
 export async function createGame() {
+  // TODO: We need to do better than this!
   if (!sqlConnected) {
     return null;
   }
@@ -70,26 +52,20 @@ export async function createGame() {
     won: false,
   };
 
-  const query = 'INSERT INTO game (id, word, hits, misses, onGoing, userWord, last, won) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)';
-  await sqlClient.query(query, Object.values(game));
+  const insertQuery = 'INSERT INTO game (id, word, hits, misses, onGoing, userWord, last, won) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)';
+  await sqlClient.query(insertQuery, Object.values(game));
 
-  return sanitizedStatus(game);
+  return sanitizedGame(game);
 }
 
 /**
- * Given a game's id, check if a given letter is in the game's word.
+ * Given a game, check if a given letter is in the game's word.
  * It also updates the `userWord` of the game.
+ * @param game - The game
  * @param letter - The letter that the user guessed
- * @param id - The unique identifier for the game
  * @returns `true` if the letter is in the word, `false` otherwise
  */
-function checkLetter(letter, id) {
-  const game = gamesInPlay[id];
-
-  if (!game) {
-    return false;
-  }
-
+function checkLetter(game, letter) {
   let found = false;
   const lowerCaseWord = game.word.toLowerCase();
 
@@ -104,17 +80,11 @@ function checkLetter(letter, id) {
 }
 
 /**
- * Given a game's id, checks whether the user has guessed the word.
- * @param id - The unique identifier for the game
+ * Given a game, checks whether the user has guessed the word.
+ * @param game - The game to check
  * @returns `true` if the user has guessed the word, `false` otherwise
  */
-function checkWon(id) {
-  const game = gamesInPlay[id];
-
-  if (!game) {
-    return false;
-  }
-
+function checkWon(game) {
   return game.userWord.join('') === game.word;
 }
 
@@ -122,17 +92,23 @@ function checkWon(id) {
  * Given a game's id, if the game exists and is ongoing, it checks if a given letter is in the word.
  * If this was the case, we add it to hits array, otherwise we add it to the misses array.
  * If the user has fully guessed the word or has no lives left, then we end the game.
- * The sanitized status is returned (or the full status on gameover).
+ * The sanitized game is returned (or the full game on gameover).
  * @param id - The unique identifier for the game
  * @param letter - The letter to check
- * @returns The status object.
+ * @returns The game object.
  */
-export function guessLetter(id, letter) {
-  letter = letter.toLowerCase();
-  const game = gamesInPlay[id];
+export async function guessLetter(id, letter) {
+  // TODO: We need to do better than this!
+  if (!sqlConnected) {
+    return null;
+  }
 
+  letter = letter.toLowerCase();
+
+  const game = await getGame(id);
+  // if the game exists and is ongoing
   if (game?.onGoing) {
-    game.last = checkLetter(letter, id);
+    game.last = checkLetter(game, letter);
 
     if (game.last) {
       game.hits.push(letter);
@@ -140,13 +116,29 @@ export function guessLetter(id, letter) {
       game.misses.push(letter);
     }
 
-    game.won = checkWon(id);
+    game.won = checkWon(game);
     if (game.won || game.misses.length > 9) {
       game.onGoing = false;
     }
 
-    return game.onGoing ? sanitizedStatus(game) : game;
+    // update the game in the database
+    const updateQuery = 'UPDATE game SET hits = $1, misses = $2, onGoing = $3, userWord = $4, last = $5, won = $6 WHERE id = $7;';
+    await sqlClient.query(updateQuery, [game.hits, game.misses, game.onGoing, game.userWord, game.last, game.won, id]);
+
+    return game.onGoing ? sanitizedGame(game) : game;
   }
+}
+
+/**
+ * It takes an id, queries the database for a game with that id, and returns the game
+ * @param id - The id of the game to get.
+ * @returns The game object
+ */
+async function getGame(id) {
+  const selectQuery = 'SELECT * FROM game WHERE id = $1;';
+  const result = await sqlClient.query(selectQuery, [id]);
+  const game = result.rows[0];
+  return game;
 }
 
 /**
@@ -154,13 +146,18 @@ export function guessLetter(id, letter) {
  * @param id - The unique identifier for the game
  * @returns The score if the game is won, otherwise an error message.
  */
-export function calculateScore(id) {
-  let score = 'Error in calcularing the score.';
-  const game = gamesInPlay[id];
+export async function calculateScore(id) {
+  // TODO: We need to do better than this!
+  if (!sqlConnected) {
+    return null;
+  }
 
+  let score = 'Error in calcularing the score.';
+
+  const game = await getGame(id);
+  // if the game exists and has been won
   if (game?.won) {
     score = 1 / (1 + game.misses.length) * 1000;
-    // let's round the score to the nearest integer
     score = Math.round(score);
   }
   return score;
