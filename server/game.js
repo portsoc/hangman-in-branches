@@ -52,6 +52,7 @@ export async function createGame() {
     won: false,
   };
 
+  // insert the game into the database
   const insertQuery = 'INSERT INTO game (id, word, hits, misses, onGoing, userWord, last, won) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)';
   await sqlClient.query(insertQuery, Object.values(game));
 
@@ -137,8 +138,22 @@ export async function guessLetter(id, letter) {
 async function getGame(id) {
   const selectQuery = 'SELECT * FROM game WHERE id = $1;';
   const result = await sqlClient.query(selectQuery, [id]);
-  const game = result.rows[0];
-  return game;
+
+  // TODO: We need to parse the result better than this!
+  if (result.rows.length > 0) {
+    const game = {
+      id: result.rows[0].id,
+      word: result.rows[0].word,
+      hits: JSON.parse('[' + result.rows[0].hits.slice(1, result.rows[0].hits.length - 1) + ']'),
+      misses: JSON.parse('[' + result.rows[0].misses.slice(1, result.rows[0].misses.length - 1) + ']'),
+      onGoing: result.rows[0].ongoing,
+      userWord: JSON.parse('[' + result.rows[0].userword.slice(1, result.rows[0].userword.length - 1) + ']'),
+      last: result.rows[0].last,
+      won: result.rows[0].won,
+    };
+    console.log(game);
+    return game;
+  }
 }
 
 /**
