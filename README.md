@@ -93,25 +93,35 @@ app.post('/games/', async (req, res) => {
 });
 ```
 
-The only problem with the above handler is that it is assuming that the `createGame` function will never result in an error.
+The only problem with the above handler is that it is assuming that the `createGame` function will always succeed.
 To handle errors, Express needs our handler function to take an additional `next` parameter.
-If you want to know more about what `next` is or middleware in general, we recommend [this article](https://expressjs.com/en/guide/using-middleware.html):
+
+If you want to know more about what `next` function is or middleware in general, we recommend [this page](https://expressjs.com/en/guide/using-middleware.html).
+Similarly, to learn about error handling in express routing, we suggest [this article](https://expressjs.com/en/guide/error-handling.html).
+
+All you need to remember at this point is that our handler should catch possible errors and pass them to the next function as shown below:
 
 ```js
-app.get('/games/', async (req, res, next) => {
+app.post('/games/', async (req, res, next) => {
   try {
-    const status = await game.createGame();
-    res.json(status);
+    await createGame(req, res);
   } catch (e) {
-    // This time, we'll catch the error and pass it to the next() function
-    // Express will catch and process the error
-    next(e);
+    next(e || new Error());
   }
 });
 ```
 
-Now instead of rewriting the above code for every one of our handlers, we will modularise and use the `asyncWrap` function that we have added to `server/helper.js`.
-For more information on error handling in express routing, see [this article](https://expressjs.com/en/guide/error-handling.html).
+Using promises, we can now handle errors more compactly (removing the need for the `async` keyword):
+
+```js
+app.post('/games/', (req, res, next) => {
+  Promise.resolve(createGame(req, res))
+    .catch((e) => next(e || new Error()));
+});
+```
+
+But surely we don't want to have to write this every time we want to handle errors.
+For this reason, we have introduced the `asyncWrap` function in `server/helper.js`.
 
 To view all the differences between our current branch and the last, see [this compare page](https://github.com/portsoc/hangman-in-branches/compare/11...12?diff=split).
 
