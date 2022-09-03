@@ -71,28 +71,28 @@ For more information on `pg.Client`, check out [this documentation page](https:/
 
 First, we will construct an SQL client with the configurations defined in our `server/config.js` file.
 Remember to check this file and comment out the `host` if you are running the server on your machine (leave it uncommented when running on your VM).
-Then we will attempt to connect in the `connectToDB` function.
-If the connection is established, we can move on to querying the database.
+We could have left the configurations in `server/game.js` but it is more convenient to have them in a separate file.
+After creating an SQL client we will attempt to connect to the database in the `connectToDB` function.
+If the connection is established, we can use the client to query the database.
 
 We have updated every function in `server/game.js` that previously used to deal with the `gamesInPlay` array.
 For example `createGame`, now inserts the game's values into the database by querying the SQL client.
 
-The only thing to be careful of, while interacting with the database, is that the arrays are stored as varchar in the database.
+The only thing to be careful of, while interacting with the database, is that the arrays are stored as varchar in the database (see `server/game.sql`).
 Therefore, we need to join arrays before inserting/updating them in the database and split them when we retrieve them.
 
 Since the operation of querying the database is asynchronous, our functions have also been declared with the `async` keyword.
-
 Sadly, this creates a problem in the `server/svr.js` script as [Expres routing](https://expressjs.com/en/starter/basic-routing.html) works differently for synchronous and asynchronous functions.
 Previously, `createGame` was a synchronous function called as the response to the `\game\` path:
 
 ```js
-app.post('/games/', createGame);
+app.post("/games/", createGame);
 ```
 
 Now that `createGame` is asynchronous, our route handler must be changed to something like this:
 
 ```js
-app.post('/games/', async (req, res) => {
+app.post("/games/", async (req, res) => {
   await createGame(req, res);
 });
 ```
@@ -106,7 +106,7 @@ Similarly, to learn about error handling in express routing, we suggest [this ar
 All you need to remember at this point is that our handler should catch possible errors and pass them to the next function as shown below:
 
 ```js
-app.post('/games/', async (req, res, next) => {
+app.post("/games/", async (req, res, next) => {
   try {
     await createGame(req, res);
   } catch (e) {
@@ -118,9 +118,8 @@ app.post('/games/', async (req, res, next) => {
 Using promises, we can now handle errors more compactly (removing the need for the `async` keyword):
 
 ```js
-app.post('/games/', (req, res, next) => {
-  Promise.resolve(createGame(req, res))
-    .catch((e) => next(e || new Error()));
+app.post("/games/", (req, res, next) => {
+  Promise.resolve(createGame(req, res)).catch((e) => next(e || new Error()));
 });
 ```
 
@@ -130,8 +129,7 @@ So we have introduced the `asyncWrap` function.
 ```js
 function asyncWrap(f) {
   return (req, res, next) => {
-    Promise.resolve(f(req, res, next))
-      .catch((e) => next(e || new Error()));
+    Promise.resolve(f(req, res, next)).catch((e) => next(e || new Error()));
   };
 }
 ```
