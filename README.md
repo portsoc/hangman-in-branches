@@ -47,7 +47,7 @@ The `readWords` function in `server/helper.js` uses the `readFileSync` function 
 
 ### Dynamic data
 
-To host a PostgreSQL database for our side, we obviously need to have PostgreSQL installed on our machines (being a good developer, we have poited this out in the [usage section](#usage)).
+To host a PostgreSQL database for our side, we obviously need to have PostgreSQL installed on our machines (being a good developer, we have pointed this out in the [usage section](#usage)).
 
 Apart from this, we need to have a database for our data and a table in that database.
 We are doing both of these tasks with the `setup` script we have added in `package.json`.
@@ -66,27 +66,40 @@ npm install pg
 We point out that this adds a new entry to the "dependencies" section of `package.json` (therefore `npm install` will install the package).
 
 Since we have modularized our server, we only need to import the `pg` module into the script which includes the game's logic: `server/game.js`.
-There, we will update the functions that previously used to deal with the `gamesInPlay` array.
+There we will create a connection to the database using the `pg` module's `Client` class as described below.
 
-For example `createGame`, now inserts the game's values into the database by querying the `sqlClient`.
+First, we will construct an SQL client with the configurations defined in our `server/config.js` file.
+Remember to check this file and comment out the `host` if you are running the server on your machine (leave it uncommented when running on your VM).
+Then we will check whether we can connect to the database using the `connect` method.
+If we can, we will then query the database using the `query` method.
+For more information on `pg.Client`, check out [this documentation page](https://node-postgres.com/api/client).
+
+We have updated every function in `server/game.js` that previously used to deal with the `gamesInPlay` array.
+For example `createGame`, now inserts the game's values into the database by querying the SQL client.
 Since the operation of querying the database is asynchronous, our functions have also been declared with the `async` keyword.
 
-This creates a problem in the `server/svr.js` script as Expres routing works differently for synchronous and asynchronous functions.
-Previously, `createGame` was a synchronous function called as the response to the `\game\` path.
-Now that this function has been rewritten to be asynchronous, the response to the `\game\` path must be something like this:
+Sadly, this creates a problem in the `server/svr.js` script as [Expres routing](https://expressjs.com/en/starter/basic-routing.html) works differently for synchronous and asynchronous functions.
+Previously, `createGame` was a synchronous function called as the response to the `\game\` path:
 
 ```js
-app.post("/games/", async (req, res) => {
+app.post('/games/', createGame);
+```
+
+Now that `createGame` is asynchronous, our route handler must be changed to something like this:
+
+```js
+app.post('/games/', async (req, res) => {
   const status = await game.createGame();
   res.json(status);
 });
 ```
 
-This ignores any errors that may occur while creating the game.
-Our routes should be written like this instead:
+The only problem with the above handler is that it is assuming that the `createGame` function will never result in an error.
+To handle errors, Express needs our handler function to take an additional `next` parameter.
+If you want to know more about what `next` is or middleware in general, we recommend [this article](https://expressjs.com/en/guide/using-middleware.html):
 
 ```js
-app.get("/games/", async (req, res, next) => {
+app.get('/games/', async (req, res, next) => {
   try {
     const status = await game.createGame();
     res.json(status);
@@ -98,13 +111,8 @@ app.get("/games/", async (req, res, next) => {
 });
 ```
 
+Now instead of rewriting the above code for every one of our handlers, we will modularise and use the `asyncWrap` function that we have added to `server/helper.js`.
 For more information on error handling in express routing, see [this article](https://expressjs.com/en/guide/error-handling.html).
-
-TODO: explain changes to `server/game.js`
-
-Observe the name of the database in the `server/config.js` file.
-Also, remember to comment out the `host` in this configuration file if you are running the server on your machine (leave it uncommented when running on your VM).
-For more information on `pg.Client`, check out [this documentation page](https://node-postgres.com/api/client).
 
 To view all the differences between our current branch and the last, see [this compare page](https://github.com/portsoc/hangman-in-branches/compare/11...12?diff=split).
 
