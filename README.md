@@ -121,7 +121,16 @@ app.post('/games/', (req, res, next) => {
 ```
 
 But surely we don't want to have to write this every time we want to handle errors.
-For this reason, we have introduced the `asyncWrap` function in `server/helper.js`.
+For this reason, we have introduced the `asyncWrap` function.
+
+```js
+function asyncWrap(f) {
+  return (req, res, next) => {
+    Promise.resolve(f(req, res, next))
+      .catch((e) => next(e || new Error()));
+  };
+}
+```
 
 To view all the differences between our current branch and the last, see [this compare page](https://github.com/portsoc/hangman-in-branches/compare/11...12?diff=split).
 
