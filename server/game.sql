@@ -12,7 +12,3 @@ CREATE TABLE IF NOT EXISTS game (
     last BOOLEAN NOT NULL DEFAULT false,
     won BOOLEAN NOT NULL DEFAULT false
 );
-
-INSERT INTO game (word, hits, misses, onGoing, userWord, last, won) VALUES ('test', '', '', true, '', false, false);
-
-SELECT * FROM game;
