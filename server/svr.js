@@ -26,8 +26,9 @@ async function createGame(req, res) {
  * @param req - request object containing the letter and the game's id
  * @param res - response that contains the status object
  */
-function guessLetter(req, res) {
-  res.json(game.guessLetter(req.params.id, req.params.letter));
+async function guessLetter(req, res) {
+  const status = await game.guessLetter(req.params.id, req.params.letter);
+  res.json(status);
 }
 
 /**
@@ -35,39 +36,29 @@ function guessLetter(req, res) {
  * @param req - request object containing the game's id
  * @param res - response that contains the score
  */
-function calculateScore(req, res) {
+async function calculateScore(req, res) {
   const id = req.params.id;
-  const score = game.calculateScore(id);
+  const score = await game.calculateScore(id);
 
   res.json({ score });
 }
 
-// // TODO: Write about this, generate docs too
-// /**
-//  * It takes a function that returns a promise, and returns a function that calls the original function,
-//  * and if it throws an error, it calls the next function with the error
-//  * @param f - The function to wrap
-//  * @returns A function that takes in a function f, and returns a function that takes in req, res, and
-//  * next.
-//  */
-// function asyncWrap(f) {
-//   return (req, res, next) => {
-//     f(req, res, next)
-//       .catch((e) => next(e || new Error()));
-//   };
-// }
+/**
+ * It takes an asynchronous function, and returns a function with additional error handling.
+ * @param f - The function to wrap.
+ * @returns The function that returns a promise that calls the original function on resolve
+ * and next if it throws an error
+ */
+function asyncWrap(f) {
+  return (req, res, next) => {
+    Promise.resolve(f(req, res, next))
+      .catch((e) => next(e || new Error()));
+  };
+}
 
-// app.post('/games/', asyncWrap(createGame));
-// app.post('/games/', async (req, res) => {
-//   await createGame(req, res);
-// });
-app.get('/games/', (req, res, next) => {
-  Promise.resolve(createGame(req, res))
-    .catch((e) => next(e || new Error()));
-});
-app.post('/games/:id/:letter', guessLetter);
-app.get('/games/:id/score', calculateScore);
+app.post('/games/', asyncWrap(createGame));
+app.post('/games/:id/:letter', asyncWrap(guessLetter));
+app.get('/games/:id/score', asyncWrap(calculateScore));
 
 app.listen(8080);
-
 console.log('Server is now running on port 8080');
