@@ -10,6 +10,11 @@
   <ol>
     <li><a href="#objectives">Objectives</a></li>
     <li><a href="#implementation">Implementation</a>
+      <ul>
+        <li><a href="#only-server-stores-game">Only server stores game</a></li>
+        <li><a href="#server-sends-game-to-client-on-new-game">Server sends game to client on new game</a></li>
+        <li><a href="#server-checks-guess-and-updates-game">Server checks guess and updates game</a></li>
+      </ul>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#todo">Todo</a></li>
     <li><a href="#further-exploration">Further Exploration</a></li>
@@ -32,7 +37,7 @@ We also recommend you view the [staged-simple-messageboard](https://github.com/p
 
 ## Implementation
 
-### The server stores the game's status and the client only keeps a copy
+### Only server stores game
 
 First, we have copied `gameState` variable from `client/index.js` to `server/svr.js` under the new name `status`.
 `status` in `server/svr.js` is pretty much the same as `gameState` except that it now contains the `last` and `won` properties (whether the last guess was correct and if the user has won).
@@ -44,7 +49,7 @@ We have also renamed `guessed` array to `userWord` to avoid confusion.
 The references to `guessed` in `index.js` are updated too.
 Remember that these updates and renamings are a natural process of development.
 
-### The server starts a new game and sends a copy the to client
+### Server sends game to client on new game
 
 At the start of a new game `gameState`'s properties are reset.
 This is now done by `createGame` function in `server/svr.js` which accepts a request and responds with a new `state`.
@@ -54,7 +59,7 @@ As a result of this change, we had to move `words`, `randomIndex`, and `randomEl
 Back on the client side, because `statrNewGame` is an asynchronous function, we need to use the `async` keyword.
 Additionally, we have moved `addEventListeners` at the end of this function so that it gets called once the game is started (and the keyboard is created).
 
-### The server checks a guess and updates the game's status
+### Server checks guess and updates game
 
 We started by moving `checkLetter` and `checkWon` to the server (they perform the same job as before).
 Some of the functionalities of `registerLetter` that are not related to the frontend have been moved to the server too as described below.
