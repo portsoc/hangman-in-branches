@@ -10,27 +10,27 @@
   <ol>
     <li><a href="#about-the-project">About the project</a></li>
     <li><a href="#prerequisites">Prerequisites</a>
-      <ul>
+      <ol>
         <li><a href="#on-university-machines">On University machines</a></li>
         <li><a href="#on-your-computers">On your computers</a></li>
-      </ul>
+      </ol>
     </li>
     <li>
       <a href="#cloning">Cloning</a>
-      <ul>
-        <li><a href="#cloning-using-git">Cloning using Git</a></li>
-        <li><a href="#cloning-using-github-cli">Cloning using GitHub CLI</a></li>
-        <li><a href="#cloning-using-github-desktop-client">Cloning using GitHub Desktop</a></li>
-        <li><a href="#cloning-on-visual-studio-code">Cloning on Visual Studio Code</a></li>
-      </ul>
+      <ol>
+        <li><a href="#using-git">Using Git</a></li>
+        <li><a href="#using-github-cli">Using GitHub CLI</a></li>
+        <li><a href="#using-github-desktop">Using GitHub Desktop</a></li>
+        <li><a href="#using-visual-studio-code">Using Visual Studio Code</a></li>
+      </ol>
     </li>
     <li>
       <a href="#selecting-a-branch">Selecting a branch</a>
-      <ul>
-        <li><a href="#selecting-a-branch-using-git">Selecting a branch using Git</a></li>
-        <li><a href="#selecting-a-branch-using-github-desktop">Selecting a branch using GitHub Desktop</a></li>
-        <li><a href="#selecting-a-branch-on-visual-studio-code">Selecting a branch on Visual Studio Code</a></li>
-      </ul>
+      <ol>
+        <li><a href="#using-git">Using Git</a></li>
+        <li><a href="#using-github-desktop">Using GitHub Desktop</a></li>
+        <li><a href="#using-visual-studio-code">Using Visual Studio Code</a></li>
+      </ol>
     </li>
     <li><a href="#viewing-the-code">Viewing the code</a></li>
   </ol>
@@ -71,7 +71,7 @@ This repository contains a worked solution to the [2021-2022 coursework for the 
 Don't download this repository as a zip file.
 Instead, follow the instructions below to clone this repository on your machine.
 
-### Cloning using Git
+### Using Git
 
 Open the shell (Terminal on Linux/Mac or Command Prompt/PowerShell in Windows) and run:
 
@@ -79,7 +79,7 @@ Open the shell (Terminal on Linux/Mac or Command Prompt/PowerShell in Windows) a
 git clone https://github.com/portsoc/hangman-in-branches.git
 ```
 
-### Cloning using GitHub CLI
+### Using GitHub CLI
 
 Run the following in a shell:
 
@@ -87,11 +87,11 @@ Run the following in a shell:
 gh repo clone portsoc/hangman-in-branches
 ```
 
-### Cloning using the GitHub Desktop
+### Using GitHub Desktop
 
 While this repository is open in the browser, click the green "Code" button and then "Open with GitHub Desktop".
 
-### Cloning on Visual Studio Code
+### Using Visual Studio Code
 
 Follow this [instruction on how to clone a repository in Visual Studio Code](https://code.visualstudio.com/docs/editor/versioncontrol#_cloning-a-repository).
 
@@ -110,7 +110,7 @@ As an example, here is the link to the first branch:
 
 To switch your copy of our code to a branch "x" (where x is a number):
 
-### Selecting a branch using Git
+### Using Git
 
 Run the following in a shell (make sure to replace x with a branch number):
 
@@ -124,11 +124,11 @@ The following command shows you all the branches (hit <kbd>q</kbd> to exit):
 git branch -all
 ```
 
-### Selecting a branch using GitHub Desktop
+### Using GitHub Desktop
 
 Follow this [instruction on how to switch branches on GitHub Desktop](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/making-changes-in-a-branch/managing-branches#switching-between-branches).
 
-### Selecting a branch on Visual Studio Code
+### Using Visual Studio Code
 
 Follow this [instruction on branches for Visual Studio Code](https://code.visualstudio.com/docs/editor/versioncontrol#_branches-and-tags).
 
