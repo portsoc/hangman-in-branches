@@ -10,6 +10,13 @@
   <ol>
     <li><a href="#objectives">Objectives</a></li>
     <li><a href="#implementation">Implementation</a>
+      <ul>
+        <li><a href="#grouping-existing-variables">Grouping existing variables</a></li>
+        <li><a href="#extracting-repeated-code-into-new-functions">Extracting repeated code into new functions</a></li>
+        <li><a href="#extracting-related-functions-into-new-modules">Extracting related functions into new modules</a></li>
+        <li><a href="#miscellaneous-improvements">Miscellaneous improvements</a></li>
+      </ul>
+    </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#todo">Todo</a></li>
     <li><a href="#further-exploration">Further Exploration</a></li>
@@ -57,11 +64,16 @@ The important benefit of our changes is that we only have to update the function
 
 Although our changes do not significantly decrease the volume of code, they help with readability and maintainability.
 
-### Extracting helper functions into a separate script
+### Extracting related functions into new modules
 
 We have created a new file called `helper.js` to contain all the helper functions.
-These are functions that are not directly related to the game itself (and most importantly do not need access to the `gameState` variable).
+They are not directly related to the game itself (and most importantly do not need access to the `gameState` variable).
 These functions are `safeRemove`, `create`, and `drawKeyboard`.
+
+Once again, Visual Studio Code has a shortcut for this action:
+Select the lines containing your functions.
+Then right-click and select "Refactor".
+Afterward, select "Move to a new file".
 
 We have on purpose kept `randomIndex` and `randomElement` in the `index.js` file.
 This will make sense when you attempt the task mentioned under the <a href="#further-exploration">further exploration</a> section.
