@@ -12,7 +12,6 @@
     <li><a href="#implementation">Implementation</a>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#todo">Todo</a></li>
-    <li><a href="#further-exploration">Further Exploration</a></li>
   </ol>
 </details>
 
@@ -63,15 +62,5 @@ It is a good habit to leave notes reminding yourself of what needs to be done ne
 - [ ] We are not currently serving our game from a server.
 
 - [ ] The image of the hangman game is not updating as the game is being played.
-
-## Further Exploration
-
-Console log the value of `word` before the closing brackets of the `startNewGame` function in `index.js`.
-Afterward, save `index.js` and refresh the page in your browser.
-
-Now, inspect the page with <kbd>F12</kbd> or by right-clicking on the page and selecting 'Inspect'.
-Can you find the secret word displayed in the console?
-
-It is a good habit to log the value of variables while you are developing a project.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
