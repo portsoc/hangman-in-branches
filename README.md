@@ -10,6 +10,13 @@
   <ol>
     <li><a href="#objectives">Objectives</a></li>
     <li><a href="#implementation">Implementation</a>
+      <ul>
+        <li><a href="#serve-the-website">Serve the website</a></li>
+        <li><a href="#non-alphabetical-symbols">Non alphabetical symbols</a></li>
+        <li><a href="#repeat-guesses">Repeat guesses</a></li>
+        <li><a href="#restart-game">Restart game</a></li>
+      </ul>
+    </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#todo">Todo</a></li>
     <li><a href="#further-exploration">Further Exploration</a></li>
@@ -59,7 +66,7 @@ This lets us use import statements (for more info check out [this documentation 
 Now by running `npm start` in the shell, we can see our site is being served in our machine over port 8080 (http://localhost:8080).
 To stop the site, we can use <kbd>Ctrl</kbd> + <kbd>C</kbd> in the shell.
 
-### Fix: Non-alphabetical symbols
+### Non alphabetical symbols
 
 We start by using a regular expression to pick all the alphabetical characters in the word, replacing them with '\_'.
 For more information read our comments in `startNewGame`.
@@ -68,7 +75,7 @@ Multiple spaces in HTML are rendered as a single space in the browser.
 There are simple ways around it (e.g., using '\&nbsp;') but instead, the `redrawWord` function places each letter in a span element.
 This decision will later allow us to treat letters individually (e.g., styling them differently).
 
-### Fix: Repeat guesses
+### Repeat guesses
 
 To prevent the user from guessing the same letter twice, we have created `hits` and `misses` arrays.
 We could have done it in one array but we would like to distinguish between them when it comes to styling the letters.
@@ -76,7 +83,7 @@ We could have done it in one array but we would like to distinguish between them
 `registerLetter` now checks whether the new guess is in the `hits` or `misses` array and displays a message accordingly.
 Every time the user makes a new guess, we call `redrawKeyboard` to update the keyboard accordingly.
 
-### Fix: Restart the game
+### Restart game
 
 At the end of a game, we call `generateNewGame` function which will remove the keyboard and display a restart button.
 When the user clicks the restart button, we call `startNewGame` to start a new game (resets the number of lives, chooses a new word and so on).
