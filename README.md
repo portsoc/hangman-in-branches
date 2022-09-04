@@ -117,15 +117,30 @@ You can still play multiple games from different browsers but you will have to h
 
 Your challenge is to host this game to learn how to do the same with your submissions.
 We will start by showing you how to serve an app with your student VMs.
-Visit your [MyVm page](http://port.ac.uk/myvm) and follow the instructions in [this document](https://docs.google.com/document/d/1zqvC5jOoXQlXggKZkEC025H-N6k7HxdTHpsy0Iylt0c/edit?usp=sharing).
+Visit your [MyVm page](http://port.ac.uk/myvm) and start your VM.
+You can then SSH into your VM using the credentials provided on the page or just use [the Secure Shell extension](https://chrome.google.com/webstore/detail/secure-shell/iodihamcpbpeioajjeobimgagajmlibd?hl=en) to launch a connection in your browser.
 
 If you would like to host your app, make sure it is in a private git repository.
 Check [this guide](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories), if you have any authentication errors while cloning your repository into your VM.
 Alternatively, you can clone this public repository as practice.
 
-Make sure that you clone into the `web` folder in your virtual machines as instructed in the above document.
-Serve your site (as shown in the [usage section](#usage)) and try to access it, from different devices, by visiting the IP address or the DNS name shown in the details section of your MyVM page.
-If the website is being served yet you cannot access it on the internet, try adding the port number, `:8080`, to the end of the URL.
+Run the following command to change the directory to the `web` folder and clone our repository:
+
+```bash
+cd web && git clone https://github.com/portsoc/hangman-in-branches.git
+``` 
+
+Next, change the directory to the `hangman-in-branches` folder and checkout branch `9`:
+
+```bash
+cd hangman-in-branches && git checkout 9
+```
+
+Serve your site (following the instructions in the [usage section](#usage)) and try to access it, from different devices, by visiting the IP address or the DNS name shown in the details section of your MyVM page.
+If you cannot access it, try adding the port number, `8080`, to the end of the URL.
+
+For more information on how to use your VM, we suggest checking out [this document](https://docs.google.com/document/d/1zqvC5jOoXQlXggKZkEC025H-N6k7HxdTHpsy0Iylt0c/edit).
+Make sure to read the section titled "If you want to run a Web server" if you are having any issues with hosting your site.
 
 We will also leave you with another challenge that you can try to solve.
 
