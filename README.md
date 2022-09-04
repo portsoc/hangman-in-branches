@@ -10,12 +10,12 @@
   <ol>
     <li><a href="#objectives">Objectives</a></li>
     <li><a href="#implementation">Implementation</a>
-      <ul>
+      <ol>
         <li><a href="#serve-the-website">Serve the website</a></li>
         <li><a href="#non-alphabetical-symbols">Non alphabetical symbols</a></li>
         <li><a href="#repeat-guesses">Repeat guesses</a></li>
         <li><a href="#restart-game">Restart game</a></li>
-      </ul>
+      </ol>
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#todo">Todo</a></li>
@@ -56,15 +56,29 @@ npm install express
 ```
 
 This adds Express to the dependencies of the `package.json` file and automatically creates the `package-lock.json` file.
+
 Installing Express will also create a `node_modules` folder in the hangman-in-branches.
 This contains all the dependencies specific to the computer we are running the program in.
-So we have not included `node_modules` in the repository.
+For this reason, we have not included `node_modules` in the repository (look for `node_modules/` in the `.gitignore` file).
 
-Inside `package.json` we have added a `start` script and added the attribute `type` set to `module`.
-This lets us use import statements (for more info check out [this documentation page](https://nodejs.org/docs/latest-v13.x/api/esm.html#esm_enabling)).
+Something else that happens once you a package is that it adds it to the dependencies in the `package.json` file.
+Take a look at `package.json` and observe what is added (under the name "dependencies").
+When you clone the repository and checkout this branch, you will need to run `npm install` which installs the dependencies (see the [usage section](#usage)).
+
+Inside `package.json` we have added a `start` script as shown below.
+It is a convention to set the `start` script to the shell command that starts the server:
+
+```json
+"scripts": {
+  "start": "node server/svr.js"
+}
+```
 
 Now by running `npm start` in the shell, we can see our site is being served in our machine over port 8080 (http://localhost:8080).
 To stop the site, we can use <kbd>Ctrl</kbd> + <kbd>C</kbd> in the shell.
+
+The last thing that we have added to `package.json` is the attribute `type` set to `module`.
+This lets us use import statements (for more info check out [this documentation page](https://nodejs.org/docs/latest-v13.x/api/esm.html#esm_enabling)).
 
 ### Non alphabetical symbols
 
@@ -132,6 +146,7 @@ The user has to make a new guess for the previous letter to be registered and re
 Use what you have learned in the lessons to fix this issue.
 
 **Hint:** Use your browser's developer tools and set breakpoints within the source code.
+For more information, visit the documentation page on [breakpoints in Chrome](https://developer.chrome.com/docs/devtools/javascript/breakpoints/).
 Check the content of hits and misses to see if they update on time or if the problem is from something else.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
