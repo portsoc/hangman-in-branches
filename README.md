@@ -39,15 +39,14 @@ Therefore, in the `addEventListeners` function called within `init`, we attach e
 `checkLetter` decides if the letter is in the word and updates the guessed array if necessary.
 `registerLetter` will also update the `instruct` and `feedback` sections of the page accordingly and end the game if necessary.
 
-If any part of the script is confusing, check out the examples in [the DOM101 repository](https://github.com/portsoc/dom101) and attempt the tasks in that repo.
-
 To see our new changes, [visit this compare page](https://github.com/portsoc/hangman-in-branches/compare/3...4?diff=split) showing the difference between branches 3 and 4.
 
 ## Usage
 
 Open `index.html` in your browser (<kbd>Ctrl</kbd> + <kbd>O</kbd> in Linux/Windows or <kbd>Cmd</kbd> + <kbd>O</kbd> in Mac).
 
-Remember to open the inspector in your browser (typically the shortcut is <kbd>F12</kbd>) and view the console.
+Remember to open the inspector in your browser and view the console.
+The shortcut is usually <kbd>F12</kbd> alternatively, right-click on the page and select 'Inspect' from Developer Tools.
 
 ## Todo
 
