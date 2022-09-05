@@ -23,6 +23,9 @@
   </ol>
 </details>
 
+<a href="https://github.com/portsoc/hangman-in-branches/tree/6" class="previous">&laquo; Previous</a>
+<a href="https://github.com/portsoc/hangman-in-branches/tree/8" class="next">Next &raquo;</a>
+
 ## Objectives
 
 You can already see that our program is growing in size and complexity.
