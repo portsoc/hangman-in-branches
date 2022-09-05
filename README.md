@@ -148,7 +148,9 @@ Next, change the directory to the `hangman-in-branches` folder and checkout bran
 cd hangman-in-branches && git checkout 9
 ```
 
-Serve your site (following the instructions in the [usage section](#usage)) and try to access it, from different devices, by visiting the IP address or the DNS name shown in the details section of your MyVM page.
+Serve your site (following the instructions in the [usage section](#usage)).
+Once the server has started, you could access it by visiting the IP address shown on the MyVM page or [upABCDEF.myvm.port.ac.uk](upABCDEF.myvm.port.ac.uk) where ABCDEF is replaced by your student number.
+You may also need to specify the port by adding the port number to the end of the URL (e.g., [upABCDEF.myvm.port.ac.uk:8080](upABCDEF.myvm.port.ac.uk:8080)).
 If you cannot access it, try adding the port number, `8080`, to the end of the URL.
 
 For more information on how to use your VM, we suggest checking out [this document](https://docs.google.com/document/d/1zqvC5jOoXQlXggKZkEC025H-N6k7HxdTHpsy0Iylt0c/edit).
