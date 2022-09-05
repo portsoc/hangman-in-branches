@@ -10,9 +10,25 @@
   <ol>
     <li><a href="#objectives">Objectives</a></li>
     <li><a href="#implementation">Implementation</a>
-    <li><a href="#usage">Usage</a></li>
+      <ol>
+        <li><a href="#static-data">Static data</a></li>
+        <li><a href="#dynamic-data">Dynamic data</a></li>
+      </ol>
+    <li><a href="#usage">Usage</a>
+      <ol>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#setup">Setup</a></li>
+        <li><a href="#run-the-server">Run the server</a></li>
+        <li><a href="#clean-up">Clean-up</a></li>
+      </ol>
+    </li>
     <li><a href="#todo">Todo</a></li>
-    <li><a href="#further-exploration">Further Exploration</a></li>
+    <li><a href="#further-exploration">Further Exploration</a>
+      <ol>
+        <li><a href="#improve-choice-of-databases">Improve choice of databases</a></li>
+        <li><a href="#handle-server-errors">Handle server errors</a></li>
+      </ol>
+    </li>
   </ol>
 </details>
 
