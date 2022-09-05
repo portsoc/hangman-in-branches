@@ -10,15 +10,25 @@
   <ol>
     <li><a href="#objectives">Objectives</a></li>
     <li><a href="#implementation">Implementation</a>
+      <ol>
+        <li><a href="#calculating-and-displaying-score">Calculating and displaying score</a></li>
+        <li><a href="#hosting-multiple-games">Hosting multiple games</a></li>
+        <li><a href="#modularising-server">Modularising server</a></li>
+      </ol>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#todo">Todo</a></li>
-    <li><a href="#further-exploration">Further Exploration</a></li>
+    <li><a href="#further-exploration">Further Exploration</a>
+      <ol>
+        <li><a href="#run-this-app-on-a-web-server">Run this app on a web server</a></li>
+        <li><a href="#delete-old-games">Delete old games</a></li>
+      </ol>
+    </li>
   </ol>
 </details>
 
 ## Objectives
 
-Aside from minor improvements, we are aiming to close the following tasks opened in the to-do list of [the previous branch](https://github.com/portsoc/hangman-in-branches/tree/8):
+Aside from minor improvements, we are aiming to close the following tasks opened in the to-do list of [the previous branch](https://github.com/portsoc/hangman-in-branches/tree/8#todo):
 
 - Calculating and displaying a score
 - Hosting multiple games
@@ -26,7 +36,7 @@ Aside from minor improvements, we are aiming to close the following tasks opened
 
 ## Implementation
 
-### Calculating and displaying a score
+### Calculating and displaying score
 
 We as developers can decide what a score is and how it is calculated.
 So let's define the score with the following formula:
@@ -52,11 +62,13 @@ We need to store a collection of games on the server (each game has its `status`
 But to be able to distinguish between every game, we need to add a unique identifier to each game.
 For this reason, we are going to be using [the `uuid` NPM package](https://www.npmjs.com/package/uuid).
 
-Following the instructions in the "Quickstart" section of the NPM page, we can install the `uuid` package with:
+Following the instructions in the "Quickstart" section of the NPM page, we can have installed `uuid` package with:
 
 ```bash
 npm install uuid
 ```
+
+Recall that this will add the `uuid` package as a new dependency to the `package.json` file and install it in the `node_modules` folder.
 
 We then import it to our server and use it (by calling `uuidv4()`) to create unique IDs for each game in the `gamesInPlay` array.
 
@@ -64,7 +76,7 @@ We then import it to our server and use it (by calling `uuidv4()`) to create uni
 `guessLetter` also requires a unique ID to identify the game in addition to the letter that the player has guessed.
 Notice the change in the URL for guessing a letter too (see `sendGuess`).
 
-### Modularising the server
+### Modularising server
 
 `server/svr.js` at this point is very large and contains, data, a lot of functionality as well as helper functions.
 We need to separate the game's logic from the server and place it in a new module called `server/game.js`.
@@ -110,25 +122,25 @@ Stop the server with <kbd>Ctrl</kbd> + <kbd>C</kbd> in the shell.
 
 ## Further Exploration
 
-### Host this site
+### Run this app on a web server
 
 Our multiplayer game may not make much sense at the moment since we are serving it on localhost (to only one client).
 You can still play multiple games from different browsers but you will have to host your game to be able to access it on the internet from different devices.
 
 Your challenge is to host this game to learn how to do the same with your submissions.
 We will start by showing you how to serve an app with your student VMs.
-Visit your [MyVm page](http://port.ac.uk/myvm) and start your VM.
+Visit your [MyVm page](http://port.ac.uk/myvm) and start it up.
 You can then SSH into your VM using the credentials provided on the page or just use [the Secure Shell extension](https://chrome.google.com/webstore/detail/secure-shell/iodihamcpbpeioajjeobimgagajmlibd?hl=en) to launch a connection in your browser.
 
 If you would like to host your app, make sure it is in a private git repository.
 Check [this guide](https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories), if you have any authentication errors while cloning your repository into your VM.
 Alternatively, you can clone this public repository as practice.
 
-Run the following command to change the directory to the `web` folder and clone our repository:
+Run the following command to change the directory to the `web` folder and clone our repository within it:
 
 ```bash
 cd web && git clone https://github.com/portsoc/hangman-in-branches.git
-``` 
+```
 
 Next, change the directory to the `hangman-in-branches` folder and checkout branch `9`:
 
