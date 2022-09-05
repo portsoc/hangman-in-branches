@@ -148,7 +148,4 @@ Generally speaking, it helps to ignore files that you don't want to be saved in 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<ul class="pager"> <!--this is the style of the button-->
-<li><a href="#">Back to Summary</a></li> <!--This button takes me to the table of contents-->
-<li><a href="#render-document">Next</a></li> <!--This button takes me to the previous page-->
-</ul>
+<a href="https://github.com/portsoc/hangman-in-branches/tree/0" class="next">Next &raquo;</a>
