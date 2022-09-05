@@ -19,6 +19,9 @@
   </ol>
 </details>
 
+<a href="https://github.com/portsoc/hangman-in-branches/tree/10" class="previous">&laquo; Previous</a>
+<a href="https://github.com/portsoc/hangman-in-branches/tree/12" class="next">Next &raquo;</a>
+
 ## Objectives
 
 We are only humans, and we make mistakes.
