@@ -26,6 +26,9 @@
   </ol>
 </details>
 
+<a href="https://github.com/portsoc/hangman-in-branches/tree/8" class="previous">&laquo; Previous</a>
+<a href="https://github.com/portsoc/hangman-in-branches/tree/10" class="next">Next &raquo;</a>
+
 ## Objectives
 
 Aside from minor improvements, we are aiming to close the following tasks opened in the to-do list of [the previous branch](https://github.com/portsoc/hangman-in-branches/tree/8#todo):
