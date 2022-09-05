@@ -147,3 +147,8 @@ We point out that the `.gitignore` file has been automatically generated for us 
 Generally speaking, it helps to ignore files that you don't want to be saved in your repository (e.g., settings of the code editor, temporary files, etc.).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+<ul class="pager"> <!--this is the style of the button-->
+<li><a href="#">Back to Summary</a></li> <!--This button takes me to the table of contents-->
+<li><a href="#render-document">Next</a></li> <!--This button takes me to the previous page-->
+</ul>
