@@ -10,6 +10,10 @@
   <ol>
     <li><a href="#objectives">Objectives</a></li>
     <li><a href="#implementation">Implementation</a>
+      <ol>
+        <li><a href="#installing-eslint">Installing ESLint</a></li>
+        <li><a href="#linting-our-app">Linting our app</a></li>
+      </ol>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#todo">Todo</a></li>
   </ol>
@@ -26,7 +30,7 @@ Before proceeding further, visit the module resources, specifically the [lint101
 We will start by following the installation steps stated in the [eslint-config-portsoc repository](https://github.com/portsoc/eslint-config-portsoc).
 Note that the instructions here are written for Visual Studio Code, but things are similar for other editors.
 
-### Installing and configuring ESLint
+### Installing ESLint
 
 Begin by installing [the ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) in Visual Studio Code.
 For more information on installing extensions, see [this guide for Visual Studio Code](https://code.visualstudio.com/docs/editor/extension-marketplace#_install-an-extension).
