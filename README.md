@@ -36,6 +36,8 @@
   </ol>
 </details>
 
+<a href="https://github.com/portsoc/hangman-in-branches/tree/0" class="next">Next &raquo;</a>
+
 <!-- ABOUT THE PROJECT -->
 
 ## About the project
@@ -146,6 +148,5 @@ Always start by reading the `README.md` file to see what were the objectives for
 We point out that the `.gitignore` file has been automatically generated for us by GitHub on the creation of a Node repository.
 Generally speaking, it helps to ignore files that you don't want to be saved in your repository (e.g., settings of the code editor, temporary files, etc.).
 
-<p align="right">(<a href="#top">back to top</a>)</p>
 
-<a href="https://github.com/portsoc/hangman-in-branches/tree/0" class="next">Next &raquo;</a>
+<p align="right">(<a href="#top">back to top</a>)</p>
