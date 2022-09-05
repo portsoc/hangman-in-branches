@@ -32,6 +32,9 @@
   </ol>
 </details>
 
+<a href="https://github.com/portsoc/hangman-in-branches/tree/11" class="previous">&laquo; Previous</a>
+<a href="https://github.com/portsoc/hangman-in-branches/tree/13" class="next">Next &raquo;</a>
+
 ## Objectives
 
 Data should be stored in a database.
