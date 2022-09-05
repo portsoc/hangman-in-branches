@@ -4,6 +4,30 @@
 
 # Hangman in branches
 
+<!-- TNavigation -->
+<details>
+  <summary>Navigate between branches</summary>  
+  <nav class="menu">
+    <li>Intro (this branch)</li>
+    <li><a href="#https://github.com/portsoc/hangman-in-branches/tree/0">0: Storing data in variables</a></li>
+    <li><a href="#https://github.com/portsoc/hangman-in-branches/tree/1">1: Functions</a></li>
+    <li><a href="#https://github.com/portsoc/hangman-in-branches/tree/2">2: NPM</a></li>
+    <li><a href="#https://github.com/portsoc/hangman-in-branches/tree/3">3: DOM</a></li>
+    <li><a href="#https://github.com/portsoc/hangman-in-branches/tree/4">4: Events</a></li>
+    <li><a href="#https://github.com/portsoc/hangman-in-branches/tree/5">5: Debugging</a></li>
+    <li><a href="#https://github.com/portsoc/hangman-in-branches/tree/6">6: Canvas</a></li>
+    <li><a href="#https://github.com/portsoc/hangman-in-branches/tree/7">7: Modularisation</a></li>
+    <li><a href="#https://github.com/portsoc/hangman-in-branches/tree/8">8: Server Part 1</a></li>
+    <li><a href="#https://github.com/portsoc/hangman-in-branches/tree/9">9: Server Part 2</a></li>
+    <li><a href="#https://github.com/portsoc/hangman-in-branches/tree/10">10: Style</a></li>
+    <li><a href="#https://github.com/portsoc/hangman-in-branches/tree/11">11: Linting</a></li>
+    <li><a href="#https://github.com/portsoc/hangman-in-branches/tree/12">12: Database</a></li>
+    <li><a href="#https://github.com/portsoc/hangman-in-branches/tree/13">13: SVG</a></li>
+  </nav>
+</details>
+
+<a href="https://github.com/portsoc/hangman-in-branches/tree/0" class="next">Next &raquo;</a>
+
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
@@ -35,8 +59,6 @@
     <li><a href="#viewing-the-code">Viewing the code</a></li>
   </ol>
 </details>
-
-<a href="https://github.com/portsoc/hangman-in-branches/tree/0" class="next">Next &raquo;</a>
 
 <!-- ABOUT THE PROJECT -->
 
@@ -147,6 +169,5 @@ Always start by reading the `README.md` file to see what were the objectives for
 
 We point out that the `.gitignore` file has been automatically generated for us by GitHub on the creation of a Node repository.
 Generally speaking, it helps to ignore files that you don't want to be saved in your repository (e.g., settings of the code editor, temporary files, etc.).
-
 
 <p align="right">(<a href="#top">back to top</a>)</p>
