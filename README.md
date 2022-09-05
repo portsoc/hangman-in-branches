@@ -10,11 +10,11 @@
   <ol>
     <li><a href="#objectives">Objectives</a></li>
     <li><a href="#implementation">Implementation</a>
-      <ul>
+      <ol>
         <li><a href="#only-server-stores-game">Only server stores game</a></li>
         <li><a href="#server-sends-game-to-client-on-new-game">Server sends game to client on new game</a></li>
         <li><a href="#server-checks-guess-and-updates-game">Server checks guess and updates game</a></li>
-      </ul>
+      </ol>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#todo">Todo</a></li>
     <li><a href="#further-exploration">Further Exploration</a></li>
@@ -25,12 +25,12 @@
 
 Our aim in this branch is to move some of the resources (functions and variables) from our `client` folder to the `server` one.
 More specifically, we want to move `gameState` and all functions that update it from `client/index.js` to `server/svr.js`.
-The main benefit of this action is that we can keep parts of the game's logic private.
 
 So for example, we don't want the client to access parts of the game that we would like to keep secret (e.g., the word to be guessed).
 Additionally, the user cannot update the game's state (e.g., they cannot remove elements of the `misses` array).
 
-Not only do we have to move code from client to server, but we also have to update the client so that it sends a request to get resources that the server offers.
+Our app would be useless if everything is hidden from the client.
+So we are also going to update the client so that it sends a request to get resources that the server offers.
 
 If you have not already done so, visit the module resources on the topic and be sure to work your way through the examples and tests of the [fetch101 repository](https://github.com/portsoc/fetch101).
 We also recommend you view the [staged-simple-messageboard](https://github.com/portsoc/staged-simple-message-board)[ repository](https://github.com/portsoc/staged-simple-message-board).
@@ -62,7 +62,7 @@ Additionally, we have moved `addEventListeners` at the end of this function so t
 ### Server checks guess and updates game
 
 We started by moving `checkLetter` and `checkWon` to the server (they perform the same job as before).
-Some of the functionalities of `registerLetter` that are not related to the frontend have been moved to the server too as described below.
+Some of the functionalities of `registerLetter` that are not related to the front end have been moved to the server too as described below.
 
 `guessLetter` in the server checks the letter that is passed as a parameter of the request object.
 It updates the properties of `status` and returns it as a response.
@@ -91,7 +91,7 @@ Stop the server with <kbd>Ctrl</kbd> + <kbd>C</kbd> in the shell.
 
 ## Todo
 
-Our to-do list at the moment is focusing mainly on the implementation of the server. We will later add more features to the client (e.g., CSS styling):
+Our to-do list at the moment is focusing mainly on the implementation of the server. We will later add more features to the client (e.g., CSS):
 
 - [ ] We still have not satisfied one of the core requirements of displaying how many moves it took to win as a score.
 
@@ -104,7 +104,7 @@ Our to-do list at the moment is focusing mainly on the implementation of the ser
 ## Further Exploration
 
 The Internet Movie Database (IMDb) is a website that provides information about movies.
-IMDB provides a public API that returns a list of movies (e.g. top 250 films).
+They provide a public API that returns a list of movies (e.g. top 250 films).
 Check out their [API documentation](https://imdb-api.com/api) if you feel up to the challenge of using it as a means of providing a list of movies.
 
 We are not going to implement this in later branches but feel free to show us your solution.
