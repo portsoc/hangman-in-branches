@@ -15,6 +15,9 @@
   </ol>
 </details>
 
+<a href="https://github.com/portsoc/hangman-in-branches/tree/2" class="previous">&laquo; Previous</a>
+<a href="https://github.com/portsoc/hangman-in-branches/tree/4" class="next">Next &raquo;</a>
+
 ## Objectives
 
 Our website needs a homepage.
