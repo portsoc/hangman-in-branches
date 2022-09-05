@@ -94,14 +94,16 @@ async function startNewGame() {
 
   redrawWord();
   el.keyboard = drawKeyboard(el.main);
+
   resetNoose();
+
   feedback('Start clicking on the buttons or press a letter on the keyboard.');
   addEventListeners();
 }
 
-/*
- * Rehide each of the parts of the noose so
- * it can be reused in the next game.
+
+/**
+ * Hides all the elements (with an id attribute) of the canvas
  */
 function resetNoose() {
   const hidden = el.canvas.querySelectorAll('[id]');
@@ -259,7 +261,7 @@ function prepareHandles() {
   el.instruct = document.querySelector('#instruct');
   el.feedback = document.querySelector('#feedback');
   el.main = document.querySelector('main');
-  el.canvas = document.querySelector('#canvas');
+  el.canvas = document.querySelector('#noose');
 }
 
 /**

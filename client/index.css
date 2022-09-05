@@ -5,6 +5,7 @@
   --fg-miss: #400;
   --bg-hit: #3c3;
   --bg-miss: #c33;
+  --highlight: #a00;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -15,6 +16,7 @@
     --fg-miss: #c33;
     --bg-hit: #040;
     --bg-miss: #400;
+    --highlight: #0c0;
   }
 }
 
@@ -89,7 +91,22 @@ button {
   background: var(--bg-miss);
 }
 
-canvas {
-  max-width: 10em;
-  max-height: 15em;
+.hide {
+  stroke: transparent;
+}
+
+svg {
+  max-width: 6em;
+  max-height: 12em;
+}
+
+.highlight {
+  color: var(--highlight);
+}
+
+#noose {
+  fill: none;
+  stroke: var(--highlight);
+  stroke-width: 10;
+  stroke-linecap: round;
 }

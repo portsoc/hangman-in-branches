@@ -70,8 +70,15 @@ Let's begin by adding the SVG element to our HTML file:
 It begins with an optional XML declaration, followed by the SVG element itself. 
 The SVG element has a version attribute, a namespace attribute, and a width and height attribute.
 The viewbox attribute is used to specify the coordinate system of the SVG.
-The SVG element contains a set of shapes, each of which has an id attribute. 
-We will be using these ids to hide and show them with our script.
+
+But most importantly, our hangman is now made up of a set of shapes, each of which has an id attribute. 
+We will be using these ids to hide and show them with our `client/index.js` script.
+
+For a start, we are now using the `resetNoose` function to hide all the shapes at the start of a new game.
+To do this, we add a `hide` class to the shapes and then using a new CSS rule (see `client/style.css`) we are making the shapes transparent.
+
+
+
 
 ## Usage
 
