@@ -4,7 +4,7 @@
 
 # Hangman in branches
 
-<!-- TNavigation -->
+<!-- Navigation -->
 <details>
   <summary>Navigate between branches</summary>  
   <nav class="menu">
