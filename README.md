@@ -37,9 +37,6 @@
   </ol>
 </details>
 
-<a href="https://github.com/portsoc/hangman-in-branches/tree/1" class="previous">&laquo; Previous</a>
-<a href="https://github.com/portsoc/hangman-in-branches/tree/3" class="next">Next &raquo;</a>
-
 ## Objectives
 
 In this step, we will start to use the [NPM](https://www.npmjs.com/) package manager to install and manage dependencies for our project.
