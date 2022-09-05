@@ -23,9 +23,6 @@
 
 ## Implementation
 
-### Dynamic data
-View all the differences between our current branch and the last by visiting [this compare page](https://github.com/portsoc/hangman-in-branches/compare/11...12?diff=split).
-
 ## Usage
 
 ### Prerequisites
