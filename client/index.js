@@ -94,10 +94,20 @@ async function startNewGame() {
 
   redrawWord();
   el.keyboard = drawKeyboard(el.main);
-  drawHangman(el.canvas, 10);
+  resetNoose();
   feedback('Start clicking on the buttons or press a letter on the keyboard.');
   addEventListeners();
 }
+
+/*
+ * Rehide each of the parts of the noose so
+ * it can be reused in the next game.
+ */
+function resetNoose() {
+  const hidden = el.canvas.querySelectorAll('[id]');
+  hidden.forEach(x => x.classList.add('hide'));
+}
+
 
 /**
  * It requests the score of the game from the server and returns it if the game was won.
