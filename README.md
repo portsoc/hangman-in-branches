@@ -40,8 +40,38 @@
 
 ## Objectives
 
+In this branch, we will be using SVG (Scalable Vector Graphics, a markup language for two-dimensional vector graphics) to replace the canvas.
+
+SVG is supported by all modern browsers and additionally, it is resolution independent and can be scaled up or down without losing quality. 
+There are other benefits to SVGs for example the fact that they can be read by screen readers.
+
+Take a look at what we have done here and try to use SVGs in your projects!
 
 ## Implementation
+
+Let's begin by adding the SVG element to our HTML file:
+
+```html
+<?xml version='1.0' encoding='UTF-8' standalone='no' ?>
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' width='600' height='800' viewbox='0 0 300 400'>
+    <line   id='n1' name='base'       x1='50' y1='350' x2='250' y2='350'></line>
+    <line   id='n2' name='mast'       x1='200' y1='350' x2='200' y2='50'></line>
+    <line   id='n3' name='crossbeam'  x1='200' y1='50' x2='100' y2='50'></line>
+    <line   id='n4' name='rope'       x1='100' y1='50' x2='100' y2='125'></line>
+    <circle id='n5' name='head'       cx='100' cy='150' r='25'></circle>            
+    <line   id='n6' name='body'       x1='100' y1='175' x2='100' y2='250'></line>
+    <line   id='n7' name='leftarm'    x1='50' y1='195' x2='100' y2='200'></line>
+    <line   id='n8' name='rightarm'   x1='150' y1='195' x2='100' y2='200'></line>
+    <line   id='n9' name='rightleg'   x1='100' y1='250' x2='150' y2='285'></line>
+    <line   id='n10' name='leftleg'    x1='100' y1='250' x2='50' y2='285'></line>
+</svg>
+```
+
+It begins with an optional XML declaration, followed by the SVG element itself. 
+The SVG element has a version attribute, a namespace attribute, and a width and height attribute.
+The viewbox attribute is used to specify the coordinate system of the SVG.
+The SVG element contains a set of shapes, each of which has an id attribute. 
+We will be using these ids to hide and show them with our script.
 
 ## Usage
 
