@@ -9,7 +9,6 @@ import {
 } from './helper.js';
 
 const POST = { method: 'POST' };
-// we are using 'GET' to request the score from the server (it is a read-only request)
 const GET = { method: 'GET' };
 
 /**
@@ -109,7 +108,6 @@ async function getScore() {
   const response = await fetch(url, GET);
   const responseObject = await response.json();
 
-  // check if the score property exists
   const score = responseObject.score ? responseObject.score : 0;
   return score;
 }
@@ -184,7 +182,6 @@ async function registerLetter(letter) {
         }
       }
 
-      // canvas' background is redrawn after each guess (hit or miss)
       drawHangman(el.canvas, lives(), wasHit);
       redrawKeyboard();
     }
@@ -230,7 +227,6 @@ function redrawKeyboard() {
       if (hitsAndMisses().includes(letter)) {
         key.disabled = true;
 
-        // add a class to the key to indicate whether the guess was correct or not
         key.classList.toggle('miss', gameState.misses.includes(letter));
         key.classList.toggle('hit', gameState.hits.includes(letter));
       }
