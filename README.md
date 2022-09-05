@@ -49,23 +49,25 @@ server/
 └── svr.js
 ```
 
-To install Express, we ran the following in the shell (while in the hangman-in-branches folder):
+We have followed the installation guide on the [page for the Express package](https://www.npmjs.com/package/express) to install this as a dependency for our project.
+This means that we have first navigated to the `hangman-in-branches` folder in the shell and then run the following command:
 
 ```
 npm install express
 ```
 
-This adds Express to the dependencies of the `package.json` file and automatically creates the `package-lock.json` file.
+This adds Express to the dependencies attribute of our `package.json` file and automatically creates the `package-lock.json` file.
+For more info on what these files do check out [this page on `package.json`](https://docs.npmjs.com/cli/v8/configuring-npm/package-json) and [this page on `package-lock.json`](https://docs.npmjs.com/cli/v8/configuring-npm/package-json).
 
 Installing Express will also create a `node_modules` folder in the hangman-in-branches.
 This contains all the dependencies specific to the computer we are running the program in.
-For this reason, we have not included `node_modules` in the repository (look for `node_modules/` in the `.gitignore` file).
+For this reason, we have not included `node_modules` in the repository (look for this in the `.gitignore` file).
 
-Something else that happens once you a package is that it adds it to the dependencies in the `package.json` file.
-Take a look at `package.json` and observe what is added (under the name "dependencies").
-When you clone the repository and checkout this branch, you will need to run `npm install` which installs the dependencies (see the [usage section](#usage)).
+Something else that happens once you install a package is that the dependencies will be added to the `package.json` file.
+Take a look at this file and observe what is added to "dependencies" attribute.
+As discussed in [the usage section](#usage), once you clone the repository and checkout this branch, you will need to run `npm install` which installs the dependencies.
 
-Inside `package.json` we have added a `start` script as shown below.
+Inside `package.json` we have manually added a `start` script as shown below.
 It is a convention to set the `start` script to the shell command that starts the server:
 
 ```json
