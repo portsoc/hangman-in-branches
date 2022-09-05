@@ -37,9 +37,6 @@
   </ol>
 </details>
 
-<a href="https://github.com/portsoc/hangman-in-branches/tree/3" class="previous">&laquo; Previous</a>
-<a href="https://github.com/portsoc/hangman-in-branches/tree/5" class="next">Next &raquo;</a>
-
 ## Objectives
 
 The site must react to events that happen during the game: The user clicks on the on-screen buttons or uses the keyboard to make a guess.
