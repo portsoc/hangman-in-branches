@@ -15,6 +15,9 @@
   </ol>
 </details>
 
+<a href="https://github.com/portsoc/hangman-in-branches/tree/5" class="previous">&laquo; Previous</a>
+<a href="https://github.com/portsoc/hangman-in-branches/tree/7" class="next">Next &raquo;</a>
+
 ## Objectives
 
 We will be carrying out minor fixes from the previous branch but mainly we will be focusing on graphics.
