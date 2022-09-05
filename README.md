@@ -10,12 +10,12 @@
   <ol>
     <li><a href="#objectives">Objectives</a></li>
     <li><a href="#implementation">Implementation</a>
-      <ul>
+      <ol>
         <li><a href="#grouping-existing-variables">Grouping existing variables</a></li>
         <li><a href="#extracting-repeated-code-into-new-functions">Extracting repeated code into new functions</a></li>
         <li><a href="#extracting-related-functions-into-new-modules">Extracting related functions into new modules</a></li>
         <li><a href="#miscellaneous-improvements">Miscellaneous improvements</a></li>
-      </ul>
+      </ol>
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#todo">Todo</a></li>
