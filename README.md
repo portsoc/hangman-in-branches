@@ -9,7 +9,7 @@
   <summary>Navigate between branches</summary>  
   <nav class="menu">
     <li>Intro (this branch)</li>
-    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/0">0: Storing data in variables</a></li>
+    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/0">0: Variables</a></li>
     <li><a href="https://github.com/portsoc/hangman-in-branches/tree/1">1: Functions</a></li>
     <li><a href="https://github.com/portsoc/hangman-in-branches/tree/2">2: NPM</a></li>
     <li><a href="https://github.com/portsoc/hangman-in-branches/tree/3">3: DOM</a></li>
