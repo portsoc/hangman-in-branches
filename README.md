@@ -10,6 +10,15 @@
   <ol>
     <li><a href="#objectives">Objectives</a></li>
     <li><a href="#implementation">Implementation</a>
+      <ol>
+        <li><a href="#size-and-alignment">Size and alignment</a></li>
+        <li><a href="#colours">Colours</a></li>
+        <li><a href="#guessed-letters">Guessed letters</a></li>
+        <li><a href="#keyboard">Keyboard</a></li>
+        <li><a href="#canvas">Canvas</a></li>
+        <li><a href="#favicon">Favicon</a></li>
+      </ol>
+    </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#todo">Todo</a></li>
     <li><a href="#further-exploration">Further Exploration</a></li>
@@ -112,7 +121,7 @@ To balance this, we can decrease the size of the canvas element in the HTML page
 
 We've also updated the `drawHangman` function in `client/canvas.js` so that the background colour reflects whether the last guess was a hit or a miss.
 
-### Adding a favicon
+### Favicon
 
 If you have been checking out the console in the inspection tools, you may have noticed the following error:
 
