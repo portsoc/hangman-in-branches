@@ -76,9 +76,12 @@ We will be using these ids to hide and show them with our `client/index.js` scri
 
 For a start, we are now using the `resetNoose` function to hide all the shapes at the start of a new game.
 To do this, we add a `hide` class to the shapes and then using a new CSS rule (see `client/style.css`) we are making the shapes transparent.
+Afterwards, we are updating the noose using our `redrawHangman` function once a new guess is registered.
 
+As a result of our changes, we no longer need the `canvas` module, so we can remove it from our `client` folder.
+We have reduced the amount of code we have to maintain and we have also made our game more accessible.
 
-
+View all the differences between our current branch and the last by visiting [this compare page](https://github.com/portsoc/hangman-in-branches/compare/12...13?diff=split).
 
 ## Usage
 
@@ -158,5 +161,9 @@ npm run clean-up
 ## Todo
 
 ## Further Exploration
+
+We previously used added a coloured background to the canvas to display whether a guess was correct or not.
+Your challenge is to do the same thing with SVGs by adding a `fill` attribute to the shapes.
+Take a look at this tutorial on [SVG fill and stroke](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Fills_and_Strokes) and try to implement this feature.
 
 <p align="right">(<a href="#top">back to top</a>)</p>

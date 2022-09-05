@@ -1,8 +1,4 @@
 import {
-  drawHangman,
-} from './canvas.js';
-
-import {
   safeRemove,
   create,
   drawKeyboard,
@@ -28,7 +24,7 @@ let gameState = {};
 /**
  * Stores the handles to the elements in the DOM (if exists):
  * `el.main` - the main element of the page (that contains all sections),
- * `el.canvas` - the canvas element ('#noose'),
+ * `el.noose` - the noose element ('#noose'),
  * `el.keyboard` - the keyboard section ('#keyboard'),
  * `el.instruct` - the instructions section ('#instruct'),
  * `el.feedback` - the feedback section ('#feedback').
@@ -103,11 +99,21 @@ async function startNewGame() {
 
 
 /**
- * Hides all the elements (with an id attribute) of the canvas
+ * Hides all the elements (with an id attribute) of the noose
  */
 function resetNoose() {
-  const hidden = el.canvas.querySelectorAll('[id]');
+  const hidden = el.noose.querySelectorAll('[id]');
   hidden.forEach(x => x.classList.add('hide'));
+}
+
+/**
+ * Based on the curent gamestate, ensure that the right parts of the noose are visible
+ */
+function redrawHangman() {
+  for (let i = 1; i <= 10; i++) {
+    const nextToShow = el.noose.querySelector(`#n${i}`);
+    nextToShow.classList.toggle('hide', i > gameState.misses.length);
+  }
 }
 
 
@@ -194,7 +200,7 @@ async function registerLetter(letter) {
         }
       }
 
-      drawHangman(el.canvas, lives(), wasHit);
+      redrawHangman();
       redrawKeyboard();
     }
   }
@@ -261,7 +267,7 @@ function prepareHandles() {
   el.instruct = document.querySelector('#instruct');
   el.feedback = document.querySelector('#feedback');
   el.main = document.querySelector('main');
-  el.canvas = document.querySelector('#noose');
+  el.noose = document.querySelector('#noose');
 }
 
 /**
