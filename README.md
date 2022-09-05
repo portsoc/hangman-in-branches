@@ -26,8 +26,6 @@
   </nav>
 </details>
 
-<a href="https://github.com/portsoc/hangman-in-branches/tree/0" class="next">Next &raquo;</a>
-
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
