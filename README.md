@@ -21,6 +21,9 @@
   </ol>
 </details>
 
+<a href="https://github.com/portsoc/hangman-in-branches/tree/7" class="previous">&laquo; Previous</a>
+<a href="https://github.com/portsoc/hangman-in-branches/tree/9" class="next">Next &raquo;</a>
+
 ## Objectives
 
 Our aim in this branch is to move some of the resources (functions and variables) from our `client` folder to the `server` one.
