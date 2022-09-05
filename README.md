@@ -2,7 +2,7 @@
 
 <!-- BRANCH TITLE -->
 
-# Branch 6: Canvas and Graphics
+# Branch 6: Canvas
 
 <!-- TABLE OF CONTENTS -->
 <details>
