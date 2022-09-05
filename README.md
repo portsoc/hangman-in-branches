@@ -27,8 +27,13 @@ Then attempt to complete the exercises in [the canvas repository](https://github
 ## Implementation
 
 Before we start, we placed the call to `redrawKeyboard` in the correct line in `registerLetter`.
-This was left as a challenge in the previous branch, make sure to check it out.
-We have also tidied up the comments (notice that you can see our documentation when hovering over the functions).
+This was left as [a challenge in the previous branch](https://github.com/manighahrmani/hangman-in-branches/tree/5#further-exploration), make sure to check it out.
+
+We have also tidied up the comments and written them as JSDoc comments (for more info see [this page](https://jsdoc.app/about-getting-started.html)).
+You don't need to worry about this, but now you could see our documentation by hovering over the names of documented objects (like functions) in your IDE.
+Here is an example of what it looks like in VSCode:
+
+![Hovering over a function for its documentation](https://i.imgur.com/dYvVqWb.png)
 
 We start by replacing our placeholder image (in `index.html`) with a canvas element.
 In `index.js` we select the canvas and pass it to the functions `drawHangman` alongside the number of lives.
@@ -36,9 +41,9 @@ In `index.js` we select the canvas and pass it to the functions `drawHangman` al
 Note that `drawHangman` is an external function (in the new script: `canvas.js`) and is imported into `index.js`.
 To import this function, we need to change the `type` attribute of the `script` tag in `index.html` to `module`.
 
-Observe that `drawHangman` is the only function that is being exported in `canvas.js`.
+`drawHangman` is the only function that is being exported in `canvas.js`.
 The rest of the functions are private helper functions within this script.
-This script has a few good examples of modularisation, a topic which we will cover in the next branch.
+This script has a few good examples of modularisation, a topic that we will cover in the next branch.
 
 To see the new changes, head to [this compare page](https://github.com/portsoc/hangman-in-branches/compare/5...6?diff=split).
 
