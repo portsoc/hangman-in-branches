@@ -64,8 +64,6 @@
 
 This repository contains a worked solution to the [2021-2022 coursework for the Application Programming module](https://docs.google.com/document/d/1cF3u2ldutHaBAzFOEsnVwfKrnPTylOrn-hAGFSDWca8/edit?usp). View the Core capabilities section within this document to see the requirements we need to satisfy.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 <!-- PREREQUISITES -->
 
 ## Prerequisites
@@ -83,8 +81,6 @@ This repository contains a worked solution to the [2021-2022 coursework for the 
 1. Install an editor (e.g., [Visual Studio Code](https://code.visualstudio.com) or [Atom](https://atom.io)).
 
 1. If you are new to GitHub, also install [GitHub Desktop](https://desktop.github.com) or [GitHub client](https://github.com/cli/cli).
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- CLONING -->
 
@@ -153,8 +149,6 @@ Follow this [instruction on how to switch branches on GitHub Desktop](https://do
 ### Using Visual Studio Code
 
 Follow this [instruction on branches for Visual Studio Code](https://code.visualstudio.com/docs/editor/versioncontrol#_branches-and-tags).
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- RUNNING AND VIEWING THE CODE -->
 
