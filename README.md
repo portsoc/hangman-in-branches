@@ -25,8 +25,8 @@
   </ol>
 </details>
 
-<a href="https://github.com/portsoc/hangman-in-branches/tree/0" class="previous">&laquo; Previous</a>
-<a href="https://github.com/portsoc/hangman-in-branches/tree/1" class="next">Next &raquo;</a>
+<a href="https://github.com/portsoc/hangman-in-branches/tree/9" class="previous">&laquo; Previous</a>
+<a href="https://github.com/portsoc/hangman-in-branches/tree/11" class="next">Next &raquo;</a>
 
 ## Objectives
 
