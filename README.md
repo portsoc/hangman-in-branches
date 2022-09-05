@@ -23,6 +23,9 @@
   </ol>
 </details>
 
+<a href="https://github.com/portsoc/hangman-in-branches/tree/4" class="previous">&laquo; Previous</a>
+<a href="https://github.com/portsoc/hangman-in-branches/tree/6" class="next">Next &raquo;</a>
+
 ## Objectives
 
 We will be mainly fixing issues and making some of the enhancements left open in the previous branch.
