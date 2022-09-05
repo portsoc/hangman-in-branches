@@ -4,9 +4,31 @@
 
 # Branch 8: Server Part 1
 
+<!-- Navigation -->
+<details>
+  <summary>Navigate between branches</summary>  
+  <nav class="menu">
+    <li><a href="https://github.com/manighahrmani/hangman-in-branches">Intro</a></li>
+    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/0">0: Variables</a></li>
+    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/1">1: Functions</a></li>
+    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/2">2: NPM</a></li>
+    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/3">3: DOM</a></li>
+    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/4">4: Events</a></li>
+    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/5">5: Debugging</a></li>
+    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/6">6: Canvas</a></li>
+    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/7">7: Modularisation</a></li>
+    <li>8: Server Part 1 (this branch)</li>
+    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/9">9: Server Part 2</a></li>
+    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/10">10: Style</a></li>
+    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/11">11: Linting</a></li>
+    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/12">12: Database</a></li>
+    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/13">13: SVG</a></li>
+  </nav>
+</details>
+
 <!-- TABLE OF CONTENTS -->
 <details>
-  <summary>Table of Contents</summary>
+  <summary>Contents of this branch</summary>
   <ol>
     <li><a href="#objectives">Objectives</a></li>
     <li><a href="#implementation">Implementation</a>
@@ -20,9 +42,6 @@
     <li><a href="#further-exploration">Further Exploration</a></li>
   </ol>
 </details>
-
-<a href="https://github.com/portsoc/hangman-in-branches/tree/7" class="previous">&laquo; Previous</a>
-<a href="https://github.com/portsoc/hangman-in-branches/tree/9" class="next">Next &raquo;</a>
 
 ## Objectives
 
