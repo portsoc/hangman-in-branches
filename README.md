@@ -25,6 +25,9 @@
   </ol>
 </details>
 
+<a href="https://github.com/portsoc/hangman-in-branches/tree/0" class="previous">&laquo; Previous</a>
+<a href="https://github.com/portsoc/hangman-in-branches/tree/1" class="next">Next &raquo;</a>
+
 ## Objectives
 
 Since we have completed every core feature of our game, we can now begin to style our website.
