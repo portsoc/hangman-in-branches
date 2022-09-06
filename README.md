@@ -62,7 +62,8 @@
 
 ## About the project
 
-This repository contains a worked solution to the [2021-2022 coursework for the Application Programming module](https://docs.google.com/document/d/1cF3u2ldutHaBAzFOEsnVwfKrnPTylOrn-hAGFSDWca8/edit?usp). View the Core capabilities section within this document to see the requirements we need to satisfy.
+This repository contains a worked solution to the [2021-2022 coursework for the Application Programming module](https://docs.google.com/document/d/1cF3u2ldutHaBAzFOEsnVwfKrnPTylOrn-hAGFSDWca8/edit?usp).
+View the "Core capabilities" section within this document to see the requirements we need to satisfy.
 
 <!-- PREREQUISITES -->
 
