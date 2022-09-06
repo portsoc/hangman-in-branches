@@ -148,7 +148,7 @@ Follow this [instruction on how to switch branches on GitHub Desktop](https://do
 
 ### Using Visual Studio Code
 
-Follow this [instruction on branches for Visual Studio Code](https://code.visualstudio.com/docs/editor/versioncontrol#_branches-and-tags).
+Take a look at this [instruction on branches for Visual Studio Code](https://code.visualstudio.com/docs/editor/versioncontrol#_branches-and-tags).
 
 <!-- RUNNING AND VIEWING THE CODE -->
 
