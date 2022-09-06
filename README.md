@@ -139,7 +139,7 @@ git checkout x
 The following command shows you all the branches (hit <kbd>q</kbd> to exit):
 
 ```
-git branch -all
+git branch --all
 ```
 
 ### Using GitHub Desktop
