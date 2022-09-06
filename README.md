@@ -33,7 +33,6 @@
     <li><a href="#objectives">Objectives</a></li>
     <li><a href="#implementation">Implementation</a>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#todo">Todo</a></li>
     <li><a href="#further-exploration">Further Exploration</a></li>
   </ol>
 </details>
@@ -76,7 +75,7 @@ We will be using these ids to hide and show them with our `client/index.js` scri
 
 For a start, we are now using the `resetNoose` function to hide all the shapes at the start of a new game.
 To do this, we add a `hide` class to the shapes and then using a new CSS rule (see `client/style.css`) we are making the shapes transparent.
-Afterwards, we are updating the noose using our `redrawHangman` function once a new guess is registered.
+Afterward, we are updating the noose using our `redrawHangman` function once a new guess is registered.
 
 As a result of our changes, we no longer need the `canvas` module, so we can remove it from our `client` folder.
 We have reduced the amount of code we have to maintain and we have also made our game more accessible.
@@ -157,8 +156,6 @@ Execute the clean-up script by running the following command in the 0shell:
 ```bash
 npm run clean-up
 ```
-
-## Todo
 
 ## Further Exploration
 
