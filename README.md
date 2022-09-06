@@ -34,9 +34,12 @@
     <li><a href="#implementation">Implementation</a>
       <ol>
         <li><a href="#serve-the-website">Serve the website</a></li>
-        <li><a href="#non-alphabetical-symbols">Non alphabetical symbols</a></li>
-        <li><a href="#repeat-guesses">Repeat guesses</a></li>
-        <li><a href="#restart-game">Restart game</a></li>
+        <li><a href="#fix-issues">Fix issues</a></li>
+        <ol>
+          <li><a href="#non-alphabetical-symbols">Non alphabetical symbols</a></li>
+          <li><a href="#repeat-guesses">Repeat guesses</a></li>
+          <li><a href="#restart-game">Restart game</a></li>
+        </ol>
       </ol>
     </li>
     <li><a href="#usage">Usage</a></li>
@@ -47,7 +50,8 @@
 
 ## Objectives
 
-We will be mainly fixing issues and making some of the enhancements left open in the previous branch.
+We will begin this branch by first serving the website using a basic Express server.
+But our main focus will be on fixing the issues that were left open in the previous branch.
 
 ## Implementation
 
@@ -104,7 +108,9 @@ To stop the site, we can use <kbd>Ctrl</kbd> + <kbd>C</kbd> in the shell.
 The last thing that we have added to `package.json` is the attribute `type` set to `module`.
 This lets us use import statements (for more info check out [this documentation page](https://nodejs.org/docs/latest-v13.x/api/esm.html#esm_enabling)).
 
-### Non alphabetical symbols
+### Fix issues
+
+#### Non alphabetical symbols
 
 We start by using a regular expression to pick all the alphabetical characters in the word, replacing them with '\_'.
 For more information read our comments in `startNewGame`.
@@ -113,7 +119,7 @@ Multiple spaces in HTML are rendered as a single space in the browser.
 There are simple ways around it (e.g., using '\&nbsp;') but instead, the `redrawWord` function places each letter in a span element.
 This decision will later allow us to treat letters individually (e.g., styling them differently).
 
-### Repeat guesses
+#### Repeat guesses
 
 To prevent the user from guessing the same letter twice, we have created `hits` and `misses` arrays.
 We could have done it in one array but we would like to distinguish between them when it comes to styling the letters.
@@ -121,7 +127,7 @@ We could have done it in one array but we would like to distinguish between them
 `registerLetter` now checks whether the new guess is in the `hits` or `misses` array and displays a message accordingly.
 Every time the user makes a new guess, we call `redrawKeyboard` to update the keyboard accordingly.
 
-### Restart game
+#### Restart game
 
 At the end of a game, we call `generateNewGame` function which will remove the keyboard and display a restart button.
 When the user clicks the restart button, we call `startNewGame` to start a new game (resets the number of lives, chooses a new word and so on).
