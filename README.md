@@ -96,13 +96,13 @@ Do you see the keyboard or the dashes for the hangman word?
 Console log the value of `word` before the closing brackets of the `startNewGame` function in `index.js`.
 Afterward, save `index.js` and refresh the page in your browser.
 
-Now, inspect the page with <kbd>F12</kbd> or by right-clicking on the page and selecting 'Inspect'.
+Now, inspect the page with <kbd>F12</kbd> or by right-clicking on the page and selecting "Inspect".
 
 You should see the value of `word` in the console.
 If you cannot see the console try to:
 
-- (a) Click on the 'Console' drawer in the bottom panel.
-- (b) Navigate to the 'Console' tab on top.
+- (a) Click on the "Console" drawer in the bottom panel.
+- (b) Navigate to the "Console" tab on top.
 
 ![Console in inspection tools of chrome](https://i.imgur.com/724TeFl.png)
 
