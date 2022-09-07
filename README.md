@@ -59,7 +59,7 @@ Here are what we are going to do with each of these sections:
 - `#feedback`: Hints and messages to the player.
 - `#keyboard`: An on-screen keyboard.
 
-Additionally, we have renamed `hangman.js` to `index.js` (a more conventional name) and linked it to `index.html`.
+Additionally, we have renamed `hangman.js` to `index.js` (a more conventional name).
 In Visual Studio Code, you can rename files by right-clicking on them and selecting `Rename` from the context menu.
 
 Finally, we have linked our JavaScript file to the HTML document with a `<script>` tag:
@@ -70,10 +70,17 @@ Finally, we have linked our JavaScript file to the HTML document with a `<script
 
 ### DOM Manipulation
 
-At the end of `index.js`, we have defined a function `init` that is called once the window has loaded.
+We have defined the following functions in our script:
 
-`init` calls two functions: `drawKeyboard`, which creates a set of buttons making an on-screen keyboard.
-And `startNewGame`, which at the moment inserts a random word as the content of the instruct section.
+- `drawKeyboard`: Creates a set of buttons for the on-screen keyboard.
+- `startNewGame`: Takes a random word, replaces all the letters with '_' and displays it in the instruct section.
+
+But when should we call these functions?
+We can call them when the page loads.
+
+Take a look at our `init` function that is called once the window has loaded.
+`init` in turn calls `drawKeyboard` and `startNewGame`.
+The reason for this practice is to make sure that no DOM manipulation is done before the page has loaded.
 
 To see our new changes, [visit this compare page](https://github.com/portsoc/hangman-in-branches/compare/2...3?diff=split) showing the difference between branches 2 and 3.
 

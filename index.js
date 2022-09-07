@@ -8,8 +8,8 @@ const words = [
 let guessed = [];
 
 /* 
-* Takes a number and returns a random index between 0 and that number
-* The number itself is not included in the range
+Takes a number and returns a random index between 0 and that number
+The number itself is not included in the range
 */
 function randomIndex(size) {
   const index = Math.floor(Math.random() * size);
@@ -17,7 +17,7 @@ function randomIndex(size) {
 }
 
 /*
-* Takes a an array and returns a random element from that array
+Takes a an array and returns a random element from that array
 */
 function randomElement(array) {
   const size = array.length;
@@ -27,9 +27,9 @@ function randomElement(array) {
 }
 
 /* 
-* Starts a new game by choosing a new word from the words array
-* and resetting the guessed letters array populating it with '_'s
-* lastly it displays the word in the instructions section
+Starts a new game by choosing a new word from the words array
+and resetting the guessed letters array populating it with '_'s
+lastly it displays the word in the instructions section
 */
 function startNewGame() {
   const word = randomElement(words);
@@ -41,25 +41,29 @@ function startNewGame() {
   }
 
   const instruct = document.querySelector('#instruct');
+  // Join the array of guessed letters into a string and display it
   instruct.textContent = guessed.join(' ');
 }
 
 /* 
-* Draws the keyboard on the screen by creating a button for each letter
+Draws the keyboard on the screen by creating a button for each letter
 */
 function drawKeyboard() {
   const alphabet = 'abcdefghijklmnopqrstuvwxyz';
   const keyboard = document.querySelector('#keyboard');
 
   for (const letter of alphabet) {
+    // create a button for each letter
     const button = document.createElement('button');
+    // set the text of the button to the letter
     button.textContent = letter;
+    // add the button to the keyboard section
     keyboard.append(button);
   }
 }
 
 /* 
-* Initializes the game by starting a new game and drawing the keyboard
+Initializes the game by starting a new game and drawing the keyboard
 */
 function init() {
   startNewGame();
