@@ -9,7 +9,7 @@
 - [1: Functions](https://github.com/portsoc/hangman-in-branches/tree/1)
 - [2: NPM](https://github.com/portsoc/hangman-in-branches/tree/2)
 - [3: DOM](https://github.com/portsoc/hangman-in-branches/tree/3)
-- [4: Events](https://github.com/portsoc/hangman-in-branches/tree/4)
+- 4: Events (current branch)
 - [5: Debugging](https://github.com/portsoc/hangman-in-branches/tree/5)
 - [6: Canvas](https://github.com/portsoc/hangman-in-branches/tree/6)
 - [7: Modularisation](https://github.com/portsoc/hangman-in-branches/tree/7)
@@ -22,9 +22,8 @@
 
 ## Objectives
 
-The site must react to events that happen during the game: The user clicks on the on-screen buttons or uses the keyboard to make a guess.
-
-Additionally, the user may either guess the word or use up all of their attempts in which case they should be given the chance to restart the game.
+Our app must react to events that happen during the game: The user clicking on the on-screen buttons or using the keyboard to make a guess.
+Additionally, the user may win the game (guess the word) or use up all of their attempts in which case they should be given the chance to restart the game.
 
 Our goal in this branch is to add event listeners and handlers (functions) that will respond to the user's actions.
 
@@ -32,8 +31,10 @@ If you have not already done so, make sure to check the moodle resources for thi
 
 ## Implementation
 
-The `init` function first selects key DOM elements that will be used by our functions and adds them as properties of the global `el` object.
-It will also call `startNewGame` function which selects a new word to be guessed and resets the number of lives the user has.
+We've now written a `prepareHandles` function that is called within `init` that selects key DOM elements.
+We are also grouping them together as properties of the global `el` object.
+
+`init` will also call `startNewGame` function which selects a new word to be guessed and resets the number of lives the user has.
 
 Each on-screen key has a `data-letter` attribute that contains the letter that it represents.
 Similarly, the press of every physical key on the keyboard triggers an event that has a code that corresponds to the key that was pressed.
