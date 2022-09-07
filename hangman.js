@@ -5,8 +5,8 @@ const words = [
 ];
 
 /* 
-* Takes a number and returns a random index between 0 and that number
-* The number itself is not included in the range
+Takes a number and returns a random index between 0 and that number
+The number itself is not included in the range
 */
 function randomIndex(size) {
   const index = Math.floor(Math.random() * size);
@@ -14,7 +14,7 @@ function randomIndex(size) {
 }
 
 /*
-* Takes a an array and returns a random element from that array
+Takes a an array and returns a random element from that array
 */
 function randomElement(array) {
   const size = array.length;
