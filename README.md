@@ -21,6 +21,8 @@ View the "Core capabilities" section of this document to see the requirements we
 
 1. Launch an editor from AppsAnywhere (e.g., "Visual Studio Code" or "Atom").
 
+1. If you are a newcomer to Git, you could also search for and launch "Github Desktop Client".
+
 ### On your computers
 
 1. Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [Node](https://nodejs.org/en/download/).
