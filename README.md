@@ -4,24 +4,6 @@
 
 # Hangman in branches
 
-List of branches:
-
-- [Intro](https://github.dev/manighahrmani/hangman-in-branches)
-- [0: Variables](https://github.com/portsoc/hangman-in-branches/tree/0)
-- [1: Functions](https://github.com/portsoc/hangman-in-branches/tree/1)
-- [2: NPM](https://github.com/portsoc/hangman-in-branches/tree/2)
-- [3: DOM](https://github.com/portsoc/hangman-in-branches/tree/3)
-- [4: Events](https://github.com/portsoc/hangman-in-branches/tree/4)
-- [5: Debugging](https://github.com/portsoc/hangman-in-branches/tree/5)
-- [6: Canvas](https://github.com/portsoc/hangman-in-branches/tree/6)
-- [7: Modularisation](https://github.com/portsoc/hangman-in-branches/tree/7)
-- [8: Server Part 1](https://github.com/portsoc/hangman-in-branches/tree/8)
-- [9: Server Part 2](https://github.com/portsoc/hangman-in-branches/tree/9)
-- [10: Style](https://github.com/portsoc/hangman-in-branches/tree/10)
-- [11: Linting](https://github.com/portsoc/hangman-in-branches/tree/11)
-- [12: Database](https://github.com/portsoc/hangman-in-branches/tree/12)
-- [13: SVG](https://github.com/portsoc/hangman-in-branches/tree/13)
-
 <!-- ABOUT THE PROJECT -->
 
 ## About the project
@@ -137,9 +119,8 @@ It is rather easy to do:
 
 ## Viewing the code
 
-Once you have selected a branch, view the code in your favorite editor.
-
-Make sure to open the "hangman-in-branches" folder (not individual files within it).
+Now that you have selected a branch, view the code in your favorite editor.
+But make sure to open the "hangman-in-branches" folder (not individual files within it).
 So for example in Visual Studio Code, make sure you select "Open Folder" as opposed to "Open".
 
 Always start by reading the `README.md` file to see what were the objectives for the branch and notes on its implementation.
