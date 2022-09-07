@@ -45,6 +45,6 @@ This runs the `hangman.js` script, which selects two elements from `words` and p
 ### Using Visual Studio Code
 
 Open the `hangman-in-branches` folder in Visual Studio Code.
-Next, open the command palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> in Linux/Windows and <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> in macOS) and type `Create New Terminal` followed by an enter.
+Next, open the command palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> in Linux/Windows and <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> in macOS) and type "Create New Terminal" followed by an enter.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
