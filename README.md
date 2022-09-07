@@ -64,7 +64,7 @@ While this repository is open in the browser, click the green "Code" button and 
 
 1. Open Visual Studio Code and click on the "Source Control" icon on the left-hand sidebar.
 1. Click on the "Clone Repository" button in the opened panel.
-1. Enter the link to this repository (`https://github.com/portsoc/hangman-in-branches`) in the dialog box and press enter.
+1. Paste the link to this repository (`https://github.com/portsoc/hangman-in-branches`) in the dialog box and press <kbd>Enter</kbd>.
 1. Select a location on your computer to save the repository.
 1. Now click "Open" to view the cloned repository in Visual Studio Code.
 
