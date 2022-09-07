@@ -36,7 +36,7 @@ Once you have a folder opened in Visual Studio Code, you can create a new file i
 Afterward, type in the name of the file you want to create and press <kbd>Enter</kbd>.
 Remember to include the file extension (".js" in our case).
 
-![New file in Visual Studio Code](https://i.imgur.com/aESZaJP.png)
+![New file in Visual Studio Code](https://i.imgur.com/n2zVcMU.png)
 
 In the newly created file, we have defined an array of strings called `words` that contains movie titles.
 
