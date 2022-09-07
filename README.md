@@ -8,7 +8,7 @@
 - [0: Variables](https://github.com/portsoc/hangman-in-branches/tree/0)
 - [1: Functions](https://github.com/portsoc/hangman-in-branches/tree/1)
 - [2: NPM](https://github.com/portsoc/hangman-in-branches/tree/2)
-- [3: DOM](https://github.com/portsoc/hangman-in-branches/tree/3)
+- 3: DOM(current branch)
 - [4: Events](https://github.com/portsoc/hangman-in-branches/tree/4)
 - [5: Debugging](https://github.com/portsoc/hangman-in-branches/tree/5)
 - [6: Canvas](https://github.com/portsoc/hangman-in-branches/tree/6)
@@ -23,10 +23,10 @@
 ## Objectives
 
 Our website needs a homepage.
-So our task here is to create a simple HTML page.
+So our main task here is to create a simple HTML page.
 
 All we care about at this stage is to have placeholders for different components of our game.
-Therefore we don't care about the **style of the page**.
+Therefore we don't care about the style of the page (no CSS!).
 
 We also require our JS script (previously called `hangman.js`) to be linked to the HTML document.
 Ideally, we would like the script to perform some forms of basic DOM manipulation too.
@@ -36,11 +36,23 @@ Try the examples in [Code Examples to Copy, stage 5](https://portsoc.github.io/c
 
 ## Implementation
 
+### HTML
+
 We have created a simple HTML page titled `index.html`.
 
 `index.html` begins with defining standard metadata for the page, such as the title, character set, and viewport.
+But the important parts of this document are the sections that we have defined:
 
-`index.html` also contains sections for the following:
+```html
+<section id="noose">
+  <img src="images/hangman.png" alt="Noose" />
+</section>
+<section id="instruct">This text should be replaced by the JavaScript.</section>
+<section id="feedback">Take a guess!</section>
+<section id="keyboard"></section>
+```
+
+Here are what we are going to do with each of these sections:
 
 - `#noose`: The image/canvas of the hangman. At the moment, it contains a placeholder image.
 - `#instruct`: It currently contains a row of dashes representing letters to be guessed.
@@ -48,6 +60,15 @@ We have created a simple HTML page titled `index.html`.
 - `#keyboard`: An on-screen keyboard.
 
 Additionally, we have renamed `hangman.js` to `index.js` (a more conventional name) and linked it to `index.html`.
+In Visual Studio Code, you can rename files by right-clicking on them and selecting `Rename` from the context menu.
+
+Finally, we have linked our JavaScript file to the HTML document with a `<script>` tag:
+
+```html
+<script src="index.js"></script>
+```
+
+### DOM Manipulation
 
 At the end of `index.js`, we have defined a function `init` that is called once the window has loaded.
 
