@@ -1,7 +1,7 @@
 const words = [
-    'Jurassic Park', 'Star Wars', 'The Matrix',
-    'The Godfather', 'The Dark Knight', 'The Lord of the Rings',
-    'The Lord of the Rings', 'The Dark Knight', 'Pulp Fiction',
+  'Jurassic Park', 'Star Wars', 'The Matrix',
+  'The Godfather', 'The Dark Knight', 'The Lord of the Rings',
+  'The Lord of the Rings', 'The Dark Knight', 'Pulp Fiction',
 ];
 
 const numberOfWords = words.length;
