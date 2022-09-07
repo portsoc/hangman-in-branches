@@ -22,9 +22,8 @@
 
 ## Objectives
 
-We have defined an array of movie titles called `words`.
-One of them needs to be selected for the hangman game.
-Instead of manually selecting elements from our `words` array, we want to pick them out randomly.
+Every time the user plays our hangman game, we want to pick a word from the `words` array and let them guess it.
+Instead of manually selecting elements for them, we want to pick them out randomly.
 
 To do this, we need to select a random index of our array.
 Then we can use that index to select the element from our array.
@@ -77,7 +76,7 @@ Naturally, we have named this function `randomIndex`.
 It is always a good idea to name your functions in a way that describes what they do.
 
 Similarly, we have defined a `randomElement` function.
-See how `randomElement` uses `randomIndex` to select a random element from an array.
+Check the code to see how `randomElement` uses `randomIndex` to select a random element from an array.
 This function will take an array and return a random element from it.
 
 Once we have defined our functions, we can use them, as many times as we want, to select a random word from our `words` array:
@@ -92,6 +91,14 @@ console.log(word); // an example output: "The Lord of the Rings"
 **Pro tip**: Note that both of these functions have a block of comments before them.
 The comments explain what the functions take as inputs and what they do.
 This is a great practice to get into.
+The syntax for writing a block of comments in JavaScript is:
+
+```js
+/*
+  This is a block of comments.
+  It can be used to explain what a function does.
+*/
+```
 
 [Visit this compare page](https://github.com/portsoc/hangman-in-branches/compare/0...1?diff=split) to see all the differences between branches 0 (previous branch) and 1 (this branch).
 
