@@ -38,7 +38,9 @@ View the "Core capabilities" section of this document to see the requirements we
 Don't download this repository as a zip file.
 Instead, follow the instructions below to clone this repository (copy it) on your machine.
 
-### Using Git
+You can clone the repository using any of the following tools:
+
+### Option 1: Using Git
 
 Open the shell (Terminal on Linux/Mac or Command Prompt/PowerShell in Windows) and run:
 
@@ -46,7 +48,7 @@ Open the shell (Terminal on Linux/Mac or Command Prompt/PowerShell in Windows) a
 git clone https://github.com/portsoc/hangman-in-branches.git
 ```
 
-### Using GitHub CLI
+### Option 2: Using GitHub CLI
 
 Run the following in a shell:
 
@@ -54,11 +56,11 @@ Run the following in a shell:
 gh repo clone portsoc/hangman-in-branches
 ```
 
-### Using GitHub Desktop
+### Option 3: Using GitHub Desktop
 
 While this repository is open in the browser, click the green "Code" button and then "Open with GitHub Desktop".
 
-### Using Visual Studio Code
+### Option 4: Using Visual Studio Code
 
 1. Open Visual Studio Code and click on the "Source Control" icon on the left-hand sidebar.
 1. Click on the "Clone Repository" button in the opened panel.
@@ -97,7 +99,7 @@ Here is the link to all the branches on GitHub:
 
 You could switch your copy of our code to a branch "x" (where x is a number) using any of the following tools:
 
-### Using Git
+### Option 1: Using Git
 
 Run the following in a shell (make sure to replace x with a branch number):
 
@@ -111,11 +113,11 @@ The following command shows you all the branches (hit <kbd>q</kbd> to exit):
 git branch --all
 ```
 
-### Using GitHub Desktop
+### Option 2: Using GitHub Desktop
 
 Follow this [instruction on how to switch branches on GitHub Desktop](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/making-changes-in-a-branch/managing-branches#switching-between-branches).
 
-### Using Visual Studio Code
+### Option 3: Using Visual Studio Code
 
 It is rather easy to do this in Visual Studio Code:
 
