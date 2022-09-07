@@ -58,7 +58,14 @@ While this repository is open in the browser, click the green "Code" button and 
 
 ### Using Visual Studio Code
 
-Follow this [instruction on how to clone a repository in Visual Studio Code](https://code.visualstudio.com/docs/editor/versioncontrol#_cloning-a-repository).
+1. Open Visual Studio Code and click the "Clone Repository" button in the start menu. 
+1. Paste the link to this repository (`https://github.com/portsoc/hangman-in-branches`) in the dialog box.
+1. Press enter and select a location on your computer to save the repository.
+1. Now click "Open" to view the cloned repository in Visual Studio Code.
+
+![Cloning repository in VSCode](https://i.imgur.com/Vh006gP.png)
+
+For more information view this [instruction on how to clone a repository in Visual Studio Code](https://code.visualstudio.com/docs/editor/versioncontrol#_cloning-a-repository).
 
 <!-- SELECTING A BRANCH -->
 
@@ -119,8 +126,7 @@ It is rather easy to do:
 
 ## Viewing the code
 
-Now that you have selected a branch, view the code in your favorite editor.
-But make sure to open the "hangman-in-branches" folder (not individual files within it).
+When viewing the code in your favourite editor, make sure you are opening the "hangman-in-branches" folder (not individual files within it).
 So for example in Visual Studio Code, make sure you select "Open Folder" as opposed to "Open".
 
 Always start by reading the `README.md` file to see what were the objectives for the branch and notes on its implementation.
