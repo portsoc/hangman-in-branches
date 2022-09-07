@@ -32,14 +32,19 @@ In there, we have defined an array of strings called `words` which contains movi
 
 ## Usage
 
-Navigate to the `hangman` folder in a shell or open a new terminal in your editor (in Visual Studio Code, the shortcut is <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>'</kbd> on Linux/Windows and <kbd>^</kbd>+<kbd>`</kbd> for Mac).
+### Using a shell
 
-Now run the following command:
+Navigate to the `hangman-in-branches` folder in a shell and run the following command:
 
 ```
 node hangman.js
 ```
 
 This runs the `hangman.js` script, which selects two elements from `words` and prints them back to you.
+
+### Using Visual Studio Code
+
+Open the `hangman-in-branches` folder in Visual Studio Code.
+Next, open the command palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> in Linux/Windows and <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> in macOS) and type `Create New Terminal` followed by an enter.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
