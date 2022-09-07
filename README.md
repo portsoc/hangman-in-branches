@@ -27,7 +27,7 @@ List of branches:
 ## About the project
 
 This repository contains a worked solution to the [2021-2022 coursework for the Application Programming module](https://docs.google.com/document/d/1cF3u2ldutHaBAzFOEsnVwfKrnPTylOrn-hAGFSDWca8/edit?usp).
-View the "Core capabilities" section within this document to see the requirements we need to satisfy.
+View the "Core capabilities" section of this document to see the requirements we need to satisfy.
 
 <!-- PREREQUISITES -->
 
@@ -83,14 +83,11 @@ Follow this [instruction on how to clone a repository in Visual Studio Code](htt
 ## Selecting a branch
 
 This project is built in stages.
-Each stage of our development is labeled with a number starting from zero.
-As an exception, the branch you are currently in is called 'intro'.
-
 For simplicity, we have made a branch for each stage (but be aware that this is not a conventional use of branches).
 
 Here is the link to all the branches on GitHub:
 
-- [Intro](https://github.dev/manighahrmani/hangman-in-branches)
+- Intro (current branch)
 - [0: Variables](https://github.com/portsoc/hangman-in-branches/tree/0)
 - [1: Functions](https://github.com/portsoc/hangman-in-branches/tree/1)
 - [2: NPM](https://github.com/portsoc/hangman-in-branches/tree/2)
@@ -106,7 +103,7 @@ Here is the link to all the branches on GitHub:
 - [12: Database](https://github.com/portsoc/hangman-in-branches/tree/12)
 - [13: SVG](https://github.com/portsoc/hangman-in-branches/tree/13)
 
-To switch your copy of our code to a branch "x" (where x is a number):
+You could switch your copy of our code to a branch "x" (where x is a number) using any of the following tools:
 
 ### Using Git
 
@@ -134,12 +131,15 @@ Take a look at this [instruction on branches for Visual Studio Code](https://cod
 
 ## Viewing the code
 
-After selecting a branch, you can view the code in your favorite editor.
-Make sure to open the hangman folder (not individual files).
+Once you have selected a branch, view the code in your favorite editor.
 
-Always start by reading the `README.md` file to see what were the objectives for the branch and notes on its implementation or features.
+Make sure to open the "hangman-in-branches" folder (not individual files within it).
+So for example in Visual Studio Code, make sure you select "Open Folder" as opposed to "Open".
+
+Always start by reading the `README.md` file to see what were the objectives for the branch and notes on its implementation.
 
 We point out that the `.gitignore` file has been automatically generated for us by GitHub on the creation of a Node repository.
+You don't need to worry about its content.
 Generally speaking, it helps to ignore files that you don't want to be saved in your repository (e.g., settings of the code editor, temporary files, etc.).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
