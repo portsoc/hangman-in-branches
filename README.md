@@ -7,7 +7,7 @@
 - [Intro](https://github.dev/manighahrmani/hangman-in-branches)
 - [0: Variables](https://github.com/portsoc/hangman-in-branches/tree/0)
 - [1: Functions](https://github.com/portsoc/hangman-in-branches/tree/1)
-- [2: NPM](https://github.com/portsoc/hangman-in-branches/tree/2)
+- 2: NPM (current branch)
 - [3: DOM](https://github.com/portsoc/hangman-in-branches/tree/3)
 - [4: Events](https://github.com/portsoc/hangman-in-branches/tree/4)
 - [5: Debugging](https://github.com/portsoc/hangman-in-branches/tree/5)
