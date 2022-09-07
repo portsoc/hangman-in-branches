@@ -58,12 +58,13 @@ While this repository is open in the browser, click the green "Code" button and 
 
 ### Using Visual Studio Code
 
-1. Open Visual Studio Code and click the "Clone Repository" button in the start menu. 
-1. Paste the link to this repository (`https://github.com/portsoc/hangman-in-branches`) in the dialog box.
-1. Press enter and select a location on your computer to save the repository.
+1. Open Visual Studio Code and click on the "Source Control" icon on the left-hand sidebar.
+1. Click on the "Clone Repository" button in the opened panel.
+1. Enter the link to this repository (`https://github.com/portsoc/hangman-in-branches`) in the dialog box and press enter.
+1. Select a location on your computer to save the repository.
 1. Now click "Open" to view the cloned repository in Visual Studio Code.
 
-![Cloning repository in VSCode](https://i.imgur.com/Vh006gP.png)
+![Clone repository in Visual Studio Code](https://i.imgur.com/14ZY6aB.png)
 
 For more information view this [instruction on how to clone a repository in Visual Studio Code](https://code.visualstudio.com/docs/editor/versioncontrol#_cloning-a-repository).
 
@@ -114,13 +115,14 @@ Follow this [instruction on how to switch branches on GitHub Desktop](https://do
 
 ### Using Visual Studio Code
 
-Take a look at this [instruction on switching branches in Visual Studio Code](https://code.visualstudio.com/docs/editor/versioncontrol#_branches-and-tags).
-It is rather easy to do:
-
-![Switching branches in Visual Studio Code](https://i.imgur.com/BbbOurG.png)
+It is rather easy to do this in Visual Studio Code:
 
 1. Click on the "Checkout branch/tag" button in the bottom left corner of the screen (in the status bar).
 1. Search for the name of the branch you want to switch to (e.g., 0) or select it from the dropdown list.
+
+![Switching branches in Visual Studio Code](https://i.imgur.com/xouBbGe.png)
+
+For more info, take a look at this [instruction on switching branches in Visual Studio Code](https://code.visualstudio.com/docs/editor/versioncontrol#_branches-and-tags).
 
 <!-- RUNNING AND VIEWING THE CODE -->
 
