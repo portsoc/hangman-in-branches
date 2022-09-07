@@ -22,8 +22,8 @@
 
 ## Objectives
 
-Our app must react to events that happen during the game: The user clicking on the on-screen buttons or using the keyboard to make a guess.
-Additionally, the user may win the game (guess the word) or use up all of their attempts in which case they should be given the chance to restart the game.
+Our app must react to events that happen during the game: The user clicks on the on-screen buttons or uses the keyboard to make a guess.
+Additionally, the user may win the game (guess the word) or use up all of their attempts, in which case they should be given the chance to restart the game.
 
 Our goal in this branch is to add event listeners and handlers (functions) that will respond to the user's actions.
 
@@ -31,10 +31,29 @@ If you have not already done so, make sure to check the moodle resources for thi
 
 ## Implementation
 
-We've now written a `prepareHandles` function that is called within `init` that selects key DOM elements.
-We are also grouping them together as properties of the global `el` object.
 
-`init` will also call `startNewGame` function which selects a new word to be guessed and resets the number of lives the user has.
+
+
+We've now written a `prepareHandles` function that is called within `init` that selects key DOM elements.
+We are also grouping them as properties of the global `el` object.
+For example, `el.keyboard` stores the keyboard section.
+
+`init` will also call `addEventListeners` which attaches event listeners to our on-screen keyboard plus the keys on the physical keyboard.
+Pay attention to the syntax:
+
+```js
+function addEventListeners() {
+  window.addEventListener('keydown', checkKeyPress);
+  el.keyboard.addEventListener('click', checkClick);
+}
+```
+
+Since the press of physical keys is not dependent on any HTML tag, we add an event listener to the entire window for the `keydown` event.
+The handler for this event is the `checkKeyPress`  function that takes the `keydown` event as its input.
+We need this event to see whether an alphabetical key of the keyboard is pressed and then pass it on `registerLetter` to be checked as a guess.
+
+
+`startNewGame` function additionally resets the number of lives the user has.
 
 Each on-screen key has a `data-letter` attribute that contains the letter that it represents.
 Similarly, the press of every physical key on the keyboard triggers an event that has a code that corresponds to the key that was pressed.
