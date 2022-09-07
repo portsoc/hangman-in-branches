@@ -22,7 +22,10 @@
 
 ## Objectives
 
-In this step, we will start to use the [NPM](https://www.npmjs.com/) package manager to install and manage dependencies for our project.
+So far we only had a script file that we ran with node. 
+This is fine for small projects, but as we are going to make a medium sized application it is better to use a package manager. 
+This branch will introduce you to [NPM](https://www.npmjs.com/), the Node Package Manager.
+One of the most important reasons we need NPM is to install and manage dependencies for our project.
 
 We highly urge you to visit the resources on moodle before proceeding.
 Make sure to write and run the programs of [Code Examples to Copy, stage 4](https://portsoc.github.io/code-copy-examples/stage-4) on your computers or the university machines (this cannot be done on Replit).
@@ -37,9 +40,11 @@ Next, we initiated a new Node project by running the following command.
 npm init
 ```
 
-This command generated the `package.json` file, which you can see in the directory. Note that we do not have a `package-lock.json` file yet as we have not installed any packages using NPM.
+If you have any errors, make sure that you have Node installed (on university machines launch "Node.js" from AppsAnywhere).
 
-For more information on this, watch [our YouTube tutorial on NPM](https://youtu.be/2nFO0E6q-1o?t=570).
+This command generates the `package.json` file, which you can see in the directory.
+Note that we do not have a `package-lock.json` file yet as we have not installed any packages using NPM.
+For more information, watch [our video tutorial on NPM](https://youtu.be/2nFO0E6q-1o?t=570).
 
 Remember to [visit this compare page](https://github.com/portsoc/hangman-in-branches/compare/1...2?diff=split) to see all the differences between branches 1 and 2.
 
