@@ -97,8 +97,16 @@ Console log the value of `word` before the closing brackets of the `startNewGame
 Afterward, save `index.js` and refresh the page in your browser.
 
 Now, inspect the page with <kbd>F12</kbd> or by right-clicking on the page and selecting 'Inspect'.
-Can you find the secret word displayed in the console?
+
+You should see the value of `word` in the console.
+If you cannot see the console try to:
+
+- (a) Click on the 'Console' drawer in the bottom panel.
+- (b) Navigate to the 'Console' tab on top.
+
+![Console in inspection tools of chrome](https://i.imgur.com/724TeFl.png)
 
 It is a good habit to log the value of variables while you are developing a project.
+We will come back to this when we learn about debugging.
 
 <p align="right">(<a href="#top">back to top</a>)</p>

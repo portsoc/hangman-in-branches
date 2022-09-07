@@ -43,6 +43,8 @@ function startNewGame() {
   const instruct = document.querySelector('#instruct');
   // Join the array of guessed letters into a string and display it
   instruct.textContent = guessed.join(' ');
+
+  // Console log the value of word here
 }
 
 /* 
