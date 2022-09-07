@@ -28,9 +28,9 @@ Let's begin by storing the words for the game and then test how we can select th
 
 We have begun by creating the script `hangman.js` to hold the game's logic.
 
-In Visual Studio Code, you can create a new file in your project by:
+Once you have a folder opened in Visual Studio Code, you can create a new file in that directory in either of two ways:
 
-- (a) Clicking on the 'new file' icon in the explorer pane
+- (a) Click on the 'new file' icon in the explorer pane (left-hand side of the screen).
 - (b) Open command palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> in Linux/Windows and <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> in macOS) and type in "new file" followed by <kbd>Enter</kbd>.
 
 Afterward, type in the name of the file you want to create and press <kbd>Enter</kbd>.
