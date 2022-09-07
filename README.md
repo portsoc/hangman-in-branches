@@ -4,59 +4,23 @@
 
 # Hangman in branches
 
-<!-- Navigation -->
-<details>
-  <summary>Navigate between branches</summary>  
-  <nav class="menu">
-    <li>Intro (this branch)</li>
-    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/0">0: Variables</a></li>
-    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/1">1: Functions</a></li>
-    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/2">2: NPM</a></li>
-    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/3">3: DOM</a></li>
-    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/4">4: Events</a></li>
-    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/5">5: Debugging</a></li>
-    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/6">6: Canvas</a></li>
-    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/7">7: Modularisation</a></li>
-    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/8">8: Server Part 1</a></li>
-    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/9">9: Server Part 2</a></li>
-    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/10">10: Style</a></li>
-    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/11">11: Linting</a></li>
-    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/12">12: Database</a></li>
-    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/13">13: SVG</a></li>
-  </nav>
-</details>
+List of branches:
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Contents of this branch</summary>
-  <ol>
-    <li><a href="#about-the-project">About the project</a></li>
-    <li><a href="#prerequisites">Prerequisites</a>
-      <ol>
-        <li><a href="#on-university-machines">On University machines</a></li>
-        <li><a href="#on-your-computers">On your computers</a></li>
-      </ol>
-    </li>
-    <li>
-      <a href="#cloning">Cloning</a>
-      <ol>
-        <li><a href="#using-git">Using Git</a></li>
-        <li><a href="#using-github-cli">Using GitHub CLI</a></li>
-        <li><a href="#using-github-desktop">Using GitHub Desktop</a></li>
-        <li><a href="#using-visual-studio-code">Using Visual Studio Code</a></li>
-      </ol>
-    </li>
-    <li>
-      <a href="#selecting-a-branch">Selecting a branch</a>
-      <ol>
-        <li><a href="#using-git">Using Git</a></li>
-        <li><a href="#using-github-desktop">Using GitHub Desktop</a></li>
-        <li><a href="#using-visual-studio-code">Using Visual Studio Code</a></li>
-      </ol>
-    </li>
-    <li><a href="#viewing-the-code">Viewing the code</a></li>
-  </ol>
-</details>
+- [Intro](https://github.dev/manighahrmani/hangman-in-branches)
+- [0: Variables](https://github.com/portsoc/hangman-in-branches/tree/0)
+- [1: Functions](https://github.com/portsoc/hangman-in-branches/tree/1)
+- [2: NPM](https://github.com/portsoc/hangman-in-branches/tree/2)
+- [3: DOM](https://github.com/portsoc/hangman-in-branches/tree/3)
+- [4: Events](https://github.com/portsoc/hangman-in-branches/tree/4)
+- [5: Debugging](https://github.com/portsoc/hangman-in-branches/tree/5)
+- [6: Canvas](https://github.com/portsoc/hangman-in-branches/tree/6)
+- [7: Modularisation](https://github.com/portsoc/hangman-in-branches/tree/7)
+- [8: Server Part 1](https://github.com/portsoc/hangman-in-branches/tree/8)
+- [9: Server Part 2](https://github.com/portsoc/hangman-in-branches/tree/9)
+- [10: Style](https://github.com/portsoc/hangman-in-branches/tree/10)
+- [11: Linting](https://github.com/portsoc/hangman-in-branches/tree/11)
+- [12: Database](https://github.com/portsoc/hangman-in-branches/tree/12)
+- [13: SVG](https://github.com/portsoc/hangman-in-branches/tree/13)
 
 <!-- ABOUT THE PROJECT -->
 
@@ -88,7 +52,7 @@ View the "Core capabilities" section within this document to see the requirement
 ## Cloning
 
 Don't download this repository as a zip file.
-Instead, follow the instructions below to clone this repository on your machine.
+Instead, follow the instructions below to clone this repository (copy it) on your machine.
 
 ### Using Git
 
@@ -120,12 +84,27 @@ Follow this [instruction on how to clone a repository in Visual Studio Code](htt
 
 This project is built in stages.
 Each stage of our development is labeled with a number starting from zero.
-The branch you are currently in is labeled as 'intro'.
+As an exception, the branch you are currently in is called 'intro'.
 
 For simplicity, we have made a branch for each stage (but be aware that this is not a conventional use of branches).
 
-As an example, here is the link to the first branch:
-[https://github.com/portsoc/hangman-in-branches/tree/0](https://github.com/portsoc/hangman-in-branches/tree/0).
+Here is the link to all the branches on GitHub:
+
+- [Intro](https://github.dev/manighahrmani/hangman-in-branches)
+- [0: Variables](https://github.com/portsoc/hangman-in-branches/tree/0)
+- [1: Functions](https://github.com/portsoc/hangman-in-branches/tree/1)
+- [2: NPM](https://github.com/portsoc/hangman-in-branches/tree/2)
+- [3: DOM](https://github.com/portsoc/hangman-in-branches/tree/3)
+- [4: Events](https://github.com/portsoc/hangman-in-branches/tree/4)
+- [5: Debugging](https://github.com/portsoc/hangman-in-branches/tree/5)
+- [6: Canvas](https://github.com/portsoc/hangman-in-branches/tree/6)
+- [7: Modularisation](https://github.com/portsoc/hangman-in-branches/tree/7)
+- [8: Server Part 1](https://github.com/portsoc/hangman-in-branches/tree/8)
+- [9: Server Part 2](https://github.com/portsoc/hangman-in-branches/tree/9)
+- [10: Style](https://github.com/portsoc/hangman-in-branches/tree/10)
+- [11: Linting](https://github.com/portsoc/hangman-in-branches/tree/11)
+- [12: Database](https://github.com/portsoc/hangman-in-branches/tree/12)
+- [13: SVG](https://github.com/portsoc/hangman-in-branches/tree/13)
 
 To switch your copy of our code to a branch "x" (where x is a number):
 
