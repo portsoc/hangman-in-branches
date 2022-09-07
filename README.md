@@ -31,11 +31,12 @@ We have begun by creating the script `hangman.js` to hold the game's logic.
 In Visual Studio Code, you can create a new file in your project by:
 
 - (a) Clicking on the 'new file' icon in the explorer pane
-- (b) Open command palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> in Linux/Windows and <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> in macOS) and type in 'new file'.
-
-![New file in Visual Studio Code](https://i.imgur.com/aESZaJP.png)
+- (b) Open command palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> in Linux/Windows and <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> in macOS) and type in "new file" followed by <kbd>Enter</kbd>.
 
 Afterward, type in the name of the file you want to create and press <kbd>Enter</kbd>.
+Remember to include the file extension (".js" in our case).
+
+![New file in Visual Studio Code](https://i.imgur.com/aESZaJP.png)
 
 In the newly created file, we have defined an array of strings called `words` that contains movie titles.
 
@@ -71,7 +72,8 @@ You can follow the instructions below to run the code in this branch:
 
 ### Option 1: Using a shell
 
-Navigate to the `hangman-in-branches` folder in a shell and run the following command:
+Open a terminal or command prompt and navigate to the project's root directory.
+Once in `hangman-in-branches` folder, run the following command:
 
 ```
 node hangman.js
@@ -82,7 +84,7 @@ This runs the `hangman.js` script, which selects two elements from `words` and p
 ### Option 2: Using Visual Studio Code
 
 0. Open the `hangman-in-branches` folder in Visual Studio Code.
-0. Open the command palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> in Linux/Windows and <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> in macOS) and type in "Create New Terminal" followed by an <kbd>Enter</kbd>.
+0. Use the command palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> in Linux/Windows and <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> in macOS) and type in "create new terminal" followed by an <kbd>Enter</kbd>.
 0. In the terminal, type in `node hangman.js` and press <kbd>Enter</kbd>.
 
 ![Using terminal in Visual Studio Code](https://i.imgur.com/Dhng76K.png)
