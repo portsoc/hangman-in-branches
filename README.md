@@ -62,7 +62,6 @@ server/
 Before we start writing our server, we need to install the Express package.
 Open the [page for the Express package](https://www.npmjs.com/package/express) and look for its installation guide.
 
-
 To install a package for our `hangman-in-branches` project, we either have to navigate to this folder using a shell and then run the following command:
 
 ```
@@ -115,27 +114,39 @@ If you try to play the game, you will notice that you cannot win because the gam
 This is because we expect the user to guess every character in `word` as we have replaced everything (alphabetic or otherwise) with an underscore in the `startNewGame` function.
 However, `checkClick` and `checkKeyPress` only register alphabetic characters as valid guesses.
 
-To fix this issue, we are using a regular expression to pick all the alphabetical characters in the word, replacing them with '\_'.
+To fix this issue, we are using a regular expression to pick only the alphabetical characters in the word and replace them with '\_'.
 For more information, read our comments in `startNewGame`.
 
-Instead of joining `guessed` and displaying it in the `instruct` section, we are also using the `redrawWord` function to place each letter in a span element.
-Multiple spaces in HTML are rendered as a single space in the browser.
-There are simple ways around it (e.g., using '\&nbsp;') but instead, the `redrawWord` function places each letter in a span element.
-This decision will later allow us to treat letters individually (e.g., styling them differently).
+This however creates another issue.
+In HTML, multiple spaces are rendered as a single space in the browser.
+For example, if we have the following HTML:
 
-#### Repeat guesses
+```html
+<p>h e l l o w o r l d</p>
+```
 
-To prevent the user from guessing the same letter twice, we have created `hits` and `misses` arrays.
-We could have done it in one array but we would like to distinguish between them when it comes to styling the letters.
+The browser will render it as:
 
-`registerLetter` now checks whether the new guess is in the `hits` or `misses` array and displays a message accordingly.
-Every time the user makes a new guess, we call `redrawKeyboard` to update the keyboard accordingly.
+```
+h e l l o w o r l d
+```
 
-#### Restart game
+So instead of joining the elements of `guessed` array and displaying it in the `instruct` section, we are also using the `redrawWord` function to place each letter in a span element.
 
-At the end of a game, we call `generateNewGame` function which will remove the keyboard and display a restart button.
-When the user clicks the restart button, we call `startNewGame` to start a new game (resets the number of lives, chooses a new word and so on).
-Consequently, `startNewGame` now calls `drawKeyboard` to create a new keyboard every time.
+#### User can guess the same letter multiple times
+
+To be able to prevent this behavior, we need to store the letters that the user has guessed.
+We have now created `hits` and `misses` arrays.
+This could have been done with one array but we would like to distinguish between them when it comes to styling the letters.
+
+`registerLetter` now checks whether the new guess is in the `hits` or `misses` array.
+If this was the case, instead of checking the guess, it displays a message to the user in `feedback` section.
+Otherwise, `registerLetter` checks the new guess and calls `redrawKeyboard` to update the keyboard, deactivating the letter that was guessed.
+
+#### User has no way of restarting the game
+
+In `registerLetter`, once the game is over (`lives` reaches 0 or `checkWon` returns `true`) we call `generateNewGame` function which will remove the keyboard and display a restart button.
+We have added an event listener to this button which calls `startNewGame` to start a new game when the user clicks on it.
 
 To see the new changes, [visit this compare page](https://github.com/portsoc/hangman-in-branches/compare/4...5?diff=split) showing the difference between branches 4 and 5.
 
