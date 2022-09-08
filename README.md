@@ -10,7 +10,7 @@
 - [2: NPM](https://github.com/portsoc/hangman-in-branches/tree/2)
 - [3: DOM](https://github.com/portsoc/hangman-in-branches/tree/3)
 - [4: Events](https://github.com/portsoc/hangman-in-branches/tree/4)
-- [5: Debugging](https://github.com/portsoc/hangman-in-branches/tree/5)
+- 5: Debugging(current branch)
 - [6: Canvas](https://github.com/portsoc/hangman-in-branches/tree/6)
 - [7: Modularisation](https://github.com/portsoc/hangman-in-branches/tree/7)
 - [8: Server Part 1](https://github.com/portsoc/hangman-in-branches/tree/8)
@@ -22,8 +22,10 @@
 
 ## Objectives
 
-We will begin this branch by first serving the website using a basic Express server.
-But our main focus will be on fixing the issues that were left open in the previous branch.
+We will be only focusing on [the issues that we have left open in the previous branch](https://github.com/manighahrmani/hangman-in-branches/blob/4/README.md#todo).
+
+We will start with the biggest one: "We are not currently serving our game from a server".
+Afterward, we will focus on the other enhancements and bugs that we have left open.
 
 ## Implementation
 
