@@ -10,7 +10,7 @@
 - [2: NPM](https://github.com/portsoc/hangman-in-branches/tree/2)
 - [3: DOM](https://github.com/portsoc/hangman-in-branches/tree/3)
 - [4: Events](https://github.com/portsoc/hangman-in-branches/tree/4)
-- 5: Debugging(current branch)
+- 5: Debugging (current branch)
 - [6: Canvas](https://github.com/portsoc/hangman-in-branches/tree/6)
 - [7: Modularisation](https://github.com/portsoc/hangman-in-branches/tree/7)
 - [8: Server Part 1](https://github.com/portsoc/hangman-in-branches/tree/8)
@@ -105,17 +105,37 @@ Open your browser and navigate to http://localhost:8080 to see the website.
 
 To stop the server, click on the terminal and hit <kbd>Ctrl</kbd> + <kbd>C</kbd>.
 
-### Fix issues
+### User cannot win
 
-#### User cannot win
+You may have already noticed, especially if you've played the game, that you cannot win because you cannot enter the spaces in the word.
 
-If you try to play the game, you will notice that you cannot win because the game does not allow you to enter the spaces in the word.
-
-This is because we expect the user to guess every character in `word` as we have replaced everything (alphabetic or otherwise) with an underscore in the `startNewGame` function.
+The problem is not just about the spaces.
+It is caused because we expect the user to guess every character in `word` as we have replaced everything (alphabetic or otherwise) with an underscore in the `startNewGame` function.
 However, `checkClick` and `checkKeyPress` only register alphabetic characters as valid guesses.
 
-To fix this issue, we are using a regular expression to pick only the alphabetical characters in the word and replace them with '\_'.
-For more information, read our comments in `startNewGame`.
+To fix this issue, we need to pick only the alphabetical characters in the word and replace them with '\_'.
+We could use something like this in `startNewGame`:
+
+```js
+guessed = [];
+for (let i = 0; i < word.length; i++) {
+  const lowerCaseLetter = word[i].toLowerCase();
+  if (lowerCaseLetter >= "a" && lowerCaseLetter <= "z") {
+    guessed[i] = "_";
+  } else {
+    guessed[i] = word[i];
+  }
+}
+```
+
+However, this is not the most efficient way to do this.
+We can use [the `replace` function of the `String` object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) to replace all alphabetic characters with an underscore.
+To select all alphabetic characters, regardless of their case, we can use a [regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp).
+Here is the code:
+
+```js
+guessed = word.replace(/[a-z]/gi, "_").split("");
+```
 
 This however creates another issue.
 In HTML, multiple spaces are rendered as a single space in the browser.
@@ -133,7 +153,7 @@ h e l l o w o r l d
 
 So instead of joining the elements of `guessed` array and displaying it in the `instruct` section, we are also using the `redrawWord` function to place each letter in a span element.
 
-#### User can guess the same letter multiple times
+### User can guess the same letter multiple times
 
 To be able to prevent this behavior, we need to store the letters that the user has guessed.
 We have now created `hits` and `misses` arrays.
@@ -143,9 +163,9 @@ This could have been done with one array but we would like to distinguish betwee
 If this was the case, instead of checking the guess, it displays a message to the user in `feedback` section.
 Otherwise, `registerLetter` checks the new guess and calls `redrawKeyboard` to update the keyboard, deactivating the letter that was guessed.
 
-#### User has no way of restarting the game
+### User has no way of restarting the game
 
-In `registerLetter`, once the game is over (`lives` reaches 0 or `checkWon` returns `true`) we call `generateNewGame` function which will remove the keyboard and display a restart button.
+In `registerLetter`, once the game is over (`lives` reach 0 or `checkWon` returns `true`) we call `generateNewGame` function which will remove the content of the keyboard and display a restart button.
 We have added an event listener to this button which calls `startNewGame` to start a new game when the user clicks on it.
 
 To see the new changes, [visit this compare page](https://github.com/portsoc/hangman-in-branches/compare/4...5?diff=split) showing the difference between branches 4 and 5.
@@ -191,6 +211,8 @@ The user has to make a new guess for the previous letter to be registered and re
 Use what you have learned in the lessons to fix this issue.
 
 **Hint:** Use your browser's developer tools and set breakpoints within the source code.
+Alternatively, you can use the `debugger` keyword to set a breakpoint in the code.
+
 For more information, visit the documentation page on [breakpoints in Chrome](https://developer.chrome.com/docs/devtools/javascript/breakpoints/).
 Check the content of hits and misses to see if they update on time or if the problem is from something else.
 
