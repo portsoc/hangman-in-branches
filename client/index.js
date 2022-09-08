@@ -64,7 +64,7 @@ Removes the keyboard from the screen and instead displays a button for a new gam
  */
 function generateNewGame() {
   // reset the keyboard
-  el.keyboard.innerHTML = '';
+  el.keyboard.textContent = '';
 
   const newGame = document.createElement('section');
   newGame.id = 'newGame';
