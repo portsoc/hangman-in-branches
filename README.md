@@ -108,11 +108,17 @@ To stop the server, click on the terminal and hit <kbd>Ctrl</kbd> + <kbd>C</kbd>
 
 ### Fix issues
 
-#### Non alphabetical symbols
+#### User cannot win
 
-We start by using a regular expression to pick all the alphabetical characters in the word, replacing them with '\_'.
-For more information read our comments in `startNewGame`.
+If you try to play the game, you will notice that you cannot win because the game does not allow you to enter the spaces in the word.
 
+This is because we expect the user to guess every character in `word` as we have replaced everything (alphabetic or otherwise) with an underscore in the `startNewGame` function.
+However, `checkClick` and `checkKeyPress` only register alphabetic characters as valid guesses.
+
+To fix this issue, we are using a regular expression to pick all the alphabetical characters in the word, replacing them with '\_'.
+For more information, read our comments in `startNewGame`.
+
+Instead of joining `guessed` and displaying it in the `instruct` section, we are also using the `redrawWord` function to place each letter in a span element.
 Multiple spaces in HTML are rendered as a single space in the browser.
 There are simple ways around it (e.g., using '\&nbsp;') but instead, the `redrawWord` function places each letter in a span element.
 This decision will later allow us to treat letters individually (e.g., styling them differently).
