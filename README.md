@@ -71,8 +71,7 @@ npm install express
 
 Alternatively, we can open a terminal in Visual Studio Code and run the same command:
 
-![Installing Express in Visual Studio Code
-](https://i.imgur.com/0Z7Z7Zg.png)
+![Installing Express in Visual Studio Code](https://i.imgur.com/pNZqSQh.png)
 
 This adds Express to the dependencies attribute of our `package.json` file and automatically creates the `package-lock.json` file.
 For more info on what these files do check out [this page on `package.json`](https://docs.npmjs.com/cli/v8/configuring-npm/package-json) and [this page on `package-lock.json`](https://docs.npmjs.com/cli/v8/configuring-npm/package-json).
@@ -94,7 +93,14 @@ It is a convention to set the `start` script to the shell command that starts th
 }
 ```
 
-Now by running `npm start` in the shell, we can see our site is being served in our machine over port 8080 (http://localhost:8080).
+Now we can navigate to `hangman-in-branches` folder with the shell and run `npm start` to start the server.
+Alternatively, if you are using Visual Studio Code, find the `start` script in the `NPM Scripts` section of the `Explorer` tab and click on it to start the server.
+
+![NPM Scripts in Visual Studio Code](https://i.imgur.com/0Z7Z7Zg.png)
+
+Our server logs a message to the terminal telling us that our site is being served in our machine over port 8080.
+Open your browser and navigate to http://localhost:8080 to see the website.
+
 To stop the site, we can use <kbd>Ctrl</kbd> + <kbd>C</kbd> in the shell.
 
 The last thing that we have added to `package.json` is the attribute `type` set to `module`.
