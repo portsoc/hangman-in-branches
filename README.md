@@ -31,8 +31,7 @@ If you have not already done so, make sure to check the moodle resources for thi
 
 ## Implementation
 
-To store the game's state, we have the following variables.
-Note that they are defined globally (outside of any function) so that they can be accessed by all the functions in `index.js`.
+To store the game's state, we have the following variables:
 
 - `word` - the word to be guessed
 - `guesses` - the array containing the letters that have been guessed so far
@@ -40,16 +39,20 @@ Note that they are defined globally (outside of any function) so that they can b
 - `lives` - the number of lives remaining
 - `onGoing` - a boolean indicating whether the game is still in progress
 
-It is always helpful to visualize the program's flow, to help you write different functions and plan out how they should interact.
+Note that they are defined globally (outside of any function) so that they can be accessed by all the functions in `index.js`.
+
+Now let's imagine the program's flow, and see how these variables will change.
+Plus this helps us to write different functions and plan out how they should interact.
 
 Once the page is loaded, `init` is called to set up the game by calling the following functions:
 
-1. `prepareHandles` - selects key DOM elements
+1. `prepareHandles` - selects key DOM elements (storing them in `el`)
 1. `startNewGame` - picks a random word and saves it to `word`, populates the `guesses` array with underscores, resets `lives` and turns `onGoing` to `true`
 1. `drawKeyboard` - draws the keyboard on the screen
 1. `addEventListeners` - adds event listeners to the keyboard buttons and the physical keyboard
 
 This sets up the game for the user but how is the game played?
+What events happen as the game progresses?
 
 The user clicks on a button or presses a key on the on-screen keyboard or presses the physical keys.
 These events call the following event handlers respectively: `checkClick` and `checkKeyPress`.
@@ -60,22 +63,24 @@ It takes the letter and passes it to `checkLetter` to see whether it is in `word
 If it is, it is added to `guesses` and the screen is updated.
 Otherwise, `lives` is decremented.
 
-Eventually, one of two things can ultimately happen as the user submits letters:
+Eventually, one of two things happen as the user submits guesses:
 
-- `lives` reach 0, in which case the game is lost
-- `guesses` contain the entire word (`checkWon` function returns `true` in this case), in which case the game is won
+- There are no more `lives`, in which case the game is lost
+- `guesses` contains the entire word (`checkWon` function returns `true`), in which case the game is won
 
-In both of these cases, `onGoing` is set to `false` which stops the event handlers `checkClick` and `checkKeyPress` from registering any more letters.
+In both of these scenarios, `onGoing` is set to `false` which stops the event handlers `checkClick` and `checkKeyPress` from registering any more letters.
 The user is then forced to reload the page to start a new game.
 
-To see our new changes, [visit this compare page](https://github.com/portsoc/hangman-in-branches/compare/3...4?diff=split) showing the difference between branches 3 and 4.
+We have made a lot of changes in this branch.
+Make sure to see our work by [visiting this compare page](https://github.com/portsoc/hangman-in-branches/compare/3...4?diff=split).
 
 ## Usage
 
 Open `index.html` in your browser (<kbd>Ctrl</kbd> + <kbd>O</kbd> in Linux/Windows or <kbd>Cmd</kbd> + <kbd>O</kbd> in Mac).
 
 Remember to open the inspector in your browser and view the console.
-The shortcut is usually <kbd>F12</kbd> alternatively, right-click on the page and select 'Inspect' from Developer Tools.
+The shortcut is usually <kbd>F12</kbd>.
+Alternatively, right-click on the page and select "Inspect" (from "Developer Tools").
 
 ## Todo
 
