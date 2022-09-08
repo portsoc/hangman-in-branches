@@ -12,12 +12,12 @@ let word;
 let el = {};
 // Stores the number of lives, will be set in startNewGame
 let lives;
-// True if the game is still on going otherwise false (user won or lost)
+// True if the game is still on going otherwise false
 let onGoing = false;
 
 /* 
- * Takes a number and returns a random index between 0 and that number
- * The number itself is not included in the range
+Takes a number and returns a random index between 0 and that number
+The number itself is not included in the range
  */
 function randomIndex(size) {
   const index = Math.floor(Math.random() * size);
@@ -25,7 +25,7 @@ function randomIndex(size) {
 }
 
 /*
- * Takes a an array and returns a random element from that array
+Takes a an array and returns a random element from that array
  */
 function randomElement(array) {
   const size = array.length;
@@ -35,8 +35,8 @@ function randomElement(array) {
 }
 
 /*
- * Checks if the letter is in the word and updates the guessed letters array
- * it then retruns true if the letter is in the word otherwise false
+Checks if the letter is in the word and updates the guessed letters array
+it then retruns true if the letter is in the word otherwise false
  */
 function checkLetter(letter) {
   let found = false;
@@ -51,17 +51,17 @@ function checkLetter(letter) {
 }
 
 /*
- * Returns true if the user has guessed the word
+Returns true if the user has guessed the word
  */
 function checkWon() {
   return guessed.join('') === word;
 }
 
 /* 
- * Starts a new game by choosing a new word from the words array
- * it then resets the guessed letters array populating it with '_'s
- * next it displays this array as a word in the instructions
- * lastly it resets the lives counter and turns onGoing to true
+Starts a new game by choosing a new word from the words array
+it then resets the guessed letters array populating it with '_'s
+next it displays this array as a word in the instructions
+lastly it resets the lives counter and turns onGoing to true
  */
 function startNewGame() {
   word = randomElement(words);
@@ -78,7 +78,7 @@ function startNewGame() {
 }
 
 /* 
- * Draws the keyboard on the screen by creating a button for each letter
+Draws the keyboard on the screen by creating a button for each letter
  */
 function drawKeyboard() {
   const alphabet = 'abcdefghijklmnopqrstuvwxyz';
@@ -92,7 +92,7 @@ function drawKeyboard() {
 }
 
 /*
- * Responds to the on-screen keyboard only if game is on going
+Responds to the on-screen keyboard only if game is on going
  */
 function checkClick(e) {
   if (onGoing) {
@@ -108,8 +108,8 @@ function checkClick(e) {
 }
 
 /*
- * Respond to the keys on the physical keyboard if the game is on going
- * Source: https://developer.mozilla.org/en-US/docs/Web/API/Element/keypress_event#examples
+Respond to the keys on the physical keyboard if the game is on going
+Source: https://developer.mozilla.org/en-US/docs/Web/API/Element/keypress_event#examples
  */
 function checkKeyPress(e) {
   if (onGoing) {
@@ -123,9 +123,9 @@ function checkKeyPress(e) {
 }
 
 /*
- * If the user has lives left, it checks whether a given letter is in the word
- * it updates the guessed letters array and guessed word in insntruct section
- * it then updates count of lives and displays a feedback to user
+If the user has lives left, it checks whether a given letter is in the word
+it updates the guessed letters array and guessed word in insntruct section
+it then updates count of lives and displays a feedback to user
  */
 function registerLetter(letter) {
   letter = letter.trim().toLowerCase();
@@ -159,7 +159,7 @@ function registerLetter(letter) {
 }
 
 /*
- * Adds event listeners to the on-screen keyboard and the physical keyboard
+Adds event listeners to the on-screen keyboard and the physical keyboard
  */
 function addEventListeners() {
   // For physical keyboard, there is no need to add the event listener to
@@ -171,7 +171,7 @@ function addEventListeners() {
 }
 
 /*
- * Selects needed DOM elements and stores them in the global el object
+Selects needed DOM elements and stores them in the global el object
  */
 function prepareHandles() {
   el.keyboard = document.querySelector('#keyboard');
@@ -180,9 +180,9 @@ function prepareHandles() {
 }
 
 /* 
- * Starts by adding handles to key DOM elements to the el object
- * it then starts a new game and draws the keyboard
- * it also adds event listeners to the on-screen and physical keyboard
+Starts by adding handles to key DOM elements to the el object
+it then starts a new game and draws the keyboard
+it also adds event listeners to the on-screen and physical keyboard
  */
 function init() {
   prepareHandles();
