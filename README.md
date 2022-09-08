@@ -24,8 +24,8 @@
 
 We will be only focusing on [the issues that we have left open in the previous branch](https://github.com/manighahrmani/hangman-in-branches/blob/4/README.md#todo).
 
-We will start with the biggest one: "We are not currently serving our game from a server".
-Afterward, we will focus on the other enhancements and bugs that we have left open.
+We will start with the biggest one: Serving our game from a server.
+Afterward, we will work our way through the rest of the enhancements and bugs that we have left open.
 
 ## Implementation
 
