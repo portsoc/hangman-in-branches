@@ -18,8 +18,8 @@ let onGoing = false;
 let misses;
 let hits;
 /* 
- * Takes a number and returns a random index between 0 and that number
- * The number itself is not included in the range
+Takes a number and returns a random index between 0 and that number
+The number itself is not included in the range
  */
 function randomIndex(size) {
   const index = Math.floor(Math.random() * size);
@@ -27,7 +27,7 @@ function randomIndex(size) {
 }
 
 /*
- * Takes a an array and returns a random element from that array
+Takes a an array and returns a random element from that array
  */
 function randomElement(array) {
   const size = array.length;
@@ -37,8 +37,8 @@ function randomElement(array) {
 }
 
 /*
- * Checks if the letter is in the word and updates the guessed letters array
- * it then retruns true if the letter is in the word otherwise false
+Checks if the letter is in the word and updates the guessed letters array
+it then retruns true if the letter is in the word otherwise false
  */
 function checkLetter(letter) {
   let found = false;
@@ -53,14 +53,14 @@ function checkLetter(letter) {
 }
 
 /*
- * Returns true if the user has guessed the word
+Returns true if the user has guessed the word
  */
 function checkWon() {
   return guessed.join('') === word;
 }
 
 /*
- * Removes the keyboard from the screen and instead displays a button for a new game
+Removes the keyboard from the screen and instead displays a button for a new game
  */
 function generateNewGame() {
   el.keyboard?.remove();// if there is a keyboard, remove it
@@ -78,11 +78,11 @@ function generateNewGame() {
 }
 
 /* 
- * Starts a new game by choosing a new word from the words array
- * all the alphabetical characters are replaced with '_'s and stored in guessed
- * it displays guessed as a word in the instructions
- * it resets the lives, hits and misses and turns onGoing to true
- * calls drawKeyboard to draw the keyboard (that is removed from the screen on restart)
+Starts a new game by choosing a new word from the words array
+all the alphabetical characters are replaced with '_'s and stored in guessed
+it displays guessed as a word in the instructions
+it resets the lives, hits and misses and turns onGoing to true
+calls drawKeyboard to draw the keyboard (that is removed from the screen on restart)
  */
 function startNewGame() {
   const newGame = document.querySelector('#newGame');
@@ -109,7 +109,7 @@ function startNewGame() {
 }
 
 /* 
- * Draws the keyboard on the screen by creating a button for each letter
+Draws the keyboard on the screen by creating a button for each letter
  */
 function drawKeyboard() {
   const alphabet = 'abcdefghijklmnopqrstuvwxyz';
@@ -129,7 +129,7 @@ function drawKeyboard() {
 }
 
 /*
- * Responds to the on-screen keyboard only if game is on going
+Responds to the on-screen keyboard only if game is on going
  */
 function checkClick(e) {
   if (onGoing) {
@@ -141,7 +141,7 @@ function checkClick(e) {
 }
 
 /*
- * Respond to the keys on the physical keyboard if the game is on going
+Respond to the keys on the physical keyboard if the game is on going
  */
 function checkKeyPress(e) {
   if (onGoing) {
@@ -152,9 +152,9 @@ function checkKeyPress(e) {
 }
 
 /*
- * If the user has lives left, it checks whether a given letter is in the word
- * it updates hits, misses and guessed letters array and guessed word in insntruct
- * it then updates count of lives and displays a feedback to user
+If the user has lives left, it checks whether a given letter is in the word
+it updates hits, misses and guessed letters array and guessed word in insntruct
+it then updates count of lives and displays a feedback to user
  */
 function registerLetter(letter) {
   letter = letter.trim().toLowerCase();
@@ -200,8 +200,8 @@ function registerLetter(letter) {
 }
 
 /*
-  * Creates an element with id guessMe in the instructions section
-  * For every letter a span is created in guessMe
+Creates an element with id guessMe in the instructions section
+For every letter a span is created in guessMe
   */
 function redrawWord() {
   const oldGuessMe = document.querySelector('#guessMe');
@@ -225,7 +225,7 @@ function redrawWord() {
 }
 
 /*
-  * Updates the on-screen keyboard by disabling every button whose letter has been guessed
+Updates the on-screen keyboard by disabling every button whose letter has been guessed
   */
 function redrawKeyboard() {
   const keyboard = document.querySelector('#keyboard');
@@ -239,7 +239,7 @@ function redrawKeyboard() {
 }
 
 /*
- * Adds event listeners to the on-screen keyboard and the physical keyboard
+Adds event listeners to the on-screen keyboard and the physical keyboard
  */
 function addEventListeners() {
   window.addEventListener('keydown', checkKeyPress);
@@ -247,7 +247,7 @@ function addEventListeners() {
 }
 
 /*
- * Selects needed DOM elements and stores them in the global el object
+Selects needed DOM elements and stores them in the global el object
  */
 function prepareHandles() {
   el.instruct = document.querySelector('#instruct');
@@ -256,9 +256,9 @@ function prepareHandles() {
 }
 
 /* 
- * Starts by adding handles to key DOM elements to the el object
- * it then starts a new game and draws the keyboard
- * it also adds event listeners to the on-screen and physical keyboard
+Starts by adding handles to key DOM elements to the el object
+it then starts a new game and draws the keyboard
+it also adds event listeners to the on-screen and physical keyboard
  */
 function init() {
   prepareHandles();

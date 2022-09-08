@@ -87,7 +87,7 @@ As discussed in [the usage section](#usage), once you clone the repository and c
 The first thing that we need to add to `package.json` is the attribute `type` set to `module`.
 This lets us use import statements (for more info check out [this documentation page](https://nodejs.org/docs/latest-v13.x/api/esm.html#esm_enabling)).
 
-Another thing that we need to manually add to `package.json` is a `start` script.
+Another change we have made to `package.json` is that we have replaced the `test` script (that we were not using) with a new `start` script.
 It is a convention to set the `start` script to the shell command that starts the server:
 
 ```json
@@ -97,7 +97,7 @@ It is a convention to set the `start` script to the shell command that starts th
 ```
 
 Now we can navigate to `hangman-in-branches` folder with the shell and run `npm start` to start the server.
-Alternatively, if you are using Visual Studio Code, find the `start` script in the `NPM Scripts` section of the `Explorer` tab and click on it to start the server.
+Alternatively, if you are using Visual Studio Code, find the `start` script in the "NPM Scripts" section of the `Explorer` tab and click on it to start the server.
 
 ![NPM Scripts in Visual Studio Code](https://i.imgur.com/H1PxFsR.png)
 
