@@ -31,37 +31,42 @@ If you have not already done so, make sure to check the moodle resources for thi
 
 ## Implementation
 
+To store the game's state, we have the following variables.
+Note that they are defined globally (outside of any function) so that they can be accessed by all the functions in `index.js`.
 
+- `word` - the word to be guessed
+- `guesses` - the array containing the letters that have been guessed so far
+- `el` - the object that will hold the key DOM elements we will need to manipulate
+- `lives` - the number of lives remaining
+- `onGoing` - a boolean indicating whether the game is still in progress
 
+It is always helpful to visualize the program's flow, to help you write different functions and plan out how they should interact.
 
-We've now written a `prepareHandles` function that is called within `init` that selects key DOM elements.
-We are also grouping them as properties of the global `el` object.
-For example, `el.keyboard` stores the keyboard section.
+Once the page is loaded, `init` is called to set up the game by calling the following functions:
 
-`init` will also call `addEventListeners` which attaches event listeners to our on-screen keyboard plus the keys on the physical keyboard.
-Pay attention to the syntax:
+1. `prepareHandles` - selects key DOM elements
+1. `startNewGame` - picks a random word and saves it to `word`, populates the `guesses` array with underscores, resets `lives` and turns `onGoing` to `true`
+1. `drawKeyboard` - draws the keyboard on the screen
+1. `addEventListeners` - adds event listeners to the keyboard buttons and the physical keyboard
 
-```js
-function addEventListeners() {
-  window.addEventListener('keydown', checkKeyPress);
-  el.keyboard.addEventListener('click', checkClick);
-}
-```
+This sets up the game for the user but how is the game played?
 
-Since the press of physical keys is not dependent on any HTML tag, we add an event listener to the entire window for the `keydown` event.
-The handler for this event is the `checkKeyPress`  function that takes the `keydown` event as its input.
-We need this event to see whether an alphabetical key of the keyboard is pressed and then pass it on `registerLetter` to be checked as a guess.
+The user clicks on a button or presses a key on the on-screen keyboard or presses the physical keys.
+These events call the following event handlers respectively: `checkClick` and `checkKeyPress`.
+Both of the functions pass on the letter that the user has guessed to `registerLetter` for processing.
 
+`registerLetter` contains the main logic of the game.
+It takes the letter and passes it to `checkLetter` to see whether it is in `word`.
+If it is, it is added to `guesses` and the screen is updated.
+Otherwise, `lives` is decremented.
 
-`startNewGame` function additionally resets the number of lives the user has.
+Eventually, one of two things can ultimately happen as the user submits letters:
 
-Each on-screen key has a `data-letter` attribute that contains the letter that it represents.
-Similarly, the press of every physical key on the keyboard triggers an event that has a code that corresponds to the key that was pressed.
-Therefore, in the `addEventListeners` function called within `init`, we attach event listeners to the on-screen and physical keys that call the `registerLetter` function.
+- `lives` reach 0, in which case the game is lost
+- `guesses` contain the entire word (`checkWon` function returns `true` in this case), in which case the game is won
 
-`registerLetter` will in turn call the `checkLetter` function if the game has not been won or lost.
-`checkLetter` decides if the letter is in the word and updates the guessed array if necessary.
-`registerLetter` will also update the `instruct` and `feedback` sections of the page accordingly and end the game if necessary.
+In both of these cases, `onGoing` is set to `false` which stops the event handlers `checkClick` and `checkKeyPress` from registering any more letters.
+The user is then forced to reload the page to start a new game.
 
 To see our new changes, [visit this compare page](https://github.com/portsoc/hangman-in-branches/compare/3...4?diff=split) showing the difference between branches 3 and 4.
 
