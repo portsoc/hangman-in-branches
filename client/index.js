@@ -114,11 +114,12 @@ Draws the keyboard on the screen by creating a button for each letter
 function drawKeyboard() {
   const alphabet = 'abcdefghijklmnopqrstuvwxyz';
 
-  const keyboard = document.createElement('section');
-  keyboard.id = 'keyboard';
-  el.main.append(keyboard);
-  // this is moved from prepareHandles to here
-  el.keyboard = keyboard;
+  // if the keyboard does not exit, create it
+  if (!el.keyboard) {
+    el.keyboard = document.createElement('section');
+    el.keyboard.id = 'keyboard';
+    el.main.append(keyboard);
+  }
 
   for (const letter of alphabet) {
     const button = document.createElement('button');
