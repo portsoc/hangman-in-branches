@@ -63,8 +63,8 @@ function checkWon() {
 Removes the keyboard from the screen and instead displays a button for a new game
  */
 function generateNewGame() {
-  el.keyboard?.remove();// if there is a keyboard, remove it
-  // for more info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
+  // reset the keyboard
+  el.keyboard.innerHTML = '';
 
   const newGame = document.createElement('section');
   newGame.id = 'newGame';
@@ -114,18 +114,11 @@ Draws the keyboard on the screen by creating a button for each letter
 function drawKeyboard() {
   const alphabet = 'abcdefghijklmnopqrstuvwxyz';
 
-  // if the keyboard does not exit, create it
-  if (!el.keyboard) {
-    el.keyboard = document.createElement('section');
-    el.keyboard.id = 'keyboard';
-    el.main.append(keyboard);
-  }
-
   for (const letter of alphabet) {
     const button = document.createElement('button');
     button.textContent = letter;
     button.dataset.letter = letter;
-    keyboard.append(button);
+    el.keyboard.append(button);
   }
 }
 
@@ -250,6 +243,7 @@ function addEventListeners() {
 Selects needed DOM elements and stores them in the global el object
  */
 function prepareHandles() {
+  el.keyboard = document.querySelector('#keyboard');
   el.instruct = document.querySelector('#instruct');
   el.feedback = document.querySelector('#feedback');
   el.main = document.querySelector('main');
