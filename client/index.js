@@ -163,7 +163,7 @@ function registerLetter(letter) {
     const hitsAndMisses = hits.concat(misses);
     if (hitsAndMisses.includes(letter)) {
       el.feedback.textContent =
-        'You have already tried "${letter}".\nTry another letter. 😇';
+        `You have already tried "${letter}".\nTry another letter. 😇`;
     } else {
       // this updates the guessed letter array too
       const found = checkLetter(letter);
@@ -175,10 +175,10 @@ function registerLetter(letter) {
 
         // this part is the same regardless of number of lives
         lives--;
-        el.feedback.textContent = '${letter} is not in the word! ❌';
+        el.feedback.textContent = `${letter} is not in the word! ❌`;
 
         if (lives >= 1) {
-          el.feedback.textContent += '\nYou have ${lives} lives left.';
+          el.feedback.textContent += `\nYou have ${lives} lives left.`;
         } else if (lives === 0) {
           el.feedback.textContent += '\nGame Over, you lost!';
           onGoing = false;
@@ -192,7 +192,7 @@ function registerLetter(letter) {
           onGoing = false;
           generateNewGame();
         } else {
-          el.feedback.textContent = '${letter} is in the word! ✅';
+          el.feedback.textContent = `${letter} is in the word! ✅`;
         }
       }
     }
@@ -208,7 +208,6 @@ function redrawWord() {
   // first time we call redrawWord, there may be no guessMe element
   oldGuessMe?.remove(); // removes the old guessMe element if it exists
   // for more info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining
-
 
   const guessMe = document.createElement('div');
   guessMe.id = 'guessMe';
