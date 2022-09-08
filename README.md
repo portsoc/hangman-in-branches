@@ -32,6 +32,16 @@ Afterward, we will work our way through the rest of the enhancements and bugs th
 ### Serve the website
 
 To serve the website, we need to distinguish between what resources are for the server and what is for the client.
+So we have begun by making two folders in our `hangman-in-branches` directory.
+
+You can do this in Visual Studio Code with any of the following methods:
+
+- (a) Click on the `New folder` icon in the Explorer tab
+- (b) Open the Command Palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> Linux/Windows and <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> in macOS) then type `New folder` followed by <kbd>Enter</kbd>
+
+![New folder in Visual Studio Code
+](https://i.imgur.com/CCKm9Ce.png)
+
 So we have made a client folder that includes:
 
 ```
