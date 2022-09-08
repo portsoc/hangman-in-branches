@@ -86,6 +86,7 @@ function drawKeyboard() {
   for (const letter of alphabet) {
     const button = document.createElement('button');
     button.textContent = letter;
+    // This is a custom attribute that we can use to identify the button in checkClick function
     button.dataset.letter = letter;
     el.keyboard.append(button);
   }
@@ -135,8 +136,8 @@ function registerLetter(letter) {
     el.instruct.textContent = guessed.join(' ');
 
     if (!found) {
-      // this part is the same regardless of number of lives
-      lives--;
+      // the next two lines should run regardless of number of lives
+      lives--; // this is the same as lives = lives - 1
       el.feedback.textContent = '${letter} is not in the word! ❌';
 
       // if the lives is at least 1, the user can still play
