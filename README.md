@@ -34,7 +34,7 @@ Afterward, we will work our way through the rest of the enhancements and bugs th
 To serve the website, we need to distinguish between what resources are for the server and what is for the client.
 So we have begun by making two folders in our `hangman-in-branches` directory.
 
-You can do this in Visual Studio Code with any of the following methods:
+You can do this in Visual Studio Code in any of the following methods:
 
 - (a) Click on the `New folder` icon in the Explorer tab
 - (b) Open the Command Palette (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> Linux/Windows and <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> in macOS) then type `New folder` followed by <kbd>Enter</kbd>
@@ -42,7 +42,7 @@ You can do this in Visual Studio Code with any of the following methods:
 ![New folder in Visual Studio Code
 ](https://i.imgur.com/CCKm9Ce.png)
 
-So we have made a client folder that includes:
+We have moved everything that needs to be served to the client to the `client` folder so that this folder now contains the following files:
 
 ```
 client/
@@ -52,19 +52,27 @@ client/
 └── index.js
 ```
 
-And a server folder that just includes a script for a basic Express server:
+Our `server` folder only contains a new file called `svr.js` which will be our server.
 
 ```
 server/
 └── svr.js
 ```
 
-We have followed the installation guide on the [page for the Express package](https://www.npmjs.com/package/express) to install this as a dependency for our project.
-This means that we have first navigated to the `hangman-in-branches` folder in the shell and then run the following command:
+Before we start writing our server, we need to install the Express package.
+Open the [page for the Express package](https://www.npmjs.com/package/express) and look for its installation guide.
+
+
+To install a package for our `hangman-in-branches` project, we either have to navigate to this folder using a shell and then run the following command:
 
 ```
 npm install express
 ```
+
+Alternatively, we can open a terminal in Visual Studio Code and run the same command:
+
+![Installing Express in Visual Studio Code
+](https://i.imgur.com/0Z7Z7Zg.png)
 
 This adds Express to the dependencies attribute of our `package.json` file and automatically creates the `package-lock.json` file.
 For more info on what these files do check out [this page on `package.json`](https://docs.npmjs.com/cli/v8/configuring-npm/package-json) and [this page on `package-lock.json`](https://docs.npmjs.com/cli/v8/configuring-npm/package-json).
