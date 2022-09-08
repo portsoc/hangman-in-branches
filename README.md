@@ -81,10 +81,13 @@ This contains all the dependencies specific to the computer we are running the p
 For this reason, we have not included `node_modules` in the repository (look for this in the `.gitignore` file).
 
 Something else that happens once you install a package is that the dependencies will be added to the `package.json` file.
-Take a look at this file and observe what is added to "dependencies" attribute.
+Take a look at this file and observe what is added to the "dependencies" attribute.
 As discussed in [the usage section](#usage), once you clone the repository and checkout this branch, you will need to run `npm install` which installs the dependencies.
 
-Inside `package.json` we have manually added a `start` script as shown below.
+The first thing that we need to add to `package.json` is the attribute `type` set to `module`.
+This lets us use import statements (for more info check out [this documentation page](https://nodejs.org/docs/latest-v13.x/api/esm.html#esm_enabling)).
+
+Another thing that we need to manually add to `package.json` is a `start` script.
 It is a convention to set the `start` script to the shell command that starts the server:
 
 ```json
@@ -96,15 +99,12 @@ It is a convention to set the `start` script to the shell command that starts th
 Now we can navigate to `hangman-in-branches` folder with the shell and run `npm start` to start the server.
 Alternatively, if you are using Visual Studio Code, find the `start` script in the `NPM Scripts` section of the `Explorer` tab and click on it to start the server.
 
-![NPM Scripts in Visual Studio Code](https://i.imgur.com/0Z7Z7Zg.png)
+![NPM Scripts in Visual Studio Code](https://i.imgur.com/H1PxFsR.png)
 
 Our server logs a message to the terminal telling us that our site is being served in our machine over port 8080.
 Open your browser and navigate to http://localhost:8080 to see the website.
 
-To stop the site, we can use <kbd>Ctrl</kbd> + <kbd>C</kbd> in the shell.
-
-The last thing that we have added to `package.json` is the attribute `type` set to `module`.
-This lets us use import statements (for more info check out [this documentation page](https://nodejs.org/docs/latest-v13.x/api/esm.html#esm_enabling)).
+To stop the server, click on the terminal and hit <kbd>Ctrl</kbd> + <kbd>C</kbd>.
 
 ### Fix issues
 
