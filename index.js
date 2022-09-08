@@ -138,11 +138,11 @@ function registerLetter(letter) {
     if (!found) {
       // the next two lines should run regardless of number of lives
       lives--; // this is the same as lives = lives - 1
-      el.feedback.textContent = '${letter} is not in the word! ❌';
+      el.feedback.textContent = `${letter} is not in the word! ❌`;
 
       // if the lives is at least 1, the user can still play
       if (lives >= 1) {
-        el.feedback.textContent += '\nYou have ${lives} lives left.';
+        el.feedback.textContent += `\nYou have ${lives} lives left.`;
       } else if (lives === 0) {
         el.feedback.textContent += '\nGame Over, you lost! 😭';
         onGoing = false;
@@ -153,7 +153,7 @@ function registerLetter(letter) {
         el.feedback.textContent = 'You guessed it! Well done! 🎉';
         onGoing = false;
       } else {
-        el.feedback.textContent = '${letter} is in the word! ✅';
+        el.feedback.textContent = `${letter} is in the word! ✅`;
       }
     }
   }
