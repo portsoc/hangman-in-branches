@@ -35,18 +35,14 @@ export function create(type, parent, attributes = {}, text) {
 }
 
 /**
- * Draws the keyboard on the screen
- * @param parent - the parent element to append the keyboard to
- * @returns the keyboard element
+ * Draws the keys on the keyboard
+ * @param parent - the keyboard section
  */
-export function drawKeyboard(parent) {
+export function drawKeyboard(keyboard) {
   const alphabet = 'abcdefghijklmnopqrstuvwxyz';
-
-  const keyboard = create('section', parent, { id: 'keyboard' });
 
   for (const letter of alphabet) {
     const button = create('button', keyboard, {}, letter);
     button.dataset.letter = letter;
   }
-  return keyboard;
 }

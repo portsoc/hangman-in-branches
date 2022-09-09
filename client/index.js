@@ -102,10 +102,10 @@ function feedback(message) {
 }
 
 /**
- * Removes the keyboard and adds a button for a new game that calls `startNewGame` on click.
+ * Resets the keyboard and adds a button for a new game that calls `startNewGame` on click.
  */
 function generateNewGame() {
-  safeRemove('#keyboard');
+  el.keyboard.textContent = '';
 
   const newGame = create('section', el.main, { id: 'newGame' });
   create('p', newGame, {},
@@ -117,10 +117,10 @@ function generateNewGame() {
 
 /**
  * Starts a new game by choosing a random word from `words`.
- * All the letters are replaced with '_'s and stored in `gameState.guessed`.
- * This is then displayed in the instructions.
- * `gameState.onGoing` is set to `true`. `gameState.hits` and
- * `gameState.misses` are set to empty arrays. `drawKeyboard` is also called.
+ * All the letters are replaced with '_'s and stored in `gameState.guessed` then displayed on screen.
+ * `gameState.onGoing` is set to `true`. 
+ * `gameState.hits` and `gameState.misses` are emptied.
+ * The keyboard is drawn too.
  */
 function startNewGame() {
   safeRemove('#newGame');
@@ -132,7 +132,7 @@ function startNewGame() {
   gameState.guessed = gameState.word.replace(/[a-z]/ig, '_').split('');
 
   redrawWord();
-  el.keyboard = drawKeyboard(el.main);
+  drawKeyboard(el.keyboard);
   drawHangman(el.canvas, 10);
   feedback('Start clicking on the buttons or press a letter on the keyboard.');
 }
@@ -230,14 +230,11 @@ function redrawWord() {
  * Updates the on-screen keyboard by disabling every button with a letter in `hits` or `misses`
  */
 function redrawKeyboard() {
-  const keyboard = document.querySelector('#keyboard');
-  // only update if the keyboard exists (on game over it gets deleted)
-  if (keyboard) {
-    const keyboardLetters = keyboard.querySelectorAll('[data-letter]');
-    for (const letter of keyboardLetters) {
-      if (hitsAndMisses().includes(letter.dataset.letter)) {
-        letter.disabled = true;
-      }
+  const keyboardLetters = el.keyboard.querySelectorAll('[data-letter]');
+  for (const letter of keyboardLetters) {
+    const hitsAndMisses = hits.concat(misses);
+    if (hitsAndMisses.includes(letter.dataset.letter)) {
+      letter.disabled = true;
     }
   }
 }
@@ -254,6 +251,7 @@ function addEventListeners() {
  * Selects the DOM elements that we'll be using and stores them in `el`.
  */
 function prepareHandles() {
+  el.keyboard = document.querySelector('#keyboard');
   el.instruct = document.querySelector('#instruct');
   el.feedback = document.querySelector('#feedback');
   el.main = document.querySelector('main');
