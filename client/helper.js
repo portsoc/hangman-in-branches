@@ -1,5 +1,5 @@
 /**
- * Remove all elements that match the given selector.
+ * Removes all elements that match `selector`
  * @param selector - A string that specifies the CSS selector of the elements to remove
  */
 export function safeRemove(selector) {
@@ -11,13 +11,13 @@ export function safeRemove(selector) {
 }
 
 /**
- * It creates an element of the given type, sets the attributes and text content (if
- * provided), and appends the element to the parent element (if provided).
- * @param type - the type of the element to be created, e.g. div, p, h1, etc.
+ * Creates an element of given `type`, sets `attributes` and `text`
+ * and appends the element to `parent`.
+ * @param type - the type of the element to be created, e.g. 'div', 'p' etc.
  * @param parent - the parent element to append the new element to
  * @param [attributes] - a map of attributes to be set on the element
  * @param text - the text to be displayed in the element
- * @returns The element that was created
+ * @returns the element that was created
  */
 export function create(type, parent, attributes = {}, text) {
   const element = document.createElement(type);
@@ -36,18 +36,14 @@ export function create(type, parent, attributes = {}, text) {
 }
 
 /**
- * Draws the keyboard on the screen by creating a button for each letter.
- * @param parent - The parent element to append the keyboard to
- * @returns The keyboard element
+ * Draws the keys on the keyboard
+ * @param parent - the keyboard section
  */
-export function drawKeyboard(parent) {
+export function drawKeyboard(keyboard) {
   const alphabet = 'abcdefghijklmnopqrstuvwxyz';
-
-  const keyboard = create('section', parent, { id: 'keyboard' });
 
   for (const letter of alphabet) {
     const button = create('button', keyboard, {}, letter);
     button.dataset.letter = letter;
   }
-  return keyboard;
 }
