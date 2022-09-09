@@ -87,7 +87,7 @@ function checkWon() {
 }
 
 /**
- * It takes a message as an argument, and displays it in the feedback section.
+ * Displays `message` in the feedback section.
  * It also displays the lives left or a game over message.
  * @param message - the message to display
  */
@@ -152,6 +152,7 @@ function checkClick(e) {
 
 /**
  * If `gameState.onGoing` is `true`, and the user pressed on a letter on the keyboard, registers the letter
+ * If `gameState.onGoing` is `false`, Enter and Space can be used to start a new game
  * @param e - the key press event object
  */
 function checkKeyPress(e) {
