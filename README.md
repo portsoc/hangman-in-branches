@@ -23,9 +23,9 @@
 ## Objectives
 
 You can already see that our program is growing in size and complexity.
-Not only do we have long functions that have repeated code, but `index.js` has way too many lines.
+Not only do we have long functions and repeated lines of code, but `index.js` has way too many functions in it.
 
-This makes it harder to read and debug our code or develop it further.
+This makes it harder to debug our code or develop it further.
 So in this branch, we will try not to implement any new features and just spend our time breaking down the existing code into smaller but tightly related modules.
 
 We encourage you to visit the resources on moodle before continuing.
@@ -39,8 +39,29 @@ We have grouped our variables `hits`, `misses`, `guessed`, `word` and `onGoing` 
 All those variables are now properties of `gameState`.
 This will make more sense in the later branches (where `gameState` is fetched from the server).
 
-We have also simplified things by calculating lives from the `misses` array.
-This means we don't need a separate `lives` variable that has to be updated independently (thus improving our code quality).
+This is what `gameState` can look like at the start of the game:
+
+```js
+gameState = {
+  hits: [],
+  misses: [],
+  word: "Star Wars",
+  guessed: ["_", "_", "_", "_", " ", "_", "_", "_", "_"],
+  onGoing: true,
+};
+```
+
+We have also simplified things by calculating lives from the `misses` array (using the `lives` function).
+This means we don't need a separate variable for lives that has to be updated independently.
+
+```js
+function lives() {
+  if (gameState.misses) {
+    return 10 - gameState.misses.length;
+  }
+  return 0;
+}
+```
 
 ### Extracting repeated code into new functions
 
