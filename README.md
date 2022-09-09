@@ -77,9 +77,10 @@ Afterward, select "Extract to function in module scope" from the menu:
 ![Extract code to function Visual Studio Code](https://i.imgur.com/ikELvfN.png)
 
 Similarly, we have created the `lives`, `hitsAndMisses`, `create` and `feedback` functions.
+Make sure to read the comments to see what they do.
 
 We can then improve these functions in later branches.
-For example, we could improve `feedback` by displaying multiple DOM elements and giving them classes.
+For example, we could improve `feedback` by displaying multiple DOM elements and giving them classes for styling.
 The important benefit of our changes is that we only have to update the function's definition, not every place where it was used.
 
 Although our changes do not significantly decrease the volume of code, they help with readability and maintainability.
@@ -103,7 +104,7 @@ This will make sense when you attempt the task mentioned under the <a href="#fur
 ### One tiny change
 
 OK, we lied.
-We have added a tiny feature to help us with debugging.
+We have changed `checkKeyPress` a little to help us with debugging.
 To restart the game when `onGoing` is false, we can now use the keyboard (<kbd>Enter</kbd> or <kbd>Space</kbd>).
 
 To see the new changes, head to [this compare page](https://github.com/portsoc/hangman-in-branches/compare/6...7?diff=split).
