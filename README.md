@@ -25,8 +25,8 @@
 Our aim in this branch is to move some of the resources (functions and variables) from our `client` folder to the `server` one.
 More specifically, we want to move `gameState` and all functions that update it from `client/index.js` to `server/svr.js`.
 
-So for example, we don't want the client to access parts of the game that we would like to keep secret (e.g., the word to be guessed).
-Additionally, the user cannot update the game's state (e.g., they cannot remove elements of the `misses` array).
+So for example, we don't want the client to read parts of the game that we would like to keep secret (e.g., the word to be guessed).
+Additionally, we don't want the user to update the game's state (e.g., they should not be able to remove elements of the `misses` array).
 
 Our app would be useless if everything is hidden from the client.
 So we are also going to update the client so that it sends a request to get resources that the server offers.
@@ -41,8 +41,7 @@ We also recommend you view the [staged-simple-messageboard](https://github.com/p
 First, we have copied `gameState` variable from `client/index.js` to `server/svr.js` under the new name `status`.
 `status` in `server/svr.js` is pretty much the same as `gameState` except that it now contains the `last` and `won` properties (whether the last guess was correct and if the user has won).
 
-`gameState` now does not contain the `word` property by default.
-We only want the client to have access to this property if the game was lost.
+`gameState` still contains `word` but we do not send it to the client if the game is not over (see how `sanitizedStatus` is used as part of `createGame`).
 
 We have also renamed `guessed` array to `userWord` to avoid confusion.
 The references to `guessed` in `index.js` are updated too.
@@ -51,7 +50,7 @@ Remember that these updates and renamings are a natural process of development.
 ### Server sends game to client on new game
 
 At the start of a new game `gameState`'s properties are reset.
-This is now done by `createGame` function in `server/svr.js` which accepts a request and responds with a new `state`.
+This is now done by `createGame` function in `server/svr.js` which accepts a request and responds with a new `status`.
 
 As a result of this change, we had to move `words`, `randomIndex`, and `randomElement` to the server too.
 
@@ -65,8 +64,8 @@ Some of the functionalities of `registerLetter` that are not related to the fron
 `guessLetter` in the server checks the letter that is passed as a parameter of the request object.
 It updates the properties of `status` and returns it as a response.
 
-We should minimize the number of times the client (more specifically `registerLetter`) requests the server to check a letter.
-So, for example, we should not send a request if the user's input has been already guessed or if we know that the game is over.
+We should minimize the number of times the client requests the server to check a letter.
+So, for example, `registerLetter` does not send a request if the user's input has been already guessed or if we know that the game is over.
 
 See all of our changes by visiting [this compare page](https://github.com/portsoc/hangman-in-branches/compare/7...8?diff=split).
 
