@@ -36,9 +36,10 @@ Then attempt to complete the exercises in [the canvas repository](https://github
 Before we start, we placed the call to `redrawKeyboard` in the correct line in `registerLetter`.
 This was left as [a challenge in the previous branch](https://github.com/manighahrmani/hangman-in-branches/tree/5#further-exploration), make sure to check it out.
 
-We have also tidied up the comments and written them as JSDoc comments (for more info see [this page](https://jsdoc.app/about-getting-started.html)).
-You don't need to worry about this, but now you could see our documentation by hovering over the names of documented objects (like functions) in your IDE.
-Here is an example of what it looks like in Visual Studio Code:
+We have also tidied up the comments and written them as JSDoc comments.
+You don't need to do this in your submissions but if you are interested see [this page](https://jsdoc.app/about-getting-started.html).
+Now you can see our documentation by hovering over the names of documented objects (like functions) in your editor.
+Try for example hovering over `registerLetter` in `index.js` in Visual Studio Code:
 
 ![Hovering over a function for its documentation](https://i.imgur.com/dYvVqWb.png)
 
@@ -47,8 +48,8 @@ Here is an example of what it looks like in Visual Studio Code:
 We start by replacing our placeholder image (in `index.html`) with a canvas element.
 In `index.js` we select the canvas and pass it to the functions `drawHangman` alongside the number of lives.
 
-Note that `drawHangman` is an external function (in the new script: `canvas.js`) and is imported into `index.js`.
-To import this function, we need to change the `type` attribute of the `script` tag (in `index.html`) to `module`.
+Pay attention to how `drawHangman` is imported from the module `canvas.js` into `index.js`.
+To be able to import functions, you need to change the `type` attribute of the `script` tag in `index.html` to `module` (similar to what we did with `package.json` in [the last branch](https://github.com/manighahrmani/hangman-in-branches/tree/5)): 
 
 ```html
 <script src="index.js" type="module"></script>
@@ -59,7 +60,8 @@ The rest of the functions are private helper functions within this script.
 
 Make sure to take a good look at `canvas.js`.
 Most of the functions are self-explanatory and should be familiar to you especially if you have seen [the Canvas Stick Figure repository](https://github.com/portsoc/Web-Canvas-Stick-Figures).
-Notice that the colours in this script are defined using the hexadecimal colour notation.
+
+The only thing worth nothing is that the colours in our canvas are defined using the hexadecimal colour notation.
 For more information, see [this page on hex colours](https://developer.mozilla.org/en-US/docs/Web/CSS/hex-color).
 
 To see the new changes, head to [this compare page](https://github.com/portsoc/hangman-in-branches/compare/5...6?diff=split).
