@@ -60,7 +60,7 @@ function checkWon() {
 }
 
 /*
-Removes the keyboard from the screen and instead displays a button for a new game
+Resets the keyboard from the screen and instead displays a button for a new game
  */
 function generateNewGame() {
   // reset the keyboard
