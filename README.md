@@ -11,7 +11,7 @@
 - [3: DOM](https://github.com/portsoc/hangman-in-branches/tree/3)
 - [4: Events](https://github.com/portsoc/hangman-in-branches/tree/4)
 - [5: Debugging](https://github.com/portsoc/hangman-in-branches/tree/5)
-- [6: Canvas](https://github.com/portsoc/hangman-in-branches/tree/6)
+- 6: Canvas (current branch)
 - [7: Modularisation](https://github.com/portsoc/hangman-in-branches/tree/7)
 - [8: Server Part 1](https://github.com/portsoc/hangman-in-branches/tree/8)
 - [9: Server Part 2](https://github.com/portsoc/hangman-in-branches/tree/9)
@@ -23,7 +23,7 @@
 ## Objectives
 
 We will be carrying out minor fixes from the previous branch but mainly we will be focusing on graphics.
-More specifically, we will draw the hangman that completes as the user makes wrong guesses.
+More specifically, we will replace the placeholder image of the hangman with an image on a canvas that gets drawn as the user makes wrong guesses.
 
 If you have not done so already, check out the examples in
 [the Canvas Stick Figure repository](https://github.com/portsoc/Web-Canvas-Stick-Figures).
@@ -31,24 +31,33 @@ Then attempt to complete the exercises in [the canvas repository](https://github
 
 ## Implementation
 
+### Minor fixes
+
 Before we start, we placed the call to `redrawKeyboard` in the correct line in `registerLetter`.
 This was left as [a challenge in the previous branch](https://github.com/manighahrmani/hangman-in-branches/tree/5#further-exploration), make sure to check it out.
 
 We have also tidied up the comments and written them as JSDoc comments (for more info see [this page](https://jsdoc.app/about-getting-started.html)).
 You don't need to worry about this, but now you could see our documentation by hovering over the names of documented objects (like functions) in your IDE.
-Here is an example of what it looks like in VSCode:
+Here is an example of what it looks like in Visual Studio Code:
 
 ![Hovering over a function for its documentation](https://i.imgur.com/dYvVqWb.png)
+
+### Canvas
 
 We start by replacing our placeholder image (in `index.html`) with a canvas element.
 In `index.js` we select the canvas and pass it to the functions `drawHangman` alongside the number of lives.
 
 Note that `drawHangman` is an external function (in the new script: `canvas.js`) and is imported into `index.js`.
-To import this function, we need to change the `type` attribute of the `script` tag in `index.html` to `module`.
+To import this function, we need to change the `type` attribute of the `script` tag (in `index.html`) to `module`.
+
+```html
+<script src="index.js" type="module"></script>
+```
 
 `drawHangman` is the only function that is being exported in `canvas.js`.
 The rest of the functions are private helper functions within this script.
-This script has a few good examples of modularisation, a topic that we will cover in the next branch.
+
+Make sure to take a good look at `canvas.js`, as it is a good example of modularisation, a topic that we will cover in the next branch.
 
 To see the new changes, head to [this compare page](https://github.com/portsoc/hangman-in-branches/compare/5...6?diff=split).
 
