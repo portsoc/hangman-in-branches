@@ -93,17 +93,18 @@ These functions are `safeRemove`, `create`, and `drawKeyboard`.
 Once again, Visual Studio Code has a shortcut for this action:
 Select the lines containing your functions.
 Then right-click and select "Refactor".
-Afterward, select "Move to a new file".
+Afterward, select "Move to a new file":
+
+![Move code to new file Visual Studio Code](https://i.imgur.com/iBcdSX4.png)
 
 We have on purpose kept `randomIndex` and `randomElement` in the `index.js` file.
 This will make sense when you attempt the task mentioned under the <a href="#further-exploration">further exploration</a> section.
 
-### Miscellaneous improvements
+### One tiny change
 
 OK, we lied.
-We have added a tiny feature.
-To restart the game when `onGoing` is false, we can now use the keyboard.
-It was done to speed up testing.
+We have added a tiny feature to help us with debugging.
+To restart the game when `onGoing` is false, we can now use the keyboard (<kbd>Enter</kbd> or <kbd>Space</kbd>).
 
 To see the new changes, head to [this compare page](https://github.com/portsoc/hangman-in-branches/compare/6...7?diff=split).
 
@@ -152,6 +153,6 @@ Similarly, some of the functions that we currently have in `index.js` of the `cl
 This way we purposefully limit the client's access to some resources and instead ask them to send a request each time (using an API).
 
 Your task in this branch is to decide which one of the functions and variables within `index.js` should be moved to files within the `server` folder.
-Write down your guesses and compare them with other students, then check our model solution (the next branch).
+Write down your guesses and compare them with other students, then check our model solution in he next branch.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
