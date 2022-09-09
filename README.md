@@ -57,7 +57,10 @@ To import this function, we need to change the `type` attribute of the `script` 
 `drawHangman` is the only function that is being exported in `canvas.js`.
 The rest of the functions are private helper functions within this script.
 
-Make sure to take a good look at `canvas.js`, as it is a good example of modularisation, a topic that we will cover in the next branch.
+Make sure to take a good look at `canvas.js`.
+Most of the functions are self-explanatory and should be familiar to you especially if you have seen [the Canvas Stick Figure repository](https://github.com/portsoc/Web-Canvas-Stick-Figures).
+Notice that the colours in this script are defined using the hexadecimal colour notation.
+For more information, see [this page on hex colours](https://developer.mozilla.org/en-US/docs/Web/CSS/hex-color).
 
 To see the new changes, head to [this compare page](https://github.com/portsoc/hangman-in-branches/compare/5...6?diff=split).
 
