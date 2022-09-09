@@ -71,7 +71,7 @@ function checkWon() {
 }
 
 /**
- * Removes the keyboard and adds a button for a new game that calls `startNewGame` on click
+ * Resets keyboard and adds a button for a new game that calls `startNewGame` on click
  */
 function generateNewGame() {
   el.keyboard.textContent = '';
