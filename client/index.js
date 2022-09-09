@@ -232,7 +232,7 @@ function redrawWord() {
 function redrawKeyboard() {
   const keyboardLetters = el.keyboard.querySelectorAll('[data-letter]');
   for (const letter of keyboardLetters) {
-    const hitsAndMisses = hits.concat(misses);
+    const hitsAndMisses = gameState.hits.concat(gameState.misses);
     if (hitsAndMisses.includes(letter.dataset.letter)) {
       letter.disabled = true;
     }
