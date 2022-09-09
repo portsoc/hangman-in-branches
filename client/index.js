@@ -221,8 +221,7 @@ function redrawWord() {
 Updates the on-screen keyboard by disabling every button whose letter has been guessed
   */
 function redrawKeyboard() {
-  const keyboard = document.querySelector('#keyboard');
-  const keyboardLetters = keyboard.querySelectorAll('[data-letter]');
+  const keyboardLetters = el.keyboard.querySelectorAll('[data-letter]');
   for (const letter of keyboardLetters) {
     const hitsAndMisses = hits.concat(misses);
     if (hitsAndMisses.includes(letter.dataset.letter)) {
