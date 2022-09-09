@@ -95,7 +95,7 @@ Select the lines containing your functions.
 Then right-click and select "Refactor".
 Afterward, select "Move to a new file":
 
-![Move code to new file Visual Studio Code](https://i.imgur.com/iBcdSX4.png)
+![Move code to new file Visual Studio Code](https://i.imgur.com/IAVOdI0.png)
 
 We have on purpose kept `randomIndex` and `randomElement` in the `index.js` file.
 This will make sense when you attempt the task mentioned under the <a href="#further-exploration">further exploration</a> section.
