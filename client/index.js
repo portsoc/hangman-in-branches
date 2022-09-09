@@ -35,7 +35,7 @@ let gameState = {};
 let el = {};
 
 /**
- * Returns number of lives based on `gameState.misses`, if it doesn't exist, it returns `0`.
+ * Returns number of lives based on `gameState.misses` (if exists).
  * @returns number of lives
  */
 function lives() {
@@ -54,22 +54,12 @@ function hitsAndMisses() {
 }
 
 /**
- * It takes a message as an argument, and displays it in the feedback section.
- * It also displays the lives left and whether game is won or lost.
+ * Displays `message` in the feedback section.
+ * It also displays the lives left.
  * @param message - the message to display
  */
 function feedback(message) {
-  const currentLives = lives();
-  if (gameState.won) {
-    message += ' You won! Well done! 🎉';
-  }
-  else if (currentLives === 0) {
-    message += ' You lost!'
-    // if the word is defined, show that to the user too
-    message += gameState.word ? ` The word was: ${gameState.word}` : '';
-  } else {
-    message += ` You have ${currentLives} lives left.`;
-  }
+  message += ` You have ${lives()} lives.`;
   el.feedback.textContent = message;
 }
 
@@ -151,19 +141,27 @@ async function registerLetter(letter) {
       gameState = await response.json();
 
       if (!gameState.last) {
-        feedback(`${letter} is not in the word! ❌`);
-
         if (!gameState.onGoing) {
+          let message = `You lost! Your last guess, '${letter}', was wrong. 😭`
+          message += gameState.word ? ` The word was: '${gameState.word}'` : '';
+          feedback(message);
+
           generateNewGame();
+        }
+        else {
+          feedback(`Sorry! '${letter}' is not a letter in the word. ❌`);
         }
 
         drawHangman(el.canvas, lives());
       } else {
-        feedback(`${letter} is in the word! ✅`);
         redrawWord();
 
         if (gameState.won) {
+          feedback(`You won! Well done! 🎉`);
           generateNewGame();
+        }
+        else {
+          feedback(`Good job! '${letter}' is in the word. ✅`);
         }
       }
 
@@ -190,15 +188,11 @@ function redrawWord() {
  * Updates the on-screen keyboard by disabling every button with a letter in `hits` or `misses`
  */
 function redrawKeyboard() {
-  const keyboard = document.querySelector('#keyboard');
-
-  if (keyboard) {
-    const keys = keyboard.querySelectorAll('[data-letter]');
-
-    for (const key of keys) {
-      if (hitsAndMisses().includes(key.dataset.letter)) {
-        key.disabled = true;
-      }
+  const keyboardLetters = el.keyboard.querySelectorAll('[data-letter]');
+  for (const letter of keyboardLetters) {
+    const hitsAndMisses = gameState.hits.concat(gameState.misses);
+    if (hitsAndMisses.includes(letter.dataset.letter)) {
+      letter.disabled = true;
     }
   }
 }
