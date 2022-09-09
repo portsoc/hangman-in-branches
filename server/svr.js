@@ -104,9 +104,9 @@ function checkWon() {
 }
 
 /**
- * If the game is ongoing, then we check if the letter is in the word, and if it is,
- * we add it to hits array, otherwise we add it to the misses array.
- * If the user has guessed the word or has no lives left, then we end the game.
+ * If `status.onGoing` is `true`, checks if the guess is in the word.
+ * If it is, it is added `status.hits`, otherwise to `status.misses`.
+ * If the user has guessed the word or has no lives left, sets `status.onGoing` to `false`.
  * The sanitized status is sent to the client as a response (or the full status on gameover).
  * @param req - request object
  * @param res - response that contains the status object
