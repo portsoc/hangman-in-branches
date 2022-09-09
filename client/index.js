@@ -62,7 +62,7 @@ function hitsAndMisses() {
 }
 
 /**
- * Checks if a given letter is in the word, then updates `gameState.guessed`.
+ * Checks if `letter` is in the word, then update the guessed array with `letter`
  * @param letter - the letter that the user guessed
  * @returns `true` if the letter is in the word, `false` otherwise
  */
@@ -79,7 +79,7 @@ function checkLetter(letter) {
 }
 
 /**
- * Checks whether the user has guessed the word.
+ * Checks whether the user has guessed `word`
  * @returns `true` if the user has guessed the word, `false` otherwise
  */
 function checkWon() {
@@ -138,7 +138,7 @@ function startNewGame() {
 }
 
 /**
- * If the game is on, and the user clicked on an on-screen key, registers the letter.
+ * If `gameState.onGoing` is `true`, and the user clicked on an on-screen key, registers their guess
  * @param e - the click event object
  */
 function checkClick(e) {
@@ -151,7 +151,7 @@ function checkClick(e) {
 }
 
 /**
- * If the game is on, and the user pressed on a letter on the keyboard, registers the letter.
+ * If `gameState.onGoing` is `true`, and the user pressed on a letter on the keyboard, registers the letter
  * @param e - the key press event object
  */
 function checkKeyPress(e) {
@@ -160,7 +160,7 @@ function checkKeyPress(e) {
       registerLetter(e.code[3]);
     }
   } else {
-    // a shortcut to restart the game, only works when onGoing is false
+    // a shortcut to restart the game, only works when gameState.onGoing is false
     if (e.code === 'Space' || e.code === 'Enter') {
       startNewGame();
     }
@@ -169,8 +169,9 @@ function checkKeyPress(e) {
 
 /**
  * If the user has lives left, it checks whether a given letter is in the word.
- * If this is the case, the letter is added to the `hits` array, otherwise to the `misses`.
- * It also displays a feedback to user.
+ * If this is the case, the letter is added to the `gameState.hits`, otherwise to `gameState.misses`.
+ * It also displays a feedback to user, updates the keyboard and the hangman.
+ * Once user has guessed the word or lost, `gameState.onGoing` is set to `false` and `generateNewGame` is called.
  * @param letter - the letter that the user has guessed
  */
 function registerLetter(letter) {
@@ -212,7 +213,7 @@ function registerLetter(letter) {
 }
 
 /**
- * Updates the `guessMe` element based on `gameState.guessed` array.
+ * Removes the old `#guessMe` element, and creates a new one with the letters in `guessed`
  */
 function redrawWord() {
   safeRemove('#guessMe');
@@ -226,7 +227,7 @@ function redrawWord() {
 }
 
 /**
- * Updates the on-screen keyboard by disabling every button whose letter has been guessed.
+ * Updates the on-screen keyboard by disabling every button with a letter in `hits` or `misses`
  */
 function redrawKeyboard() {
   const keyboard = document.querySelector('#keyboard');
