@@ -12,7 +12,7 @@
 - [4: Events](https://github.com/portsoc/hangman-in-branches/tree/4)
 - [5: Debugging](https://github.com/portsoc/hangman-in-branches/tree/5)
 - [6: Canvas](https://github.com/portsoc/hangman-in-branches/tree/6)
-- [7: Modularisation](https://github.com/portsoc/hangman-in-branches/tree/7)
+- 7: Modularisation (current branch)
 - [8: Server Part 1](https://github.com/portsoc/hangman-in-branches/tree/8)
 - [9: Server Part 2](https://github.com/portsoc/hangman-in-branches/tree/9)
 - [10: Style](https://github.com/portsoc/hangman-in-branches/tree/10)
