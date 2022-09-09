@@ -56,7 +56,6 @@ This is now done by `createGame` function in `server/svr.js` which accepts a req
 As a result of this change, we had to move `words`, `randomIndex`, and `randomElement` to the server too.
 
 Back on the client side, because `statrNewGame` is an asynchronous function, we need to use the `async` keyword.
-Additionally, we have moved `addEventListeners` at the end of this function so that it gets called once the game is started (and the keyboard is created).
 
 ### Server checks guess and updates game
 

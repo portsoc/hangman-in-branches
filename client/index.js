@@ -89,7 +89,6 @@ function generateNewGame() {
 
 /**
  * Starts a new game by requesting a new `gameState` from the server.
- * Removes the newGame element, prepares game handles and event listeners, 
  * redraws the hangman and keyboard, and displays a feedback message too.
  */
 async function startNewGame() {
