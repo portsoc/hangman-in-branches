@@ -74,7 +74,7 @@ function checkWon() {
  * Removes the keyboard and adds a button for a new game that calls startNewGame on click
  */
 function generateNewGame() {
-  el.keyboard?.remove();
+  el.keyboard.textContent = '';
 
   const newGame = document.createElement('section');
   newGame.id = 'newGame';
@@ -124,16 +124,11 @@ function startNewGame() {
 function drawKeyboard() {
   const alphabet = 'abcdefghijklmnopqrstuvwxyz';
 
-  const keyboard = document.createElement('section');
-  keyboard.id = 'keyboard';
-  el.main.append(keyboard);
-  el.keyboard = keyboard;
-
   for (const letter of alphabet) {
     const button = document.createElement('button');
     button.textContent = letter;
     button.dataset.letter = letter;
-    keyboard.append(button);
+    el.keyboard.append(button);
   }
 }
 
@@ -240,12 +235,12 @@ function redrawWord() {
  */
 function redrawKeyboard() {
   const keyboard = document.querySelector('#keyboard');
-  
+
   // only update if the keyboard exists (on game over it gets deleted)
   if (keyboard) {
     const keyboardLetters = keyboard.querySelectorAll('[data-letter]');
     for (const letter of keyboardLetters) {
-      const hitsAndMisses = gameState.hits.concat(gameState.misses);
+      const hitsAndMisses = hits.concat(misses);
       if (hitsAndMisses.includes(letter.dataset.letter)) {
         letter.disabled = true;
       }
@@ -265,6 +260,7 @@ function addEventListeners() {
  * Selects the DOM elements that we'll be using and stores them in `el`
  */
 function prepareHandles() {
+  el.keyboard = document.querySelector('#keyboard');
   el.instruct = document.querySelector('#instruct');
   el.feedback = document.querySelector('#feedback');
   el.main = document.querySelector('main');
