@@ -72,7 +72,9 @@ So we have extracted these lines into a new function, called `safeRemove`, and w
 Note that Visual Studio Code has a shortcut for this action:
 First select a set of lines.
 Then right-click and select "Refactor".
-Afterward, select "Extract to function in module scope".
+Afterward, select "Extract to function in module scope" from the menu:
+
+![Extract code to function Visual Studio Code](https://i.imgur.com/ikELvfN.png)
 
 Similarly, we have created the `lives`, `hitsAndMisses`, `create` and `feedback` functions.
 
