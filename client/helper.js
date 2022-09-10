@@ -1,5 +1,5 @@
 /**
- * Remove all elements that match the given selector.
+ * Removes all elements that match `selector`
  * @param selector - A string that specifies the CSS selector of the elements to remove
  */
 export function safeRemove(selector) {
@@ -11,8 +11,8 @@ export function safeRemove(selector) {
 }
 
 /**
- * It creates an element of the given type, sets the attributes and text content (if
- * provided), and appends the element to the parent element (if provided).
+ * Creates an element of given `type`, sets `attributes` and `text`
+ * and appends the element to `parent`.
  * @param type - the type of the element to be created, e.g. div, p, h1, etc.
  * @param parent - the parent element to append the new element to
  * @param [attributes] - a map of attributes to be set on the element
@@ -36,15 +36,13 @@ export function create(type, parent, attributes = {}, text) {
 }
 
 /**
- * Draws the keyboard on the screen by creating a button for each letter.
+ * Draws the keys on the keyboard
  * @param parent - The parent element to append the keyboard to
  * @returns The keyboard element
  */
-export function drawKeyboard(parent) {
+export function drawKeyboard(keyboard) {
   // separate the letters into 3 rows similar to a QWERTY keyboard
   const alphabet = ['qwertyuiop', 'asdfghjkl', 'zxcvbnm'];
-
-  const keyboard = create('section', parent, { id: 'keyboard' });
 
   for (const row of alphabet) {
     const letterRow = create('div', keyboard, { id: 'keys_' + row });
@@ -59,6 +57,4 @@ export function drawKeyboard(parent) {
       btn.dataset.letter = letter;
     }
   }
-
-  return keyboard;
 }
