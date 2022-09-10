@@ -59,7 +59,7 @@ function hitsAndMisses() {
  * It also displays the lives left.
  * @param message - the message to display
  */
-async function feedback(message) {
+function feedback(message) {
   message += ` You have ${lives()} lives.`;
   el.feedback.textContent = message;
 }
