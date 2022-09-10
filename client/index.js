@@ -60,7 +60,9 @@ function hitsAndMisses() {
  * @param message - the message to display
  */
 function feedback(message) {
-  message += ` You have ${lives()} lives.`;
+  if (gameState.onGoing) {
+    message += ` You have ${lives()} lives left.`;
+  }
   el.feedback.textContent = message;
 }
 
