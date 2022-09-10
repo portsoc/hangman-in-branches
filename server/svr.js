@@ -32,7 +32,7 @@ function guessLetter(req, res) {
 }
 
 /**
- * Given a game's id, if the game exits and is won, returns its score, otherwise an error.
+ * Given a game's id, if the game exits and is won, responds with its score, otherwise an error.
  * @param req - request object containing the game's id
  * @param res - response that contains the score
  */
