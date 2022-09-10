@@ -241,7 +241,7 @@ function prepareHandles() {
 }
 
 /**
- * Prepares the game handles and starts a new game.
+ * Prepares the game handles, listeners and starts a new game.
  */
 function init() {
   prepareHandles();
