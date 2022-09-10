@@ -212,21 +212,17 @@ function redrawWord() {
  * Updates the on-screen keyboard by disabling every button with a letter in `hits` or `misses`
  */
 function redrawKeyboard() {
-  const keyboard = document.querySelector('#keyboard');
+  const keys = el.keyboard.querySelectorAll('[data-letter]');
 
-  if (keyboard) {
-    const keys = keyboard.querySelectorAll('[data-letter]');
+  for (const key of keys) {
+    const letter = key.dataset.letter;
 
-    for (const key of keys) {
-      const letter = key.dataset.letter;
+    if (hitsAndMisses().includes(letter)) {
+      key.disabled = true;
 
-      if (hitsAndMisses().includes(letter)) {
-        key.disabled = true;
-
-        // add a class to the key to indicate whether the guess was correct or not
-        key.classList.toggle('miss', gameState.misses.includes(letter));
-        key.classList.toggle('hit', gameState.hits.includes(letter));
-      }
+      // add a class to the key to indicate whether the guess was correct or not
+      key.classList.toggle('miss', gameState.misses.includes(letter));
+      key.classList.toggle('hit', gameState.hits.includes(letter));
     }
   }
 }
