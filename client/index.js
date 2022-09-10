@@ -36,7 +36,7 @@ let gameState = {};
 let el = {};
 
 /**
- * Returns number of lives based on `gameState.misses` (if exists).
+ * Returns number of lives based on `gameState.misses`, if it doesn't exist, it returns `0`.
  * @returns number of lives
  */
 function lives() {
