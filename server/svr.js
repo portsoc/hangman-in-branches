@@ -8,7 +8,7 @@ const clientPath = path.join(path.resolve(), '/client');
 app.use(express.static(clientPath));
 
 
-/**.
+/**
  * Creates a new game status object and responds with a sanitized copy of it.
  * @param req - the request object
  * @param res - response object, contains the sanitized status object (without `word` property)
