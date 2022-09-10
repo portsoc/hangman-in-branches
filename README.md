@@ -23,16 +23,19 @@
 ## Objectives
 
 Since we have completed every core feature of our game, we can now begin to style our website.
-Our goal is not to create a visually stylish website, that would be the job of a front-end designer, not a software engineer.
+Our goal is not to create a visually stylish website.
+That would be the job of a front-end designer, not the main responsibility of a software engineer.
+
 We just aim to create a website that has a simple layout, consistent theme and is usable on a variety of devices.
-Meanwhile, we should care about the quality of our CSS too (and maybe use some modern CSS features).
+Meanwhile, we could use some modern CSS features.
 
 If you have not already done so, visit the Moodle resources on the topic of CSS.
 Be sure to check out the examples on custom properties and flexbox in the [CSS repository](https://github.com/portsoc/ws_css3).
 
 ## Implementation
 
-Start by creating `index.css` in the `client` folder (CSS is used to style the HTML page so it should not be in `server`) and add a link to it in `index.html` file.
+We started by creating `index.css` in the `client` folder (CSS is used to style the HTML page so it should not be in `server`)
+Then we linked our CSS in our `index.html` file.
 Below we have listed the notable style decisions we have made.
 
 ### Size and alignment
@@ -95,22 +98,59 @@ color: var(--fg);
 One thing that we could not easily fix with HTML or JavaScript is the presentation of the `#guessMe` element.
 We are going to add spaces between the `span` elements and generally make things more legible by increasing the size of the letters.
 
+```css
+#guessMe span {
+  font-size: min(6vw, 140%);
+  margin: 0.25em;
+  min-width: 1em;
+}
+```
+
 ### Keyboard
 
 To make our keyboard more like a real keyboard, we need to rework our `drawKeyboard` function in `client/helper.js`.
 `drawKeyboard` now splits the buttons into three rows, similar to a QWERTY keyboard.
 Observe how we are adding a class `.letterRow` to the rows, this will be useful shortly.
 
-Back in CSS we use this class name and specify the width of the rows (`max-width: 100vw;`). We also define the direction in which they are stacked (`flex-direction: row;`). Remember that we already have rules for centre alignment of elements (being applied to `main` and `body`). So we just have to add `.letterRow` to our existing rule.
+Back in CSS we use this class name and specify the width of the rows.
+But more importantly, we specify the direction in which the elements within them are stacked (horizontally).
+Remember that we already have rules for centre alignment of elements (being applied to `main` and `body`).
+So we just have to add the following to our CSS:
+
+```css
+.letterRow {
+  max-width: 100vw;
+  flex-direction: row;
+}
+```
 
 Another thing of note is that we are adding a `hit` and `miss` class to the keys in `redrawKeyboard` of `client/index.js`.
-Using these classes, we can colour the keys differently in addition to disabling them.
+Using these classes, we can colour the keys differently when we are disabling them.
 Notice how added these colours to our existing colour palette and distinguished foreground and background colours using prefixes `--fg` and `--bg`.
+
+```css
+.hit {
+  color: var(--fg-hit);
+  background: var(--bg-hit);
+}
+
+.miss {
+  color: var(--fg-miss);
+  background: var(--bg-miss);
+}
+```
 
 ### Canvas
 
 To accommodate devices with small screens, we are going to set out the maximum size of this element using CSS.
 Our change makes the canvas element smaller (as well as the hangman figure drawn on it).
+
+```css
+canvas {
+    max-width: 10em;
+    max-height: 15em;
+}
+```
 
 To balance this, we can decrease the size of the canvas element in the HTML page so that the hangman figure itself appears bigger (remember that the figure is drawn relative to the size of the canvas).
 
