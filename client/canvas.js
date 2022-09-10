@@ -1,8 +1,6 @@
 /**
- * It draws a hangman on a canvas, relative to its size, and depending on the number lives left
- * the canvas is empty if lives is 10 and the hangman is completely drawm if it is 0
- * in between these values, the function adds limbs/pieces of the noose one by one.
- * It also adds a background color to the canvas depending on the `hit` parameter.
+ * It draws a hangman on a canvas, relative to its size, and depending `lives` and whether `hit` was `true` or `false`.
+ * The canvas is empty if lives is 10 and the hangman is completely drawm if it is 0.
  * @param canvas - the canvas element
  * @param lives - the number of lives the player has left
  * @param [hit] - optional parameter determinning whether the last guess was correct or not
@@ -37,7 +35,7 @@ export function drawHangman(canvas, lives, hit = true) {
 }
 
 /**
- * It draws a line from (x1, y1) to (x2, y2) on the canvas `c`.
+ * Draws a line from (x1, y1) to (x2, y2) on the canvas c
  * @param c - the canvas context
  * @param x1 - The x-coordinate of the start point
  * @param y1 - The y-coordinate of the start of the line
@@ -96,7 +94,7 @@ function rad(deg) {
 }
 
 /**
- * It draws a cross on the canvas `c`.
+ * Draws a cross on the canvas
  * @param c - the canvas context
  * @param x - The x-coordinate of the center of the cross
  * @param y - The y coordinate of the center of the cross
@@ -108,6 +106,7 @@ function cross(c, x, y, r) {
 }
 
 /**
+ * Draws an arc on the canvas
  * It draws an arc on the canvas `c`.
  * @param c - the canvas context
  * @param x - The x-coordinate of the center of the circle
