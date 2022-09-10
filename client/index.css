@@ -20,14 +20,11 @@
 
 * {
     box-sizing: border-box;
+    transition: all 1s linear;
 }
 
 body {
     font-family: Helvetica, sans-serif;
-}
-
-* {
-    transition: all 1s linear;
 }
 
 body, main, .letterRow, #newGame {
