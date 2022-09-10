@@ -44,7 +44,7 @@ But let's keep it simple for now.
 
 We need to think about where we add the functionality to calculate a score, client-side or server-side.
 Since we want to allow multiple games to run concurrently and perhaps create a leaderboard, we need access to the scores on the server (where the games are stored).
-Of course, we don't want the client to calculate their score as well (it would be redundant) and nor do we want them to put their scores on the server (which allows them to cheat).
+Of course, we don't want the client to calculate their score as well and nor do we want them to put their scores on the server (which allows them to cheat).
 This concludes that we should add the score calculation to the server.
 
 `calculateScore` in the server now responds with the score if the game is won.
@@ -56,7 +56,7 @@ We need to store a collection of games on the server (each game has its `status`
 But to be able to distinguish between every game, we need to add a unique identifier to each game.
 For this reason, we are going to be using [the `uuid` NPM package](https://www.npmjs.com/package/uuid).
 
-Following the instructions in the "Quickstart" section of the NPM page, we can have installed `uuid` package with:
+Following the instructions in the "Quickstart" section of `uuid`'s page, we have installed this package with:
 
 ```bash
 npm install uuid
@@ -64,11 +64,18 @@ npm install uuid
 
 Recall that this will add the `uuid` package as a new dependency to the `package.json` file and install it in the `node_modules` folder.
 
-We then import it to our server and use it (by calling `uuidv4()`) to create unique IDs for each game in the `gamesInPlay` array.
+We then import it to our server and use it by calling the `uuidv4` function to create unique IDs for each game in the `gamesInPlay` array.
 
 `createGame` now creates a new game in `gamesInPlay` and returns it (with its unique ID) to the client.
 `guessLetter` also requires a unique ID to identify the game in addition to the letter that the player has guessed.
+
 Notice the change in the URL for guessing a letter too (see `sendGuess`).
+Open the "Network" tab in the browser's developer tools to see the requests URL.
+Here is an example of a request to guess the letter `t` in the game with the ID `ba4da002-665b-406a-b1ca-90ac5f321941`:
+
+```bash
+http://localhost:8080/games/ba4da002-665b-406a-b1ca-90ac5f321941/t
+```
 
 ### Modularising server
 
@@ -121,8 +128,10 @@ Stop the server with <kbd>Ctrl</kbd> + <kbd>C</kbd> in the shell.
 Our multiplayer game may not make much sense at the moment since we are serving it on localhost (to only one client).
 You can still play multiple games from different browsers but you will have to host your game to be able to access it on the internet from different devices.
 
-Your challenge is to host this game to learn how to do the same with your submissions.
-We will start by showing you how to serve an app with your student VMs.
+Your challenge is to host this game.
+This will teach you to do the same with your submissions or future projects.
+
+Let's start by showing you how to serve an app with your student VMs.
 Visit your [MyVm page](http://port.ac.uk/myvm) and start it up.
 You can then SSH into your VM using the credentials provided on the page or just use [the Secure Shell extension](https://chrome.google.com/webstore/detail/secure-shell/iodihamcpbpeioajjeobimgagajmlibd?hl=en) to launch a connection in your browser.
 
