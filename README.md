@@ -14,7 +14,7 @@
 - [6: Canvas](https://github.com/portsoc/hangman-in-branches/tree/6)
 - [7: Modularisation](https://github.com/portsoc/hangman-in-branches/tree/7)
 - [8: Server Part 1](https://github.com/portsoc/hangman-in-branches/tree/8)
-- [9: Server Part 2](https://github.com/portsoc/hangman-in-branches/tree/9)
+- 9: Server Part 2 (current branch)
 - [10: Style](https://github.com/portsoc/hangman-in-branches/tree/10)
 - [11: Linting](https://github.com/portsoc/hangman-in-branches/tree/11)
 - [12: Database](https://github.com/portsoc/hangman-in-branches/tree/12)
