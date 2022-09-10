@@ -4,55 +4,21 @@
 
 # Branch 12: Database
 
-<!-- Navigation -->
-<details>
-  <summary>Navigate between branches</summary>  
-  <nav class="menu">
-    <li><a href="https://github.com/manighahrmani/hangman-in-branches">Intro</a></li>
-    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/0">0: Variables</a></li>
-    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/1">1: Functions</a></li>
-    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/2">2: NPM</a></li>
-    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/3">3: DOM</a></li>
-    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/4">4: Events</a></li>
-    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/5">5: Debugging</a></li>
-    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/6">6: Canvas</a></li>
-    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/7">7: Modularisation</a></li>
-    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/8">8: Server Part 1</a></li>
-    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/9">9: Server Part 2</a></li>
-    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/10">10: Style</a></li>
-    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/11">11: Linting</a></li>
-    <li>12: Database (this branch)</li>
-    <li><a href="https://github.com/portsoc/hangman-in-branches/tree/13">13: SVG</a></li>
-  </nav>
-</details>
-
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Contents of this branch</summary>
-  <ol>
-    <li><a href="#objectives">Objectives</a></li>
-    <li><a href="#implementation">Implementation</a>
-      <ol>
-        <li><a href="#static-data">Static data</a></li>
-        <li><a href="#dynamic-data">Dynamic data</a></li>
-      </ol>
-    <li><a href="#usage">Usage</a>
-      <ol>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#setup">Setup</a></li>
-        <li><a href="#run-the-server">Run the server</a></li>
-        <li><a href="#clean-up">Clean-up</a></li>
-      </ol>
-    </li>
-    <li><a href="#todo">Todo</a></li>
-    <li><a href="#further-exploration">Further Exploration</a>
-      <ol>
-        <li><a href="#improve-choice-of-databases">Improve choice of databases</a></li>
-        <li><a href="#handle-server-errors">Handle server errors</a></li>
-      </ol>
-    </li>
-  </ol>
-</details>
+- [Intro](https://github.dev/manighahrmani/hangman-in-branches)
+- [0: Variables](https://github.com/portsoc/hangman-in-branches/tree/0)
+- [1: Functions](https://github.com/portsoc/hangman-in-branches/tree/1)
+- [2: NPM](https://github.com/portsoc/hangman-in-branches/tree/2)
+- [3: DOM](https://github.com/portsoc/hangman-in-branches/tree/3)
+- [4: Events](https://github.com/portsoc/hangman-in-branches/tree/4)
+- [5: Debugging](https://github.com/portsoc/hangman-in-branches/tree/5)
+- [6: Canvas](https://github.com/portsoc/hangman-in-branches/tree/6)
+- [7: Modularisation](https://github.com/portsoc/hangman-in-branches/tree/7)
+- [8: Server Part 1](https://github.com/portsoc/hangman-in-branches/tree/8)
+- [9: Server Part 2](https://github.com/portsoc/hangman-in-branches/tree/9)
+- [10: Style](https://github.com/portsoc/hangman-in-branches/tree/10)
+- [11: Linting](https://github.com/portsoc/hangman-in-branches/tree/11)
+- [12: Database](https://github.com/portsoc/hangman-in-branches/tree/12)
+- [13: SVG](https://github.com/portsoc/hangman-in-branches/tree/13)
 
 ## Objectives
 
