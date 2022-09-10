@@ -20,7 +20,7 @@ function createGame(req, res) {
 
 /**
  * Given a game's id, if the game exists and its `onGoing` is `true`, 
- * it checks a letter passed in as a reqiest parameter.
+ * it checks a letter passed in as a request parameter.
  * If the guess was correct, it is added to the game's `hits`, otherwise to `misses`.
  * If the user has guessed the word or has no lives left, then we end the game.
  * The sanitized status is sent to the client as a response (or the full status on gameover).
