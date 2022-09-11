@@ -70,7 +70,8 @@ Since we have modularized our server, we only need to import the `pg` module int
 There we will use the `pg` module's `Client` class (for more information check out [this documentation page](https://node-postgres.com/api/client)).
 
 First, we will construct an SQL client with the configurations defined in our `server/config.js` file.
-Read this file and comment out the `host` if you are running the server on your machine.
+**Make sure to read this configuration file and comment the `host` line if you are not running the code on your VM.**
+
 After creating an SQL client we will attempt to connect to the database in the `connectToDB` function.
 If the connection is established, we can use the client to query the database.
 For example `createGame`, now inserts the game's values into the database by querying the SQL client.
@@ -79,7 +80,7 @@ The first thing to be careful of while dealing with the database is the differen
 The arrays we previously had in our JavaScript files are now stored as varchar in the database (see `server/game.sql`).
 So we need to join the arrays before inserting/updating them in the database and split them when we retrieve them.
 
-Secondly, the operation of querying the database is asynchronous, our functions have also been declared with the `async` keyword.
+Secondly, the operation of querying the database is asynchronous, so our functions have also been declared with the `async` keyword.
 Sadly, this creates a problem in the `server/svr.js` script as [Expres routing](https://expressjs.com/en/starter/basic-routing.html) works differently for synchronous and asynchronous functions.
 Previously, `createGame` was a synchronous function called as the response to the `\game\` path:
 
@@ -134,7 +135,7 @@ View all the differences between our current branch and the last by visiting [th
 ### Prerequisites
 
 We have implemented the app to run in a Unix environment (e.g., [your student VMs](http://port.ac.uk/myvm) or Linux/macOS machines).
-It is not tested on a Windows environment.
+**It is not tested on a Windows environment.**
 For information on using your student VM, revisit the [README of branch 9](https://github.com/portsoc/hangman-in-branches/tree/9#host-this-site).
 
 We are also using [the PostgreSQL database](https://www.postgresql.org/download/) so make sure you have it installed on your machines (it is already installed on the student VMs).
@@ -178,7 +179,7 @@ exit
 
 One last way the setup script can fail is if the database already exists.
 To handle this error we have provided a clean-up script in `package.json` which will drop the database if it already exists.
-See the [clean-up section](#cleanup) for more information.
+See the [clean-up section](#clean-up) for more information.
 
 ### Run the server
 
@@ -208,7 +209,7 @@ npm run clean-up
 
 That's it 🥳!
 We are done with our predefined tasks.
-We still have [one more branch](https://github.com/portsoc/hangman-in-branches/tree/12) where we will replace our canvas with an SVG but our application will remain pretty much the same.
+We still have [one more branch](https://github.com/portsoc/hangman-in-branches/tree/13) where we will replace our canvas with an SVG but our application will remain pretty much the same.
 
 - [x] We still have not satisfied one of the core requirements of displaying how many moves it took to win as a score.
 
