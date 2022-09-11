@@ -9,7 +9,7 @@ app.use(express.static(clientPath));
 
 
 /**
- * Creates a new game status object and returns the sanitized copu of it.
+ * Creates a new game status object and returns the sanitized copy of it.
  * @param req - the request object
  * @param res - response object, contains the sanitized status object (without `word` property)
  */
