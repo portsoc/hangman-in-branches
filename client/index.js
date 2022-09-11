@@ -10,7 +10,6 @@ const GET = { method: 'GET' };
 /**
  *  Stores the status of the game and has the following properties:
  * `id` - the id of the game,
- * `word` - the word to be guessed (only available if the game is lost),
  * `hits` - an array of the letters that have been guessed correctly,
  * `misses` - an array of the letters that have been guessed incorrectly,
  * `onGoing` - a boolean that indicates if the game is still in progress,
@@ -24,7 +23,7 @@ let gameState = {};
 /**
  * Stores the handles to the elements in the DOM (if exists):
  * `el.main` - the main element of the page (that contains all sections),
- * `el.noose` - the noose element ('#noose'),
+ * `el.canvas` - the canvas element ('#noose'),
  * `el.keyboard` - the keyboard section ('#keyboard'),
  * `el.instruct` - the instructions section ('#instruct'),
  * `el.feedback` - the feedback section ('#feedback').
@@ -51,8 +50,8 @@ function hitsAndMisses() {
 }
 
 /**
- * It takes a message as an argument, and displays it in the feedback section.
- * It also displays the number of lives in the feedback section if the game is on.
+ * Displays `message` in the feedback section.
+ * It also displays the lives left.
  * @param message - the message to display
  */
 function feedback(message) {
@@ -64,10 +63,10 @@ function feedback(message) {
 }
 
 /**
- * Removes the keyboard and adds a button for a new game that calls `startNewGame` on click.
+ * Resets the keyboard and adds a button for a new game that calls `startNewGame` on click.
  */
 function generateNewGame() {
-  safeRemove('#keyboard');
+  el.keyboard.textContent = '';
 
   const newGame = create('section', el.main, { id: 'newGame' });
   create('p', newGame, {},
@@ -80,7 +79,6 @@ function generateNewGame() {
 
 /**
  * Starts a new game by requesting a new `gameState` from the server.
- * Removes the newGame element, prepares game handles and event listeners,
  * redraws the hangman and keyboard, and displays a feedback message too.
  */
 async function startNewGame() {
@@ -89,12 +87,11 @@ async function startNewGame() {
   gameState = await response.json();
 
   redrawWord();
-  el.keyboard = drawKeyboard(el.main);
+  drawKeyboard(el.keyboard);
 
   resetNoose();
 
   feedback('Start clicking on the buttons or press a letter on the keyboard.');
-  addEventListeners();
 }
 
 
@@ -107,7 +104,7 @@ function resetNoose() {
 }
 
 /**
- * Based on the curent gamestate, ensure that the right parts of the noose are visible
+ * Based on `gameState`, ensures that the right parts of the noose are visible
  */
 function redrawHangman() {
   for (let i = 1; i <= 10; i++) {
@@ -115,7 +112,6 @@ function redrawHangman() {
     nextToShow.classList.toggle('hide', i > gameState.misses.length);
   }
 }
-
 
 /**
  * It requests the score of the game from the server and returns it if the game was won.
@@ -131,7 +127,7 @@ async function getScore() {
 }
 
 /**
- * If the game is on, and the user clicked on an on-screen key, registers the letter.
+ * If `gameState.onGoing` is `true`, and the user clicked on an on-screen key, registers their guess
  * @param e - the click event object
  */
 function checkClick(e) {
@@ -144,7 +140,8 @@ function checkClick(e) {
 }
 
 /**
- * If the game is on, and the user pressed on a letter on the keyboard, registers the letter.
+ * If `gameState.onGoing` is `true`, and the user pressed on a letter on the keyboard, registers the letter
+ * If `gameState.onGoing` is `false`, Enter and Space can be used to start a new game
  * @param e - the key press event object
  */
 function checkKeyPress(e) {
@@ -160,12 +157,9 @@ function checkKeyPress(e) {
 }
 
 /**
- * If the game is ongoing and the user has made a new guess, requests the server to check a letter.
- * Depending on the server response, it also displays a feedback to user
- * and generates a new game if the game is won or no lives left.
- * The hangman and keyboard are updated too.
- * Otherwise (if no lives left or repetetive guess has been made) it skips the request
- * and just displays a feedback message.
+ * If `gameState.onGoing` is `true` and user has made a new guess, requests the server to check  `letter`.
+ * Displays a feedback to user, updates hangman and keyboard, and redraws the word.
+ * Generates a new game on gameover.
  * @param letter - the letter that the user has guessed
  */
 async function registerLetter(letter) {
@@ -207,7 +201,7 @@ async function registerLetter(letter) {
 }
 
 /**
- * It sends a guess to the server and updates the game state
+ * It sends a guess to the server and updates `gameState` with the response.
  * @param letter - The letter that the user guessed.
  */
 async function sendGuess(letter) {
@@ -217,7 +211,7 @@ async function sendGuess(letter) {
 }
 
 /**
- * Updates the `guessMe` element based on `gameState.userWord`.
+ * Removes the old `#guessMe` element, and creates a new one with the letters in `guessed`
  */
 function redrawWord() {
   safeRemove('#guessMe');
@@ -231,23 +225,19 @@ function redrawWord() {
 }
 
 /**
- * Updates the on-screen keyboard by disabling every button whose letter has been guessed.
+ * Updates the on-screen keyboard by disabling every button with a letter in `hits` or `misses`
  */
 function redrawKeyboard() {
-  const keyboard = document.querySelector('#keyboard');
+  const keys = el.keyboard.querySelectorAll('[data-letter]');
 
-  if (keyboard) {
-    const keys = keyboard.querySelectorAll('[data-letter]');
+  for (const key of keys) {
+    const letter = key.dataset.letter;
 
-    for (const key of keys) {
-      const letter = key.dataset.letter;
+    if (hitsAndMisses().includes(letter)) {
+      key.disabled = true;
 
-      if (hitsAndMisses().includes(letter)) {
-        key.disabled = true;
-
-        key.classList.toggle('miss', gameState.misses.includes(letter));
-        key.classList.toggle('hit', gameState.hits.includes(letter));
-      }
+      key.classList.toggle('miss', gameState.misses.includes(letter));
+      key.classList.toggle('hit', gameState.hits.includes(letter));
     }
   }
 }
@@ -257,13 +247,14 @@ function redrawKeyboard() {
  */
 function addEventListeners() {
   window.addEventListener('keydown', checkKeyPress);
-  el.keyboard?.addEventListener('click', checkClick);
+  el.keyboard.addEventListener('click', checkClick);
 }
 
 /**
  * Selects the DOM elements that we'll be using and stores them in `el`.
  */
 function prepareHandles() {
+  el.keyboard = document.querySelector('#keyboard');
   el.instruct = document.querySelector('#instruct');
   el.feedback = document.querySelector('#feedback');
   el.main = document.querySelector('main');
@@ -276,6 +267,7 @@ function prepareHandles() {
 function init() {
   prepareHandles();
   startNewGame();
+  addEventListeners();
 }
 
 window.addEventListener('load', init);
