@@ -93,7 +93,7 @@ async function startNewGame() {
   gameState = await response.json();
 
   redrawWord();
-  el.keyboard = drawKeyboard(el.main);
+  drawKeyboard(el.keyboard);
   drawHangman(el.canvas, 10);
   feedback('Start clicking on the buttons or press a letter on the keyboard.');
 }
