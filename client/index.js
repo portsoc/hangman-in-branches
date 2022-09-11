@@ -70,7 +70,7 @@ function feedback(message) {
  * Resets the keyboard and adds a button for a new game that calls `startNewGame` on click.
  */
 function generateNewGame() {
-  safeRemove('#keyboard');
+  el.keyboard.textContent = '';
 
   const newGame = create('section', el.main, { id: 'newGame' });
   create('p', newGame, {},
