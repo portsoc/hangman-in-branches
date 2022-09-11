@@ -79,26 +79,26 @@ function generateNewGame() {
 
 /**
  * Starts a new game by requesting a new `gameState` from the server.
- * redraws the hangman and keyboard, and displays a feedback message too.
+ * resets the noose and the keyboard, and displays a feedback message too.
  */
 async function startNewGame() {
   safeRemove('#newGame');
+
   const response = await fetch('/games', POST);
   gameState = await response.json();
 
   redrawWord();
   drawKeyboard(el.keyboard);
-
   resetNoose();
-
   feedback('Start clicking on the buttons or press a letter on the keyboard.');
 }
 
 
 /**
- * Hides all the elements (with an id attribute) of the noose
+ * Hides all the shapes from the noose section.
  */
 function resetNoose() {
+  // all shapes have an id
   const hidden = el.noose.querySelectorAll('[id]');
   hidden.forEach(x => x.classList.add('hide'));
 }
@@ -108,6 +108,7 @@ function resetNoose() {
  */
 function redrawHangman() {
   for (let i = 1; i <= 10; i++) {
+    // all shapes have an id starting with 'n' followed by a number corresponding to the number of misses
     const nextToShow = el.noose.querySelector(`#n${i}`);
     nextToShow.classList.toggle('hide', i > gameState.misses.length);
   }
@@ -140,8 +141,8 @@ function checkClick(e) {
 }
 
 /**
- * If `gameState.onGoing` is `true`, and the user pressed on a letter on the keyboard, registers the letter
- * If `gameState.onGoing` is `false`, Enter and Space can be used to start a new game
+ * If `gameState.onGoing` is `true`, and the user pressed on a letter on the keyboard, registers the letter.
+ * If `gameState.onGoing` is `false`, Enter and Space can be used to start a new game.
  * @param e - the key press event object
  */
 function checkKeyPress(e) {
@@ -157,7 +158,7 @@ function checkKeyPress(e) {
 }
 
 /**
- * If `gameState.onGoing` is `true` and user has made a new guess, requests the server to check  `letter`.
+ * If `gameState.onGoing` is `true` and user has made a new guess, requests the server to check `letter`.
  * Displays a feedback to user, updates hangman and keyboard, and redraws the word.
  * Generates a new game on gameover.
  * @param letter - the letter that the user has guessed
@@ -188,6 +189,7 @@ async function registerLetter(letter) {
         if (gameState.won) {
           const score = await getScore();
           feedback(`You won! Your score is ${score}, well done! 🎉`);
+
           generateNewGame();
         } else {
           feedback(`Good job! '${letter}' is in the word. ✅`);
