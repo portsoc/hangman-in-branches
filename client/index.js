@@ -220,7 +220,6 @@ function redrawKeyboard() {
     if (hitsAndMisses().includes(letter)) {
       key.disabled = true;
 
-      // add a class to the key to indicate whether the guess was correct or not
       key.classList.toggle('miss', gameState.misses.includes(letter));
       key.classList.toggle('hit', gameState.hits.includes(letter));
     }
