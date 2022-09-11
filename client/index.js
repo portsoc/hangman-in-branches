@@ -1,11 +1,11 @@
 import {
-    drawHangman,
+  drawHangman,
 } from './canvas.js';
 
 import {
-    safeRemove,
-    create,
-    drawKeyboard,
+  safeRemove,
+  create,
+  drawKeyboard,
 } from './helper.js';
 
 const POST = { method: 'POST' };
@@ -40,10 +40,10 @@ const el = {};
  * @returns number of lives
  */
 function lives() {
-    if (gameState.misses) {
-        return 10 - gameState.misses.length;
-    }
-    return 0;
+  if (gameState.misses) {
+    return 10 - gameState.misses.length;
+  }
+  return 0;
 }
 
 /**
@@ -51,7 +51,7 @@ function lives() {
  * @returns union of hits and misses arrays
  */
 function hitsAndMisses() {
-    return gameState.hits.concat(gameState.misses);
+  return gameState.hits.concat(gameState.misses);
 }
 
 /**
@@ -60,26 +60,26 @@ function hitsAndMisses() {
  * @param message - the message to display
  */
 function feedback(message) {
-    if (gameState.onGoing) {
-        message += ` You have ${lives()} lives left.`;
-    }
+  if (gameState.onGoing) {
+    message += ` You have ${lives()} lives left.`;
+  }
 
-    el.feedback.textContent = message;
+  el.feedback.textContent = message;
 }
 
 /**
  * Resets the keyboard and adds a button for a new game that calls `startNewGame` on click.
  */
 function generateNewGame() {
-    el.keyboard.textContent = '';
+  el.keyboard.textContent = '';
 
-    const newGame = create('section', el.main, { id: 'newGame' });
-    create('p', newGame, {},
-        'Use the button or hit Enter/Space to start a new game.');
-    const prompt = create('button', newGame, {}, 'Start a new game');
-    prompt.classList.add('newGame');
+  const newGame = create('section', el.main, { id: 'newGame' });
+  create('p', newGame, {},
+    'Use the button or hit Enter/Space to start a new game.');
+  const prompt = create('button', newGame, {}, 'Start a new game');
+  prompt.classList.add('newGame');
 
-    prompt.addEventListener('click', startNewGame);
+  prompt.addEventListener('click', startNewGame);
 }
 
 /**
@@ -87,15 +87,15 @@ function generateNewGame() {
  * redraws the hangman and keyboard, and displays a feedback message too.
  */
 async function startNewGame() {
-    safeRemove('#newGame');
+  safeRemove('#newGame');
 
-    const response = await fetch('/games', POST);
-    gameState = await response.json();
+  const response = await fetch('/games', POST);
+  gameState = await response.json();
 
-    redrawWord();
-    el.keyboard = drawKeyboard(el.main);
-    drawHangman(el.canvas, 10);
-    feedback('Start clicking on the buttons or press a letter on the keyboard.');
+  redrawWord();
+  el.keyboard = drawKeyboard(el.main);
+  drawHangman(el.canvas, 10);
+  feedback('Start clicking on the buttons or press a letter on the keyboard.');
 }
 
 /**
@@ -103,12 +103,12 @@ async function startNewGame() {
  * @returns The score of the game.
  */
 async function getScore() {
-    const url = `/games/${gameState.id}/score`;
-    const response = await fetch(url, GET);
-    const responseObject = await response.json();
+  const url = `/games/${gameState.id}/score`;
+  const response = await fetch(url, GET);
+  const responseObject = await response.json();
 
-    const score = responseObject.score ? responseObject.score : 0;
-    return score;
+  const score = responseObject.score ? responseObject.score : 0;
+  return score;
 }
 
 /**
@@ -116,12 +116,12 @@ async function getScore() {
  * @param e - the click event object
  */
 function checkClick(e) {
-    if (gameState.onGoing) {
-        const letter = e.target.dataset.letter;
-        if (letter) {
-            registerLetter(letter);
-        }
+  if (gameState.onGoing) {
+    const letter = e.target.dataset.letter;
+    if (letter) {
+      registerLetter(letter);
     }
+  }
 }
 
 /**
@@ -130,15 +130,15 @@ function checkClick(e) {
  * @param e - the key press event object
  */
 function checkKeyPress(e) {
-    if (gameState.onGoing) {
-        if (e.code.indexOf('Key') === 0) {
-            registerLetter(e.code[3]);
-        }
-    } else {
-        if (e.code === 'Space' || e.code === 'Enter') {
-            startNewGame();
-        }
+  if (gameState.onGoing) {
+    if (e.code.indexOf('Key') === 0) {
+      registerLetter(e.code[3]);
     }
+  } else {
+    if (e.code === 'Space' || e.code === 'Enter') {
+      startNewGame();
+    }
+  }
 }
 
 /**
@@ -148,41 +148,41 @@ function checkKeyPress(e) {
  * @param letter - the letter that the user has guessed
  */
 async function registerLetter(letter) {
-    letter = letter.trim().toLowerCase();
+  letter = letter.trim().toLowerCase();
 
-    if (gameState.onGoing && letter.length === 1) {
-        if (hitsAndMisses().includes(letter)) {
-            feedback(`You already guessed '${letter}'. Try another letter. 😇`);
+  if (gameState.onGoing && letter.length === 1) {
+    if (hitsAndMisses().includes(letter)) {
+      feedback(`You already guessed '${letter}'. Try another letter. 😇`);
+    } else {
+      await sendGuess(letter);
+
+      const wasHit = gameState.last;
+      if (!wasHit) {
+        if (!gameState.onGoing) {
+          let message = `You lost! Your last guess, '${letter}', was wrong. 😭`;
+          message += gameState.word ? ` The word was: '${gameState.word}'` : '';
+          feedback(message);
+
+          generateNewGame();
         } else {
-            await sendGuess(letter);
-
-            const wasHit = gameState.last;
-            if (!wasHit) {
-                if (!gameState.onGoing) {
-                    let message = `You lost! Your last guess, '${letter}', was wrong. 😭`;
-                    message += gameState.word ? ` The word was: '${gameState.word}'` : '';
-                    feedback(message);
-
-                    generateNewGame();
-                } else {
-                    feedback(`Sorry! '${letter}' is not a letter in the word. ❌`);
-                }
-            } else {
-                redrawWord();
-
-                if (gameState.won) {
-                    const score = await getScore();
-                    feedback(`You won! Your score is ${score}, well done! 🎉`);
-                    generateNewGame();
-                } else {
-                    feedback(`Good job! '${letter}' is in the word. ✅`);
-                }
-            }
-
-            drawHangman(el.canvas, lives(), wasHit);
-            redrawKeyboard();
+          feedback(`Sorry! '${letter}' is not a letter in the word. ❌`);
         }
+      } else {
+        redrawWord();
+
+        if (gameState.won) {
+          const score = await getScore();
+          feedback(`You won! Your score is ${score}, well done! 🎉`);
+          generateNewGame();
+        } else {
+          feedback(`Good job! '${letter}' is in the word. ✅`);
+        }
+      }
+
+      drawHangman(el.canvas, lives(), wasHit);
+      redrawKeyboard();
     }
+  }
 }
 
 /**
@@ -190,70 +190,70 @@ async function registerLetter(letter) {
  * @param letter - The letter that the user guessed.
  */
 async function sendGuess(letter) {
-    const url = `/games/${gameState.id}/${letter}`;
-    const response = await fetch(url, POST);
-    gameState = await response.json();
+  const url = `/games/${gameState.id}/${letter}`;
+  const response = await fetch(url, POST);
+  gameState = await response.json();
 }
 
 /**
  * Removes the old `#guessMe` element, and creates a new one with the letters in `guessed`
  */
 function redrawWord() {
-    safeRemove('#guessMe');
-    const guessMe = create('div', el.instruct, { id: 'guessMe' });
+  safeRemove('#guessMe');
+  const guessMe = create('div', el.instruct, { id: 'guessMe' });
 
-    for (const letter of gameState.userWord) {
-        const char = create('span', guessMe, {}, letter);
-        char.dataset.letter = letter;
-        char.dataset.unknown = (letter === '_');
-    }
+  for (const letter of gameState.userWord) {
+    const char = create('span', guessMe, {}, letter);
+    char.dataset.letter = letter;
+    char.dataset.unknown = (letter === '_');
+  }
 }
 
 /**
  * Updates the on-screen keyboard by disabling every button with a letter in `hits` or `misses`
  */
 function redrawKeyboard() {
-    const keys = el.keyboard.querySelectorAll('[data-letter]');
+  const keys = el.keyboard.querySelectorAll('[data-letter]');
 
-    for (const key of keys) {
-        const letter = key.dataset.letter;
+  for (const key of keys) {
+    const letter = key.dataset.letter;
 
-        if (hitsAndMisses().includes(letter)) {
-            key.disabled = true;
+    if (hitsAndMisses().includes(letter)) {
+      key.disabled = true;
 
-            // add a class to the key to indicate whether the guess was correct or not
-            key.classList.toggle('miss', gameState.misses.includes(letter));
-            key.classList.toggle('hit', gameState.hits.includes(letter));
-        }
+      // add a class to the key to indicate whether the guess was correct or not
+      key.classList.toggle('miss', gameState.misses.includes(letter));
+      key.classList.toggle('hit', gameState.hits.includes(letter));
     }
+  }
 }
 
 /**
  * Adds event listeners for the physical keyboard presses and the on-screen keyboard (if exists).
  */
 function addEventListeners() {
-    window.addEventListener('keydown', checkKeyPress);
-    el.keyboard.addEventListener('click', checkClick);
+  window.addEventListener('keydown', checkKeyPress);
+  el.keyboard.addEventListener('click', checkClick);
 }
 
 /**
  * Selects the DOM elements that we'll be using and stores them in `el`.
  */
 function prepareHandles() {
-    el.keyboard = document.querySelector('#feedback');
-    el.instruct = document.querySelector('#instruct');
-    el.feedback = document.querySelector('#feedback');
-    el.main = document.querySelector('main');
-    el.canvas = document.querySelector('#canvas');
+  el.keyboard = document.querySelector('#feedback');
+  el.instruct = document.querySelector('#instruct');
+  el.feedback = document.querySelector('#feedback');
+  el.main = document.querySelector('main');
+  el.canvas = document.querySelector('#canvas');
 }
 
 /**
  * Prepares the game handles, listeners and starts a new game.
  */
 function init() {
-    prepareHandles();
-    startNewGame();
-    addEventListeners();
+  prepareHandles();
+  startNewGame();
+  addEventListeners();
 }
 
 window.addEventListener('load', init);
