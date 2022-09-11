@@ -17,7 +17,7 @@ import * as helper from './helper.js';
 const gamesInPlay = [];
 
 /**
- * It takes a game id and returns a copy of the game's status, but with the word property removed
+ * It returns a copy of the status object, but without the word property
  * @param id - The unique identifier for the game.
  * @returns The sanitized status object.
  */
@@ -51,8 +51,7 @@ export function createGame() {
 }
 
 /**
- * Given a game's id, check if a given letter is in the game's word.
- * It also updates the `userWord` of the game.
+ * Checks if a `letter` is in the word of the game with the given id, then updates its `userWord`.
  * @param letter - The letter that the user guessed
  * @param id - The unique identifier for the game
  * @returns `true` if the letter is in the word, `false` otherwise
@@ -93,10 +92,10 @@ function checkWon(id) {
 }
 
 /**
- * Given a game's id, if the game exists and is ongoing, it checks if a given letter is in the word.
- * If this was the case, we add it to hits array, otherwise we add it to the misses array.
- * If the user has fully guessed the word or has no lives left, then we end the game.
- * The sanitized status is returned (or the full status on gameover).
+ * Given a game's id, if the game exists and its `onGoing` is `true`, checks if `letter` is in its word.
+ * If this was the case, we add it to the game's `hits` otherwise to `misses`.
+ * If the user has fully guessed the word or has no lives left, then sets its `onGoing` to `false`.
+ * The sanitized game status is returned (or the full status on gameover).
  * @param id - The unique identifier for the game
  * @param letter - The letter to check
  * @returns The status object.
@@ -124,7 +123,7 @@ export function guessLetter(id, letter) {
 }
 
 /**
- * Game is won, respond with a score based on the number of misses, otherwise and error message.
+ * Given the id of a game, if it's won, responds with a score, otherwise an error.
  * @param id - The unique identifier for the game
  * @returns The score if the game is won, otherwise an error message.
  */
@@ -134,7 +133,6 @@ export function calculateScore(id) {
 
   if (game?.won) {
     score = 1 / (1 + game.misses.length) * 1000;
-    // let's round the score to the nearest integer
     score = Math.round(score);
   }
   return score;
