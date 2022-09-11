@@ -9,7 +9,6 @@ import {
 } from './helper.js';
 
 const POST = { method: 'POST' };
-// we are using 'GET' to request the score from the server (it is a read-only request)
 const GET = { method: 'GET' };
 
 /**
