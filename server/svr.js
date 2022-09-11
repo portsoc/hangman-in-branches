@@ -9,7 +9,7 @@ app.use(express.static(clientPath));
 
 
 /**
- * Creates a new game status object and returns the sanitized copu of it.
+ * Creates a new game status object and responds with a sanitized copy of it.
  * @param req - the request object
  * @param res - response object, contains the sanitized status object (without `word` property)
  */
@@ -19,8 +19,9 @@ async function createGame(req, res) {
 }
 
 /**
- * Given a game's id, if the game exists and is ongoing, it checks if a given letter is in the word.
- * If this was the case, we add it to hits array, otherwise we add it to the misses array.
+ * Given a game's id, if the game exists and its `onGoing` is `true`,
+ * it checks a letter passed in as a request parameter.
+ * If the guess was correct, it is added to the game's `hits`, otherwise to `misses`.
  * If the user has guessed the word or has no lives left, then we end the game.
  * The sanitized status is sent to the client as a response (or the full status on gameover).
  * @param req - request object containing the letter and the game's id
@@ -32,7 +33,7 @@ async function guessLetter(req, res) {
 }
 
 /**
- * Game is won, respond with a score based on the number of misses, otherwise and error message.
+ * Given a game's id, if the game exits and is won, responds with its score, otherwise an error.
  * @param req - request object containing the game's id
  * @param res - response that contains the score
  */
@@ -44,10 +45,10 @@ async function calculateScore(req, res) {
 }
 
 /**
- * It takes an asynchronous function, and returns a function with additional error handling.
+ * Takes an asynchronous function `f`, and returns a function resolving to a call to `f` if everything goes well.
+ * It calls `next` or creates a new error if something goes wrong.
  * @param f - The function to wrap.
- * @returns The function that returns a promise that calls the original function on resolve
- * and next if it throws an error
+ * @returns The wrapped function.
  */
 function asyncWrap(f) {
   return (req, res, next) => {
