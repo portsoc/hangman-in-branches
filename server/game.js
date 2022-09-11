@@ -27,7 +27,7 @@ function connectToDB() {
 }
 
 /**
- * It takes a game and returns a copy of it, but with the word property removed
+ * It returns a copy of the status object, but without the word property
  * @param game - The game to be copied.
  * @returns The sanitized game.
  */
@@ -38,8 +38,7 @@ function sanitizedGame(game) {
 }
 
 /**
- * Creates a new game object and adds it to the `game` table.
- * It also returns a sanitized copy of the game game object.
+ * Creates a new game object and adds it to the database and returns a sanitized copy.
  * @returns The sanitized game object.
  */
 export async function createGame() {
@@ -63,9 +62,11 @@ export async function createGame() {
     won: false,
   };
 
-  const insertQuery = 'INSERT INTO game (id, word, hits, misses, onGoing, userWord, last, won) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)';
+  const insertQuery =
+    'INSERT INTO game (id, word, hits, misses, onGoing, userWord, last, won) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)';
   // join arrays into strings before inserting them into the database (we have defined their types as varchar)
-  const values = [game.id, game.word, game.hits.join(''), game.misses.join(''), game.onGoing, game.userWord.join(''), game.last, game.won];
+  const values =
+    [game.id, game.word, game.hits.join(''), game.misses.join(''), game.onGoing, game.userWord.join(''), game.last, game.won];
   // insert the game into the database
   await sqlClient.query(insertQuery, values);
 
@@ -103,10 +104,10 @@ function checkWon(game) {
 }
 
 /**
- * Given a game's id, if the game exists and is ongoing, it checks if a given letter is in the word.
- * If this was the case, we add it to hits array, otherwise we add it to the misses array.
- * If the user has fully guessed the word or has no lives left, then we end the game.
- * The sanitized game is returned (or the full game on gameover).
+ * Given a game's id, if the game exists and is on going, it checks if a given letter is in the word.
+ * If this was the case, we add it to the game's `hits` otherwise to `misses`.
+ * If the user has fully guessed the word or has no lives left, then sets its `onGoing` to `false`.
+ * The sanitized game status is returned (or the full status on gameover).
  * @param id - The unique identifier for the game
  * @param letter - The letter to check
  * @returns The game object.
@@ -136,8 +137,10 @@ export async function guessLetter(id, letter) {
     }
 
     // update the game in the database
-    const updateQuery = 'UPDATE game SET hits = $1, misses = $2, onGoing = $3, userWord = $4, last = $5, won = $6 WHERE id = $7;';
-    const values = [game.hits.join(''), game.misses.join(''), game.onGoing, game.userWord.join(''), game.last, game.won, id];
+    const updateQuery =
+      'UPDATE game SET hits = $1, misses = $2, onGoing = $3, userWord = $4, last = $5, won = $6 WHERE id = $7;';
+    const values =
+      [game.hits.join(''), game.misses.join(''), game.onGoing, game.userWord.join(''), game.last, game.won, id];
     await sqlClient.query(updateQuery, values);
 
     return game.onGoing ? sanitizedGame(game) : game;
@@ -170,7 +173,7 @@ async function getGame(id) {
 }
 
 /**
- * Game is won, respond with a score based on the number of misses, otherwise and error message.
+ * Given the id of a game, if it's won, responds with a score, otherwise an error.
  * @param id - The unique identifier for the game
  * @returns The score if the game is won, otherwise an error message.
  */
