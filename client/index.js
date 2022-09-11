@@ -1,6 +1,3 @@
-const POST = { method: 'POST' };
-const GET = { method: 'GET' };
-
 import {
   drawHangman,
 } from './canvas.js';
@@ -10,6 +7,9 @@ import {
   create,
   drawKeyboard
 } from './helper.js';
+
+const POST = { method: 'POST' };
+const GET = { method: 'GET' };
 
 /**
  *  Stores the status of the game and has the following properties:
