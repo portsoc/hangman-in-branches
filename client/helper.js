@@ -37,7 +37,7 @@ export function create(type, parent, attributes = {}, text) {
 
 /**
  * Draws the keys on the keyboard
- * @param parent - the keyboard section
+ * @param keyboard - The keyboard element to append the keys to
  */
 export function drawKeyboard(keyboard) {
   const alphabet = 'abcdefghijklmnopqrstuvwxyz';
