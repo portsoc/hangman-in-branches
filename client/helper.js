@@ -37,8 +37,7 @@ export function create(type, parent, attributes = {}, text) {
 
 /**
  * Draws the keys on the keyboard
- * @param parent - The parent element to append the keyboard to
- * @returns The keyboard element
+ * @param keyboard - The keyboard element to append the keys to
  */
 export function drawKeyboard(keyboard) {
   // separate the letters into 3 rows similar to a QWERTY keyboard
