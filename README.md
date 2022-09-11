@@ -17,7 +17,7 @@
 - [9: Server Part 2](https://github.com/portsoc/hangman-in-branches/tree/9)
 - [10: Style](https://github.com/portsoc/hangman-in-branches/tree/10)
 - [11: Linting](https://github.com/portsoc/hangman-in-branches/tree/11)
-- [12: Database](https://github.com/portsoc/hangman-in-branches/tree/12)
+- 12: Database(current branch)
 - [13: SVG](https://github.com/portsoc/hangman-in-branches/tree/13)
 
 ## Objectives
