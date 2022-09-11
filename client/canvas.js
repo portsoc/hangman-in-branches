@@ -83,7 +83,6 @@ function circle(c, x, y, r) {
   c.stroke();
 }
 
-
 /**
  * Convert degrees to radians.
  * @param deg - The degree of the angle.
