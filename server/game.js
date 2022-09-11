@@ -133,7 +133,6 @@ export function calculateScore(id) {
 
   if (game?.won) {
     score = 1 / (1 + game.misses.length) * 1000;
-    // let's round the score to the nearest integer
     score = Math.round(score);
   }
   return score;
