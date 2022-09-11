@@ -238,7 +238,7 @@ function addEventListeners() {
  * Selects the DOM elements that we'll be using and stores them in `el`.
  */
 function prepareHandles() {
-  el.keyboard = document.querySelector('#feedback');
+  el.keyboard = document.querySelector('#keyboard');
   el.instruct = document.querySelector('#instruct');
   el.feedback = document.querySelector('#feedback');
   el.main = document.querySelector('main');
