@@ -184,9 +184,9 @@ async function registerLetter(letter) {
   }
 }
 
-/**
- * It sends a guess to the server and updates `gameState` with the response.
- * @param letter - The letter that the user guessed.
+  /**
+   * It sends a guess to the server and updates `gameState` with the response.
+   * @param letter - The letter that the user guessed.
  */
 async function sendGuess(letter) {
   const url = `/games/${gameState.id}/${letter}`;
@@ -247,7 +247,7 @@ function prepareHandles() {
 }
 
 /**
- * Prepares the game handles and starts a new game.
+ * Prepares the game handles, listeners and starts a new game.
  */
 function init() {
   prepareHandles();
