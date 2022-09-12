@@ -18,7 +18,7 @@
 - [10: Style](https://github.com/portsoc/hangman-in-branches/tree/10)
 - [11: Linting](https://github.com/portsoc/hangman-in-branches/tree/11)
 - [12: Database](https://github.com/portsoc/hangman-in-branches/tree/12)
-- [13: SVG](https://github.com/portsoc/hangman-in-branches/tree/13)
+- 13: SVG (current branch)
 
 ## Objectives
 
@@ -61,7 +61,6 @@ To do this, we add a `hide` class to the shapes and then using a new CSS rule (s
 Afterward, we are updating the noose using our `redrawHangman` function once a new guess is registered.
 
 As a result of our changes, we no longer need the `canvas` module, so we can remove it from our `client` folder.
-We have reduced the amount of code we have to maintain and we have also made our game more accessible.
 
 View all the differences between our current branch and the last by visiting [this compare page](https://github.com/portsoc/hangman-in-branches/compare/12...13?diff=split).
 
@@ -70,7 +69,7 @@ View all the differences between our current branch and the last by visiting [th
 ### Prerequisites
 
 This branch has been implemented to run in a Unix environment (e.g., your student VMs or Linux/macOS machines).
-It is not tested on a Windows environment.
+**It is not tested on a Windows environment.**
 For more information on serving the site on [your student VM](http://port.ac.uk/myvm), revisit the [README of branch 9](https://github.com/portsoc/hangman-in-branches/tree/9#host-this-site).
 
 We are also using [the PostgreSQL database](https://www.postgresql.org/download/) so make sure you have it installed on your machines (it is already installed on the student VMs).
@@ -96,7 +95,7 @@ npm run setup
 
 Running the `setup` script may fail on your personal machines.
 If this happens, begin by checking the configuration of the database in `server/config.js`.
-Read the comments in this file and make sure you have the correct configuration.
+**Read the comments in this file and make sure you have the correct configuration.**
 
 If the error persists, switch the user in your shell by running the following command then re-run the setup script:
 
@@ -114,7 +113,7 @@ exit
 
 One last way the setup script can fail is if the database already exists.
 To handle this error we have provided a clean-up script in `package.json` which will drop the database if it already exists.
-See the [clean-up section](#cleanup) for more information.
+See the [clean-up section](#clean-up) for more information.
 
 ### Run the server
 
