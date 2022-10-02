@@ -25,7 +25,7 @@ View the "Core capabilities" section of this document to see the requirements we
 
 ### On your computers
 
-1. Install [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [Node](https://nodejs.org/en/download/).
+1. Install [Git](https://git-scm.com/downloads) and [Node](https://nodejs.org/en/download/).
 
 1. Install an editor (e.g., [Visual Studio Code](https://code.visualstudio.com) or [Atom](https://atom.io)).
 
