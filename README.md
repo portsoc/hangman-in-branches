@@ -31,14 +31,9 @@ Then we can use that index to select the element from our array.
 While writing the code for this, we will also aim to group the lines of code that are related to each other and make them into a function.
 We can then call our functions instead of running the code inside them.
 
-If you have not yet visited
-[Code Examples to Copy](https://portsoc.github.io/code-copy-examples/)
-make sure to copy and run some of the examples from the first 3 branches.
-You can do this either in an editor or in [Replit (in your browser)](https://replit.com/new/nodejs):
-
-- [Stage 1](https://portsoc.github.io/code-copy-examples)
-- [Stage 2](https://portsoc.github.io/code-copy-examples/stage-2)
-- [Stage 3](https://portsoc.github.io/code-copy-examples/stage-3)
+Please attempt the tests in the
+[the j201 repository](https://github.com/portsoc/js201)
+if you have not already done so.
 
 ## Implementation
 
