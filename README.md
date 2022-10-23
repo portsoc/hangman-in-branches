@@ -24,6 +24,15 @@
 
 Let's begin by storing the words for the game and then test how we can select them.
 
+If you have not yet visited
+[Code Examples to Copy](https://portsoc.github.io/code-copy-examples/)
+make sure to copy and run some of the examples from the first 3 branches.
+You can do this either in an editor or in [Replit (in your browser)](https://replit.com/new/nodejs):
+
+- [Stage 1](https://portsoc.github.io/code-copy-examples)
+- [Stage 2](https://portsoc.github.io/code-copy-examples/stage-2)
+- [Stage 3](https://portsoc.github.io/code-copy-examples/stage-3)
+
 ## Implementation
 
 We have begun by creating the script `hangman.js` to hold the game's logic.
