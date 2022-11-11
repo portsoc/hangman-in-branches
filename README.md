@@ -31,9 +31,13 @@ View the "Core capabilities" section of this document to see the requirements we
 
 1. If you are new to GitHub, also install [GitHub Desktop](https://desktop.github.com) or [GitHub client](https://github.com/cli/cli).
 
+### On Codespaces
+
+1. Nothing! If you have access to codespaces, you should see a new tab once you click on the green "Code" button. Just click on the "Open in Codespaces" button and follow the instructions on the README.md file in every branch.
+
 <!-- CLONING -->
 
-## Cloning
+## Viewing the code
 
 Don't download this repository as a zip file.
 Instead, follow the instructions below to clone this repository (copy it) on your machine.
@@ -130,7 +134,7 @@ For more info, take a look at this [instruction on switching branches in Visual 
 
 <!-- RUNNING AND VIEWING THE CODE -->
 
-## Viewing the code
+## Notes
 
 When viewing the code in your favourite editor, make sure you are opening the "hangman-in-branches" folder (not individual files within it).
 So for example in Visual Studio Code, make sure you select "Open Folder" as opposed to "Open".
@@ -139,6 +143,6 @@ Always start by reading the `README.md` file to see what were the objectives for
 
 We point out that the `.gitignore` file has been automatically generated for us by GitHub on the creation of a Node repository.
 You don't need to worry about its content.
-Generally speaking, it helps to ignore files that you don't want to be saved in your repository (e.g., settings of the code editor, temporary files, etc.).
+Generally speaking, it helps to ignore files that you don't want to be saved in your repository (e.g., settings of the code editor, node modules, etc.).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
