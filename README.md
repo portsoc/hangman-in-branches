@@ -4,7 +4,7 @@
 
 # Branch 0: Variables
 
-- [Intro](https://github.dev/manighahrmani/hangman-in-branches)
+- [Intro](https://github.com/portsoc/hangman-in-branches)
 - 0: Variables (current branch)
 - [1: Functions](https://github.com/portsoc/hangman-in-branches/tree/1)
 - [2: NPM](https://github.com/portsoc/hangman-in-branches/tree/2)
