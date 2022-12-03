@@ -4,7 +4,7 @@
 
 # Branch 11: Linting
 
-- [Intro](https://github.dev/manighahrmani/hangman-in-branches)
+- [Intro](https://github.com/portsoc/hangman-in-branches)
 - [0: Variables](https://github.com/portsoc/hangman-in-branches/tree/0)
 - [1: Functions](https://github.com/portsoc/hangman-in-branches/tree/1)
 - [2: NPM](https://github.com/portsoc/hangman-in-branches/tree/2)
