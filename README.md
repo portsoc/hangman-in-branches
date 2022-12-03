@@ -128,7 +128,8 @@ It is rather easy to do this in Visual Studio Code:
 1. Click on the "Checkout branch/tag" button in the bottom left corner of the screen (in the status bar).
 1. Search for the name of the branch you want to switch to (e.g., 0) or select it from the dropdown list.
 
-![Switching branches in Visual Studio Code](https://i.imgur.com/xouBbGe.png)
+![Switching branches in Visual Studio Code](https://i.imgur.com/Ru2CpP1.png)
+
 
 For more info, take a look at this [instruction on switching branches in Visual Studio Code](https://code.visualstudio.com/docs/editor/versioncontrol#_branches-and-tags).
 
