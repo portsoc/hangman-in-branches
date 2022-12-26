@@ -54,7 +54,7 @@ We are installing this package with the needed configuration (`eslint-config-por
 There are some more configurations that we need to add to our `package.json`.
 
 Remember that the objects in a JSON file are comma-separated, so we first need to add a comma after the closing brackets of the last object (this should be `devDependencies`).
-Then we can paste the following object:
+Then we can paste the following object at the end of `package.json`:
 
 ```json
   "eslintConfig": {
