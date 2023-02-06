@@ -73,4 +73,6 @@ function init() {
 }
 
 // The init function will be called when the page loads
-window.addEventListener('load', init);
+// window.addEventListener('load', init);
+// TODO: #2 Test this and transition to defer if everything works
+init();
